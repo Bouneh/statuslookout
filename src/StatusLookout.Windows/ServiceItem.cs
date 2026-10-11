@@ -17,6 +17,8 @@ public sealed class ServiceItem(ServiceDefinition definition, bool watched, bool
     public string Category => L.T(Definition.Category);
     public string ProviderLabel => Definition.Provider switch { "statuspage" => L.T("Statuspage-compatible API"), "google" => "Google Status Dashboard", "statusio" => "Status.io", "instatus" => "Instatus", _ => "Slack Status API" };
     public string Initials => string.Concat(Name.Split(' ', StringSplitOptions.RemoveEmptyEntries).Take(2).Select(n => n[0])).ToUpperInvariant();
+    public ImageSource? Logo => ServiceLogos.Get(Definition);
+    public bool HasLogo => Logo is not null;
     private bool _watched = watched, _muted = muted;
     public Action<ServiceItem>? WatchChanged { get; set; }
     public Action<ServiceItem>? MuteChanged { get; set; }

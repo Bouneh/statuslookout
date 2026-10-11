@@ -20,6 +20,8 @@
 
 StatusLookout keeps your selected services in the Windows system tray and alerts you when their published status changes. Choose from **461 services and products**, including GitHub, Cloudflare, Discord, OpenAI, Notion, Slack, Google Cloud and Firebase.
 
+- **Bundled service logos** for all 461 catalog entries, with platform logos shared by related products.
+- **About & updates**: author links, version checking and verified downloads from GitHub releases.
 - **English by default, French available**, with an instant language selector.
 - **Light and dark themes**, applied immediately and remembered across restarts.
 - **Outage, degradation and recovery alerts**, with separate preferences for each.
@@ -67,6 +69,20 @@ Open **Preferences → Appearance & language** to choose **English / Français**
 ### Upgrading from the early UptimeKite preview
 
 Quit the old app from its tray menu before running StatusLookout. If you enabled startup in the old app, disable it there and enable it in StatusLookout. To keep the old watchlist and history, copy `preferences.json` and `state.json` from `%LOCALAPPDATA%\UptimeKite` into `%LOCALAPPDATA%\StatusLookout` while both apps are closed. Existing files without language settings default to English.
+
+## About and updates
+
+Open **About** for the installed version, **LAMOUREUX Fabien**’s [GitHub profile](https://github.com/Bouneh), the source repository and the MIT license.
+
+Click **Check for updates** to query this repository’s latest stable GitHub release. If it is newer, **Download** retrieves the executable for your Windows architecture. A progress bar and cancel button are provided. The downloaded file is checked against GitHub’s SHA-256 digest before being saved to your Windows **Downloads** folder with its version in the filename. Failed or cancelled downloads are removed.
+
+Click **Open download folder**, quit the running app, then replace your old portable executable with the downloaded one. Keep it at the same path to preserve your startup shortcut, or disable and re-enable startup after moving it. Your watchlist and preferences remain in the local data folder. Updates are downloaded on request; the running executable is not silently replaced or launched.
+
+![About and updates in French](assets/about-fr-light.png)
+
+### Service logos
+
+All catalog entries have locally bundled brand favicons. Google Cloud, Firebase and regional Sendbird products use their parent platform logo. Custom services without a bundled logo display their initials. Logo display creates no additional network requests.
 
 ## How it works
 
@@ -117,7 +133,7 @@ Preferences and the last 300 confirmed status changes are stored in:
 %LOCALAPPDATA%\StatusLookout\state.json
 ```
 
-The app sends HTTPS requests directly to selected status providers. Those providers receive your normal network request metadata, including your IP address. StatusLookout adds no analytics or tracking.
+The app sends HTTPS requests directly to selected status providers. Those providers receive your normal network request metadata, including your IP address. Clicking the update controls additionally contacts api.github.com and GitHub’s release download servers. StatusLookout adds no analytics or tracking.
 
 To remove the app, disable startup, quit from the tray and delete the executable. You can also delete the data folder to remove preferences and history.
 
@@ -167,19 +183,21 @@ dotnet run --project tests/StatusLookout.Tests -- --audit
 [The release workflow](.github/workflows/release.yml) publishes all three architectures on a `v*` tag or a manual workflow run. Tag runs create a GitHub release with executables, checksums and license notices. No external signing credentials are required.
 
 ```powershell
-git tag v0.2.0
-git push origin v0.2.0
+git tag v0.3.0
+git push origin v0.3.0
 ```
 
 An x64 machine can build all architectures. Native x86 and ARM64 runtime testing still requires suitable hardware.
 
 ## Contributing
 
+Created by **LAMOUREUX Fabien** ([Bouneh on GitHub](https://github.com/Bouneh)).
+
 See [CONTRIBUTING.md](CONTRIBUTING.md) for adding services, adapters and tests. Bug reports and feature ideas are welcome through [GitHub Issues](https://github.com/Bouneh/statuslookout/issues).
 
 ## Credits and license
 
-StatusLookout is an independently implemented Windows application inspired by the useful monitoring workflow of [stts](https://github.com/inket/stts). The Windows code, visual identity and interface are original. Selected service definitions are adapted from its MIT-licensed catalog with attribution.
+StatusLookout is an independently implemented Windows application inspired by the useful monitoring workflow of [stts](https://github.com/inket/stts). The Windows code, visual identity and interface are original. Selected service definitions and brand favicons are adapted from stts with attribution. Brand artwork remains the property of its respective owners.
 
 Google / Firebase product identifiers are taken from their public status dashboards. Service names belong to their respective owners; this project is not affiliated with those providers.
 

@@ -5,7 +5,7 @@ using System.Windows.Threading;
 using StatusLookout.Core;
 namespace StatusLookout.Windows;
 
-public sealed class MainViewModel : ObservableObject, IDisposable
+public sealed partial class MainViewModel : ObservableObject, IDisposable
 {
     private readonly JsonStore _store;
     private readonly Preferences _preferences;
@@ -244,6 +244,7 @@ public sealed class MainViewModel : ObservableObject, IDisposable
     }
     public void Dispose()
     {
+        _downloadCancellation?.Cancel(); _updateHttp.Dispose();
         L.Updated -= AppearanceUpdated;
         _timer.Stop(); _lifetime.Cancel(); _http.Dispose();
     }

@@ -13,6 +13,17 @@ var definition = new ServiceDefinition("test", "Test", "Developer services", "st
 var healthy = """{"status":{"indicator":"none","description":"All clear"},"components":[{"id":"api","name":"API","status":"operational"}],"incidents":[]}""";
 var outage = """{"status":{"indicator":"major","description":"Major outage"},"components":[{"id":"api","name":"API","status":"major_outage"}],"incidents":[{"name":"API unavailable","status":"investigating","components":[{"id":"api"}]},{"name":"Old incident","status":"resolved"}]}""";
 
+if (args.Contains("--update-audit"))
+{
+    using var client = new HttpClient { Timeout = TimeSpan.FromMinutes(5) };
+    var updates = new UpdateService(client);
+    var release = await updates.CheckAsync(new(0, 0, 0), "win-x64") ?? throw new Exception("No public stable release found.");
+    var directory = Path.Combine(Environment.CurrentDirectory, ".verification"); Directory.CreateDirectory(directory);
+    var destination = Path.Combine(directory, "download-audit-" + release.Tag + ".exe");
+    await updates.DownloadAsync(release, destination);
+    Console.WriteLine("Verified official download: " + release.Tag + " | " + release.AssetName + " | " + new FileInfo(destination).Length + " bytes");
+    return 0;
+}
 if (args.Contains("--audit"))
 {
     using var client = new HttpClient();
@@ -200,6 +211,78 @@ await CheckAsync("Caller cancellation propagates", async () =>
     try { await new StatusMonitor(client).CheckAsync([definition], cancellation.Token); throw new Exception("Cancellation was ignored."); }
     catch (OperationCanceledException) { }
 });
+byte[] ReleaseJson(string tag = "v0.4.0", bool prerelease = false, bool draft = false) => JsonSerializer.SerializeToUtf8Bytes(new
+{
+    tag_name = tag, draft, prerelease,
+    assets = new[] { "win-x64", "win-x86", "win-arm64" }.Select(runtime => new
+    {
+        name = "StatusLookout-" + runtime + ".exe",
+        browser_download_url = "https://github.com/Bouneh/statuslookout/releases/download/" + tag + "/StatusLookout-" + runtime + ".exe",
+        digest = "sha256:" + Convert.ToHexString(System.Security.Cryptography.SHA256.HashData("verified executable"u8)), size = 19
+    })
+});
+foreach (var runtime in new[] { "win-x64", "win-x86", "win-arm64" })
+    Check("Updater selects " + runtime, () => Equal("StatusLookout-" + runtime + ".exe", UpdateService.ParseRelease(ReleaseJson(), new(0, 3, 0, 0), runtime)!.AssetName));
+Check("Equal three and four component versions are current", () => True(UpdateService.ParseRelease(ReleaseJson("v0.3.0"), new(0, 3, 0, 0), "win-x64") is null));
+Check("Older releases cannot downgrade the app", () => True(UpdateService.ParseRelease(ReleaseJson("v0.2.0"), new(0, 3, 0), "win-x64") is null));
+Check("Prereleases and drafts are ignored", () =>
+{
+    True(UpdateService.ParseRelease(ReleaseJson(prerelease: true), new(0, 3, 0), "win-x64") is null);
+    True(UpdateService.ParseRelease(ReleaseJson(draft: true), new(0, 3, 0), "win-x64") is null);
+});
+Check("Untrusted download URLs are rejected", () => Throws(() => UpdateService.ParseRelease(System.Text.Encoding.UTF8.GetBytes(System.Text.Encoding.UTF8.GetString(ReleaseJson()).Replace("https://github.com/", "https://example.com/")), new(0, 3, 0), "win-x64")));
+Check("Missing checksum is rejected", () => Throws(() => UpdateService.ParseRelease(System.Text.Encoding.UTF8.GetBytes(System.Text.Encoding.UTF8.GetString(ReleaseJson()).Replace("sha256:", "sha1:")), new(0, 3, 0), "win-x64")));
+Check("Unknown release schema fails as invalid data", () =>
+{
+    try { UpdateService.ParseRelease("{}"u8.ToArray(), new(0, 3, 0), "win-x64"); throw new Exception("Invalid schema was accepted."); }
+    catch (InvalidDataException) { }
+});
+Check("Missing architecture cannot offer a wrong executable", () => Throws(() => UpdateService.ParseRelease(System.Text.Encoding.UTF8.GetBytes(System.Text.Encoding.UTF8.GetString(ReleaseJson()).Replace("StatusLookout-win-arm64.exe", "Other.exe")), new(0, 3, 0), "win-arm64")));
+await CheckAsync("Update API failures do not report current", async () =>
+{
+    using var client = new HttpClient(new FakeHandler("{}", HttpStatusCode.Forbidden));
+    try { await new UpdateService(client).CheckAsync(new(0, 3, 0), "win-x64"); throw new Exception("HTTP failure was ignored."); }
+    catch (HttpRequestException) { }
+});
+var downloadDirectory = Path.Combine(Path.GetTempPath(), "StatusLookout-updates-" + Guid.NewGuid().ToString("N"));
+Directory.CreateDirectory(downloadDirectory);
+try
+{
+    var update = UpdateService.ParseRelease(ReleaseJson(), new(0, 3, 0), "win-x64")!;
+    await CheckAsync("Verified download is saved atomically", async () =>
+    {
+        using var client = new HttpClient(new FakeHandler("verified executable"));
+        var destination = Path.Combine(downloadDirectory, "valid.exe");
+        await new UpdateService(client).DownloadAsync(update, destination);
+        Equal("verified executable", File.ReadAllText(destination));
+        True(!Directory.EnumerateFiles(downloadDirectory, "*.partial").Any());
+    });
+    await CheckAsync("Checksum mismatch preserves existing file and removes partial", async () =>
+    {
+        using var client = new HttpClient(new FakeHandler("corrupt executable!"));
+        var destination = Path.Combine(downloadDirectory, "original.exe"); File.WriteAllText(destination, "original");
+        try { await new UpdateService(client).DownloadAsync(update, destination); throw new Exception("Corrupt download was accepted."); }
+        catch (InvalidDataException) { }
+        Equal("original", File.ReadAllText(destination));
+        True(!Directory.EnumerateFiles(downloadDirectory, "*.partial").Any());
+    });
+    await CheckAsync("Incomplete download cannot leave an executable", async () =>
+    {
+        using var client = new HttpClient(new FakeHandler("short")); var destination = Path.Combine(downloadDirectory, "short.exe");
+        try { await new UpdateService(client).DownloadAsync(update, destination); throw new Exception("Short download was accepted."); }
+        catch (InvalidDataException) { }
+        True(!File.Exists(destination)); True(!Directory.EnumerateFiles(downloadDirectory, "*.partial").Any());
+    });
+    await CheckAsync("Cancelled download leaves no executable", async () =>
+    {
+        using var client = new HttpClient(new FakeHandler("verified executable", delay: 1000)); using var cancellation = new CancellationTokenSource(20);
+        var destination = Path.Combine(downloadDirectory, "cancelled.exe");
+        try { await new UpdateService(client).DownloadAsync(update, destination, token: cancellation.Token); throw new Exception("Cancellation was ignored."); }
+        catch (OperationCanceledException) { }
+        True(!File.Exists(destination)); True(!Directory.EnumerateFiles(downloadDirectory, "*.partial").Any());
+    });
+}
+finally { foreach (var path in Directory.EnumerateFiles(downloadDirectory)) File.Delete(path); Directory.Delete(downloadDirectory); }
 Console.WriteLine($"\n{passed} passed, {failed} failed");
 return failed == 0 ? 0 : 1;
 

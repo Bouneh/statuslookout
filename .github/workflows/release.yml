@@ -14,6 +14,8 @@ jobs:
         with:
           dotnet-version: 10.0.x
       - run: dotnet run --project tests/StatusLookout.Tests -c Release
+      - name: Verify native UI and bundled logos
+        run: dotnet run --project src/StatusLookout.Windows -c Release -- --preview "$env:RUNNER_TEMP/StatusLookout-about.png" --about --french --light
   build:
     needs: test
     runs-on: windows-latest
@@ -29,7 +31,7 @@ jobs:
       - name: Publish portable executable and checksum
         shell: pwsh
         run: |
-          $version = '0.2.0'
+          $version = '0.3.0'
           if ($env:GITHUB_REF_TYPE -eq 'tag') { $version = $env:GITHUB_REF_NAME.TrimStart('v') }
           ./scripts/Publish.ps1 -Runtimes '${{ matrix.runtime }}' -Version $version
       - uses: actions/upload-artifact@v7

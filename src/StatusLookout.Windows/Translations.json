@@ -618,5 +618,175 @@
     "key": "Ui123",
     "en": "Statuspage-compatible API",
     "fr": "API compatible Statuspage"
+  },
+  {
+    "key": "AboutTitle",
+    "en": "About",
+    "fr": "À propos"
+  },
+  {
+    "key": "AboutNav",
+    "en": "ⓘ   About",
+    "fr": "ⓘ   À propos"
+  },
+  {
+    "key": "AboutDescription",
+    "en": "A quiet lookout for the services you depend on.",
+    "fr": "Une vigie discrète pour les services dont vous dépendez."
+  },
+  {
+    "key": "CreatedBy",
+    "en": "Created by",
+    "fr": "Créé par"
+  },
+  {
+    "key": "GitHubProfile",
+    "en": "GitHub profile ↗",
+    "fr": "Profil GitHub ↗"
+  },
+  {
+    "key": "SourceCode",
+    "en": "Source code ↗",
+    "fr": "Code source ↗"
+  },
+  {
+    "key": "LicenseLink",
+    "en": "MIT license ↗",
+    "fr": "Licence MIT ↗"
+  },
+  {
+    "key": "CreditsText",
+    "en": "Inspired by stts. Service favicons identify their respective brands and are bundled locally; Google Cloud and Firebase products share their platform logo.",
+    "fr": "Inspiré de stts. Les logos identifient leurs marques respectives et sont intégrés localement ; les produits Google Cloud et Firebase partagent le logo de leur plateforme."
+  },
+  {
+    "key": "CheckUpdates",
+    "en": "Check for updates",
+    "fr": "Vérifier les mises à jour"
+  },
+  {
+    "key": "UpdatesExplanation",
+    "en": "Checks the official GitHub releases when you click. Downloads the stable executable for your Windows architecture and verifies its checksum before saving it in Downloads.",
+    "fr": "Consulte les releases GitHub officielles à votre demande. Télécharge l’exécutable stable adapté à votre Windows et vérifie son intégrité avant de l’enregistrer dans Téléchargements."
+  },
+  {
+    "key": "ViewRelease",
+    "en": "Release notes ↗",
+    "fr": "Notes de version ↗"
+  },
+  {
+    "key": "OpenDownload",
+    "en": "Open download folder",
+    "fr": "Ouvrir le dossier du téléchargement"
+  },
+  {
+    "key": "CancelDownload",
+    "en": "Cancel download",
+    "fr": "Annuler le téléchargement"
+  },
+  {
+    "key": "UpdateString137",
+    "en": "Installed version: {0}",
+    "fr": "Version installée : {0}"
+  },
+  {
+    "key": "UpdateString138",
+    "en": "Checking GitHub for updates…",
+    "fr": "Recherche de mises à jour sur GitHub…"
+  },
+  {
+    "key": "UpdateString139",
+    "en": "You are using the latest stable version.",
+    "fr": "Vous utilisez la dernière version stable."
+  },
+  {
+    "key": "UpdateString140",
+    "en": "Version {0} is available.",
+    "fr": "La version {0} est disponible."
+  },
+  {
+    "key": "UpdateString141",
+    "en": "Downloading… {0:0}%",
+    "fr": "Téléchargement… {0:0} %"
+  },
+  {
+    "key": "UpdateString142",
+    "en": "Download verified. Quit StatusLookout and replace the old executable to install the update.",
+    "fr": "Téléchargement vérifié. Quittez StatusLookout et remplacez l’ancien exécutable pour installer la mise à jour."
+  },
+  {
+    "key": "UpdateString143",
+    "en": "Download cancelled. You can try again.",
+    "fr": "Téléchargement annulé. Vous pouvez réessayer."
+  },
+  {
+    "key": "UpdateString144",
+    "en": "Update failed: {0}",
+    "fr": "La mise à jour a échoué : {0}"
+  },
+  {
+    "key": "UpdateString145",
+    "en": "Check for a newer version on GitHub.",
+    "fr": "Recherchez une version plus récente sur GitHub."
+  },
+  {
+    "key": "UpdateString146",
+    "en": "Last checked: {0}",
+    "fr": "Dernière vérification : {0}"
+  },
+  {
+    "key": "UpdateString147",
+    "en": "Download update",
+    "fr": "Télécharger la mise à jour"
+  },
+  {
+    "key": "UpdateString148",
+    "en": "Download {0}",
+    "fr": "Télécharger {0}"
+  },
+  {
+    "key": "UpdateString149",
+    "en": "The request was cancelled or timed out.",
+    "fr": "La requête a été annulée ou a dépassé le délai."
+  },
+  {
+    "key": "UpdateString150",
+    "en": "The Downloads folder is unavailable.",
+    "fr": "Le dossier Téléchargements est indisponible."
+  },
+  {
+    "key": "UpdateString151",
+    "en": "The download size does not match the release.",
+    "fr": "La taille du téléchargement ne correspond pas à la version publiée."
+  },
+  {
+    "key": "UpdateString152",
+    "en": "The download is larger than expected.",
+    "fr": "Le téléchargement dépasse la taille attendue."
+  },
+  {
+    "key": "UpdateString153",
+    "en": "The download is incomplete.",
+    "fr": "Le téléchargement est incomplet."
+  },
+  {
+    "key": "UpdateString154",
+    "en": "The download checksum does not match the release.",
+    "fr": "L’intégrité du téléchargement ne correspond pas à la version publiée."
+  },
+  {
+    "key": "UpdateString155",
+    "en": "The release has no valid SHA-256 checksum.",
+    "fr": "La version publiée ne fournit pas de somme SHA-256 valide."
+  },
+  {
+    "key": "UpdateString156",
+    "en": "This release has no executable for your Windows architecture.",
+    "fr": "Cette version ne fournit pas d’exécutable pour votre architecture Windows."
+  },
+  {
+    "key": "UpdateString157",
+    "en": "The update is not hosted in the official repository.",
+    "fr": "La mise à jour ne provient pas du dépôt officiel."
   }
 ]

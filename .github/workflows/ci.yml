@@ -21,3 +21,5 @@ jobs:
         run: dotnet build StatusLookout.sln -c Release --nologo
       - name: Run offline behavioral tests
         run: dotnet run --project tests/StatusLookout.Tests -c Release --no-build
+      - name: Verify native UI and bundled logos
+        run: dotnet run --project src/StatusLookout.Windows -c Release --no-build -- --preview "$env:RUNNER_TEMP/StatusLookout-about.png" --about --french --light

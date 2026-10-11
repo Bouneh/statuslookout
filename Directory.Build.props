@@ -3,8 +3,8 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>latest</LangVersion>
-    <Version>0.2.0</Version>
-    <Authors>Bouneh</Authors>
+    <Version>0.3.0</Version>
+    <Authors>LAMOUREUX Fabien (Bouneh)</Authors>
     <RepositoryUrl>https://github.com/Bouneh/statuslookout</RepositoryUrl>
     <Deterministic>true</Deterministic>
   </PropertyGroup>

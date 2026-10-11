@@ -2,7 +2,11 @@
 
 The built-in service definitions are adapted from [inket/stts](https://github.com/inket/stts/blob/master/Resources/services.json), retrieved on 2026-10-11. Only providers supported by StatusLookout are included. The Windows application, UI, state management and parsers are independently implemented. No macOS UI assets or Swift source are shipped.
 
-## stts service catalog — MIT
+## Bundled service favicons
+
+207 brand favicons covering the 461 shipped service entries are copied from [stts/Resources/Favicons](https://github.com/inket/stts/tree/876ecac0996c719786477af8e3833cdac05235ba/Resources/Favicons), pinned to commit `876ecac0996c719786477af8e3833cdac05235ba`. The source and service-to-file mapping are recorded in `src/StatusLookout.Windows/Assets/ServiceLogos/SOURCE.json` and `index.json`. The stts collection is distributed under the MIT license below; brand artwork and trademarks belong to their respective owners. Use here solely identifies monitored services and does not imply endorsement. No brand logo is the StatusLookout application logo.
+
+## stts service catalog and favicon collection — MIT
 
 MIT License
 

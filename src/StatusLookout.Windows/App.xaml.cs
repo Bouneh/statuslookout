@@ -36,6 +36,7 @@ public partial class App : System.Windows.Application
         _vm = new((service, change, sound) => _desktop?.Show(service, change, sound), demo);
         if (demo) { if (e.Args.Contains("--french")) _vm.Language = "fr"; if (e.Args.Contains("--light")) _vm.Theme = "light"; }
         MainWindow = new MainWindow(_vm);
+        if (demo && e.Args.Contains("--about")) ((MainWindow)MainWindow).ShowAbout();
         if (demo && e.Args.Contains("--settings")) ((MainWindow)MainWindow).ShowPreferences();
         if (preview is null)
         {
@@ -62,6 +63,7 @@ public partial class App : System.Windows.Application
         }
         if (preview is not null)
         {
+            if (_vm.AllServices.Any(service => !service.HasLogo)) throw new InvalidDataException("A bundled service logo is missing or unreadable.");
             MainWindow.Loaded += async (_, _) =>
             {
                 await Dispatcher.InvokeAsync(() => { }, DispatcherPriority.ContextIdle);
@@ -90,7 +92,7 @@ public partial class App : System.Windows.Application
                     File.WriteAllText(smoke, System.Text.Json.JsonSerializer.Serialize(new
                     {
                         CatalogCount = _vm.CatalogCount, WatchlistCount = _vm.WatchedCount,
-                        TrayInitialized = true, AppearanceVerified = appearanceVerified, _desktop.ToastRegistrationReady, _desktop.LastDelivery
+                        TrayInitialized = true, LogoCount = _vm.AllServices.Count(s => s.HasLogo), AppearanceVerified = appearanceVerified, _desktop.ToastRegistrationReady, _desktop.LastDelivery
                     }, StatusLookout.Core.JsonStore.Options));
                     Shutdown();
                 });

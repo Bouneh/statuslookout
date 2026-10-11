@@ -38,3 +38,9 @@ The application has its own visual identity. Keep changes accessible and readabl
 ## Pull requests
 
 Explain the user-visible change, link a related issue if relevant, and include the validation performed. The CI build and offline tests must pass. Live endpoint audits are manual because external outages and rate limits must not make deterministic CI fail.
+
+## Service logos and update controls
+
+Bundled logos are sourced from a pinned stts commit. Refresh them with `python scripts/Sync-ServiceLogos.py --ref <full-commit-sha>`, then check attribution and render the Windows preview. Avoid runtime logo lookups.
+
+Update downloads must remain restricted to this repository, use the matching architecture, verify SHA-256 before publishing the file and clean up partial downloads. Add behavioral tests for changes to version parsing or download handling.

@@ -38,6 +38,18 @@ L'historique des 300 derniers changements et les préférences restent dans `%LO
 
 Les alertes dépendent des informations publiées par les fournisseurs et des réglages de notifications Windows. La surveillance fonctionne tant que l'application tourne et que le PC est connecté et éveillé.
 
+## À propos et mises à jour
+
+La page **À propos** affiche la version installée, **LAMOUREUX Fabien**, son [profil GitHub](https://github.com/Bouneh), le dépôt et la licence MIT.
+
+Clique sur **Vérifier les mises à jour**. Si une version stable plus récente existe, un bouton permet de télécharger l’exécutable adapté au PC. La progression est affichée et tu peux annuler. Son empreinte SHA-256 est vérifiée avant l’enregistrement dans **Téléchargements** ; les fichiers incomplets sont supprimés.
+
+Ouvre le dossier du téléchargement, quitte l’application puis remplace l’ancien exécutable. Conserve le même chemin pour le démarrage automatique, ou désactive et réactive cette option après déplacement. Les préférences et l’historique restent conservés. Le téléchargement ne remplace pas automatiquement l’application ouverte.
+
+![À propos et mises à jour](../assets/about-fr-light.png)
+
+Les **461 entrées** du catalogue affichent désormais un logo intégré. Les produits Google Cloud et Firebase ainsi que les régions Sendbird partagent le logo de leur plateforme. Les services personnalisés sans logo connu affichent leurs initiales. L’affichage des logos fonctionne sans requête réseau supplémentaire.
+
 ## Développement
 
 Installe le SDK .NET 10 sur Windows :

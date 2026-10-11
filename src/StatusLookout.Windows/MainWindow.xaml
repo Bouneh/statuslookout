@@ -66,12 +66,13 @@
       <ToggleButton Style="{StaticResource Nav}" Tag="Library" Click="NavigateClick" Content="{DynamicResource Ui007}"/>
       <ToggleButton Style="{StaticResource Nav}" Tag="Activity" Click="NavigateClick" Content="{DynamicResource Ui008}"/>
       <ToggleButton Style="{StaticResource Nav}" Tag="Settings" Click="NavigateClick" Content="{DynamicResource Ui009}"/>
+      <ToggleButton Style="{StaticResource Nav}" Tag="About" Click="NavigateClick" Content="{DynamicResource AboutNav}"/>
      </StackPanel>
      <StackPanel Grid.Row="3">
       <Border Background="{DynamicResource Palette29}" CornerRadius="10" Padding="13">
        <StackPanel><TextBlock Text="{DynamicResource Ui010}" FontWeight="SemiBold" Margin="0,0,0,6"/><TextBlock Text="{DynamicResource Ui011}" Foreground="{DynamicResource Palette2}" FontSize="11" LineHeight="18"/></StackPanel>
       </Border>
-      <TextBlock Text="{DynamicResource Ui012}" Style="{StaticResource SmallLabel}" FontSize="9" Margin="4,18,0,0"/>
+      <TextBlock Text="{Binding AppVersionLabel}" Style="{StaticResource SmallLabel}" FontSize="9" Margin="4,18,0,0"/>
       <Button Content="{DynamicResource Ui013}" Margin="0,10,0,0" Background="Transparent" BorderBrush="Transparent" Foreground="{DynamicResource Palette30}" Click="GitHubClick"/>
      </StackPanel>
     </Grid>
@@ -105,7 +106,10 @@
         <ListBox.ItemTemplate><DataTemplate>
          <Border Style="{StaticResource Panel}" Padding="17,14">
           <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="44"/><ColumnDefinition Width="*"/><ColumnDefinition Width="122"/></Grid.ColumnDefinitions>
-           <Border Background="{Binding StatusBackground}" Width="32" Height="32" CornerRadius="9" VerticalAlignment="Top"><TextBlock Text="{Binding Initials}" Foreground="{Binding StatusBrush}" FontSize="11" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/></Border>
+           <Border Background="#F7F9FC" Width="32" Height="32" CornerRadius="8" VerticalAlignment="Top"><Grid Margin="5">
+            <Image Source="{Binding Logo}" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality" ToolTip="{Binding Name}"/>
+            <TextBlock Text="{Binding Initials}" Foreground="#263952" FontSize="11" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"><TextBlock.Style><Style TargetType="TextBlock"><Style.Triggers><DataTrigger Binding="{Binding HasLogo}" Value="True"><Setter Property="Visibility" Value="Collapsed"/></DataTrigger></Style.Triggers></Style></TextBlock.Style></TextBlock>
+           </Grid></Border>
            <StackPanel Grid.Column="1" Margin="0,0,18,0">
             <StackPanel Orientation="Horizontal"><TextBlock Text="{Binding Name}" FontSize="15" FontWeight="SemiBold"/><TextBlock Text="{Binding Category}" Foreground="{DynamicResource Palette39}" FontSize="10" Margin="10,4,0,0"/></StackPanel>
             <TextBlock Text="{Binding Message}" Foreground="{DynamicResource Palette40}" FontSize="12" Margin="0,6,0,0" MaxHeight="54" TextTrimming="CharacterEllipsis"/>
@@ -134,10 +138,11 @@
       <ListBox Grid.Row="2" ItemsSource="{Binding LibraryView}" Background="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Recycling">
        <ListBox.ItemTemplate><DataTemplate>
         <Border Style="{StaticResource Panel}" Padding="14,11">
-         <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="32"/><ColumnDefinition Width="*"/><ColumnDefinition Width="160"/></Grid.ColumnDefinitions>
+         <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="32"/><ColumnDefinition Width="42"/><ColumnDefinition Width="*"/><ColumnDefinition Width="160"/></Grid.ColumnDefinitions>
           <CheckBox IsChecked="{Binding IsWatched}" AutomationProperties.Name="{Binding Name}" VerticalAlignment="Center"/>
-          <StackPanel Grid.Column="1"><TextBlock Text="{Binding Name}" FontWeight="SemiBold" FontSize="13"/><TextBlock Text="{Binding ProviderLabel}" Foreground="{DynamicResource Palette41}" FontSize="10" Margin="0,5,0,0"/></StackPanel>
-          <TextBlock Grid.Column="2" Text="{Binding Category}" Foreground="{DynamicResource Palette2}" FontSize="11" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+          <Border Grid.Column="1" Background="#F7F9FC" Width="30" Height="30" CornerRadius="7" HorizontalAlignment="Left" VerticalAlignment="Center"><Grid Margin="5"><Image Source="{Binding Logo}" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality"/><TextBlock Text="{Binding Initials}" Foreground="#263952" FontSize="10" HorizontalAlignment="Center" VerticalAlignment="Center"><TextBlock.Style><Style TargetType="TextBlock"><Style.Triggers><DataTrigger Binding="{Binding HasLogo}" Value="True"><Setter Property="Visibility" Value="Collapsed"/></DataTrigger></Style.Triggers></Style></TextBlock.Style></TextBlock></Grid></Border>
+          <StackPanel Grid.Column="2"><TextBlock Text="{Binding Name}" FontWeight="SemiBold" FontSize="13"/><TextBlock Text="{Binding ProviderLabel}" Foreground="{DynamicResource Palette41}" FontSize="10" Margin="0,5,0,0"/></StackPanel>
+          <TextBlock Grid.Column="3" Text="{Binding Category}" Foreground="{DynamicResource Palette2}" FontSize="11" HorizontalAlignment="Right" VerticalAlignment="Center"/>
          </Grid>
         </Border>
        </DataTemplate></ListBox.ItemTemplate>
@@ -192,6 +197,33 @@
        </StackPanel></Border>
       </StackPanel>
      </ScrollViewer>
+
+     <ScrollViewer x:Name="AboutPage" Visibility="Collapsed" VerticalScrollBarVisibility="Auto"><StackPanel>
+      <Border Style="{StaticResource Panel}" Margin="0,0,0,16" Padding="26"><StackPanel>
+       <TextBlock Text="StatusLookout" FontSize="28" FontWeight="Bold"/>
+       <TextBlock Text="{Binding VersionDescription}" Foreground="{DynamicResource Palette16}" FontSize="13" Margin="0,8,0,0"/>
+       <TextBlock Text="{DynamicResource AboutDescription}" Foreground="{DynamicResource Palette2}" FontSize="13" Margin="0,12,0,0"/>
+       <Separator Margin="0,20,0,18" Background="{DynamicResource Palette23}"/>
+       <TextBlock Text="{DynamicResource CreatedBy}" Style="{StaticResource SmallLabel}"/>
+       <TextBlock Text="LAMOUREUX Fabien" FontSize="22" FontWeight="SemiBold" Margin="0,7,0,16"/>
+       <WrapPanel><Button Content="{DynamicResource GitHubProfile}" Click="ProfileClick" Margin="0,0,10,8"/><Button Content="{DynamicResource SourceCode}" Click="GitHubClick" Margin="0,0,10,8"/><Button Content="{DynamicResource LicenseLink}" Click="LicenseClick" Margin="0,0,0,8"/></WrapPanel>
+      </StackPanel></Border>
+      <Border Style="{StaticResource Panel}" Margin="0,0,0,16"><StackPanel>
+       <TextBlock Text="{DynamicResource CheckUpdates}" FontSize="20" FontWeight="SemiBold"/>
+       <TextBlock Text="{DynamicResource UpdatesExplanation}" Foreground="{DynamicResource Palette2}" FontSize="12" Margin="0,12,0,16" LineHeight="20"/>
+       <TextBlock Text="{Binding UpdateStatus}" FontSize="14" FontWeight="SemiBold"/>
+       <TextBlock Text="{Binding LastUpdateCheck}" Foreground="{DynamicResource Palette2}" FontSize="11" Margin="0,8,0,16"/>
+       <ProgressBar Height="6" Minimum="0" Maximum="100" Value="{Binding DownloadProgress, Mode=OneWay}" Margin="0,0,0,16" Visibility="{Binding IsDownloading, Converter={StaticResource BoolVisibility}}"/>
+       <WrapPanel>
+        <Button Content="{DynamicResource CheckUpdates}" Click="CheckUpdatesClick" IsEnabled="{Binding CanCheckUpdates}" Margin="0,0,10,8"/>
+        <Button Content="{Binding DownloadUpdateLabel}" Click="DownloadUpdateClick" Visibility="{Binding CanDownloadUpdate, Converter={StaticResource BoolVisibility}}" Margin="0,0,10,8" Background="{DynamicResource Palette15}" Foreground="White"/>
+        <Button Content="{DynamicResource CancelDownload}" Click="CancelDownloadClick" Visibility="{Binding IsDownloading, Converter={StaticResource BoolVisibility}}" Margin="0,0,10,8"/>
+        <Button Content="{DynamicResource OpenDownload}" Click="OpenDownloadClick" Visibility="{Binding HasDownloadedFile, Converter={StaticResource BoolVisibility}}" Margin="0,0,10,8"/>
+        <Button Content="{DynamicResource ViewRelease}" Click="ReleaseClick" Margin="0,0,0,8" Background="Transparent" BorderBrush="Transparent"/>
+       </WrapPanel>
+      </StackPanel></Border>
+      <Border Style="{StaticResource Panel}"><TextBlock Text="{DynamicResource CreditsText}" Foreground="{DynamicResource Palette2}" FontSize="12" LineHeight="20"/></Border>
+     </StackPanel></ScrollViewer>
     </Grid>
     <TextBlock Grid.Row="3" Text="{DynamicResource Ui050}" FontSize="9" Foreground="{DynamicResource Palette43}" Margin="0,16,0,0"/>
    </Grid>

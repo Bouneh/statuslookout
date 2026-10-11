@@ -18,6 +18,8 @@
     <ProjectReference Include="../StatusLookout.Core/StatusLookout.Core.csproj" />
     <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.3" />
     <Resource Include="Assets/app.ico" />
+    <Resource Include="Assets/ServiceLogos/*.png" />
+    <EmbeddedResource Include="Assets/ServiceLogos/index.json" />
     <EmbeddedResource Include="Translations.json" />
     <EmbeddedResource Include="Palettes.json" />
   </ItemGroup>

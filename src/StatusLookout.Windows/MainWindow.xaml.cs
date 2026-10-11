@@ -19,7 +19,20 @@ public partial class MainWindow : Window
         LibraryPage.Visibility = page == "Library" ? Visibility.Visible : Visibility.Collapsed;
         ActivityPage.Visibility = page == "Activity" ? Visibility.Visible : Visibility.Collapsed;
         SettingsPage.Visibility = page == "Settings" ? Visibility.Visible : Visibility.Collapsed;
-        PageTitle.SetResourceReference(System.Windows.Controls.TextBlock.TextProperty, page switch { "Library" => "Ui094", "Activity" => "Ui095", "Settings" => "Ui096", _ => "Ui014" });
+        AboutPage.Visibility = page == "About" ? Visibility.Visible : Visibility.Collapsed;
+        PageTitle.SetResourceReference(System.Windows.Controls.TextBlock.TextProperty, page switch { "Library" => "Ui094", "Activity" => "Ui095", "Settings" => "Ui096", "About" => "AboutTitle", _ => "Ui014" });
+    }
+    public void ShowAbout() => NavigateClick(Navigation.Children.OfType<ToggleButton>().Single(b => (string)b.Tag == "About"), new RoutedEventArgs());
+    private void ProfileClick(object sender, RoutedEventArgs e) => TryOpen("https://github.com/Bouneh");
+    private void LicenseClick(object sender, RoutedEventArgs e) => TryOpen("https://github.com/Bouneh/statuslookout/blob/main/LICENSE");
+    private void ReleaseClick(object sender, RoutedEventArgs e) => TryOpen(_vm.LatestReleaseUrl);
+    private async void CheckUpdatesClick(object sender, RoutedEventArgs e) => await _vm.CheckForUpdatesAsync();
+    private async void DownloadUpdateClick(object sender, RoutedEventArgs e) => await _vm.DownloadUpdateAsync();
+    private void CancelDownloadClick(object sender, RoutedEventArgs e) => _vm.CancelUpdateDownload();
+    private void OpenDownloadClick(object sender, RoutedEventArgs e)
+    {
+        try { if (_vm.HasDownloadedFile) Process.Start(new ProcessStartInfo(Path.GetDirectoryName(_vm.DownloadedPath)!) { UseShellExecute = true }); }
+        catch (Exception ex) { _vm.ReportError(ex.Message); }
     }
     public void ShowPreferences() => NavigateClick(Navigation.Children.OfType<ToggleButton>().Single(b => (string)b.Tag == "Settings"), new RoutedEventArgs());
     private void OnClosing(object? sender, CancelEventArgs e) { e.Cancel = true; Hide(); }
