@@ -74,7 +74,7 @@ Compare the result with the matching `SHA256SUMS-win-x64.txt` file.
 
 [StatusLookout for Stream Deck](plugins/streamdeck/README.md) lives in this repository and is packaged automatically with app releases.
 
-Use **StatusLookout 0.5.0+** and **Stream Deck 7.1+** on the same Windows account. Install `StatusLookout-streamdeck-0.1.0.streamDeckPlugin` from the [latest release](https://github.com/Bouneh/statuslookout/releases/latest), then drag an action from the **StatusLookout** category onto a free key.
+Use **StatusLookout 0.5.0+** and **Stream Deck 7.1+** on the same Windows account. Install `StatusLookout-streamdeck-0.1.1.streamDeckPlugin` from the [latest release](https://github.com/Bouneh/statuslookout/releases/latest), then drag an action from the **StatusLookout** category onto a free key.
 
 | Key | Display / action |
 | --- | --- |
@@ -214,8 +214,8 @@ dotnet run --project tests/StatusLookout.Tests -- --audit
 [The release workflow](.github/workflows/release.yml) publishes all three architectures on a `v*` tag or a manual workflow run. Tag runs create a GitHub release with executables, checksums and license notices. No external signing credentials are required.
 
 ```powershell
-git tag v0.5.0
-git push origin v0.5.0
+git tag v0.5.1
+git push origin v0.5.1
 ```
 
 An x64 machine can build all architectures. Native x86 and ARM64 runtime testing still requires suitable hardware.

@@ -14,7 +14,7 @@ The first release was tested with Stream Deck software 7.4.2 and an original Str
 ## Install
 
 1. Update and launch the [StatusLookout desktop app](https://github.com/Bouneh/statuslookout/releases/latest).
-2. Download **StatusLookout-streamdeck-0.1.0.streamDeckPlugin** from that release.
+2. Download **StatusLookout-streamdeck-0.1.1.streamDeckPlugin** from that release.
 3. Double-click the package and accept installation in Stream Deck.
 4. Find **StatusLookout** in the action list, then drag an action to a free key.
 5. For service actions, choose a monitored service in the key's settings.
@@ -35,6 +35,8 @@ Monitoring and history continue while snoozed. Permanent muting is independent, 
 Green means operational, amber degraded, red outage, purple maintenance and grey unavailable or disconnected. When monitoring is paused, keys show **Paused**. Unselected or removed services cannot appear healthy. Simulated app data is labelled **DEMO**.
 
 Key settings provide **English**, **Français** and **Follow StatusLookout**. English is the default for key text and settings; the action list follows Stream Deck's language. The plugin draws its own key labels, so Stream Deck's custom title is hidden.
+
+Key artwork uses large logos, bold names and status labels for readability on 72-pixel displays. Long labels are shortened with an ellipsis inside protected margins; full service names remain available in the settings.
 
 ## Connection and privacy
 

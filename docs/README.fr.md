@@ -70,7 +70,7 @@ Les services personnalisés récupèrent maintenant l’icône publiée par leur
 
 Le plugin est inclus dans le [même dépôt](../plugins/streamdeck/README.md) et les [versions GitHub](https://github.com/Bouneh/statuslookout/releases/latest). Il nécessite **StatusLookout 0.5.0+** lancé sur le PC et **Stream Deck 7.1+** sous le même compte Windows.
 
-Installe `StatusLookout-streamdeck-0.1.0.streamDeckPlugin`, puis ajoute une action de la catégorie **StatusLookout** sur une touche libre :
+Installe `StatusLookout-streamdeck-0.1.1.streamDeckPlugin`, puis ajoute une action de la catégorie **StatusLookout** sur une touche libre :
 
 - **Statut d’un service** : logo, nom et couleur ; un appui ouvre sa page de statut.
 - **État global** : compteurs des services suivis, touchés et indisponibles ; un appui ouvre l’application.
