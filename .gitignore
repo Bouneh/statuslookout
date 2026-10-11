@@ -1,0 +1,10 @@
+.tools/
+.nuget/
+**/bin/
+**/obj/
+artifacts/
+.verification/
+.vs/
+*.user
+*.suo
+dotnet-install.ps1

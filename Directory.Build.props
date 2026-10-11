@@ -1,0 +1,11 @@
+<Project>
+  <PropertyGroup>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <Version>0.1.0</Version>
+    <Authors>Bouneh</Authors>
+    <RepositoryUrl>https://github.com/Bouneh/uptimekite</RepositoryUrl>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+</Project>

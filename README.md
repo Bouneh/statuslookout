@@ -1,0 +1,172 @@
+<div align="center">
+  <img src="assets/logo.svg" width="76" alt="UptimeKite logo">
+  <h1>UptimeKite</h1>
+  <p><strong>Your services. One clear signal.</strong></p>
+  <p>A native Windows system tray app for cloud service status,<br>outage alerts, degraded performance and recovery notifications.</p>
+  <p>
+    <a href="https://github.com/Bouneh/uptimekite/releases/latest"><img src="https://img.shields.io/github/v/release/Bouneh/uptimekite?color=456fe3" alt="Latest release"></a>
+    <a href="https://github.com/Bouneh/uptimekite/actions/workflows/ci.yml"><img src="https://github.com/Bouneh/uptimekite/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+    <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-56dcb8" alt="MIT license"></a>
+    <img src="https://img.shields.io/badge/Windows-x64%20%7C%20x86%20%7C%20ARM64-82aeff" alt="Windows architectures">
+  </p>
+  <p><a href="#download">Download</a> · <a href="#how-it-works">How it works</a> · <a href="#build-from-source">Build</a> · <a href="CONTRIBUTING.md">Contribute</a> · <a href="docs/README.fr.md">Français</a></p>
+</div>
+
+![UptimeKite Windows dashboard](assets/screenshot.png)
+
+*Actual application UI. This screenshot uses simulated incidents, clearly marked as a demo.*
+
+## A quiet lookout for the services you depend on
+
+UptimeKite keeps your selected services in the Windows system tray and alerts you when their published status changes. Choose from **461 services and products**, including GitHub, Cloudflare, Discord, OpenAI, Notion, Slack, Google Cloud and Firebase.
+
+- **Outage, degradation and recovery alerts**, with separate preferences for each.
+- **Native Windows notifications**, with a system tray balloon fallback.
+- **Searchable service library** and custom Statuspage-compatible or Instatus endpoints.
+- **Per-service alert muting**, notification sound controls and optional maintenance alerts.
+- **Windows sign-in startup**, minimized launch and background monitoring when the window is closed.
+- **Local alert history**, retained across restarts, with duplicate suppression.
+- **Clear unavailable states** for connection failures, timeouts and unreadable provider data.
+- **Portable executables** for x64, x86 and ARM64, with the .NET runtime included.
+- **No account or telemetry.** No central monitoring server.
+
+## Download
+
+Download from the [latest GitHub release](https://github.com/Bouneh/uptimekite/releases/latest).
+
+| Your computer | Executable |
+| --- | --- |
+| Most Intel / AMD Windows PCs | [UptimeKite-win-x64.exe](https://github.com/Bouneh/uptimekite/releases/latest/download/UptimeKite-win-x64.exe) |
+| Windows on ARM, including Snapdragon PCs | [UptimeKite-win-arm64.exe](https://github.com/Bouneh/uptimekite/releases/latest/download/UptimeKite-win-arm64.exe) |
+| 32-bit Windows | [UptimeKite-win-x86.exe](https://github.com/Bouneh/uptimekite/releases/latest/download/UptimeKite-win-x86.exe) |
+
+**Windows 10 22H2 or Windows 11.** An internet connection is required to check providers. No administrator access or separate .NET installation is needed. Builds are currently unsigned; Windows can show an unknown-publisher warning.
+
+1. Save the executable in a permanent folder.
+2. Run it and open **Service library** to choose your services.
+3. Open **Preferences → Send test alert** to verify Windows notification delivery.
+4. Enable **Launch at Windows sign-in** if you want automatic monitoring.
+5. Close the dashboard to keep it in the tray. Use the tray menu to quit.
+
+Release downloads include SHA-256 checksums. To verify an executable:
+
+```powershell
+Get-FileHash .\UptimeKite-win-x64.exe -Algorithm SHA256
+```
+
+Compare the result with the matching `SHA256SUMS-win-x64.txt` file.
+
+## How it works
+
+UptimeKite polls the **official public status APIs** for your selected providers. The default interval is 60 seconds and can be set to 30–900 seconds.
+
+| Signal | Meaning |
+| --- | --- |
+| Operational | The provider reports normal operation |
+| Degraded | Reduced performance or a partial outage |
+| Outage | A major service disruption |
+| Maintenance | The provider reports maintenance |
+| Unavailable | The status API could not be checked or its response could not be parsed |
+
+A connection failure **does not create an outage alert**. The last confirmed state is kept, so a subsequent confirmed recovery can still be detected. Identical states do not generate repeated alerts. By default, an already affected service triggers an alert on its first check; this is configurable.
+
+Providers sharing a status endpoint are fetched once per refresh. Requests are limited to six at a time, with a 20-second timeout. Closing the window keeps monitoring active; quitting the app, sleeping or turning off the PC stops checks. Alerts reflect polling and provider publication delays.
+
+A green signal reflects a provider's aggregate report; individual users or requests may still experience issues.
+
+### Supported status formats
+
+| Adapter | Examples / coverage |
+| --- | --- |
+| Statuspage-compatible JSON | GitHub, Cloudflare, Discord, OpenAI and supported incident.io pages |
+| Instatus public summary | Supported pages exposing `summary.json` |
+| Status.io v1 | Catalog entries with a public status ID |
+| Google Status Dashboard JSON | 217 Google Cloud products, 26 Firebase products and aggregate dashboards |
+| Slack Status API | Active Slack incidents |
+
+The shipped catalog includes entries supported and checked by these adapters. It is a subset of the wider stts catalog, plus current Google / Firebase products and independently added services. A provider can change or remove its API after a release.
+
+**Custom services:** enter a public HTTPS status page and select its API format. UptimeKite validates the response before adding it. Statuspage components can be selected by entering their IDs, separated by commas.
+
+### Notifications and startup
+
+Notification preferences are independent for outages, degraded service, recovery and maintenance. Muting a service silences its alerts while retaining its monitoring and history.
+
+Windows **Do not disturb**, notification permissions and system policies can suppress banners. The test alert helps check delivery. If toast registration fails, UptimeKite falls back to a tray balloon.
+
+Startup uses a per-user entry in `HKCU\Software\Microsoft\Windows\CurrentVersion\Run`. It starts the executable with `--background`. If you move the executable, disable and re-enable the option to update its path.
+
+### Local data and privacy
+
+Preferences and the last 300 confirmed status changes are stored in:
+
+```text
+%LOCALAPPDATA%\UptimeKite\preferences.json
+%LOCALAPPDATA%\UptimeKite\state.json
+```
+
+The app sends HTTPS requests directly to selected status providers. Those providers receive your normal network request metadata, including your IP address. UptimeKite adds no analytics or tracking.
+
+To remove the app, disable startup, quit from the tray and delete the executable. You can also delete the data folder to remove preferences and history.
+
+## Build from source
+
+Install the [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0) on Windows, then:
+
+```powershell
+git clone https://github.com/Bouneh/uptimekite.git
+cd uptimekite
+dotnet build UptimeKite.sln -c Release
+dotnet run --project tests/UptimeKite.Tests -c Release
+dotnet run --project src/UptimeKite.Windows -c Release
+```
+
+The offline test suite covers parsing, state transitions, recovery after network failure, duplicate suppression, persistence, request grouping and cancellation.
+
+Publish self-contained executables:
+
+```powershell
+.\scripts\Publish.ps1
+# Or only one architecture:
+.\scripts\Publish.ps1 -Runtimes win-x64
+```
+
+Outputs are written to `artifacts/`. WPF is not trimmed. Native runtime files are bundled and extracted by .NET on first launch when necessary.
+
+### Developer tools
+
+```powershell
+# Preview simulated incidents without altering user preferences:
+dotnet run --project src/UptimeKite.Windows -- --demo
+
+# Render the actual WPF layout to a screenshot:
+dotnet run --project src/UptimeKite.Windows -- --preview assets/screenshot.png
+
+# Audit public endpoints (network access, no notifications):
+dotnet run --project tests/UptimeKite.Tests -- --audit
+```
+
+## Automatic Windows releases
+
+[CI](.github/workflows/ci.yml) builds the app and runs offline tests on pushes and pull requests.
+
+[The release workflow](.github/workflows/release.yml) publishes all three architectures on a `v*` tag or a manual workflow run. Tag runs create a GitHub release with executables, checksums and license notices. No external signing credentials are required.
+
+```powershell
+git tag v0.1.0
+git push origin v0.1.0
+```
+
+An x64 machine can build all architectures. Native x86 and ARM64 runtime testing still requires suitable hardware.
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for adding services, adapters and tests. Bug reports and feature ideas are welcome through [GitHub Issues](https://github.com/Bouneh/uptimekite/issues).
+
+## Credits and license
+
+UptimeKite is an independently implemented Windows application inspired by the useful monitoring workflow of [stts](https://github.com/inket/stts). The Windows code, visual identity and interface are original. Selected service definitions are adapted from its MIT-licensed catalog with attribution.
+
+Google / Firebase product identifiers are taken from their public status dashboards. Service names belong to their respective owners; this project is not affiliated with those providers.
+
+Released under the [MIT license](LICENSE). See [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).

@@ -1,0 +1,28 @@
+name: Bug report
+description: Report a reproducible problem
+labels: [bug]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: UptimeKite version and architecture
+      placeholder: v0.1.0, x64
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: What happened?
+      description: Include reproduction steps, expected behavior and the affected service.
+    validations:
+      required: true
+  - type: input
+    id: windows
+    attributes:
+      label: Windows version
+      placeholder: Windows 11 25H2
+  - type: textarea
+    id: details
+    attributes:
+      label: Additional details
+      description: Do not include credentials or private information.
