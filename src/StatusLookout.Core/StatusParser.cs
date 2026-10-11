@@ -12,14 +12,15 @@ public static class StatusParser
         var (status, message) = service.Provider switch
         {
             "statuspage" => Statuspage(root, service.Components),
-            "instatus" => Instatus(root),
+            "instatus" => Instatus(root, service.Components),
             "statusio" => Statusio(root),
             "google" => Google(root, service.Components),
             "slack" => Slack(root),
             _ => throw new InvalidDataException("Unsupported status provider.")
         };
         if (status == ServiceStatus.Unknown) throw new InvalidDataException("The provider returned an unrecognized status.");
-        return new(service.Id, status, string.IsNullOrWhiteSpace(message) ? DefaultMessage(status) : message, now ?? DateTimeOffset.UtcNow);
+        return new(service.Id, status, string.IsNullOrWhiteSpace(message) ? DefaultMessage(status) : message, now ?? DateTimeOffset.UtcNow,
+            status == ServiceStatus.Operational ? null : IncidentIdentity(service, root));
     }
     public static string DefaultMessage(ServiceStatus status) => status switch
     {
@@ -58,19 +59,50 @@ public static class StatusParser
             incidents = incidents.Where(i => Array(i, "components").Any(c => componentIds.Contains(Text(c, "id")) || componentIds.Contains(Text(c, "name")))).ToArray();
         }
         var names = incidents.Select(i => Text(i, "name")).Where(n => n.Length > 0).Take(3).ToArray();
-        return (status, names.Length > 0 ? string.Join(" · ", names) : Text(overall, "description"));
+        return (status, names.Length > 0 ? string.Join(" · ", names) : componentIds is { Length: > 0 } ? DefaultMessage(status) : Text(overall, "description"));
     }
-    private static (ServiceStatus, string) Instatus(JsonElement root)
+    private static IEnumerable<JsonElement> InstatusComponents(JsonElement root)
+    {
+        foreach (var component in Array(root, "components"))
+        {
+            if (Array(component, "components").Any())
+            { foreach (var child in InstatusComponents(component)) yield return child; }
+            else yield return component;
+        }
+    }
+    private static (ServiceStatus, string) Instatus(JsonElement root, string[]? selected)
     {
         var page = Required(root, "page");
         var state = Map(Text(page, "status"));
-        var componentStates = Array(root, "components").Select(c => Map(Text(c, "status"))).ToArray();
+        var components = InstatusComponents(root).ToArray();
+        if (selected is { Length: > 0 })
+        {
+            if (selected.Any(id => !components.Any(c => Text(c, "id") == id || Text(c, "name") == id)))
+                throw new InvalidDataException("One or more requested components are missing.");
+            components = components.Where(c => selected.Contains(Text(c, "id")) || selected.Contains(Text(c, "name"))).ToArray();
+        }
+        var componentStates = components.Select(c => Map(Text(c, "status"))).ToArray();
         if (componentStates.Length > 0)
         {
             if (componentStates.Contains(ServiceStatus.Unknown)) throw new InvalidDataException("Unrecognized Instatus component state.");
             state = componentStates.Max();
         }
         return (state, DefaultMessage(state));
+    }
+    private static string? IncidentIdentity(ServiceDefinition service, JsonElement root)
+    {
+        var incidents = service.Provider == "google" ? root.EnumerateArray().ToArray().AsEnumerable()
+            : Array(root, service.Provider == "slack" ? "active_incidents" : "incidents");
+        incidents = incidents.Where(i => service.Provider == "google"
+            ? Text(i, "end").Length == 0
+            : Text(i, "status").ToLowerInvariant() is not ("resolved" or "completed" or "scheduled"));
+        if (service.Components is { Length: > 0 } selected)
+            incidents = incidents.Where(i => service.Provider == "google"
+                ? Array(i, "affected_products").Any(p => selected.Contains(Text(p, "id"), StringComparer.OrdinalIgnoreCase) || selected.Contains(Text(p, "title"), StringComparer.OrdinalIgnoreCase))
+                    || selected.Contains(Text(i, "service_name"), StringComparer.OrdinalIgnoreCase) || selected.Contains(Text(i, "service_key"), StringComparer.OrdinalIgnoreCase)
+                : Array(i, "components").Any(c => c.ValueKind == JsonValueKind.String ? selected.Contains(c.GetString()!) : selected.Contains(Text(c, "id")) || selected.Contains(Text(c, "name"))));
+        var ids = incidents.Select(i => Text(i, "id")).Where(id => id.Length > 0).Distinct().Order(StringComparer.Ordinal).ToArray();
+        return ids.Length == 0 ? null : JsonSerializer.Serialize(ids);
     }
     private static (ServiceStatus, string) Statusio(JsonElement root)
     {

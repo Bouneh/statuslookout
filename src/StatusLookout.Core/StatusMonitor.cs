@@ -4,6 +4,27 @@ namespace StatusLookout.Core;
 public sealed class StatusMonitor(HttpClient http)
 {
     private readonly SemaphoreSlim _refreshGate = new(1, 1);
+    public async Task<IReadOnlyList<ProviderComponent>> GetComponentsAsync(ServiceDefinition service, CancellationToken token = default)
+    {
+        service.Validate();
+        if (service.Provider == "google")
+            return ServiceCatalog.Load().Where(s => s.ApiUrl == service.ApiUrl && s.Components is { Length: > 0 })
+                .SelectMany(s => s.Components!.Select(id => new ProviderComponent(id, s.Name)))
+                .DistinctBy(c => c.Id).OrderBy(c => c.Name).ToArray();
+        if (service.Provider is not ("statuspage" or "instatus")) return [];
+        using var timeout = CancellationTokenSource.CreateLinkedTokenSource(token); timeout.CancelAfter(TimeSpan.FromSeconds(20));
+        using var response = await http.GetAsync(service.ApiUrl, HttpCompletionOption.ResponseHeadersRead, timeout.Token);
+        response.EnsureSuccessStatusCode();
+        if (response.Content.Headers.ContentLength > 16 * 1024 * 1024) throw new InvalidDataException("Status response is too large.");
+        await using var source = await response.Content.ReadAsStreamAsync(timeout.Token);
+        using var data = new MemoryStream(); var buffer = new byte[16384]; int read;
+        while ((read = await source.ReadAsync(buffer, timeout.Token)) > 0)
+        {
+            if (data.Length + read > 16 * 1024 * 1024) throw new InvalidDataException("Status response is too large.");
+            data.Write(buffer, 0, read);
+        }
+        return ComponentCatalog.Parse(service.Provider, System.Text.Encoding.UTF8.GetString(data.ToArray()));
+    }
     public async Task<IReadOnlyList<ServiceSnapshot>> CheckAsync(IEnumerable<ServiceDefinition> definitions, CancellationToken cancellationToken = default)
     {
         await _refreshGate.WaitAsync(cancellationToken);

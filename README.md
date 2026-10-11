@@ -10,7 +10,7 @@
     <a href="#download-activity"><img src="assets/downloads-badge.svg" alt="Windows executable downloads"></a>
     <img src="https://img.shields.io/badge/Windows-x64%20%7C%20x86%20%7C%20ARM64-82aeff" alt="Windows architectures">
   </p>
-  <p><a href="#download">Download</a> · <a href="#download-activity">Statistics</a> · <a href="#how-it-works">How it works</a> · <a href="ROADMAP.md">Roadmap</a> · <a href="#build-from-source">Build</a> · <a href="CONTRIBUTING.md">Contribute</a> · <a href="docs/README.fr.md">Français</a></p>
+  <p><a href="#download">Download</a> · <a href="#download-activity">Statistics</a> · <a href="#how-it-works">How it works</a> · <a href="#build-from-source">Build</a> · <a href="CONTRIBUTING.md">Contribute</a> · <a href="docs/README.fr.md">Français</a></p>
 </div>
 
 ![StatusLookout Windows dashboard](assets/screenshot.png)
@@ -24,11 +24,13 @@ StatusLookout keeps your selected services in the Windows system tray and alerts
 - **Bundled service logos** for all 461 catalog entries, with platform logos shared by related products.
 - **About & updates**: author links, version checking and verified downloads from GitHub releases.
 - **English by default, French available**, with an instant language selector.
-- **Light and dark themes**, applied immediately and remembered across restarts.
+- **Light, dark and Windows system themes**, applied immediately and remembered across restarts.
 - **Outage, degradation and recovery alerts**, with separate preferences for each.
 - **Native Windows notifications**, with a system tray balloon fallback.
 - **Searchable service library** and custom Statuspage-compatible or Instatus endpoints.
-- **Per-service alert muting**, notification sound controls and optional maintenance alerts.
+- **Related incident grouping**, per-service 30-minute / 1-hour alert snoozing, muting and notification sound controls.
+- **Component picker** for Statuspage, Instatus and Google products, with saved per-service selections.
+- **Preference import/export** to move watchlists and custom services between PCs.
 - **Windows sign-in startup**, minimized launch and background monitoring when the window is closed.
 - **Local alert history**, retained across restarts, with duplicate suppression.
 - **Clear unavailable states** for connection failures, timeouts and unreadable provider data.
@@ -69,7 +71,7 @@ Compare the result with the matching `SHA256SUMS-win-x64.txt` file.
 
 ## Language and appearance
 
-Open **Preferences → Appearance & language** to choose **English / Français** and **Dark / Light**. English and dark are the initial defaults. Changes apply immediately to the interface, status labels, tray menu and alert titles, and are stored locally. Provider incident descriptions are kept in their original language, exactly as published.
+Open **Preferences → Appearance & language** to choose **English / Français** and **Dark / Light / Follow Windows theme**. English and dark are the initial defaults. Changes apply immediately to the interface, status labels, tray menu and alert titles, and are stored locally. The system option follows the Windows app theme, including changes while running. Provider incident descriptions are kept in their original language, exactly as published.
 
 ![Light theme and French interface](assets/screenshot-light-fr.png)
 
@@ -89,7 +91,7 @@ Click **Open download folder**, quit the running app, then replace your old port
 
 ### Service logos
 
-All catalog entries have locally bundled brand favicons. Google Cloud, Firebase and regional Sendbird products use their parent platform logo. Custom services without a bundled logo display their initials. Logo display creates no additional network requests.
+All catalog entries have locally bundled brand favicons. Google Cloud, Firebase and regional Sendbird products use their parent platform logo. Custom services reuse matching bundled logos or retrieve the favicon published by their HTTPS status page, including Mailjet. Raster icons are cached locally for 30 days. If no readable icon is available, initials are displayed. Built-in logo display makes no network requests; custom icon discovery contacts the status page and its icon host.
 
 ## How it works
 
@@ -121,11 +123,15 @@ A green signal reflects a provider's aggregate report; individual users or reque
 
 The shipped catalog includes entries supported and checked by these adapters. It is a subset of the wider stts catalog, plus current Google / Firebase products and independently added services. A provider can change or remove its API after a release.
 
-**Custom services:** enter a public HTTPS status page and select its API format. StatusLookout validates the response before adding it. Statuspage components can be selected by entering their IDs, separated by commas.
+**Custom services:** enter a public HTTPS status page and select its API format. StatusLookout validates the response before adding it. For catalog and custom services, open **Service options → Choose components** to select published APIs, regions or products. Statuspage and Instatus choices come from their public summary API; Google product choices come from the shipped catalog. Select no components to monitor the entire page, or use **Catalog default** to restore the original scope. Providers without a supported component list keep their aggregate status. Changing scope establishes a fresh baseline. Custom Statuspage component IDs can also be entered when adding a service.
 
 ### Notifications and startup
 
 Notification preferences are independent for outages, degraded service, recovery and maintenance. Muting a service silences its alerts while retaining its monitoring and history.
+
+**Group related incident notifications** is enabled by default. Within each refresh, services on the same API with the same published incident IDs and alert kind share a single notification. Different incidents and unidentified incidents stay separate; individual activity entries are retained. Recovery uses the last known incident identity.
+
+Open **Service options** to snooze alerts for **30 minutes** or **1 hour**, or end the temporary pause. Monitoring, tray status and history continue. The expiry is stored across app restarts; snoozed transitions are not replayed afterwards. Permanent muting remains independent.
 
 Windows **Do not disturb**, notification permissions and system policies can suppress banners. The test alert helps check delivery. If toast registration fails, StatusLookout falls back to a tray balloon.
 
@@ -141,6 +147,8 @@ Preferences and the last 300 confirmed status changes are stored in:
 ```
 
 The app sends HTTPS requests directly to selected status providers. Those providers receive your normal network request metadata, including your IP address. Clicking the update controls additionally contacts api.github.com and GitHub’s release download servers. StatusLookout adds no analytics or tracking.
+
+**Preferences → Local data** provides JSON **Export preferences / Import preferences**. Import replaces the current watchlist, custom services, component selections, language, theme and alert preferences after validating the file. Export first to keep a backup. Startup registration, history, cached logos and temporary snoozes are not transferred. Import does not change Windows sign-in startup.
 
 To remove the app, disable startup, quit from the tray and delete the executable. You can also delete the data folder to remove preferences and history.
 
@@ -190,22 +198,11 @@ dotnet run --project tests/StatusLookout.Tests -- --audit
 [The release workflow](.github/workflows/release.yml) publishes all three architectures on a `v*` tag or a manual workflow run. Tag runs create a GitHub release with executables, checksums and license notices. No external signing credentials are required.
 
 ```powershell
-git tag v0.3.0
-git push origin v0.3.0
+git tag v0.4.0
+git push origin v0.4.0
 ```
 
 An x64 machine can build all architectures. Native x86 and ARM64 runtime testing still requires suitable hardware.
-
-## What's next?
-
-Proposed improvements — these features are **not implemented yet**:
-
-- **Service profiles** to switch between work, personal and development watchlists.
-- **Grouped incident alerts** to reduce repeated notifications when several services share an outage.
-- **One-click update installation** with verified downloads and preserved preferences.
-- **Temporary alert snoozing** and **watchlist import/export**.
-
-See the [roadmap](ROADMAP.md) for priorities and more ideas. Suggest or discuss features in [GitHub Issues](https://github.com/Bouneh/statuslookout/issues).
 
 ## Contributing
 

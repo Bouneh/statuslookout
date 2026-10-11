@@ -11,19 +11,28 @@ public abstract class ObservableObject : INotifyPropertyChanged
 }
 public sealed class ServiceItem(ServiceDefinition definition, bool watched, bool muted) : ObservableObject
 {
-    public ServiceDefinition Definition { get; } = definition;
+    public ServiceDefinition DefaultDefinition { get; } = definition;
+    public ServiceDefinition Definition { get; private set; } = definition;
+    public void SetComponents(string[]? components) { Definition = DefaultDefinition with { Components = components }; Changed(nameof(ComponentSummary)); }
+    public bool SupportsComponents => Definition.Provider is "statuspage" or "instatus" or "google";
+    public string ComponentSummary => Definition.Components is { Length: > 0 } c ? L.Format("{0} components selected", c.Length) : L.T("Entire status page");
     public string Id => Definition.Id;
     public string Name => Definition.Name;
     public string Category => L.T(Definition.Category);
     public string ProviderLabel => Definition.Provider switch { "statuspage" => L.T("Statuspage-compatible API"), "google" => "Google Status Dashboard", "statusio" => "Status.io", "instatus" => "Instatus", _ => "Slack Status API" };
     public string Initials => string.Concat(Name.Split(' ', StringSplitOptions.RemoveEmptyEntries).Take(2).Select(n => n[0])).ToUpperInvariant();
-    public ImageSource? Logo => ServiceLogos.Get(Definition);
+    private ImageSource? _customLogo;
+    public ImageSource? Logo => _customLogo ?? ServiceLogos.Get(Definition);
+    public void SetLogo(ImageSource? logo) { _customLogo = logo; Changed(nameof(Logo)); Changed(nameof(HasLogo)); }
     public bool HasLogo => Logo is not null;
     private bool _watched = watched, _muted = muted;
     public Action<ServiceItem>? WatchChanged { get; set; }
     public Action<ServiceItem>? MuteChanged { get; set; }
     public bool IsWatched { get => _watched; set { if (_watched == value) return; _watched = value; Changed(); WatchChanged?.Invoke(this); } }
     public bool IsMuted { get => _muted; set { if (_muted == value) return; _muted = value; Changed(); MuteChanged?.Invoke(this); } }
+    public DateTimeOffset? SnoozedUntil { get; set; }
+    public bool IsSnoozed => SnoozedUntil > DateTimeOffset.UtcNow;
+    public string SnoozeLabel => IsSnoozed ? L.Format("Alerts snoozed until {0}", SnoozedUntil!.Value.ToLocalTime().ToString("HH:mm")) : "";
     public ServiceStatus Status { get; private set; } = ServiceStatus.Unknown;
     public string StatusLabel => L.Status(Status);
     private string? _message;

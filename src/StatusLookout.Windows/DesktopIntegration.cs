@@ -31,10 +31,15 @@ public sealed class DesktopIntegration : IDisposable
         try { _ = ToastNotificationManagerCompat.CreateToastNotifier(); _toastsReady = true; }
         catch { _toastsReady = false; }
     }
-    public void Show(ServiceItem service, StatusTransition change, bool sound)
+    public void Show(IReadOnlyList<ServiceItem> services, StatusTransition change, bool sound)
     {
+        var service = services[0];
         var title = service.Name + " · " + L.Alert(change.Kind);
-        Send(title, change.Message, service.Id, sound);
+        if (services.Count > 1) title = L.Format("{0} services · {1}", services.Count, L.Alert(change.Kind));
+        var names = string.Join(", ", services.Take(3).Select(s => s.Name.Length > 40 ? s.Name[..37] + "…" : s.Name));
+        if (services.Count > 3) names += " · " + L.Format("and {0} more", services.Count - 3);
+        var message = services.Count > 1 ? names + "\n" + change.Message : change.Message;
+        Send(title, message, services.Count == 1 ? service.Id : "", sound);
     }
     public void Test(bool sound) => Send(L.T("StatusLookout is listening"), L.T("Outage, degradation and recovery alerts will appear here."), "", sound);
     private void Send(string title, string message, string serviceId, bool sound)

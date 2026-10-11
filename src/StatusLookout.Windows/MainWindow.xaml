@@ -2,6 +2,13 @@
  Title="{DynamicResource Ui000}" Width="1180" Height="820" MinWidth="940" MinHeight="670" WindowStartupLocation="CenterScreen" Background="{DynamicResource Palette0}" Foreground="{DynamicResource Palette1}" FontFamily="Segoe UI" WindowStyle="None" ResizeMode="CanResize" Closing="OnClosing">
  <WindowChrome.WindowChrome><WindowChrome CaptionHeight="42" ResizeBorderThickness="6" CornerRadius="0" GlassFrameThickness="0"/></WindowChrome.WindowChrome>
  <Window.Resources>
+  <ContextMenu x:Key="ServiceMenu" x:Shared="False" DataContext="{Binding PlacementTarget.Tag, RelativeSource={RelativeSource Self}}">
+   <MenuItem Header="{DynamicResource Snooze30}" Tag="30" Click="SnoozeClick"/>
+   <MenuItem Header="{DynamicResource Snooze60}" Tag="60" Click="SnoozeClick"/>
+   <MenuItem Header="{DynamicResource ResumeAlerts}" Tag="0" Click="SnoozeClick"/>
+   <Separator/>
+   <MenuItem Header="{DynamicResource ComponentsTitle}" Click="ComponentsClick" IsEnabled="{Binding SupportsComponents}"/>
+  </ContextMenu>
   <Style TargetType="TextBlock"><Setter Property="Foreground" Value="{DynamicResource Palette1}"/><Setter Property="TextWrapping" Value="Wrap"/></Style>
   <Style x:Key="SmallLabel" TargetType="TextBlock"><Setter Property="Foreground" Value="{DynamicResource Palette2}"/><Setter Property="FontSize" Value="11"/><Setter Property="FontWeight" Value="SemiBold"/></Style>
   <Style TargetType="Button">
@@ -114,11 +121,14 @@
             <StackPanel Orientation="Horizontal"><TextBlock Text="{Binding Name}" FontSize="15" FontWeight="SemiBold"/><TextBlock Text="{Binding Category}" Foreground="{DynamicResource Palette39}" FontSize="10" Margin="10,4,0,0"/></StackPanel>
             <TextBlock Text="{Binding Message}" Foreground="{DynamicResource Palette40}" FontSize="12" Margin="0,6,0,0" MaxHeight="54" TextTrimming="CharacterEllipsis"/>
             <TextBlock Text="{Binding LastConfirmed}" Foreground="{DynamicResource Palette38}" FontSize="11" Margin="0,3,0,0"/>
+            <TextBlock Text="{Binding ComponentSummary}" Foreground="{DynamicResource Palette41}" FontSize="10" Margin="0,4,0,0"/>
+            <TextBlock Text="{Binding SnoozeLabel}" Foreground="{DynamicResource Palette38}" FontSize="11" Visibility="{Binding IsSnoozed, Converter={StaticResource BoolVisibility}}" Margin="0,4,0,0"/>
             <StackPanel Orientation="Horizontal" Margin="0,7,0,0"><TextBlock Text="{Binding CheckedLabel}" Foreground="{DynamicResource Palette41}" FontSize="10" VerticalAlignment="Center"/><CheckBox Content="{DynamicResource Ui021}" IsChecked="{Binding IsMuted}" FontSize="10" Margin="15,0,0,0"/></StackPanel>
            </StackPanel>
            <StackPanel Grid.Column="2" HorizontalAlignment="Right">
             <Border Background="{Binding StatusBackground}" CornerRadius="6" Padding="10,4"><StackPanel Orientation="Horizontal"><Ellipse Fill="{Binding StatusBrush}" Width="6" Height="6" Margin="0,0,7,0"/><TextBlock Text="{Binding StatusLabel}" Foreground="{Binding StatusBrush}" FontSize="10" FontWeight="SemiBold"/></StackPanel></Border>
             <Button Content="{DynamicResource Ui022}" Tag="{Binding}" Click="OpenServiceClick" Margin="0,8,0,0" Padding="8,4" Background="Transparent" BorderBrush="Transparent" Foreground="{DynamicResource Palette42}" FontSize="10"/>
+            <Button Content="{DynamicResource ServiceOptions}" Tag="{Binding}" Click="ServiceOptionsClick" ContextMenu="{StaticResource ServiceMenu}" Padding="8,4" Background="Transparent" BorderBrush="Transparent" Foreground="{DynamicResource Palette42}" FontSize="10"/>
             <Button Content="{DynamicResource Ui023}" Tag="{Binding}" Click="RemoveServiceClick" Padding="8,2" Background="Transparent" BorderBrush="Transparent" Foreground="{DynamicResource Palette41}" FontSize="10"/>
            </StackPanel>
           </Grid>
@@ -142,7 +152,7 @@
           <CheckBox IsChecked="{Binding IsWatched}" AutomationProperties.Name="{Binding Name}" VerticalAlignment="Center"/>
           <Border Grid.Column="1" Background="#F7F9FC" Width="30" Height="30" CornerRadius="7" HorizontalAlignment="Left" VerticalAlignment="Center"><Grid Margin="5"><Image Source="{Binding Logo}" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality"/><TextBlock Text="{Binding Initials}" Foreground="#263952" FontSize="10" HorizontalAlignment="Center" VerticalAlignment="Center"><TextBlock.Style><Style TargetType="TextBlock"><Style.Triggers><DataTrigger Binding="{Binding HasLogo}" Value="True"><Setter Property="Visibility" Value="Collapsed"/></DataTrigger></Style.Triggers></Style></TextBlock.Style></TextBlock></Grid></Border>
           <StackPanel Grid.Column="2"><TextBlock Text="{Binding Name}" FontWeight="SemiBold" FontSize="13"/><TextBlock Text="{Binding ProviderLabel}" Foreground="{DynamicResource Palette41}" FontSize="10" Margin="0,5,0,0"/></StackPanel>
-          <TextBlock Grid.Column="3" Text="{Binding Category}" Foreground="{DynamicResource Palette2}" FontSize="11" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+          <StackPanel Grid.Column="3" HorizontalAlignment="Right"><TextBlock Text="{Binding Category}" Foreground="{DynamicResource Palette2}" FontSize="11" HorizontalAlignment="Right"/><Button Content="{DynamicResource ServiceOptions}" Tag="{Binding}" Click="ServiceOptionsClick" ContextMenu="{StaticResource ServiceMenu}" Padding="8,4" Background="Transparent" BorderBrush="Transparent" Foreground="{DynamicResource Palette42}" FontSize="10"/></StackPanel>
          </Grid>
         </Border>
        </DataTemplate></ListBox.ItemTemplate>
@@ -169,7 +179,7 @@
         <TextBlock Text="{DynamicResource Ui106}" FontSize="18" FontWeight="SemiBold" Margin="0,0,0,12"/>
         <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
          <StackPanel Margin="0,0,14,0"><TextBlock Text="{DynamicResource Ui107}" Margin="0,0,0,6"/><ComboBox SelectedValue="{Binding Language}" SelectedValuePath="Tag" AutomationProperties.Name="{DynamicResource Ui107}"><ComboBoxItem Content="English" Tag="en"/><ComboBoxItem Content="Français" Tag="fr"/></ComboBox></StackPanel>
-         <StackPanel Grid.Column="1"><TextBlock Text="{DynamicResource Ui108}" Margin="0,0,0,6"/><ComboBox SelectedValue="{Binding Theme}" SelectedValuePath="Tag" AutomationProperties.Name="{DynamicResource Ui108}"><ComboBoxItem Content="{DynamicResource Ui109}" Tag="dark"/><ComboBoxItem Content="{DynamicResource Ui110}" Tag="light"/></ComboBox></StackPanel>
+         <StackPanel Grid.Column="1"><TextBlock Text="{DynamicResource Ui108}" Margin="0,0,0,6"/><ComboBox SelectedValue="{Binding Theme}" SelectedValuePath="Tag" AutomationProperties.Name="{DynamicResource Ui108}"><ComboBoxItem Content="{DynamicResource Ui109}" Tag="dark"/><ComboBoxItem Content="{DynamicResource Ui110}" Tag="light"/><ComboBoxItem Content="{DynamicResource SystemTheme}" Tag="system"/></ComboBox></StackPanel>
         </Grid><TextBlock Text="{DynamicResource Ui111}" Foreground="{DynamicResource Palette2}" FontSize="11" Margin="0,12,0,0"/>
        </StackPanel></Border>
 
@@ -189,11 +199,16 @@
         <CheckBox Content="{DynamicResource Ui044}" IsChecked="{Binding NotifyMaintenance}"/>
         <CheckBox Content="{DynamicResource Ui045}" IsChecked="{Binding AlertOnFirstProblem}"/>
         <CheckBox Content="{DynamicResource Ui046}" IsChecked="{Binding NotificationSound}"/>
+        <CheckBox Content="{DynamicResource GroupAlerts}" IsChecked="{Binding GroupRelatedAlerts}"/>
+        <TextBlock Text="{DynamicResource GroupAlertsExplanation}" Foreground="{DynamicResource Palette2}" FontSize="11" Margin="0,6,0,0"/>
        </StackPanel></Border>
        <Border Style="{StaticResource Panel}"><StackPanel>
         <TextBlock Text="{DynamicResource Ui047}" FontSize="18" FontWeight="SemiBold"/>
         <TextBlock Text="{DynamicResource Ui048}" Foreground="{DynamicResource Palette2}" FontSize="12" Margin="0,12,0,0" LineHeight="20"/>
         <Button Content="{DynamicResource Ui049}" HorizontalAlignment="Left" Margin="0,14,0,0" Click="DataFolderClick"/>
+        <TextBlock Text="{DynamicResource TransferExplanation}" Foreground="{DynamicResource Palette2}" FontSize="12" Margin="0,16,0,12"/>
+        <WrapPanel><Button Content="{DynamicResource ExportPreferences}" Click="ExportPreferencesClick" Margin="0,0,10,0"/><Button Content="{DynamicResource ImportPreferences}" Click="ImportPreferencesClick" IsEnabled="{Binding CanImportPreferences}"/></WrapPanel>
+        <TextBlock x:Name="TransferFeedback" Foreground="{DynamicResource Palette16}" FontSize="11" Margin="0,12,0,0"/>
        </StackPanel></Border>
       </StackPanel>
      </ScrollViewer>

@@ -32,7 +32,7 @@ public static class L
     public static void Apply(string language, string theme)
     {
         Language = language == "fr" ? "fr" : "en";
-        Theme = theme == "light" ? "light" : "dark";
+        Theme = theme == "system" ? WindowsTheme.Read() : theme == "light" ? "light" : "dark";
         CultureInfo.CurrentCulture = CultureInfo.CurrentUICulture = CultureInfo.GetCultureInfo(Language == "fr" ? "fr-FR" : "en-US");
         var resources = Application.Current.Resources;
         foreach (var entry in Strings) resources[entry.Key] = Language == "fr" ? entry.Fr : entry.En;

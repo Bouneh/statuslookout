@@ -62,4 +62,34 @@ public partial class MainWindow : Window
     {
         var dialog = new CustomServiceWindow(_vm) { Owner = this }; dialog.ShowDialog();
     }
+    private void ServiceOptionsClick(object sender, RoutedEventArgs e)
+    {
+        if (sender is Button { ContextMenu: { } menu } button) { menu.PlacementTarget = button; menu.IsOpen = true; }
+    }
+    private void SnoozeClick(object sender, RoutedEventArgs e)
+    {
+        if (sender is MenuItem { DataContext: ServiceItem service } item && int.TryParse(item.Tag?.ToString(), out var minutes)) _vm.Snooze(service, minutes);
+    }
+    private void ComponentsClick(object sender, RoutedEventArgs e)
+    {
+        if (sender is MenuItem { DataContext: ServiceItem service }) new ComponentPickerWindow(_vm, service) { Owner = this }.ShowDialog();
+    }
+    private void ExportPreferencesClick(object sender, RoutedEventArgs e)
+    {
+        var dialog = new Microsoft.Win32.SaveFileDialog { FileName = "StatusLookout-preferences.json", Filter = "JSON (*.json)|*.json", DefaultExt = ".json" };
+        if (dialog.ShowDialog(this) != true) return;
+        try { File.WriteAllText(dialog.FileName, _vm.ExportPreferences()); TransferFeedback.Text = L.T("Preferences exported."); }
+        catch (Exception ex) { _vm.ReportError(L.T("Preferences could not be exported: ") + ex.Message); }
+    }
+    private void ImportPreferencesClick(object sender, RoutedEventArgs e)
+    {
+        var dialog = new Microsoft.Win32.OpenFileDialog { Filter = "JSON (*.json)|*.json", CheckFileExists = true };
+        if (dialog.ShowDialog(this) != true) return;
+        try
+        {
+            if (new FileInfo(dialog.FileName).Length > 4 * 1024 * 1024) throw new InvalidDataException(L.T("The preferences file is too large."));
+            _vm.ImportPreferences(File.ReadAllText(dialog.FileName)); TransferFeedback.Text = L.T("Preferences imported.");
+        }
+        catch (Exception ex) { _vm.ReportError(L.T("Preferences could not be imported: ") + L.T(ex.Message)); }
+    }
 }

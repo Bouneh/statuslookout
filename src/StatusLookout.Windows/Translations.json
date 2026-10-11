@@ -788,5 +788,200 @@
     "key": "UpdateString157",
     "en": "The update is not hosted in the official repository.",
     "fr": "La mise à jour ne provient pas du dépôt officiel."
+  },
+  {
+    "key": "SystemTheme",
+    "en": "Follow Windows theme",
+    "fr": "Suivre le thème Windows"
+  },
+  {
+    "key": "GroupAlerts",
+    "en": "Group related incident notifications",
+    "fr": "Regrouper les alertes du même incident"
+  },
+  {
+    "key": "GroupAlertsExplanation",
+    "en": "Services with the same published incident IDs share one alert per check. Individual history is preserved.",
+    "fr": "Les services associés aux mêmes identifiants d’incident partagent une alerte par vérification. L’historique individuel est conservé."
+  },
+  {
+    "key": "Snooze30",
+    "en": "Snooze alerts for 30 minutes",
+    "fr": "Suspendre les alertes pendant 30 minutes"
+  },
+  {
+    "key": "Snooze60",
+    "en": "Snooze alerts for 1 hour",
+    "fr": "Suspendre les alertes pendant 1 heure"
+  },
+  {
+    "key": "ResumeAlerts",
+    "en": "End temporary snooze",
+    "fr": "Terminer la suspension temporaire"
+  },
+  {
+    "key": "ServiceOptions",
+    "en": "Service options",
+    "fr": "Options du service"
+  },
+  {
+    "key": "ComponentsTitle",
+    "en": "Choose components",
+    "fr": "Choisir les composants"
+  },
+  {
+    "key": "ComponentsExplanation",
+    "en": "Select APIs, regions or products to monitor. No selection monitors the entire status page. Catalog default restores the original scope.",
+    "fr": "Sélectionne les API, régions ou produits à surveiller. Sans sélection, toute la page de statut est surveillée. Le choix par défaut restaure le périmètre du catalogue."
+  },
+  {
+    "key": "ComponentSearch",
+    "en": "Search components",
+    "fr": "Rechercher des composants"
+  },
+  {
+    "key": "EntirePage",
+    "en": "Entire page",
+    "fr": "Toute la page"
+  },
+  {
+    "key": "CatalogDefault",
+    "en": "Catalog default",
+    "fr": "Choix par défaut"
+  },
+  {
+    "key": "ApplyComponents",
+    "en": "Apply selection",
+    "fr": "Appliquer la sélection"
+  },
+  {
+    "key": "TransferExplanation",
+    "en": "Export your watchlist, custom services and preferences to another PC. Import replaces the current preferences. Windows startup, history, logos and temporary snoozes are not transferred.",
+    "fr": "Exporte ta liste, tes services personnalisés et tes préférences vers un autre PC. L’import remplace les préférences actuelles. Le démarrage Windows, l’historique, les logos et les suspensions temporaires ne sont pas transférés."
+  },
+  {
+    "key": "ExportPreferences",
+    "en": "Export preferences",
+    "fr": "Exporter les préférences"
+  },
+  {
+    "key": "ImportPreferences",
+    "en": "Import preferences",
+    "fr": "Importer les préférences"
+  },
+  {
+    "key": "SnoozeLabel",
+    "en": "Alerts snoozed until {0}",
+    "fr": "Alertes suspendues jusqu’à {0}"
+  },
+  {
+    "key": "ComponentCount",
+    "en": "{0} components selected",
+    "fr": "{0} composants sélectionnés"
+  },
+  {
+    "key": "EntireStatus",
+    "en": "Entire status page",
+    "fr": "Toute la page de statut"
+  },
+  {
+    "key": "GroupTitle",
+    "en": "{0} services · {1}",
+    "fr": "{0} services · {1}"
+  },
+  {
+    "key": "LoadingComponents",
+    "en": "Loading provider components…",
+    "fr": "Chargement des composants du fournisseur…"
+  },
+  {
+    "key": "NoComponents",
+    "en": "This provider does not expose selectable components.",
+    "fr": "Ce fournisseur ne propose pas de composants sélectionnables."
+  },
+  {
+    "key": "AvailableComponents",
+    "en": "{0} available components",
+    "fr": "{0} composants disponibles"
+  },
+  {
+    "key": "MissingComponents",
+    "en": "Some saved components are no longer available. Choose a new selection.",
+    "fr": "Certains composants enregistrés ne sont plus disponibles. Choisis une nouvelle sélection."
+  },
+  {
+    "key": "ComponentError",
+    "en": "Components could not be loaded: ",
+    "fr": "Impossible de charger les composants : "
+  },
+  {
+    "key": "ImportWait",
+    "en": "Wait for the current check to finish before importing.",
+    "fr": "Attends la fin de la vérification avant d’importer."
+  },
+  {
+    "key": "Exported",
+    "en": "Preferences exported.",
+    "fr": "Préférences exportées."
+  },
+  {
+    "key": "Imported",
+    "en": "Preferences imported.",
+    "fr": "Préférences importées."
+  },
+  {
+    "key": "ExportError",
+    "en": "Preferences could not be exported: ",
+    "fr": "Impossible d’exporter les préférences : "
+  },
+  {
+    "key": "ImportError",
+    "en": "Preferences could not be imported: ",
+    "fr": "Impossible d’importer les préférences : "
+  },
+  {
+    "key": "ImportSize",
+    "en": "The preferences file is too large.",
+    "fr": "Le fichier de préférences est trop volumineux."
+  },
+  {
+    "key": "ImportEmpty",
+    "en": "The preferences file is empty.",
+    "fr": "Le fichier de préférences est vide."
+  },
+  {
+    "key": "ImportUnsupported",
+    "en": "Unsupported preferences file.",
+    "fr": "Format de préférences non pris en charge."
+  },
+  {
+    "key": "ImportIncomplete",
+    "en": "Incomplete preferences file.",
+    "fr": "Fichier de préférences incomplet."
+  },
+  {
+    "key": "ImportCustom",
+    "en": "Invalid custom service ID.",
+    "fr": "Identifiant de service personnalisé invalide."
+  },
+  {
+    "key": "ImportDuplicate",
+    "en": "Duplicate custom services.",
+    "fr": "Services personnalisés en double."
+  },
+  {
+    "key": "ImportUnknown",
+    "en": "Unknown service or invalid component selection.",
+    "fr": "Service inconnu ou sélection de composants invalide."
+  },
+  {
+    "key": "CancelAction",
+    "en": "Cancel",
+    "fr": "Annuler"
+  },
+  {
+    "key": "MoreServices",
+    "en": "and {0} more",
+    "fr": "et {0} autres"
   }
 ]

@@ -1,7 +1,7 @@
 param(
     [ValidateSet('win-x64','win-x86','win-arm64')][string[]]$Runtimes = @('win-x64','win-x86','win-arm64'),
     [string]$DotnetPath = 'dotnet',
-    [string]$Version = '0.3.0'
+    [string]$Version = '0.4.0'
 )
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path $PSScriptRoot -Parent

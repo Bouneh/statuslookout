@@ -8,13 +8,13 @@ namespace StatusLookout.Windows;
 public sealed partial class MainViewModel : ObservableObject, IDisposable
 {
     private readonly JsonStore _store;
-    private readonly Preferences _preferences;
+    private Preferences _preferences;
     private readonly NotificationTracker _tracker;
     private readonly StatusMonitor _monitor;
     private readonly HttpClient _http = new();
     private readonly CancellationTokenSource _lifetime = new();
     private readonly DispatcherTimer _timer = new();
-    private readonly Action<ServiceItem, StatusTransition, bool> _notify;
+    private readonly Action<IReadOnlyList<ServiceItem>, StatusTransition, bool> _notify;
     private bool _refreshAgain, _started;
     public bool IsDemo { get; }
     public ObservableCollection<ServiceItem> AllServices { get; } = [];
@@ -23,7 +23,7 @@ public sealed partial class MainViewModel : ObservableObject, IDisposable
     public ICollectionView LibraryView { get; }
     public ObservableCollection<string> Categories { get; } = [L.T("All categories")];
     public event Action? Updated;
-    public MainViewModel(Action<ServiceItem, StatusTransition, bool> notify, bool demo = false)
+    public MainViewModel(Action<IReadOnlyList<ServiceItem>, StatusTransition, bool> notify, bool demo = false)
     {
         IsDemo = demo;
         _notify = notify;
@@ -33,7 +33,7 @@ public sealed partial class MainViewModel : ObservableObject, IDisposable
         L.Apply(_preferences.Language, _preferences.Theme);
         Categories[0] = _category = L.T("All categories");
         var state = demo ? new MonitorState() : _store.Load<MonitorState>("state.json");
-        _tracker = new(state.LastKnown ?? []);
+        _tracker = new(state.LastKnown ?? [], state.LastIncidents ?? []);
         foreach (var entry in (state.History ?? []).OrderByDescending(e => e.At).Take(300)) Activity.Add(new(entry));
         foreach (var service in ServiceCatalog.Load().Concat(_preferences.CustomServices).DistinctBy(s => s.Id).OrderBy(s => s.Name))
             AddItem(service);
@@ -48,13 +48,17 @@ public sealed partial class MainViewModel : ObservableObject, IDisposable
         RebuildWatchlist();
         if (demo) SeedDemo();
         L.Updated += AppearanceUpdated;
+        InitializeFeatures();
     }
     private void AddItem(ServiceDefinition service)
     {
         var item = new ServiceItem(service, _preferences.SelectedServices.Contains(service.Id), _preferences.MutedServices.Contains(service.Id));
         item.WatchChanged = WatchChanged;
         item.MuteChanged = s => { if (s.IsMuted) _preferences.MutedServices.Add(s.Id); else _preferences.MutedServices.Remove(s.Id); SavePreferences(); };
+        if (_preferences.ComponentSelections.TryGetValue(service.Id, out var components)) item.SetComponents(components);
+        if (_preferences.SnoozedUntil.TryGetValue(service.Id, out var until)) item.SnoozedUntil = until;
         AllServices.Add(item);
+        if (!IsDemo && service.Id.StartsWith("custom.", StringComparison.Ordinal)) _ = LoadCustomLogoAsync(item);
     }
     public async Task StartAsync()
     {
@@ -64,7 +68,7 @@ public sealed partial class MainViewModel : ObservableObject, IDisposable
         await RefreshAsync();
     }
     private bool _isRefreshing;
-    public bool IsRefreshing { get => _isRefreshing; private set { _isRefreshing = value; Changed(); Changed(nameof(RefreshLabel)); Changed(nameof(SyncLabel)); } }
+    public bool IsRefreshing { get => _isRefreshing; private set { _isRefreshing = value; Changed(); Changed(nameof(CanImportPreferences)); Changed(nameof(RefreshLabel)); Changed(nameof(SyncLabel)); } }
     public string RefreshLabel => IsRefreshing ? L.T("Checking…") : L.T("Refresh now");
     private bool _isPaused;
     public bool IsPaused { get => _isPaused; private set { _isPaused = value; Changed(); Changed(nameof(PauseLabel)); Changed(nameof(SyncLabel)); } }
@@ -78,7 +82,7 @@ public sealed partial class MainViewModel : ObservableObject, IDisposable
     public int CatalogCount => AllServices.Count;
     public string CatalogDescription => L.Format("{0} built-in and custom services. Select the ones you want to monitor.", CatalogCount);
     public string Language { get => _preferences.Language; set { if (value is not ("en" or "fr") || value == Language) return; _preferences.Language = value; L.Apply(Language, Theme); SavePreferences(); } }
-    public string Theme { get => _preferences.Theme; set { if (value is not ("dark" or "light") || value == Theme) return; _preferences.Theme = value; L.Apply(Language, Theme); SavePreferences(); } }
+    public string Theme { get => _preferences.Theme; set { if (value is not ("dark" or "light" or "system") || value == Theme) return; _preferences.Theme = value; L.Apply(Language, Theme); SavePreferences(); } }
     private void AppearanceUpdated()
     {
         var all = Category == Categories[0];
@@ -120,17 +124,21 @@ public sealed partial class MainViewModel : ObservableObject, IDisposable
         {
             var definitions = Watchlist.Select(s => s.Definition).ToArray();
             var snapshots = await _monitor.CheckAsync(definitions, _lifetime.Token);
+            var pending = new List<PendingAlert>();
             foreach (var snapshot in snapshots)
             {
                 var item = AllServices.FirstOrDefault(s => s.Id == snapshot.ServiceId && s.IsWatched);
                 if (item is null) continue;
+                if (!definitions.Contains(item.Definition)) continue; // Ignore results for filters changed during this refresh.
                 var change = _tracker.Observe(snapshot, _preferences.AlertOnFirstProblem);
                 _tracker.LastKnown.TryGetValue(item.Id, out var baseline);
                 item.Update(snapshot, baseline == ServiceStatus.Unknown ? null : baseline);
                 if (change is null) continue;
                 Activity.Insert(0, new(new(item.Id, item.Name, change.Current, change.Kind, change.Message, change.At)));
-                if (_preferences.ShouldNotify(change)) _notify(item, change, _preferences.NotificationSound);
+                if (_preferences.ShouldNotify(change)) pending.Add(new(item.Definition, change));
             }
+            foreach (var group in AlertGrouping.Group(pending, _preferences.GroupRelatedAlerts))
+                _notify(group.Select(a => AllServices.Single(s => s.Id == a.Service.Id)).ToArray(), group[0].Change, _preferences.NotificationSound);
             while (Activity.Count > 300) Activity.RemoveAt(Activity.Count - 1);
             _lastCheck = DateTimeOffset.UtcNow;
             SaveState();
@@ -145,7 +153,7 @@ public sealed partial class MainViewModel : ObservableObject, IDisposable
     private void WatchChanged(ServiceItem service)
     {
         if (service.IsWatched) _preferences.SelectedServices.Add(service.Id);
-        else { _preferences.SelectedServices.Remove(service.Id); _tracker.LastKnown.Remove(service.Id); }
+        else { _preferences.SelectedServices.Remove(service.Id); _tracker.LastKnown.Remove(service.Id); _tracker.LastIncidents.Remove(service.Id); }
         SavePreferences(); SaveState(); RebuildWatchlist();
         if (_started && !IsPaused && service.IsWatched) _ = RefreshAsync();
     }
@@ -193,7 +201,7 @@ public sealed partial class MainViewModel : ObservableObject, IDisposable
     private void SaveState()
     {
         if (IsDemo) return;
-        try { _store.Save("state.json", new MonitorState { LastKnown = _tracker.LastKnown, History = Activity.Select(a => a.Entry).Take(300).ToList() }); }
+        try { _store.Save("state.json", new MonitorState { LastKnown = _tracker.LastKnown, LastIncidents = _tracker.LastIncidents, History = Activity.Select(a => a.Entry).Take(300).ToList() }); }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { ErrorMessage = L.T("History could not be saved: ") + ex.Message; }
     }
     private bool _launchAtLogin;
@@ -244,6 +252,7 @@ public sealed partial class MainViewModel : ObservableObject, IDisposable
     }
     public void Dispose()
     {
+        _featureTimer.Stop(); Microsoft.Win32.SystemEvents.UserPreferenceChanged -= SystemPreferenceChanged;
         _downloadCancellation?.Cancel(); _updateHttp.Dispose();
         L.Updated -= AppearanceUpdated;
         _timer.Stop(); _lifetime.Cancel(); _http.Dispose();

@@ -54,18 +54,17 @@ Ouvre le dossier du téléchargement, quitte l’application puis remplace l’a
 
 ![À propos et mises à jour](../assets/about-fr-light.png)
 
-Les **461 entrées** du catalogue affichent désormais un logo intégré. Les produits Google Cloud et Firebase ainsi que les régions Sendbird partagent le logo de leur plateforme. Les services personnalisés sans logo connu affichent leurs initiales. L’affichage des logos fonctionne sans requête réseau supplémentaire.
+Les **461 entrées** du catalogue affichent désormais un logo intégré. Les produits Google Cloud et Firebase ainsi que les régions Sendbird partagent le logo de leur plateforme. Les logos intégrés ne nécessitent pas de requête réseau supplémentaire. Les icônes des services personnalisés sont recherchées sur leur page de statut et le serveur qui héberge l’icône.
 
-## Idées pour la suite
+## Alertes et composants
 
-Ces fonctionnalités sont proposées et **ne sont pas encore implémentées** :
+- **Regrouper les alertes du même incident**, activé par défaut dans les préférences : une seule notification par vérification pour les services du même fournisseur qui partagent les mêmes identifiants d’incident et le même type d’alerte. L’historique reste individuel.
+- **Options du service → Suspendre les alertes** : 30 minutes ou 1 heure. La surveillance et l’historique continuent, même après redémarrage. Les alertes suspendues ne sont pas rejouées ensuite ; la coupure permanente reste indépendante.
+- **Options du service → Choisir les composants** : API, régions ou produits exposés par Statuspage / Instatus, ou produits Google du catalogue. Sans sélection, toute la page est surveillée ; **Choix par défaut** restaure le périmètre initial.
+- **Préférences → Apparence et langue → Suivre le thème Windows** : le thème suit automatiquement celui des applications Windows, y compris pendant l’utilisation.
+- **Préférences → Données locales → Exporter / Importer les préférences** : transfère la liste et les services personnalisés, les composants et les réglages. L’import remplace les préférences actuelles : exporte d’abord pour conserver une sauvegarde. Le démarrage Windows, l’historique, les logos et les suspensions temporaires ne sont pas transférés.
 
-- **Profils de services** : travail, personnel et développement.
-- **Alertes regroupées** : une notification pour plusieurs services touchés par le même incident.
-- **Installation des mises à jour en un clic**, avec vérification et conservation des préférences.
-- **Pause temporaire des alertes** et **import/export de la liste des services**.
-
-La [feuille de route](../ROADMAP.md) contient les priorités et d’autres idées. Les suggestions sont les bienvenues dans les [issues GitHub](https://github.com/Bouneh/statuslookout/issues).
+Les services personnalisés récupèrent maintenant l’icône publiée par leur page de statut HTTPS, notamment Mailjet, et la conservent en cache pendant 30 jours. Les icônes intégrées sont réutilisées lorsqu’elles correspondent. À défaut d’icône lisible, les initiales restent affichées.
 
 ## Développement
 

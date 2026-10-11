@@ -5,10 +5,11 @@ using StatusLookout.Core;
 
 namespace StatusLookout.Windows;
 
-public static class ServiceLogos
+public static partial class ServiceLogos
 {
     private static readonly Dictionary<string, string> Index = LoadIndex();
     private static readonly Dictionary<string, ImageSource?> Cache = [];
+    private static readonly IReadOnlyList<ServiceDefinition> Catalog = ServiceCatalog.Load();
     private static Dictionary<string, string> LoadIndex()
     {
         using var source = typeof(ServiceLogos).Assembly.GetManifestResourceStream("StatusLookout.Windows.Assets.ServiceLogos.index.json")!;
@@ -16,7 +17,12 @@ public static class ServiceLogos
     }
     public static ImageSource? Get(ServiceDefinition service)
     {
-        if (!Index.TryGetValue(service.Id, out var filename)) return null;
+        if (!Index.TryGetValue(service.Id, out var filename))
+        {
+            var known = Catalog.FirstOrDefault(s => string.Equals(s.Name, service.Name, StringComparison.OrdinalIgnoreCase)
+                || new Uri(s.StatusUrl).Host == new Uri(service.StatusUrl).Host);
+            if (known is null || !Index.TryGetValue(known.Id, out filename)) return null;
+        }
         if (Cache.TryGetValue(filename, out var cached)) return cached;
         try
         {

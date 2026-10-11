@@ -21,8 +21,10 @@ public partial class App : System.Windows.Application
         var preview = previewIndex >= 0 && e.Args.Length > previewIndex + 1 ? e.Args[previewIndex + 1] : null;
         var smokeIndex = Array.IndexOf(e.Args, "--smoke-test");
         var smoke = smokeIndex >= 0 && e.Args.Length > smokeIndex + 1 ? e.Args[smokeIndex + 1] : null;
-        var demo = e.Args.Contains("--demo") || preview is not null || smoke is not null;
-        if (preview is null && smoke is null)
+        var featureIndex = Array.IndexOf(e.Args, "--feature-test");
+        var features = featureIndex >= 0 && e.Args.Length > featureIndex + 1 ? e.Args[featureIndex + 1] : null;
+        var demo = e.Args.Contains("--demo") || preview is not null || smoke is not null || features is not null;
+        if (preview is null && smoke is null && features is null)
         {
             _mutex = new Mutex(true, @"Local\StatusLookout.Instance", out var first);
             if (!first)
@@ -38,6 +40,23 @@ public partial class App : System.Windows.Application
         MainWindow = new MainWindow(_vm);
         if (demo && e.Args.Contains("--about")) ((MainWindow)MainWindow).ShowAbout();
         if (demo && e.Args.Contains("--settings")) ((MainWindow)MainWindow).ShowPreferences();
+        if (features is not null)
+        {
+            MainWindow.Loaded += async (_, _) =>
+            {
+                try
+                {
+                    var result = await VerifyFeaturesAsync(e.Args.Contains("--network"));
+                    Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(features))!);
+                    File.WriteAllText(features, System.Text.Json.JsonSerializer.Serialize(result, StatusLookout.Core.JsonStore.Options));
+                    Shutdown();
+                }
+                catch (Exception ex) { File.WriteAllText(features, ex.ToString()); Shutdown(1); }
+            };
+            MainWindow.Show(); return;
+        }
+        if (demo && e.Args.Contains("--components"))
+            MainWindow = new ComponentPickerWindow(_vm, _vm.AllServices.Single(s => s.Id == "extra.GoogleCloud"));
         if (preview is null)
         {
             _desktop = new(ShowDashboard, Shutdown, () => _ = _vm.RefreshAsync(), _vm.TogglePause, _vm.ReportError);
@@ -120,6 +139,45 @@ public partial class App : System.Windows.Application
             && L.T("Open StatusLookout") == "Open StatusLookout";
         if (!frenchLight || !englishDark) throw new InvalidOperationException("Live appearance verification failed.");
         return true;
+    }
+    private async Task<object> VerifyFeaturesAsync(bool network)
+    {
+        var vm = _vm!; var service = vm.Watchlist.First();
+        var menu = (System.Windows.Controls.ContextMenu)MainWindow.Resources["ServiceMenu"];
+        var target = new System.Windows.Controls.Button { Tag = service, ContextMenu = menu };
+        menu.PlacementTarget = target; menu.IsOpen = true;
+        await Dispatcher.InvokeAsync(() => { }, DispatcherPriority.ContextIdle);
+        ((System.Windows.Controls.MenuItem)menu.Items[0]).RaiseEvent(new RoutedEventArgs(System.Windows.Controls.MenuItem.ClickEvent));
+        var menuVerified = service.IsSnoozed; menu.IsOpen = false;
+        vm.Snooze(service, 30); var thirty = service.IsSnoozed && service.SnoozedUntil > DateTimeOffset.UtcNow.AddMinutes(29);
+        vm.Language = "fr"; var frenchSnooze = service.SnoozeLabel.StartsWith("Alertes suspendues");
+        vm.Snooze(service, 60); var hour = service.SnoozedUntil > DateTimeOffset.UtcNow.AddMinutes(59);
+        vm.Snooze(service, 0); var resumed = !service.IsSnoozed;
+        vm.Theme = "system"; var systemTheme = vm.Theme == "system" && L.Theme == WindowsTheme.Read();
+        vm.SetComponents(service, ["test-api"]); var scoped = service.Definition.Components?.Single() == "test-api";
+        var export = vm.ExportPreferences(); vm.ImportPreferences(export);
+        var imported = vm.AllServices.Single(s => s.Id == service.Id).Definition.Components?.Single() == "test-api";
+        service = vm.AllServices.Single(s => s.Id == service.Id); vm.SetComponents(service, null);
+        var defaultRestored = service.Definition.Components == service.DefaultDefinition.Components;
+        var google = vm.AllServices.Single(s => s.Id == "extra.GoogleCloud");
+        var products = await vm.GetComponentsAsync(google, CancellationToken.None);
+        var googlePicker = products.Count > 200;
+        bool? mailjetLogo = null; int? statuspageComponents = null;
+        if (network)
+        {
+            var custom = new StatusLookout.Core.ServiceDefinition("custom.mailjet-audit", "Mailjet", "Custom services", "statuspage", "https://status.mailjet.com", "https://status.mailjet.com/api/v2/summary.json");
+            var logo = await ServiceLogos.GetCustomAsync(custom, CancellationToken.None); mailjetLogo = logo is not null;
+            if (logo is BitmapSource bitmap)
+            {
+                var png = new PngBitmapEncoder(); png.Frames.Add(BitmapFrame.Create(bitmap));
+                using var file = File.Create(Path.Combine(Environment.CurrentDirectory, ".verification", "mailjet-icon.png")); png.Save(file);
+            }
+            statuspageComponents = (await vm.GetComponentsAsync(vm.AllServices.Single(s => s.Id == "statuspage.Cloudflare"), CancellationToken.None)).Count;
+        }
+        if (!menuVerified || !thirty || !hour || !resumed || !frenchSnooze || !systemTheme || !scoped || !imported || !defaultRestored || !googlePicker
+            || network && (mailjetLogo != true || statuspageComponents <= 0)) throw new InvalidOperationException("Native feature verification failed.");
+        return new { ServiceMenu = menuVerified, Snooze30 = thirty, Snooze60 = hour, SnoozeResume = resumed, FrenchSnooze = frenchSnooze, SystemTheme = systemTheme,
+            ComponentScope = scoped, PreferenceImport = imported, DefaultRestored = defaultRestored, GoogleProducts = products.Count, MailjetLogo = mailjetLogo, StatuspageComponents = statuspageComponents };
     }
     public void TestNotification() => _desktop?.Test(_vm?.NotificationSound ?? true);
     public void ShowDashboard()
