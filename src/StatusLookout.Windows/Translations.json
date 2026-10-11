@@ -1,0 +1,622 @@
+[
+  {
+    "key": "Ui000",
+    "en": "StatusLookout — Cloud service status monitor",
+    "fr": "StatusLookout — Surveillance des services cloud"
+  },
+  {
+    "key": "Ui001",
+    "en": "STATUSLOOKOUT   /   SERVICE STATUS MONITOR",
+    "fr": "STATUSLOOKOUT   /   SURVEILLANCE DES SERVICES"
+  },
+  {
+    "key": "Ui002",
+    "en": "Minimize",
+    "fr": "Réduire"
+  },
+  {
+    "key": "Ui003",
+    "en": "Maximize",
+    "fr": "Agrandir"
+  },
+  {
+    "key": "Ui004",
+    "en": "Close to tray",
+    "fr": "Masquer dans la zone de notification"
+  },
+  {
+    "key": "Ui005",
+    "en": "KEEP AN EYE ON YOUR CLOUD.",
+    "fr": "GARDEZ UN ŒIL SUR VOS SERVICES."
+  },
+  {
+    "key": "Ui006",
+    "en": "◈   Watchlist",
+    "fr": "◈   Services suivis"
+  },
+  {
+    "key": "Ui007",
+    "en": "⊞   Service library",
+    "fr": "⊞   Catalogue de services"
+  },
+  {
+    "key": "Ui008",
+    "en": "↗   Alert history",
+    "fr": "↗   Historique des alertes"
+  },
+  {
+    "key": "Ui009",
+    "en": "⚙   Preferences",
+    "fr": "⚙   Préférences"
+  },
+  {
+    "key": "Ui010",
+    "en": "A quiet lookout.",
+    "fr": "Une vigie discrète."
+  },
+  {
+    "key": "Ui011",
+    "en": "Close this window to keep monitoring from your system tray.",
+    "fr": "Fermez cette fenêtre pour continuer la surveillance dans la zone de notification."
+  },
+  {
+    "key": "Ui012",
+    "en": "v0.2.0  ·  OPEN SOURCE",
+    "fr": "v0.2.0  ·  OPEN SOURCE"
+  },
+  {
+    "key": "Ui013",
+    "en": "Project on GitHub ↗",
+    "fr": "Projet sur GitHub ↗"
+  },
+  {
+    "key": "Ui014",
+    "en": "Your watchlist",
+    "fr": "Vos services suivis"
+  },
+  {
+    "key": "Ui015",
+    "en": "YOUR SERVICES. ONE CLEAR SIGNAL.",
+    "fr": "VOS SERVICES. UN SIGNAL CLAIR."
+  },
+  {
+    "key": "Ui016",
+    "en": "WATCHING",
+    "fr": "SUIVIS"
+  },
+  {
+    "key": "Ui017",
+    "en": "OPERATIONAL",
+    "fr": "OPÉRATIONNELS"
+  },
+  {
+    "key": "Ui018",
+    "en": "NEED ATTENTION",
+    "fr": "À SURVEILLER"
+  },
+  {
+    "key": "Ui019",
+    "en": "UNAVAILABLE",
+    "fr": "INDISPONIBLES"
+  },
+  {
+    "key": "Ui020",
+    "en": "Your watchlist is empty. Open the service library to choose what matters to you.",
+    "fr": "Aucun service suivi. Ouvrez le catalogue pour choisir vos services."
+  },
+  {
+    "key": "Ui021",
+    "en": "Mute alerts",
+    "fr": "Couper les alertes"
+  },
+  {
+    "key": "Ui022",
+    "en": "Status page ↗",
+    "fr": "Page de statut ↗"
+  },
+  {
+    "key": "Ui023",
+    "en": "Remove",
+    "fr": "Retirer"
+  },
+  {
+    "key": "Ui024",
+    "en": "Search services",
+    "fr": "Rechercher des services"
+  },
+  {
+    "key": "Ui025",
+    "en": "Search by service name or category",
+    "fr": "Rechercher par nom de service ou catégorie"
+  },
+  {
+    "key": "Ui026",
+    "en": "Category",
+    "fr": "Catégorie"
+  },
+  {
+    "key": "Ui027",
+    "en": "+ Custom service",
+    "fr": "+ Service personnalisé"
+  },
+  {
+    "key": "Ui028",
+    "en": "Clear history",
+    "fr": "Effacer l’historique"
+  },
+  {
+    "key": "Ui029",
+    "en": "Confirmed status changes, kept locally. Up to 300 events.",
+    "fr": "Changements d’état confirmés, conservés localement. Jusqu’à 300 événements."
+  },
+  {
+    "key": "Ui030",
+    "en": "No alerts yet. Your confirmed status changes will appear here.",
+    "fr": "Aucune alerte. Les changements d’état confirmés apparaîtront ici."
+  },
+  {
+    "key": "Ui031",
+    "en": "Windows & monitoring",
+    "fr": "Windows et surveillance"
+  },
+  {
+    "key": "Ui032",
+    "en": "Launch at Windows sign-in (in the system tray)",
+    "fr": "Lancer à l’ouverture de session Windows (dans la zone de notification)"
+  },
+  {
+    "key": "Ui033",
+    "en": "Start minimized when opened manually",
+    "fr": "Démarrer masqué lors d’une ouverture manuelle"
+  },
+  {
+    "key": "Ui034",
+    "en": "Keep the executable in a permanent folder before enabling startup.",
+    "fr": "Placez l’exécutable dans un dossier permanent avant d’activer le démarrage automatique."
+  },
+  {
+    "key": "Ui035",
+    "en": "Check every",
+    "fr": "Vérifier toutes les"
+  },
+  {
+    "key": "Ui036",
+    "en": "Polling interval",
+    "fr": "Intervalle de vérification"
+  },
+  {
+    "key": "Ui037",
+    "en": "seconds (30–900)",
+    "fr": "secondes (30–900)"
+  },
+  {
+    "key": "Ui038",
+    "en": "Send test alert",
+    "fr": "Envoyer une alerte de test"
+  },
+  {
+    "key": "Ui039",
+    "en": "Alerts you want to receive",
+    "fr": "Alertes à recevoir"
+  },
+  {
+    "key": "Ui040",
+    "en": "Windows notification settings and Do not disturb can silence banners.",
+    "fr": "Les paramètres Windows et le mode Ne pas déranger peuvent masquer les notifications."
+  },
+  {
+    "key": "Ui041",
+    "en": "Service outages",
+    "fr": "Pannes des services"
+  },
+  {
+    "key": "Ui042",
+    "en": "Degraded performance and partial outages",
+    "fr": "Performances dégradées et pannes partielles"
+  },
+  {
+    "key": "Ui043",
+    "en": "Recovery — back to normal",
+    "fr": "Rétablissement — retour à la normale"
+  },
+  {
+    "key": "Ui044",
+    "en": "Maintenance",
+    "fr": "Maintenance"
+  },
+  {
+    "key": "Ui045",
+    "en": "Alert if a service is already affected on the first check",
+    "fr": "Alerter si un service est déjà affecté lors de la première vérification"
+  },
+  {
+    "key": "Ui046",
+    "en": "Play the Windows notification sound",
+    "fr": "Jouer le son des notifications Windows"
+  },
+  {
+    "key": "Ui047",
+    "en": "Your data stays here.",
+    "fr": "Vos données restent ici."
+  },
+  {
+    "key": "Ui048",
+    "en": "No account, tracking, telemetry or central monitoring server. StatusLookout contacts the selected providers' public status APIs and stores your preferences and alert history in %LOCALAPPDATA%\\StatusLookout.",
+    "fr": "Aucun compte, suivi, télémétrie ou serveur central. StatusLookout consulte les API publiques des services sélectionnés et conserve vos préférences et alertes dans %LOCALAPPDATA%\\StatusLookout."
+  },
+  {
+    "key": "Ui049",
+    "en": "Open local data folder",
+    "fr": "Ouvrir le dossier de données"
+  },
+  {
+    "key": "Ui050",
+    "en": "PUBLIC PROVIDER REPORTS   ·   UNAVAILABLE ≠ OUTAGE   ·   CLOSE TO KEEP WATCHING",
+    "fr": "RAPPORTS OFFICIELS   ·   INDISPONIBLE ≠ PANNE   ·   SURVEILLANCE EN ARRIÈRE-PLAN"
+  },
+  {
+    "key": "Ui051",
+    "en": "Add a custom service",
+    "fr": "Ajouter un service personnalisé"
+  },
+  {
+    "key": "Ui052",
+    "en": "Bring another service on board.",
+    "fr": "Ajoutez un autre service."
+  },
+  {
+    "key": "Ui053",
+    "en": "Service name",
+    "fr": "Nom du service"
+  },
+  {
+    "key": "Ui054",
+    "en": "Public HTTPS status page",
+    "fr": "Page de statut publique HTTPS"
+  },
+  {
+    "key": "Ui055",
+    "en": "Status page URL",
+    "fr": "URL de la page de statut"
+  },
+  {
+    "key": "Ui056",
+    "en": "API format",
+    "fr": "Format de l’API"
+  },
+  {
+    "key": "Ui057",
+    "en": "Statuspage compatible",
+    "fr": "Compatible Statuspage"
+  },
+  {
+    "key": "Ui058",
+    "en": "Component IDs (optional, comma separated)",
+    "fr": "Identifiants des composants (facultatifs, séparés par des virgules)"
+  },
+  {
+    "key": "Ui059",
+    "en": "Component IDs",
+    "fr": "Identifiants des composants"
+  },
+  {
+    "key": "Ui060",
+    "en": "The endpoint is checked before saving.",
+    "fr": "L’API est vérifiée avant l’enregistrement."
+  },
+  {
+    "key": "Ui061",
+    "en": "Validate & add service",
+    "fr": "Vérifier et ajouter le service"
+  },
+  {
+    "key": "Ui062",
+    "en": "Checking the public status API…",
+    "fr": "Vérification de l’API de statut publique…"
+  },
+  {
+    "key": "Ui063",
+    "en": "All categories",
+    "fr": "Toutes les catégories"
+  },
+  {
+    "key": "Ui064",
+    "en": "Checking…",
+    "fr": "Vérification…"
+  },
+  {
+    "key": "Ui065",
+    "en": "Refresh now",
+    "fr": "Actualiser"
+  },
+  {
+    "key": "Ui066",
+    "en": "Resume monitoring",
+    "fr": "Reprendre la surveillance"
+  },
+  {
+    "key": "Ui067",
+    "en": "Pause",
+    "fr": "Pause"
+  },
+  {
+    "key": "Ui068",
+    "en": "Demo preview · simulated states",
+    "fr": "Aperçu de démonstration · états simulés"
+  },
+  {
+    "key": "Ui069",
+    "en": "Monitoring paused",
+    "fr": "Surveillance en pause"
+  },
+  {
+    "key": "Ui070",
+    "en": "Checking official status APIs…",
+    "fr": "Vérification des API de statut officielles…"
+  },
+  {
+    "key": "Ui071",
+    "en": "Ready to monitor",
+    "fr": "Prêt à surveiller"
+  },
+  {
+    "key": "Ui072",
+    "en": "Monitoring · synced ",
+    "fr": "Surveillance · actualisé à "
+  },
+  {
+    "key": "Ui073",
+    "en": "Make room for your services.",
+    "fr": "Faites une place à vos services."
+  },
+  {
+    "key": "Ui074",
+    "en": "A few signals need your attention.",
+    "fr": "Certains services nécessitent votre attention."
+  },
+  {
+    "key": "Ui075",
+    "en": "Some signals are still unconfirmed.",
+    "fr": "Certains états restent à confirmer."
+  },
+  {
+    "key": "Ui076",
+    "en": "All clear. Keep doing your thing.",
+    "fr": "Tout fonctionne. Continuez vos activités."
+  },
+  {
+    "key": "Ui077",
+    "en": "Pick your services from the library to begin.",
+    "fr": "Choisissez vos services dans le catalogue pour commencer."
+  },
+  {
+    "key": "Ui078",
+    "en": "Provider reports are listed below. Open a status page for the latest details.",
+    "fr": "Les rapports des fournisseurs sont affichés ci-dessous. Consultez leur page de statut pour les derniers détails."
+  },
+  {
+    "key": "Ui079",
+    "en": "An unavailable check is not a confirmed outage. Your last known states are preserved.",
+    "fr": "Une vérification indisponible ne confirme pas une panne. Les derniers états connus sont conservés."
+  },
+  {
+    "key": "Ui080",
+    "en": "Your selected providers report normal operation. We'll alert you when that changes.",
+    "fr": "Vos services sélectionnés fonctionnent normalement. Nous vous avertirons en cas de changement."
+  },
+  {
+    "key": "Ui081",
+    "en": "The refresh could not finish: ",
+    "fr": "L’actualisation n’a pas pu se terminer : "
+  },
+  {
+    "key": "Ui082",
+    "en": "This service could not be added: ",
+    "fr": "Le service n’a pas pu être ajouté : "
+  },
+  {
+    "key": "Ui083",
+    "en": "Preferences could not be saved: ",
+    "fr": "Les préférences n’ont pas pu être enregistrées : "
+  },
+  {
+    "key": "Ui084",
+    "en": "History could not be saved: ",
+    "fr": "L’historique n’a pas pu être enregistré : "
+  },
+  {
+    "key": "Ui085",
+    "en": "Windows startup could not be updated: ",
+    "fr": "Le démarrage automatique n’a pas pu être modifié : "
+  },
+  {
+    "key": "Ui086",
+    "en": "Operational",
+    "fr": "Opérationnel"
+  },
+  {
+    "key": "Ui087",
+    "en": "Degraded",
+    "fr": "Dégradé"
+  },
+  {
+    "key": "Ui088",
+    "en": "Outage",
+    "fr": "Panne"
+  },
+  {
+    "key": "Ui089",
+    "en": "Unavailable",
+    "fr": "Indisponible"
+  },
+  {
+    "key": "Ui090",
+    "en": "Waiting for the first status check",
+    "fr": "En attente de la première vérification"
+  },
+  {
+    "key": "Ui091",
+    "en": "Not checked yet",
+    "fr": "Pas encore vérifié"
+  },
+  {
+    "key": "Ui092",
+    "en": "Checked ",
+    "fr": "Vérifié à "
+  },
+  {
+    "key": "Ui093",
+    "en": "Back to normal",
+    "fr": "Retour à la normale"
+  },
+  {
+    "key": "Ui094",
+    "en": "Service library",
+    "fr": "Catalogue de services"
+  },
+  {
+    "key": "Ui095",
+    "en": "Alert history",
+    "fr": "Historique des alertes"
+  },
+  {
+    "key": "Ui096",
+    "en": "Preferences",
+    "fr": "Préférences"
+  },
+  {
+    "key": "Ui097",
+    "en": "The status page could not be opened: ",
+    "fr": "La page de statut n’a pas pu être ouverte : "
+  },
+  {
+    "key": "Ui098",
+    "en": "The data folder could not be opened: ",
+    "fr": "Le dossier de données n’a pas pu être ouvert : "
+  },
+  {
+    "key": "Ui099",
+    "en": "Open StatusLookout",
+    "fr": "Ouvrir StatusLookout"
+  },
+  {
+    "key": "Ui100",
+    "en": "Refresh services",
+    "fr": "Actualiser les services"
+  },
+  {
+    "key": "Ui101",
+    "en": "Pause / resume monitoring",
+    "fr": "Suspendre / reprendre la surveillance"
+  },
+  {
+    "key": "Ui102",
+    "en": "Quit StatusLookout",
+    "fr": "Quitter StatusLookout"
+  },
+  {
+    "key": "Ui103",
+    "en": "StatusLookout is listening",
+    "fr": "StatusLookout veille sur vos services"
+  },
+  {
+    "key": "Ui104",
+    "en": "Outage, degradation and recovery alerts will appear here.",
+    "fr": "Les alertes de panne, dégradation et rétablissement apparaîtront ici."
+  },
+  {
+    "key": "Ui105",
+    "en": "Windows could not display a notification: ",
+    "fr": "Windows n’a pas pu afficher une notification : "
+  },
+  {
+    "key": "Ui106",
+    "en": "Appearance & language",
+    "fr": "Apparence et langue"
+  },
+  {
+    "key": "Ui107",
+    "en": "Language",
+    "fr": "Langue"
+  },
+  {
+    "key": "Ui108",
+    "en": "Theme",
+    "fr": "Thème"
+  },
+  {
+    "key": "Ui109",
+    "en": "Dark",
+    "fr": "Sombre"
+  },
+  {
+    "key": "Ui110",
+    "en": "Light",
+    "fr": "Clair"
+  },
+  {
+    "key": "Ui111",
+    "en": "Applies immediately. Your choice is remembered.",
+    "fr": "Application immédiate. Votre choix est mémorisé."
+  },
+  {
+    "key": "Ui112",
+    "en": "{0} built-in and custom services. Select the ones you want to monitor.",
+    "fr": "{0} services intégrés et personnalisés. Sélectionnez ceux à surveiller."
+  },
+  {
+    "key": "Ui113",
+    "en": "Last confirmed: {0}",
+    "fr": "Dernier état confirmé : {0}"
+  },
+  {
+    "key": "Ui114",
+    "en": " at ",
+    "fr": " à "
+  },
+  {
+    "key": "Ui115",
+    "en": "StatusLookout · paused",
+    "fr": "StatusLookout · en pause"
+  },
+  {
+    "key": "Ui116",
+    "en": "StatusLookout · {0} watched · {1} issues · {2} unavailable",
+    "fr": "StatusLookout · {0} suivis · {1} incidents · {2} inconnus"
+  },
+  {
+    "key": "Ui117",
+    "en": "AI services",
+    "fr": "Services d’IA"
+  },
+  {
+    "key": "Ui118",
+    "en": "Cloud platforms",
+    "fr": "Plateformes cloud"
+  },
+  {
+    "key": "Ui119",
+    "en": "Communication",
+    "fr": "Communication"
+  },
+  {
+    "key": "Ui120",
+    "en": "Developer services",
+    "fr": "Services de développement"
+  },
+  {
+    "key": "Ui121",
+    "en": "Payments",
+    "fr": "Paiements"
+  },
+  {
+    "key": "Ui122",
+    "en": "Custom services",
+    "fr": "Services personnalisés"
+  },
+  {
+    "key": "Ui123",
+    "en": "Statuspage-compatible API",
+    "fr": "API compatible Statuspage"
+  }
+]

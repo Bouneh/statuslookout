@@ -1,4 +1,4 @@
-namespace UptimeKite.Core;
+namespace StatusLookout.Core;
 
 /// <summary>Tracks confirmed provider states. Transport failures never overwrite the baseline.</summary>
 public sealed class NotificationTracker(Dictionary<string, ServiceStatus>? lastKnown = null)

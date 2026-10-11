@@ -1,25 +1,27 @@
 <div align="center">
-  <img src="assets/logo.svg" width="76" alt="UptimeKite logo">
-  <h1>UptimeKite</h1>
+  <img src="assets/logo.svg" width="76" alt="StatusLookout logo">
+  <h1>StatusLookout</h1>
   <p><strong>Your services. One clear signal.</strong></p>
   <p>A native Windows system tray app for cloud service status,<br>outage alerts, degraded performance and recovery notifications.</p>
   <p>
-    <a href="https://github.com/Bouneh/uptimekite/releases/latest"><img src="https://img.shields.io/github/v/release/Bouneh/uptimekite?color=456fe3" alt="Latest release"></a>
-    <a href="https://github.com/Bouneh/uptimekite/actions/workflows/ci.yml"><img src="https://github.com/Bouneh/uptimekite/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+    <a href="https://github.com/Bouneh/statuslookout/releases/latest"><img src="https://img.shields.io/github/v/release/Bouneh/statuslookout?color=456fe3" alt="Latest release"></a>
+    <a href="https://github.com/Bouneh/statuslookout/actions/workflows/ci.yml"><img src="https://github.com/Bouneh/statuslookout/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-56dcb8" alt="MIT license"></a>
     <img src="https://img.shields.io/badge/Windows-x64%20%7C%20x86%20%7C%20ARM64-82aeff" alt="Windows architectures">
   </p>
   <p><a href="#download">Download</a> · <a href="#how-it-works">How it works</a> · <a href="#build-from-source">Build</a> · <a href="CONTRIBUTING.md">Contribute</a> · <a href="docs/README.fr.md">Français</a></p>
 </div>
 
-![UptimeKite Windows dashboard](assets/screenshot.png)
+![StatusLookout Windows dashboard](assets/screenshot.png)
 
 *Actual application UI. This screenshot uses simulated incidents, clearly marked as a demo.*
 
 ## A quiet lookout for the services you depend on
 
-UptimeKite keeps your selected services in the Windows system tray and alerts you when their published status changes. Choose from **461 services and products**, including GitHub, Cloudflare, Discord, OpenAI, Notion, Slack, Google Cloud and Firebase.
+StatusLookout keeps your selected services in the Windows system tray and alerts you when their published status changes. Choose from **461 services and products**, including GitHub, Cloudflare, Discord, OpenAI, Notion, Slack, Google Cloud and Firebase.
 
+- **English by default, French available**, with an instant language selector.
+- **Light and dark themes**, applied immediately and remembered across restarts.
 - **Outage, degradation and recovery alerts**, with separate preferences for each.
 - **Native Windows notifications**, with a system tray balloon fallback.
 - **Searchable service library** and custom Statuspage-compatible or Instatus endpoints.
@@ -32,13 +34,13 @@ UptimeKite keeps your selected services in the Windows system tray and alerts yo
 
 ## Download
 
-Download from the [latest GitHub release](https://github.com/Bouneh/uptimekite/releases/latest).
+Download from the [latest GitHub release](https://github.com/Bouneh/statuslookout/releases/latest).
 
 | Your computer | Executable |
 | --- | --- |
-| Most Intel / AMD Windows PCs | [UptimeKite-win-x64.exe](https://github.com/Bouneh/uptimekite/releases/latest/download/UptimeKite-win-x64.exe) |
-| Windows on ARM, including Snapdragon PCs | [UptimeKite-win-arm64.exe](https://github.com/Bouneh/uptimekite/releases/latest/download/UptimeKite-win-arm64.exe) |
-| 32-bit Windows | [UptimeKite-win-x86.exe](https://github.com/Bouneh/uptimekite/releases/latest/download/UptimeKite-win-x86.exe) |
+| Most Intel / AMD Windows PCs | [StatusLookout-win-x64.exe](https://github.com/Bouneh/statuslookout/releases/latest/download/StatusLookout-win-x64.exe) |
+| Windows on ARM, including Snapdragon PCs | [StatusLookout-win-arm64.exe](https://github.com/Bouneh/statuslookout/releases/latest/download/StatusLookout-win-arm64.exe) |
+| 32-bit Windows | [StatusLookout-win-x86.exe](https://github.com/Bouneh/statuslookout/releases/latest/download/StatusLookout-win-x86.exe) |
 
 **Windows 10 22H2 or Windows 11.** An internet connection is required to check providers. No administrator access or separate .NET installation is needed. Builds are currently unsigned; Windows can show an unknown-publisher warning.
 
@@ -51,14 +53,24 @@ Download from the [latest GitHub release](https://github.com/Bouneh/uptimekite/r
 Release downloads include SHA-256 checksums. To verify an executable:
 
 ```powershell
-Get-FileHash .\UptimeKite-win-x64.exe -Algorithm SHA256
+Get-FileHash .\StatusLookout-win-x64.exe -Algorithm SHA256
 ```
 
 Compare the result with the matching `SHA256SUMS-win-x64.txt` file.
 
+## Language and appearance
+
+Open **Preferences → Appearance & language** to choose **English / Français** and **Dark / Light**. English and dark are the initial defaults. Changes apply immediately to the interface, status labels, tray menu and alert titles, and are stored locally. Provider incident descriptions are kept in their original language, exactly as published.
+
+![Light theme and French interface](assets/screenshot-light-fr.png)
+
+### Upgrading from the early UptimeKite preview
+
+Quit the old app from its tray menu before running StatusLookout. If you enabled startup in the old app, disable it there and enable it in StatusLookout. To keep the old watchlist and history, copy `preferences.json` and `state.json` from `%LOCALAPPDATA%\UptimeKite` into `%LOCALAPPDATA%\StatusLookout` while both apps are closed. Existing files without language settings default to English.
+
 ## How it works
 
-UptimeKite polls the **official public status APIs** for your selected providers. The default interval is 60 seconds and can be set to 30–900 seconds.
+StatusLookout polls the **official public status APIs** for your selected providers. The default interval is 60 seconds and can be set to 30–900 seconds.
 
 | Signal | Meaning |
 | --- | --- |
@@ -86,13 +98,13 @@ A green signal reflects a provider's aggregate report; individual users or reque
 
 The shipped catalog includes entries supported and checked by these adapters. It is a subset of the wider stts catalog, plus current Google / Firebase products and independently added services. A provider can change or remove its API after a release.
 
-**Custom services:** enter a public HTTPS status page and select its API format. UptimeKite validates the response before adding it. Statuspage components can be selected by entering their IDs, separated by commas.
+**Custom services:** enter a public HTTPS status page and select its API format. StatusLookout validates the response before adding it. Statuspage components can be selected by entering their IDs, separated by commas.
 
 ### Notifications and startup
 
 Notification preferences are independent for outages, degraded service, recovery and maintenance. Muting a service silences its alerts while retaining its monitoring and history.
 
-Windows **Do not disturb**, notification permissions and system policies can suppress banners. The test alert helps check delivery. If toast registration fails, UptimeKite falls back to a tray balloon.
+Windows **Do not disturb**, notification permissions and system policies can suppress banners. The test alert helps check delivery. If toast registration fails, StatusLookout falls back to a tray balloon.
 
 Startup uses a per-user entry in `HKCU\Software\Microsoft\Windows\CurrentVersion\Run`. It starts the executable with `--background`. If you move the executable, disable and re-enable the option to update its path.
 
@@ -101,11 +113,11 @@ Startup uses a per-user entry in `HKCU\Software\Microsoft\Windows\CurrentVersion
 Preferences and the last 300 confirmed status changes are stored in:
 
 ```text
-%LOCALAPPDATA%\UptimeKite\preferences.json
-%LOCALAPPDATA%\UptimeKite\state.json
+%LOCALAPPDATA%\StatusLookout\preferences.json
+%LOCALAPPDATA%\StatusLookout\state.json
 ```
 
-The app sends HTTPS requests directly to selected status providers. Those providers receive your normal network request metadata, including your IP address. UptimeKite adds no analytics or tracking.
+The app sends HTTPS requests directly to selected status providers. Those providers receive your normal network request metadata, including your IP address. StatusLookout adds no analytics or tracking.
 
 To remove the app, disable startup, quit from the tray and delete the executable. You can also delete the data folder to remove preferences and history.
 
@@ -114,11 +126,11 @@ To remove the app, disable startup, quit from the tray and delete the executable
 Install the [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0) on Windows, then:
 
 ```powershell
-git clone https://github.com/Bouneh/uptimekite.git
-cd uptimekite
-dotnet build UptimeKite.sln -c Release
-dotnet run --project tests/UptimeKite.Tests -c Release
-dotnet run --project src/UptimeKite.Windows -c Release
+git clone https://github.com/Bouneh/statuslookout.git
+cd statuslookout
+dotnet build StatusLookout.sln -c Release
+dotnet run --project tests/StatusLookout.Tests -c Release
+dotnet run --project src/StatusLookout.Windows -c Release
 ```
 
 The offline test suite covers parsing, state transitions, recovery after network failure, duplicate suppression, persistence, request grouping and cancellation.
@@ -137,13 +149,15 @@ Outputs are written to `artifacts/`. WPF is not trimmed. Native runtime files ar
 
 ```powershell
 # Preview simulated incidents without altering user preferences:
-dotnet run --project src/UptimeKite.Windows -- --demo
+dotnet run --project src/StatusLookout.Windows -- --demo
 
 # Render the actual WPF layout to a screenshot:
-dotnet run --project src/UptimeKite.Windows -- --preview assets/screenshot.png
+dotnet run --project src/StatusLookout.Windows -- --preview assets/screenshot.png
+# French, light theme and preferences preview (no settings are saved):
+dotnet run --project src/StatusLookout.Windows -- --preview assets/preferences.png --french --light --settings
 
 # Audit public endpoints (network access, no notifications):
-dotnet run --project tests/UptimeKite.Tests -- --audit
+dotnet run --project tests/StatusLookout.Tests -- --audit
 ```
 
 ## Automatic Windows releases
@@ -153,19 +167,19 @@ dotnet run --project tests/UptimeKite.Tests -- --audit
 [The release workflow](.github/workflows/release.yml) publishes all three architectures on a `v*` tag or a manual workflow run. Tag runs create a GitHub release with executables, checksums and license notices. No external signing credentials are required.
 
 ```powershell
-git tag v0.1.0
-git push origin v0.1.0
+git tag v0.2.0
+git push origin v0.2.0
 ```
 
 An x64 machine can build all architectures. Native x86 and ARM64 runtime testing still requires suitable hardware.
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for adding services, adapters and tests. Bug reports and feature ideas are welcome through [GitHub Issues](https://github.com/Bouneh/uptimekite/issues).
+See [CONTRIBUTING.md](CONTRIBUTING.md) for adding services, adapters and tests. Bug reports and feature ideas are welcome through [GitHub Issues](https://github.com/Bouneh/statuslookout/issues).
 
 ## Credits and license
 
-UptimeKite is an independently implemented Windows application inspired by the useful monitoring workflow of [stts](https://github.com/inket/stts). The Windows code, visual identity and interface are original. Selected service definitions are adapted from its MIT-licensed catalog with attribution.
+StatusLookout is an independently implemented Windows application inspired by the useful monitoring workflow of [stts](https://github.com/inket/stts). The Windows code, visual identity and interface are original. Selected service definitions are adapted from its MIT-licensed catalog with attribution.
 
 Google / Firebase product identifiers are taken from their public status dashboards. Service names belong to their respective owners; this project is not affiliated with those providers.
 

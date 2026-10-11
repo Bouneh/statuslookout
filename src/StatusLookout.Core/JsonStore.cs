@@ -1,6 +1,6 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
-namespace UptimeKite.Core;
+namespace StatusLookout.Core;
 
 public sealed class JsonStore(string directory)
 {

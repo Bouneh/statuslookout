@@ -1,5 +1,5 @@
 using System.Net;
-namespace UptimeKite.Core;
+namespace StatusLookout.Core;
 
 public sealed class StatusMonitor(HttpClient http)
 {
@@ -21,7 +21,7 @@ public sealed class StatusMonitor(HttpClient http)
                     try
                     {
                         using var request = new HttpRequestMessage(HttpMethod.Get, group.Key);
-                        request.Headers.UserAgent.ParseAdd("UptimeKite/0.1 (+https://github.com/Bouneh/uptimekite)");
+                        request.Headers.UserAgent.ParseAdd("StatusLookout/0.1 (+https://github.com/Bouneh/statuslookout)");
                         request.Headers.Accept.ParseAdd("application/json");
                         using var response = await http.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, timeout.Token);
                         response.EnsureSuccessStatusCode();

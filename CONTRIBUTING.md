@@ -1,14 +1,14 @@
-# Contributing to UptimeKite
+# Contributing to StatusLookout
 
 Thanks for helping make cloud status monitoring useful on Windows.
 
 ## Development
 
-Use Windows and the .NET 10 SDK. Run `dotnet build UptimeKite.sln -c Release`, then `dotnet run --project tests/UptimeKite.Tests -c Release`. Use `--demo` to preview the dashboard without changing local user preferences.
+Use Windows and the .NET 10 SDK. Run `dotnet build StatusLookout.sln -c Release`, then `dotnet run --project tests/StatusLookout.Tests -c Release`. Use `--demo` to preview the dashboard without changing local user preferences.
 
 ## Add a service
 
-Add a definition to `src/UptimeKite.Core/Catalog/services.json`:
+Add a definition to `src/StatusLookout.Core/Catalog/services.json`:
 
 ```json
 {

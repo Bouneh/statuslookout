@@ -5,13 +5,13 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{827E0CD3-B72D-47B6-A68D-7590B98EB39B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UptimeKite.Core", "src\UptimeKite.Core\UptimeKite.Core.csproj", "{9A40C4D8-6A18-4EC4-B988-5CE806931D72}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatusLookout.Core", "src\StatusLookout.Core\StatusLookout.Core.csproj", "{9A40C4D8-6A18-4EC4-B988-5CE806931D72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UptimeKite.Windows", "src\UptimeKite.Windows\UptimeKite.Windows.csproj", "{D35C14B7-72C6-4620-964B-CC680A660AC4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatusLookout.Windows", "src\StatusLookout.Windows\StatusLookout.Windows.csproj", "{D35C14B7-72C6-4620-964B-CC680A660AC4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0AB3BF05-4346-4AA6-1389-037BE0695223}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UptimeKite.Tests", "tests\UptimeKite.Tests\UptimeKite.Tests.csproj", "{52EAEA6D-B6EA-4CDB-9367-4A7D8B359657}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatusLookout.Tests", "tests\StatusLookout.Tests\StatusLookout.Tests.csproj", "{52EAEA6D-B6EA-4CDB-9367-4A7D8B359657}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

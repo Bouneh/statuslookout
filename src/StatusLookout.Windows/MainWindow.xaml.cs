@@ -4,7 +4,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-namespace UptimeKite.Windows;
+namespace StatusLookout.Windows;
 
 public partial class MainWindow : Window
 {
@@ -19,8 +19,9 @@ public partial class MainWindow : Window
         LibraryPage.Visibility = page == "Library" ? Visibility.Visible : Visibility.Collapsed;
         ActivityPage.Visibility = page == "Activity" ? Visibility.Visible : Visibility.Collapsed;
         SettingsPage.Visibility = page == "Settings" ? Visibility.Visible : Visibility.Collapsed;
-        PageTitle.Text = page switch { "Library" => "Service library", "Activity" => "Alert history", "Settings" => "Preferences", _ => "Your watchlist" };
+        PageTitle.SetResourceReference(System.Windows.Controls.TextBlock.TextProperty, page switch { "Library" => "Ui094", "Activity" => "Ui095", "Settings" => "Ui096", _ => "Ui014" });
     }
+    public void ShowPreferences() => NavigateClick(Navigation.Children.OfType<ToggleButton>().Single(b => (string)b.Tag == "Settings"), new RoutedEventArgs());
     private void OnClosing(object? sender, CancelEventArgs e) { e.Cancel = true; Hide(); }
     private void HideClick(object sender, RoutedEventArgs e) => Hide();
     private void MinimizeClick(object sender, RoutedEventArgs e) => WindowState = WindowState.Minimized;
@@ -30,19 +31,19 @@ public partial class MainWindow : Window
     private void DismissClick(object sender, RoutedEventArgs e) => _vm.DismissError();
     private void OpenServiceClick(object sender, RoutedEventArgs e) { if (sender is Button { Tag: ServiceItem service }) TryOpen(service.Definition.StatusUrl); }
     private void RemoveServiceClick(object sender, RoutedEventArgs e) { if (sender is Button { Tag: ServiceItem service }) service.IsWatched = false; }
-    private void GitHubClick(object sender, RoutedEventArgs e) => TryOpen("https://github.com/Bouneh/uptimekite");
-    private void TryOpen(string url) { try { DesktopIntegration.OpenStatus(url); } catch (Exception ex) { _vm.ReportError("The status page could not be opened: " + ex.Message); } }
+    private void GitHubClick(object sender, RoutedEventArgs e) => TryOpen("https://github.com/Bouneh/statuslookout");
+    private void TryOpen(string url) { try { DesktopIntegration.OpenStatus(url); } catch (Exception ex) { _vm.ReportError(L.T("The status page could not be opened: ") + ex.Message); } }
     private void ClearHistoryClick(object sender, RoutedEventArgs e) => _vm.ClearActivity();
     private void TestNotificationClick(object sender, RoutedEventArgs e) => ((App)System.Windows.Application.Current).TestNotification();
     private void DataFolderClick(object sender, RoutedEventArgs e)
     {
         try
         {
-            var directory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "UptimeKite");
+            var directory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "StatusLookout");
             Directory.CreateDirectory(directory);
             Process.Start(new ProcessStartInfo(directory) { UseShellExecute = true });
         }
-        catch (Exception ex) { _vm.ReportError("The data folder could not be opened: " + ex.Message); }
+        catch (Exception ex) { _vm.ReportError(L.T("The data folder could not be opened: ") + ex.Message); }
     }
     private void CustomClick(object sender, RoutedEventArgs e)
     {

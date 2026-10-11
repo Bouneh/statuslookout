@@ -1,5 +1,5 @@
 using System.Text.Json;
-namespace UptimeKite.Core;
+namespace StatusLookout.Core;
 
 /// <summary>Parses published status data; HTTP success alone is never treated as healthy.</summary>
 public static class StatusParser

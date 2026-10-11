@@ -5,8 +5,8 @@ body:
   - type: input
     id: version
     attributes:
-      label: UptimeKite version and architecture
-      placeholder: v0.1.0, x64
+      label: StatusLookout version and architecture
+      placeholder: v0.2.0, x64
     validations:
       required: true
   - type: textarea

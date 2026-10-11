@@ -18,6 +18,6 @@ jobs:
         with:
           dotnet-version: 10.0.x
       - name: Build native Windows application
-        run: dotnet build UptimeKite.sln -c Release --nologo
+        run: dotnet build StatusLookout.sln -c Release --nologo
       - name: Run offline behavioral tests
-        run: dotnet run --project tests/UptimeKite.Tests -c Release --no-build
+        run: dotnet run --project tests/StatusLookout.Tests -c Release --no-build

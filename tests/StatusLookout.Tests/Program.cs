@@ -1,6 +1,6 @@
 using System.Net;
 using System.Text.Json;
-using UptimeKite.Core;
+using StatusLookout.Core;
 
 var passed = 0;
 var failed = 0;
@@ -33,6 +33,23 @@ Check("Catalog has unique IDs and valid HTTPS endpoints", () =>
     foreach (var service in services) service.Validate();
     Equal(services.Count, services.Select(s => s.Id).Distinct().Count());
     foreach (var id in new Preferences().SelectedServices) True(services.Any(s => s.Id == id));
+});
+Check("Appearance defaults to English and dark", () =>
+{
+    var preferences = new Preferences(); Equal("en", preferences.Language); Equal("dark", preferences.Theme);
+    var legacy = JsonSerializer.Deserialize<Preferences>("{\"pollSeconds\":60}", JsonStore.Options)!;
+    Equal("en", legacy.Language); Equal("dark", legacy.Theme);
+});
+Check("Language and theme survive serialization", () =>
+{
+    var preferences = new Preferences { Language = "fr", Theme = "light" };
+    var restored = JsonSerializer.Deserialize<Preferences>(JsonSerializer.Serialize(preferences, JsonStore.Options), JsonStore.Options)!;
+    restored.Normalize(); Equal("fr", restored.Language); Equal("light", restored.Theme);
+});
+Check("Unsupported appearance settings fall back safely", () =>
+{
+    var preferences = new Preferences { Language = null!, Theme = "unknown" };
+    preferences.Normalize(); Equal("en", preferences.Language); Equal("dark", preferences.Theme);
 });
 Check("Statuspage healthy", () => Equal(ServiceStatus.Operational, StatusParser.Parse(definition, healthy).Status));
 Check("Statuspage outage includes only active incidents", () =>
@@ -117,7 +134,7 @@ Check("Polling interval constrained", () => { var p = new Preferences { PollSeco
 Check("HTTP endpoint cannot be added", () => Throws(() => (definition with { ApiUrl = "http://example.com" }).Validate()));
 Check("Credential-bearing endpoint cannot be added", () => Throws(() => (definition with { ApiUrl = "https://user:password@example.com" }).Validate()));
 
-var temporary = Path.Combine(Path.GetTempPath(), "UptimeKite.Tests." + Guid.NewGuid().ToString("N"));
+var temporary = Path.Combine(Path.GetTempPath(), "StatusLookout.Tests." + Guid.NewGuid().ToString("N"));
 Directory.CreateDirectory(temporary);
 try
 {

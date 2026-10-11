@@ -1,0 +1,222 @@
+[
+  {
+    "key": "Palette0",
+    "dark": "#0C1220",
+    "light": "#F4F7FC"
+  },
+  {
+    "key": "Palette1",
+    "dark": "#F1F5FF",
+    "light": "#18263B"
+  },
+  {
+    "key": "Palette2",
+    "dark": "#94A4BF",
+    "light": "#52627B"
+  },
+  {
+    "key": "Palette3",
+    "dark": "#EAF1FF",
+    "light": "#1C2F4D"
+  },
+  {
+    "key": "Palette4",
+    "dark": "#202C43",
+    "light": "#E8EEF8"
+  },
+  {
+    "key": "Palette5",
+    "dark": "#34425B",
+    "light": "#C3CEE0"
+  },
+  {
+    "key": "Palette6",
+    "dark": "#749FFC",
+    "light": "#749FFC"
+  },
+  {
+    "key": "Palette7",
+    "dark": "#A5B3CD",
+    "light": "#536581"
+  },
+  {
+    "key": "Palette8",
+    "dark": "#203355",
+    "light": "#DCE8FF"
+  },
+  {
+    "key": "Palette9",
+    "dark": "#AFCBFF",
+    "light": "#234FA6"
+  },
+  {
+    "key": "Palette10",
+    "dark": "#19263E",
+    "light": "#E6EDFA"
+  },
+  {
+    "key": "Palette11",
+    "dark": "#DCE6FB",
+    "light": "#263952"
+  },
+  {
+    "key": "Palette12",
+    "dark": "#596C8D",
+    "light": "#596C8D"
+  },
+  {
+    "key": "Palette13",
+    "dark": "#101B2F",
+    "light": "#FFFFFF"
+  },
+  {
+    "key": "Palette14",
+    "dark": "#E8F1FF",
+    "light": "#E8F1FF"
+  },
+  {
+    "key": "Palette15",
+    "dark": "#456FE3",
+    "light": "#456FE3"
+  },
+  {
+    "key": "Palette16",
+    "dark": "#82AEFF",
+    "light": "#365FC4"
+  },
+  {
+    "key": "Palette17",
+    "dark": "#B9D2FF",
+    "light": "#B9D2FF"
+  },
+  {
+    "key": "Palette18",
+    "dark": "#374861",
+    "light": "#A5B5CD"
+  },
+  {
+    "key": "Palette19",
+    "dark": "#131F34",
+    "light": "#FFFFFF"
+  },
+  {
+    "key": "Palette20",
+    "dark": "#8DB7FF",
+    "light": "#8DB7FF"
+  },
+  {
+    "key": "Palette21",
+    "dark": "#101B2D",
+    "light": "#101B2D"
+  },
+  {
+    "key": "Palette22",
+    "dark": "#141F33",
+    "light": "#FFFFFF"
+  },
+  {
+    "key": "Palette23",
+    "dark": "#25334B",
+    "light": "#D5DDEA"
+  },
+  {
+    "key": "Palette24",
+    "dark": "#2D3B53",
+    "light": "#BCC9DD"
+  },
+  {
+    "key": "Palette25",
+    "dark": "#0B111D",
+    "light": "#EAF0FA"
+  },
+  {
+    "key": "Palette26",
+    "dark": "#7585A1",
+    "light": "#536582"
+  },
+  {
+    "key": "Palette27",
+    "dark": "#10192A",
+    "light": "#EDF2FA"
+  },
+  {
+    "key": "Palette28",
+    "dark": "#51DCC1",
+    "light": "#51DCC1"
+  },
+  {
+    "key": "Palette29",
+    "dark": "#182840",
+    "light": "#DEE8F7"
+  },
+  {
+    "key": "Palette30",
+    "dark": "#8EAEDE",
+    "light": "#335B93"
+  },
+  {
+    "key": "Palette31",
+    "dark": "#6689F0",
+    "light": "#6689F0"
+  },
+  {
+    "key": "Palette32",
+    "dark": "#382530",
+    "light": "#FFF0F3"
+  },
+  {
+    "key": "Palette33",
+    "dark": "#724456",
+    "light": "#E0AFBA"
+  },
+  {
+    "key": "Palette34",
+    "dark": "#FFCBD4",
+    "light": "#84253D"
+  },
+  {
+    "key": "Palette35",
+    "dark": "#172842",
+    "light": "#E6EEFB"
+  },
+  {
+    "key": "Palette36",
+    "dark": "#AABBD6",
+    "light": "#4A607F"
+  },
+  {
+    "key": "Palette37",
+    "dark": "#56DCB8",
+    "light": "#08765B"
+  },
+  {
+    "key": "Palette38",
+    "dark": "#FFBD69",
+    "light": "#956000"
+  },
+  {
+    "key": "Palette39",
+    "dark": "#7588A6",
+    "light": "#546780"
+  },
+  {
+    "key": "Palette40",
+    "dark": "#A2B2CD",
+    "light": "#50617A"
+  },
+  {
+    "key": "Palette41",
+    "dark": "#71839F",
+    "light": "#596B85"
+  },
+  {
+    "key": "Palette42",
+    "dark": "#9AB8EC",
+    "light": "#28569B"
+  },
+  {
+    "key": "Palette43",
+    "dark": "#60718E",
+    "light": "#5D6C82"
+  }
+]

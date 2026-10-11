@@ -1,6 +1,6 @@
 # Third-party notices
 
-The built-in service definitions are adapted from [inket/stts](https://github.com/inket/stts/blob/master/Resources/services.json), retrieved on 2026-10-11. Only providers supported by UptimeKite are included. The Windows application, UI, state management and parsers are independently implemented. No macOS UI assets or Swift source are shipped.
+The built-in service definitions are adapted from [inket/stts](https://github.com/inket/stts/blob/master/Resources/services.json), retrieved on 2026-10-11. Only providers supported by StatusLookout are included. The Windows application, UI, state management and parsers are independently implemented. No macOS UI assets or Swift source are shipped.
 
 ## stts service catalog — MIT
 
@@ -41,4 +41,4 @@ MIT-licensed Windows Community Toolkit notification library, version 7.1.3. Sour
 
 Self-contained releases also distribute the .NET and Windows Desktop runtimes. Their original license files and .NET third-party notices are included as separate release assets, along with the notification library's original MIT license.
 
-Service names remain the property of their respective owners. UptimeKite is not affiliated with those providers.
+Service names remain the property of their respective owners. StatusLookout is not affiliated with those providers.

@@ -5,7 +5,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using Microsoft.Toolkit.Uwp.Notifications;
-namespace UptimeKite.Windows;
+namespace StatusLookout.Windows;
 
 public partial class App : System.Windows.Application
 {
@@ -24,17 +24,19 @@ public partial class App : System.Windows.Application
         var demo = e.Args.Contains("--demo") || preview is not null || smoke is not null;
         if (preview is null && smoke is null)
         {
-            _mutex = new Mutex(true, @"Local\UptimeKite.Instance", out var first);
+            _mutex = new Mutex(true, @"Local\StatusLookout.Instance", out var first);
             if (!first)
             {
-                try { using var signal = EventWaitHandle.OpenExisting(@"Local\UptimeKite.Activate"); signal.Set(); } catch { }
+                try { using var signal = EventWaitHandle.OpenExisting(@"Local\StatusLookout.Activate"); signal.Set(); } catch { }
                 Shutdown(); return;
             }
-            _activation = new(false, EventResetMode.AutoReset, @"Local\UptimeKite.Activate");
+            _activation = new(false, EventResetMode.AutoReset, @"Local\StatusLookout.Activate");
             _waitHandle = ThreadPool.RegisterWaitForSingleObject(_activation, (_, _) => Dispatcher.BeginInvoke(ShowDashboard), null, Timeout.Infinite, false);
         }
         _vm = new((service, change, sound) => _desktop?.Show(service, change, sound), demo);
+        if (demo) { if (e.Args.Contains("--french")) _vm.Language = "fr"; if (e.Args.Contains("--light")) _vm.Theme = "light"; }
         MainWindow = new MainWindow(_vm);
+        if (demo && e.Args.Contains("--settings")) ((MainWindow)MainWindow).ShowPreferences();
         if (preview is null)
         {
             _desktop = new(ShowDashboard, Shutdown, () => _ = _vm.RefreshAsync(), _vm.TogglePause, _vm.ReportError);
@@ -52,7 +54,7 @@ public partial class App : System.Windows.Application
                         if (service is not null)
                         {
                             try { DesktopIntegration.OpenStatus(service.Definition.StatusUrl); }
-                            catch (Exception ex) { _vm.ReportError("The status page could not be opened: " + ex.Message); }
+                            catch (Exception ex) { _vm.ReportError(L.T("The status page could not be opened: ") + ex.Message); }
                         }
                     }
                 });
@@ -81,18 +83,41 @@ public partial class App : System.Windows.Application
             {
                 Dispatcher.BeginInvoke(async () =>
                 {
+                    var appearanceVerified = await VerifyAppearanceAsync();
                     _desktop!.Test(false);
                     await Task.Delay(1000);
                     Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(smoke))!);
                     File.WriteAllText(smoke, System.Text.Json.JsonSerializer.Serialize(new
                     {
                         CatalogCount = _vm.CatalogCount, WatchlistCount = _vm.WatchedCount,
-                        TrayInitialized = true, _desktop.ToastRegistrationReady, _desktop.LastDelivery
-                    }, UptimeKite.Core.JsonStore.Options));
+                        TrayInitialized = true, AppearanceVerified = appearanceVerified, _desktop.ToastRegistrationReady, _desktop.LastDelivery
+                    }, StatusLookout.Core.JsonStore.Options));
                     Shutdown();
                 });
             }
         }
+    }
+    private async Task<bool> VerifyAppearanceAsync()
+    {
+        if (_vm is null || MainWindow is not MainWindow window) return false;
+        var service = _vm.AllServices.First(s => s.Id == "extra.OpenAI");
+        _vm.Category = "AI services";
+        window.ShowPreferences();
+        _vm.Language = "fr"; _vm.Theme = "light";
+        await Dispatcher.InvokeAsync(() => { }, DispatcherPriority.ContextIdle);
+        var frenchLight = _vm.Language == "fr" && _vm.Theme == "light"
+            && service.StatusLabel == "Panne" && _vm.Category == "Services d’IA"
+            && window.Title.Contains("Surveillance")
+            && ((SolidColorBrush)window.Background).Color == (Color)ColorConverter.ConvertFromString("#F4F7FC")
+            && L.T("Open StatusLookout") == "Ouvrir StatusLookout";
+        _vm.Language = "en"; _vm.Theme = "dark";
+        await Dispatcher.InvokeAsync(() => { }, DispatcherPriority.ContextIdle);
+        var englishDark = service.StatusLabel == "Outage" && _vm.Category == "AI services"
+            && window.Title.Contains("Cloud service")
+            && ((SolidColorBrush)window.Background).Color == (Color)ColorConverter.ConvertFromString("#0C1220")
+            && L.T("Open StatusLookout") == "Open StatusLookout";
+        if (!frenchLight || !englishDark) throw new InvalidOperationException("Live appearance verification failed.");
+        return true;
     }
     public void TestNotification() => _desktop?.Test(_vm?.NotificationSound ?? true);
     public void ShowDashboard()

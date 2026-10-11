@@ -1,7 +1,7 @@
 $ErrorActionPreference = 'Stop'
 Add-Type -AssemblyName System.Drawing
 $projectRoot = Split-Path $PSScriptRoot -Parent
-$output = Join-Path $projectRoot 'src\UptimeKite.Windows\Assets\app.ico'
+$output = Join-Path $projectRoot 'src\StatusLookout.Windows\Assets\app.ico'
 New-Item -ItemType Directory -Path (Split-Path $output -Parent) -Force | Out-Null
 $images = @()
 foreach ($size in @(16,24,32,48,64,128,256)) {
@@ -11,14 +11,14 @@ foreach ($size in @(16,24,32,48,64,128,256)) {
     $graphics.Clear([System.Drawing.Color]::Transparent)
     $scale = $size / 144.0
     $graphics.ScaleTransform([single]$scale,[single]$scale)
-    $graphics.TranslateTransform(8,0)
     $blue = [System.Drawing.SolidBrush]::new([System.Drawing.ColorTranslator]::FromHtml('#82AEFF'))
     $mint = [System.Drawing.SolidBrush]::new([System.Drawing.ColorTranslator]::FromHtml('#51DCC1'))
-    $points = [System.Drawing.PointF[]]@([System.Drawing.PointF]::new(64,4),[System.Drawing.PointF]::new(120,56),[System.Drawing.PointF]::new(64,112),[System.Drawing.PointF]::new(8,56))
-    $graphics.FillPolygon($blue,$points)
-    $graphics.FillPolygon($mint,[System.Drawing.PointF[]]@($points[0],$points[2],$points[3]))
-    $pen = [System.Drawing.Pen]::new($blue.Color,6)
-    $graphics.DrawLines($pen,[System.Drawing.PointF[]]@([System.Drawing.PointF]::new(64,112),[System.Drawing.PointF]::new(44,130),[System.Drawing.PointF]::new(74,140)))
+    $pen = [System.Drawing.Pen]::new($blue.Color,12)
+    $pen.StartCap = $pen.EndCap = [System.Drawing.Drawing2D.LineCap]::Round
+    $graphics.DrawEllipse($pen,12,12,120,120)
+    $graphics.DrawLine($pen,72,72,115,29)
+    $graphics.FillEllipse($mint,56,56,32,32)
+    $graphics.FillEllipse($mint,102,16,26,26)
     $stream = [System.IO.MemoryStream]::new()
     $bitmap.Save($stream,[System.Drawing.Imaging.ImageFormat]::Png)
     $images += ,@{Size=$size;Bytes=$stream.ToArray()}

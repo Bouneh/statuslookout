@@ -2,10 +2,10 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows;
 using Microsoft.Toolkit.Uwp.Notifications;
-using UptimeKite.Core;
+using StatusLookout.Core;
 using Forms = System.Windows.Forms;
 using Drawing = System.Drawing;
-namespace UptimeKite.Windows;
+namespace StatusLookout.Windows;
 
 public sealed class DesktopIntegration : IDisposable
 {
@@ -20,12 +20,12 @@ public sealed class DesktopIntegration : IDisposable
     {
         _show = show; _report = report;
         var menu = new Forms.ContextMenuStrip();
-        menu.Items.Add("Open UptimeKite", null, (_, _) => show());
-        menu.Items.Add("Refresh services", null, (_, _) => refresh());
-        menu.Items.Add("Pause / resume monitoring", null, (_, _) => togglePause());
+        menu.Items.Add(L.T("Open StatusLookout"), null, (_, _) => show());
+        menu.Items.Add(L.T("Refresh services"), null, (_, _) => refresh());
+        menu.Items.Add(L.T("Pause / resume monitoring"), null, (_, _) => togglePause());
         menu.Items.Add(new Forms.ToolStripSeparator());
-        menu.Items.Add("Quit UptimeKite", null, (_, _) => quit());
-        _tray = new Forms.NotifyIcon { Text = "UptimeKite", Icon = Drawing.SystemIcons.Information, Visible = true, ContextMenuStrip = menu };
+        menu.Items.Add(L.T("Quit StatusLookout"), null, (_, _) => quit());
+        _tray = new Forms.NotifyIcon { Text = "StatusLookout", Icon = Drawing.SystemIcons.Information, Visible = true, ContextMenuStrip = menu };
         _tray.MouseClick += (_, e) => { if (e.Button == Forms.MouseButtons.Left) show(); };
         _tray.BalloonTipClicked += (_, _) => show();
         try { _ = ToastNotificationManagerCompat.CreateToastNotifier(); _toastsReady = true; }
@@ -33,10 +33,10 @@ public sealed class DesktopIntegration : IDisposable
     }
     public void Show(ServiceItem service, StatusTransition change, bool sound)
     {
-        var title = service.Name + " · " + (change.Kind == AlertKind.Recovery ? "Back to normal" : change.Kind.ToString());
+        var title = service.Name + " · " + L.Alert(change.Kind);
         Send(title, change.Message, service.Id, sound);
     }
-    public void Test(bool sound) => Send("UptimeKite is listening", "Outage, degradation and recovery alerts will appear here.", "", sound);
+    public void Test(bool sound) => Send(L.T("StatusLookout is listening"), L.T("Outage, degradation and recovery alerts will appear here."), "", sound);
     private void Send(string title, string message, string serviceId, bool sound)
     {
         try
@@ -50,7 +50,7 @@ public sealed class DesktopIntegration : IDisposable
         catch
         {
             try { _tray.ShowBalloonTip(8000, title, message, Forms.ToolTipIcon.Info); LastDelivery = "tray balloon fallback"; }
-            catch (Exception ex) { _report("Windows could not display a notification: " + ex.Message); }
+            catch (Exception ex) { _report(L.T("Windows could not display a notification: ") + ex.Message); }
         }
     }
     public void Update(MainViewModel vm)
@@ -61,16 +61,22 @@ public sealed class DesktopIntegration : IDisposable
         using (var brush = new Drawing.SolidBrush(color))
         {
             g.SmoothingMode = Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            g.FillPolygon(brush, [new(16,2), new(29,13), new(16,25), new(3,13)]);
+            using var ring = new Drawing.Pen(color, 3);
+            g.DrawEllipse(ring, 3, 3, 26, 26);
+            g.FillEllipse(brush, 12, 12, 8, 8);
+            g.FillEllipse(brush, 23, 5, 6, 6);
             using var pen = new Drawing.Pen(color,2);
-            g.DrawLines(pen, [new(16,25),new(12,29),new(18,31)]);
+            g.DrawLine(pen, 16, 16, 26, 6);
         }
         var handle = bitmap.GetHicon();
         var next = (Drawing.Icon)Drawing.Icon.FromHandle(handle).Clone();
         DestroyIcon(handle);
         _tray.Icon = next;
         _statusIcon?.Dispose(); _statusIcon = next;
-        _tray.Text = vm.IsPaused ? "UptimeKite · paused" : $"UptimeKite · {vm.WatchedCount} watched · {vm.IssueCount} issues · {vm.UnknownCount} unavailable";
+        _tray.Text = vm.IsPaused ? L.T("StatusLookout · paused") : L.Format("StatusLookout · {0} watched · {1} issues · {2} unavailable", vm.WatchedCount, vm.IssueCount, vm.UnknownCount);
+        var menu = _tray.ContextMenuStrip!;
+        menu.Items[0].Text = L.T("Open StatusLookout"); menu.Items[1].Text = L.T("Refresh services");
+        menu.Items[2].Text = L.T("Pause / resume monitoring"); menu.Items[4].Text = L.T("Quit StatusLookout");
     }
     public static void OpenStatus(string url)
     {

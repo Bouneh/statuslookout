@@ -1,5 +1,5 @@
 using System.Text.Json.Serialization;
-namespace UptimeKite.Core;
+namespace StatusLookout.Core;
 
 public enum ServiceStatus { Unknown, Operational, Maintenance, Degraded, Outage }
 public enum AlertKind { Degraded, Outage, Recovery, Maintenance }
@@ -25,6 +25,8 @@ public sealed record ActivityEntry(string ServiceId, string ServiceName, Service
     AlertKind Kind, string Message, DateTimeOffset At);
 public sealed class Preferences
 {
+    public string Language { get; set; } = "en";
+    public string Theme { get; set; } = "dark";
     public HashSet<string> SelectedServices { get; set; } = ["statuspage.GitHub", "statuspage.Cloudflare", "statuspage.Discord", "extra.OpenAI", "extra.Slack"];
     public HashSet<string> MutedServices { get; set; } = [];
     public List<ServiceDefinition> CustomServices { get; set; } = [];
@@ -38,6 +40,8 @@ public sealed class Preferences
     public bool AlertOnFirstProblem { get; set; } = true;
     public void Normalize()
     {
+        Language = Language == "fr" ? "fr" : "en";
+        Theme = Theme == "light" ? "light" : "dark";
         PollSeconds = Math.Clamp(PollSeconds, 30, 900);
         SelectedServices ??= []; MutedServices ??= []; CustomServices ??= [];
         CustomServices = CustomServices.Where(s => { try { s.Validate(); return true; } catch { return false; } }).DistinctBy(s => s.Id).ToList();
@@ -60,7 +64,7 @@ public static class ServiceCatalog
 {
     public static IReadOnlyList<ServiceDefinition> Load()
     {
-        using var stream = typeof(ServiceCatalog).Assembly.GetManifestResourceStream("UptimeKite.Core.Catalog.services.json")
+        using var stream = typeof(ServiceCatalog).Assembly.GetManifestResourceStream("StatusLookout.Core.Catalog.services.json")
             ?? throw new InvalidDataException("The built-in service catalog is missing.");
         var services = System.Text.Json.JsonSerializer.Deserialize<List<ServiceDefinition>>(stream, JsonStore.Options)
             ?? throw new InvalidDataException("The service catalog is empty.");

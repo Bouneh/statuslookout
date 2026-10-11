@@ -1,0 +1,15 @@
+<Window x:Class="StatusLookout.Windows.CustomServiceWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ Title="{DynamicResource Ui051}" Width="530" Height="450" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" Background="{DynamicResource Palette22}" Foreground="{DynamicResource Palette1}" FontFamily="Segoe UI">
+ <Window.Resources><Style TargetType="TextBox"><Setter Property="Padding" Value="10,8"/><Setter Property="Margin" Value="0,6,0,16"/><Setter Property="Background" Value="{DynamicResource Palette0}"/><Setter Property="Foreground" Value="{DynamicResource Palette1}"/><Setter Property="CaretBrush" Value="{DynamicResource Palette1}"/></Style><Style TargetType="TextBlock"><Setter Property="Foreground" Value="{DynamicResource Palette1}"/></Style></Window.Resources>
+ <StackPanel Margin="26">
+  <TextBlock Text="{DynamicResource Ui052}" FontSize="20" FontWeight="SemiBold" Margin="0,0,0,20"/>
+  <TextBlock Text="{DynamicResource Ui053}"/><TextBox x:Name="ServiceName" AutomationProperties.Name="{DynamicResource Ui053}"/>
+  <TextBlock Text="{DynamicResource Ui054}"/><TextBox x:Name="StatusUrl" Text="https://" AutomationProperties.Name="{DynamicResource Ui055}"/>
+  <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="170"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+   <StackPanel><TextBlock Text="{DynamicResource Ui056}"/><ComboBox x:Name="Provider" SelectedIndex="0" Margin="0,8,16,16" Padding="8"><ComboBoxItem Content="{DynamicResource Ui057}" Tag="statuspage"/><ComboBoxItem Content="Instatus" Tag="instatus"/></ComboBox></StackPanel>
+   <StackPanel Grid.Column="1"><TextBlock Text="{DynamicResource Ui058}"/><TextBox x:Name="Components" AutomationProperties.Name="{DynamicResource Ui059}"/></StackPanel>
+  </Grid>
+  <TextBlock x:Name="Feedback" Text="{DynamicResource Ui060}" Foreground="{DynamicResource Palette2}" FontSize="11" TextWrapping="Wrap" Margin="0,0,0,18"/>
+  <Button x:Name="AddButton" Content="{DynamicResource Ui061}" Padding="14,10" HorizontalAlignment="Right" Click="AddClick"/>
+ </StackPanel>
+</Window>

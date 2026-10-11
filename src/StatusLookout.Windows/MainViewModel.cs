@@ -2,8 +2,8 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Data;
 using System.Windows.Threading;
-using UptimeKite.Core;
-namespace UptimeKite.Windows;
+using StatusLookout.Core;
+namespace StatusLookout.Windows;
 
 public sealed class MainViewModel : ObservableObject, IDisposable
 {
@@ -21,15 +21,17 @@ public sealed class MainViewModel : ObservableObject, IDisposable
     public ObservableCollection<ServiceItem> Watchlist { get; } = [];
     public ObservableCollection<ActivityItem> Activity { get; } = [];
     public ICollectionView LibraryView { get; }
-    public ObservableCollection<string> Categories { get; } = ["All categories"];
+    public ObservableCollection<string> Categories { get; } = [L.T("All categories")];
     public event Action? Updated;
     public MainViewModel(Action<ServiceItem, StatusTransition, bool> notify, bool demo = false)
     {
         IsDemo = demo;
         _notify = notify;
-        _store = new(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "UptimeKite"));
+        _store = new(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "StatusLookout"));
         _preferences = demo ? new() : _store.Load<Preferences>("preferences.json");
         _preferences.Normalize();
+        L.Apply(_preferences.Language, _preferences.Theme);
+        Categories[0] = _category = L.T("All categories");
         var state = demo ? new MonitorState() : _store.Load<MonitorState>("state.json");
         _tracker = new(state.LastKnown ?? []);
         foreach (var entry in (state.History ?? []).OrderByDescending(e => e.At).Take(300)) Activity.Add(new(entry));
@@ -45,6 +47,7 @@ public sealed class MainViewModel : ObservableObject, IDisposable
         _launchAtLogin = !demo && StartupService.IsEnabled;
         RebuildWatchlist();
         if (demo) SeedDemo();
+        L.Updated += AppearanceUpdated;
     }
     private void AddItem(ServiceDefinition service)
     {
@@ -62,25 +65,39 @@ public sealed class MainViewModel : ObservableObject, IDisposable
     }
     private bool _isRefreshing;
     public bool IsRefreshing { get => _isRefreshing; private set { _isRefreshing = value; Changed(); Changed(nameof(RefreshLabel)); Changed(nameof(SyncLabel)); } }
-    public string RefreshLabel => IsRefreshing ? "Checking…" : "Refresh now";
+    public string RefreshLabel => IsRefreshing ? L.T("Checking…") : L.T("Refresh now");
     private bool _isPaused;
     public bool IsPaused { get => _isPaused; private set { _isPaused = value; Changed(); Changed(nameof(PauseLabel)); Changed(nameof(SyncLabel)); } }
-    public string PauseLabel => IsPaused ? "Resume monitoring" : "Pause";
+    public string PauseLabel => IsPaused ? L.T("Resume monitoring") : L.T("Pause");
     private DateTimeOffset? _lastCheck;
-    public string SyncLabel => IsDemo ? "Demo preview · simulated states" : IsPaused ? "Monitoring paused" : IsRefreshing ? "Checking official status APIs…" : _lastCheck is null ? "Ready to monitor" : "Monitoring · synced " + _lastCheck.Value.ToLocalTime().ToString("HH:mm:ss");
+    public string SyncLabel => IsDemo ? L.T("Demo preview · simulated states") : IsPaused ? L.T("Monitoring paused") : IsRefreshing ? L.T("Checking official status APIs…") : _lastCheck is null ? L.T("Ready to monitor") : L.T("Monitoring · synced ") + _lastCheck.Value.ToLocalTime().ToString("HH:mm:ss");
     public int WatchedCount => Watchlist.Count;
     public int HealthyCount => Watchlist.Count(s => s.Status == ServiceStatus.Operational);
     public int IssueCount => Watchlist.Count(s => s.Status is ServiceStatus.Outage or ServiceStatus.Degraded or ServiceStatus.Maintenance);
     public int UnknownCount => Watchlist.Count(s => s.Status == ServiceStatus.Unknown);
     public int CatalogCount => AllServices.Count;
+    public string CatalogDescription => L.Format("{0} built-in and custom services. Select the ones you want to monitor.", CatalogCount);
+    public string Language { get => _preferences.Language; set { if (value is not ("en" or "fr") || value == Language) return; _preferences.Language = value; L.Apply(Language, Theme); SavePreferences(); } }
+    public string Theme { get => _preferences.Theme; set { if (value is not ("dark" or "light") || value == Theme) return; _preferences.Theme = value; L.Apply(Language, Theme); SavePreferences(); } }
+    private void AppearanceUpdated()
+    {
+        var all = Category == Categories[0];
+        var category = L.English(Category);
+        Categories.Clear(); Categories.Add(L.T("All categories"));
+        foreach (var name in AllServices.Select(s => s.Category).Distinct().Order()) Categories.Add(name);
+        Category = all ? Categories[0] : L.T(category);
+        foreach (var item in AllServices) item.RefreshAppearance();
+        foreach (var item in Activity) item.RefreshAppearance();
+        Changed(null); Updated?.Invoke();
+    }
     public bool IsWatchlistEmpty => Watchlist.Count == 0;
     public bool IsActivityEmpty => Activity.Count == 0;
-    public string OverallTitle => WatchedCount == 0 ? "Make room for your services." : IssueCount > 0 ? "A few signals need your attention." : UnknownCount > 0 ? "Some signals are still unconfirmed." : "All clear. Keep doing your thing.";
-    public string OverallDescription => WatchedCount == 0 ? "Pick your services from the library to begin." : IssueCount > 0 ? "Provider reports are listed below. Open a status page for the latest details." : UnknownCount > 0 ? "An unavailable check is not a confirmed outage. Your last known states are preserved." : "Your selected providers report normal operation. We'll alert you when that changes.";
-    private string _search = "", _category = "All categories";
+    public string OverallTitle => WatchedCount == 0 ? L.T("Make room for your services.") : IssueCount > 0 ? L.T("A few signals need your attention.") : UnknownCount > 0 ? L.T("Some signals are still unconfirmed.") : L.T("All clear. Keep doing your thing.");
+    public string OverallDescription => WatchedCount == 0 ? L.T("Pick your services from the library to begin.") : IssueCount > 0 ? L.T("Provider reports are listed below. Open a status page for the latest details.") : UnknownCount > 0 ? L.T("An unavailable check is not a confirmed outage. Your last known states are preserved.") : L.T("Your selected providers report normal operation. We'll alert you when that changes.");
+    private string _search = "", _category = L.T("All categories");
     public string Search { get => _search; set { _search = value; Changed(); LibraryView.Refresh(); } }
     public string Category { get => _category; set { _category = value; Changed(); LibraryView.Refresh(); } }
-    private bool FilterService(object value) => value is ServiceItem service && (Category == "All categories" || service.Category == Category)
+    private bool FilterService(object value) => value is ServiceItem service && (Category == L.T("All categories") || service.Category == Category)
         && (string.IsNullOrWhiteSpace(Search) || service.Name.Contains(Search.Trim(), StringComparison.OrdinalIgnoreCase) || service.Category.Contains(Search.Trim(), StringComparison.OrdinalIgnoreCase));
     private string _error = "";
     public string ErrorMessage { get => _error; private set { _error = value; Changed(); Changed(nameof(HasError)); } }
@@ -121,7 +138,7 @@ public sealed class MainViewModel : ObservableObject, IDisposable
             Changed(nameof(IsActivityEmpty));
         }
         catch (OperationCanceledException) when (_lifetime.IsCancellationRequested) { }
-        catch (Exception ex) { ErrorMessage = "The refresh could not finish: " + ex.Message; }
+        catch (Exception ex) { ErrorMessage = L.T("The refresh could not finish: ") + ex.Message; }
         finally { IsRefreshing = false; Updated?.Invoke(); }
         if (_refreshAgain && !_lifetime.IsCancellationRequested) { _refreshAgain = false; await RefreshAsync(); }
     }
@@ -156,12 +173,12 @@ public sealed class MainViewModel : ObservableObject, IDisposable
             AddItem(service);
             var item = AllServices.Last();
             item.Update(result, null);
-            if (!Categories.Contains("Custom services")) Categories.Add("Custom services");
+            if (!Categories.Contains(L.T("Custom services"))) Categories.Add(L.T("Custom services"));
             SavePreferences(); RebuildWatchlist(); Changed(nameof(CatalogCount)); LibraryView.Refresh();
             if (_started && !IsPaused) _ = RefreshAsync();
             return true;
         }
-        catch (Exception ex) { ErrorMessage = "This service could not be added: " + ex.Message; return false; }
+        catch (Exception ex) { ErrorMessage = L.T("This service could not be added: ") + ex.Message; return false; }
     }
     public void ClearActivity()
     {
@@ -171,13 +188,13 @@ public sealed class MainViewModel : ObservableObject, IDisposable
     {
         if (IsDemo) return;
         try { _store.Save("preferences.json", _preferences); }
-        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { ErrorMessage = "Preferences could not be saved: " + ex.Message; }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { ErrorMessage = L.T("Preferences could not be saved: ") + ex.Message; }
     }
     private void SaveState()
     {
         if (IsDemo) return;
         try { _store.Save("state.json", new MonitorState { LastKnown = _tracker.LastKnown, History = Activity.Select(a => a.Entry).Take(300).ToList() }); }
-        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { ErrorMessage = "History could not be saved: " + ex.Message; }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException) { ErrorMessage = L.T("History could not be saved: ") + ex.Message; }
     }
     private bool _launchAtLogin;
     public bool LaunchAtLogin
@@ -187,7 +204,7 @@ public sealed class MainViewModel : ObservableObject, IDisposable
         {
             if (IsDemo || _launchAtLogin == value) return;
             try { StartupService.SetEnabled(value); _launchAtLogin = value; Changed(); }
-            catch (Exception ex) { ErrorMessage = "Windows startup could not be updated: " + ex.Message; Changed(); }
+            catch (Exception ex) { ErrorMessage = L.T("Windows startup could not be updated: ") + ex.Message; Changed(); }
         }
     }
     public bool StartMinimized { get => _preferences.StartMinimized; set { _preferences.StartMinimized = value; SavePreferences(); Changed(); } }
@@ -227,6 +244,7 @@ public sealed class MainViewModel : ObservableObject, IDisposable
     }
     public void Dispose()
     {
+        L.Updated -= AppearanceUpdated;
         _timer.Stop(); _lifetime.Cancel(); _http.Dispose();
     }
 }

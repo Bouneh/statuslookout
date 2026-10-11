@@ -1,6 +1,6 @@
 # Security and privacy
 
-UptimeKite reads public HTTPS status APIs and stores configuration locally. It does not require credentials or administrator rights.
+StatusLookout reads public HTTPS status APIs and stores configuration locally. It does not require credentials or administrator rights.
 
 Do not include credentials, private URLs or personal data in public bug reports. To report a sensitive vulnerability, use the private vulnerability reporting option on this GitHub repository if enabled; otherwise contact the maintainer privately through an available GitHub profile contact channel.
 
