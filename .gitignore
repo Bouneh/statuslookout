@@ -10,3 +10,7 @@ artifacts/
 dotnet-install.ps1
 __pycache__/
 *.pyc
+node_modules/
+plugins/streamdeck/com.bouneh.statuslookout.sdPlugin/logs/
+plugins/streamdeck/com.bouneh.statuslookout.sdPlugin/LICENSE
+plugins/streamdeck/com.bouneh.statuslookout.sdPlugin/THIRD-PARTY-NOTICES.txt

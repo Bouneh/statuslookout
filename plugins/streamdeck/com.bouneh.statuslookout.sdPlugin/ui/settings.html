@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>StatusLookout</title>
+<style>
+ :root{color-scheme:dark;font:13px 'Segoe UI',sans-serif;color:#e8edf8;background:#262626}body{margin:18px}h1{font-size:19px;margin:0 0 7px}p{color:#b7c1d3;line-height:1.5}.signal{border:1px solid #4a5466;border-radius:9px;padding:12px;margin:15px 0}.online{border-color:#51dcc1}label{display:block;font-weight:600;margin:16px 0 7px}select,button{font:inherit;border:1px solid #586277;border-radius:6px;background:#333943;color:#edf2fc;padding:9px;box-sizing:border-box;width:100%}button{cursor:pointer;margin-top:12px}select:focus,button:focus{outline:2px solid #82aeff}.hint{font-size:12px}small{color:#95a4be}footer{margin-top:18px;font-size:11px;color:#95a4be}
+</style></head><body>
+<h1>StatusLookout</h1><p id="intro">Your services. One clear signal.</p>
+<div class="signal" id="connection">Connecting…</div>
+<label for="language" id="languageLabel">Language</label><select id="language"><option value="en">English</option><option value="fr">Français</option><option value="auto" id="autoLabel">Follow StatusLookout</option></select>
+<div id="serviceSection"><label for="service" id="serviceLabel">Monitored service</label><select id="service"></select><p class="hint" id="serviceHint">Choose services in StatusLookout first.</p></div>
+<div id="snoozeSection" hidden><label for="minutes" id="durationLabel">Snooze duration</label><select id="minutes"><option value="30" id="thirtyLabel">30 minutes</option><option value="60" id="hourLabel">1 hour</option></select><p class="hint" id="snoozeHint">Press again to end the temporary snooze. Monitoring continues.</p></div>
+<p class="hint" id="actionHint"></p><button id="open">Open StatusLookout</button><button id="reload">Reload services</button>
+<footer id="footer">Requires StatusLookout 0.5.0 or newer running on this PC.</footer>
+<script src="settings.js"></script></body></html>

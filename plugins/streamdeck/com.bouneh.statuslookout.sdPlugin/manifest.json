@@ -1,0 +1,89 @@
+{
+  "$schema": "https://schemas.elgato.com/streamdeck/plugins/manifest.json",
+  "UUID": "com.bouneh.statuslookout",
+  "Name": "StatusLookout",
+  "Author": "LAMOUREUX Fabien",
+  "Description": "Cloud service status, outage indicators and alert controls for StatusLookout on Windows.",
+  "Category": "StatusLookout",
+  "CategoryIcon": "imgs/category",
+  "Icon": "imgs/plugin",
+  "CodePath": "bin/plugin.mjs",
+  "Version": "0.1.0.0",
+  "SDKVersion": 3,
+  "Nodejs": {
+    "Version": "24"
+  },
+  "Software": {
+    "MinimumVersion": "7.1"
+  },
+  "OS": [
+    {
+      "Platform": "windows",
+      "MinimumVersion": "10"
+    }
+  ],
+  "URL": "https://github.com/Bouneh/statuslookout",
+  "PropertyInspectorPath": "ui/settings.html",
+  "Actions": [
+    {
+      "UUID": "com.bouneh.statuslookout.service",
+      "Name": "Service status",
+      "Icon": "imgs/service",
+      "Tooltip": "Show a monitored service. Press to open its status page.",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/service-key",
+          "ShowTitle": false
+        }
+      ]
+    },
+    {
+      "UUID": "com.bouneh.statuslookout.global",
+      "Name": "Overall status",
+      "Icon": "imgs/global",
+      "Tooltip": "Show all monitored services. Press to open StatusLookout.",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/global-key",
+          "ShowTitle": false
+        }
+      ]
+    },
+    {
+      "UUID": "com.bouneh.statuslookout.refresh",
+      "Name": "Refresh services",
+      "Icon": "imgs/refresh",
+      "Tooltip": "Check official status APIs now.",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/refresh-key",
+          "ShowTitle": false
+        }
+      ]
+    },
+    {
+      "UUID": "com.bouneh.statuslookout.snooze",
+      "Name": "Snooze service alerts",
+      "Icon": "imgs/snooze",
+      "Tooltip": "Snooze one service for 30 minutes or 1 hour. Press again to end the snooze.",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "imgs/snooze-key",
+          "ShowTitle": false
+        }
+      ]
+    }
+  ]
+}

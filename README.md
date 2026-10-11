@@ -36,6 +36,7 @@ StatusLookout keeps your selected services in the Windows system tray and alerts
 - **Clear unavailable states** for connection failures, timeouts and unreadable provider data.
 - **Portable executables** for x64, x86 and ARM64, with the .NET runtime included.
 - **No account or telemetry.** No central monitoring server.
+- **Stream Deck companion plugin**: live service logos and status, overview, refresh and alert snooze keys.
 
 ## Download activity
 
@@ -68,6 +69,21 @@ Get-FileHash .\StatusLookout-win-x64.exe -Algorithm SHA256
 ```
 
 Compare the result with the matching `SHA256SUMS-win-x64.txt` file.
+
+## Stream Deck
+
+[StatusLookout for Stream Deck](plugins/streamdeck/README.md) lives in this repository and is packaged automatically with app releases.
+
+Use **StatusLookout 0.5.0+** and **Stream Deck 7.1+** on the same Windows account. Install `StatusLookout-streamdeck-0.1.0.streamDeckPlugin` from the [latest release](https://github.com/Bouneh/statuslookout/releases/latest), then drag an action from the **StatusLookout** category onto a free key.
+
+| Key | Display / action |
+| --- | --- |
+| Service status | Logo and live status; press to open its status page |
+| Overall status | Watched, affected and unavailable counts; press to open the app |
+| Refresh services | Trigger a watchlist check |
+| Snooze service alerts | 30-minute / 1-hour snooze; press again to end it |
+
+Pick from your monitored services, including custom services such as Mailjet. Key settings offer English, French or the desktop app's language. The connection uses a Windows pipe restricted to your account, with no HTTP listener or duplicate provider polling. If the app is closed, keys show **Offline** and reconnect automatically. These are display-key actions; dials and pedals are not supported.
 
 ## Language and appearance
 
@@ -198,8 +214,8 @@ dotnet run --project tests/StatusLookout.Tests -- --audit
 [The release workflow](.github/workflows/release.yml) publishes all three architectures on a `v*` tag or a manual workflow run. Tag runs create a GitHub release with executables, checksums and license notices. No external signing credentials are required.
 
 ```powershell
-git tag v0.4.0
-git push origin v0.4.0
+git tag v0.5.0
+git push origin v0.5.0
 ```
 
 An x64 machine can build all architectures. Native x86 and ARM64 runtime testing still requires suitable hardware.

@@ -1,0 +1,16 @@
+import { spawnSync } from 'node:child_process';
+import { mkdir, readFile, copyFile, writeFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+const root = fileURLToPath(new URL('../',import.meta.url));
+const output = resolve(root,'../../artifacts'); await mkdir(output,{recursive:true});
+const result=spawnSync(process.execPath,[resolve(root,'node_modules/@elgato/cli/bin/streamdeck.mjs'),'pack',resolve(root,'com.bouneh.statuslookout.sdPlugin'),'--output',output,'--force','--no-file-list','--no-update-check'],{stdio:'inherit'});
+if(result.error) throw result.error;
+if(result.status!==0) process.exit(result.status??1);
+const {version}=JSON.parse(await readFile(resolve(root,'package.json'),'utf8'));
+const name=`StatusLookout-streamdeck-${version}.streamDeckPlugin`;
+await copyFile(resolve(output,'com.bouneh.statuslookout.streamDeckPlugin'),resolve(output,name));
+const digest=createHash('sha256').update(await readFile(resolve(output,name))).digest('hex');
+await writeFile(resolve(output,'SHA256SUMS-streamdeck.txt'),`${digest}  ${name}\n`);
+console.log(`Packaged ${name}`);

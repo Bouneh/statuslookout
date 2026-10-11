@@ -7,6 +7,23 @@ on:
 permissions:
   contents: read
 jobs:
+  streamdeck:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: plugins/streamdeck
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: plugins/streamdeck/package-lock.json
+      - run: npm ci --no-audit --no-fund
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+      - run: npm run validate
   windows:
     runs-on: windows-latest
     env:

@@ -1,0 +1,8 @@
+{
+  "Name": "StatusLookout",
+  "Description": "États des services cloud et commandes d’alertes pour StatusLookout sous Windows.",
+  "com.bouneh.statuslookout.service": {"Name": "Statut d’un service", "Tooltip": "Affiche un service suivi. Un appui ouvre sa page de statut."},
+  "com.bouneh.statuslookout.global": {"Name": "État global", "Tooltip": "Affiche les services suivis. Un appui ouvre StatusLookout."},
+  "com.bouneh.statuslookout.refresh": {"Name": "Actualiser les services", "Tooltip": "Vérifie maintenant les API officielles de statut."},
+  "com.bouneh.statuslookout.snooze": {"Name": "Suspendre les alertes d’un service", "Tooltip": "Suspend les alertes pendant 30 minutes ou 1 heure. Un nouvel appui termine la suspension."}
+}

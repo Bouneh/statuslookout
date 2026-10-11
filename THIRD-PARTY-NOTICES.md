@@ -46,3 +46,7 @@ MIT-licensed Windows Community Toolkit notification library, version 7.1.3. Sour
 Self-contained releases also distribute the .NET and Windows Desktop runtimes. Their original license files and .NET third-party notices are included as separate release assets, along with the notification library's original MIT license.
 
 Service names remain the property of their respective owners. StatusLookout is not affiliated with those providers.
+
+## Stream Deck companion
+
+The plugin uses the MIT-licensed official Elgato SDK (`@elgato/streamdeck`, `@elgato/utils`, `@elgato/schemas`) and the MIT-licensed `ws` library. Exact versions are pinned in `plugins/streamdeck/package-lock.json`. Their original license texts are included inside the `.streamDeckPlugin` package as `THIRD-PARTY-NOTICES.txt`. Source: https://github.com/elgatosf/streamdeck and https://github.com/websockets/ws.

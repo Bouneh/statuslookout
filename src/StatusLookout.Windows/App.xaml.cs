@@ -14,6 +14,7 @@ public partial class App : System.Windows.Application
     private RegisteredWaitHandle? _waitHandle;
     private MainViewModel? _vm;
     private DesktopIntegration? _desktop;
+    private StatusLookout.Core.LocalBridgeServer? _bridge;
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
@@ -59,6 +60,8 @@ public partial class App : System.Windows.Application
             MainWindow = new ComponentPickerWindow(_vm, _vm.AllServices.Single(s => s.Id == "extra.GoogleCloud"));
         if (preview is null)
         {
+            if (smoke is null) _bridge = new(StatusLookout.Core.StreamDeckProtocol.PipeName(Environment.UserDomainName, Environment.UserName),
+                (request, token) => Dispatcher.InvokeAsync(() => HandleStreamDeck(request), DispatcherPriority.Normal, token).Task);
             _desktop = new(ShowDashboard, Shutdown, () => _ = _vm.RefreshAsync(), _vm.TogglePause, _vm.ReportError);
             _vm.Updated += () => _desktop.Update(_vm);
             _desktop.Update(_vm);
@@ -180,6 +183,19 @@ public partial class App : System.Windows.Application
             ComponentScope = scoped, PreferenceImport = imported, DefaultRestored = defaultRestored, GoogleProducts = products.Count, MailjetLogo = mailjetLogo, StatuspageComponents = statuspageComponents };
     }
     public void TestNotification() => _desktop?.Test(_vm?.NotificationSound ?? true);
+    private StatusLookout.Core.BridgeSnapshot HandleStreamDeck(StatusLookout.Core.BridgeRequest request)
+    {
+        var vm = _vm!;
+        if (request.Command == "openDashboard") ShowDashboard();
+        else if (request.Command == "refresh") _ = vm.RefreshAsync();
+        else if (request.Command is "openService" or "snooze")
+        {
+            var service = vm.Watchlist.FirstOrDefault(s => s.Id == request.ServiceId) ?? throw new InvalidDataException("This service is not monitored.");
+            if (request.Command == "openService") DesktopIntegration.OpenStatus(service.Definition.StatusUrl);
+            else vm.Snooze(service, request.Minutes);
+        }
+        return vm.StreamDeckSnapshot();
+    }
     public void ShowDashboard()
     {
         if (MainWindow is null) return;
@@ -187,7 +203,7 @@ public partial class App : System.Windows.Application
     }
     protected override void OnExit(ExitEventArgs e)
     {
-        _vm?.Dispose(); _desktop?.Dispose(); _waitHandle?.Unregister(null); _activation?.Dispose(); _mutex?.Dispose();
+        _bridge?.Dispose(); _vm?.Dispose(); _desktop?.Dispose(); _waitHandle?.Unregister(null); _activation?.Dispose(); _mutex?.Dispose();
         base.OnExit(e);
     }
 }

@@ -1,0 +1,20 @@
+{
+  "name": "statuslookout-streamdeck",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Stream Deck companion for StatusLookout on Windows",
+  "license": "MIT",
+  "type": "module",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test tests/*.test.mjs",
+    "validate": "streamdeck validate com.bouneh.statuslookout.sdPlugin",
+    "pack": "node scripts/package.mjs",
+    "link": "streamdeck link com.bouneh.statuslookout.sdPlugin",
+    "restart": "streamdeck restart com.bouneh.statuslookout"
+  },
+  "dependencies": { "@elgato/streamdeck": "^3.0.0" },
+  "devDependencies": { "@elgato/cli": "^1.0.0", "@types/node": "^24.0.0", "esbuild": "^0.25.0", "typescript": "^5.9.0" }
+}
