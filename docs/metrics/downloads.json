@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "repository": "Bouneh/statuslookout",
+  "tracking_started_at": "2026-10-11T21:39:47Z",
+  "assets": {
+    "631859474": {
+      "count": 0,
+      "runtime": "arm64",
+      "name": "StatusLookout-win-arm64.exe",
+      "last_seen": "2026-10-11T21:39:47Z"
+    },
+    "631859483": {
+      "count": 0,
+      "runtime": "x64",
+      "name": "StatusLookout-win-x64.exe",
+      "last_seen": "2026-10-11T21:39:47Z"
+    },
+    "631859484": {
+      "count": 0,
+      "runtime": "x86",
+      "name": "StatusLookout-win-x86.exe",
+      "last_seen": "2026-10-11T21:39:47Z"
+    },
+    "631824360": {
+      "count": 0,
+      "runtime": "arm64",
+      "name": "StatusLookout-win-arm64.exe",
+      "last_seen": "2026-10-11T21:39:47Z"
+    },
+    "631824363": {
+      "count": 1,
+      "runtime": "x64",
+      "name": "StatusLookout-win-x64.exe",
+      "last_seen": "2026-10-11T21:39:47Z"
+    },
+    "631824367": {
+      "count": 0,
+      "runtime": "x86",
+      "name": "StatusLookout-win-x86.exe",
+      "last_seen": "2026-10-11T21:39:47Z"
+    },
+    "631790476": {
+      "count": 1,
+      "runtime": "arm64",
+      "name": "UptimeKite-win-arm64.exe",
+      "last_seen": "2026-10-11T21:39:47Z"
+    },
+    "631790483": {
+      "count": 0,
+      "runtime": "x64",
+      "name": "UptimeKite-win-x64.exe",
+      "last_seen": "2026-10-11T21:39:47Z"
+    },
+    "631790485": {
+      "count": 0,
+      "runtime": "x86",
+      "name": "UptimeKite-win-x86.exe",
+      "last_seen": "2026-10-11T21:39:47Z"
+    }
+  },
+  "months": {
+    "2026-10": {
+      "x64": 1,
+      "x86": 0,
+      "arm64": 1,
+      "samples": 1
+    }
+  },
+  "before_tracking": 0,
+  "last_observed_at": "2026-10-11T21:39:47Z",
+  "github_total": 2,
+  "stable_release_count": 3
+}

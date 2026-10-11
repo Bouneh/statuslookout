@@ -8,6 +8,12 @@ StatusLookout est une application Windows native qui surveille les pages de stat
 
 *Capture de l'application en mode démonstration, avec incidents simulés.*
 
+## Téléchargements par mois
+
+![Téléchargements mensuels des exécutables Windows par architecture](../assets/downloads-monthly.svg)
+
+Le graphique et le badge sont actualisés automatiquement chaque jour et après les publications Windows. Ils comptent les téléchargements des `.exe` des versions stables, y compris les premières versions UptimeKite, et non les utilisateurs uniques. Le suivi mensuel commence en octobre 2026 : GitHub fournit des compteurs cumulés, sans historique daté des téléchargements. Les mois antérieurs ne sont donc pas reconstitués. Consulte la [méthode de comptage et les données publiques](metrics/README.md).
+
 ## Télécharger
 
 Choisis ton architecture dans la [dernière version](https://github.com/Bouneh/statuslookout/releases/latest) :
@@ -49,6 +55,17 @@ Ouvre le dossier du téléchargement, quitte l’application puis remplace l’a
 ![À propos et mises à jour](../assets/about-fr-light.png)
 
 Les **461 entrées** du catalogue affichent désormais un logo intégré. Les produits Google Cloud et Firebase ainsi que les régions Sendbird partagent le logo de leur plateforme. Les services personnalisés sans logo connu affichent leurs initiales. L’affichage des logos fonctionne sans requête réseau supplémentaire.
+
+## Idées pour la suite
+
+Ces fonctionnalités sont proposées et **ne sont pas encore implémentées** :
+
+- **Profils de services** : travail, personnel et développement.
+- **Alertes regroupées** : une notification pour plusieurs services touchés par le même incident.
+- **Installation des mises à jour en un clic**, avec vérification et conservation des préférences.
+- **Pause temporaire des alertes** et **import/export de la liste des services**.
+
+La [feuille de route](../ROADMAP.md) contient les priorités et d’autres idées. Les suggestions sont les bienvenues dans les [issues GitHub](https://github.com/Bouneh/statuslookout/issues).
 
 ## Développement
 

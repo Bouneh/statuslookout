@@ -8,3 +8,5 @@ artifacts/
 *.user
 *.suo
 dotnet-install.ps1
+__pycache__/
+*.pyc

@@ -7,9 +7,10 @@
     <a href="https://github.com/Bouneh/statuslookout/releases/latest"><img src="https://img.shields.io/github/v/release/Bouneh/statuslookout?color=456fe3" alt="Latest release"></a>
     <a href="https://github.com/Bouneh/statuslookout/actions/workflows/ci.yml"><img src="https://github.com/Bouneh/statuslookout/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-56dcb8" alt="MIT license"></a>
+    <a href="#download-activity"><img src="assets/downloads-badge.svg" alt="Windows executable downloads"></a>
     <img src="https://img.shields.io/badge/Windows-x64%20%7C%20x86%20%7C%20ARM64-82aeff" alt="Windows architectures">
   </p>
-  <p><a href="#download">Download</a> · <a href="#how-it-works">How it works</a> · <a href="#build-from-source">Build</a> · <a href="CONTRIBUTING.md">Contribute</a> · <a href="docs/README.fr.md">Français</a></p>
+  <p><a href="#download">Download</a> · <a href="#download-activity">Statistics</a> · <a href="#how-it-works">How it works</a> · <a href="ROADMAP.md">Roadmap</a> · <a href="#build-from-source">Build</a> · <a href="CONTRIBUTING.md">Contribute</a> · <a href="docs/README.fr.md">Français</a></p>
 </div>
 
 ![StatusLookout Windows dashboard](assets/screenshot.png)
@@ -33,6 +34,12 @@ StatusLookout keeps your selected services in the Windows system tray and alerts
 - **Clear unavailable states** for connection failures, timeouts and unreadable provider data.
 - **Portable executables** for x64, x86 and ARM64, with the .NET runtime included.
 - **No account or telemetry.** No central monitoring server.
+
+## Download activity
+
+![Monthly Windows executable downloads by architecture](assets/downloads-monthly.svg)
+
+Updated automatically every day and after Windows releases. Counts cover stable Windows `.exe` downloads, including the early UptimeKite releases; they do not represent unique users. Monthly activity is collected from changes in GitHub's download counters, starting in October 2026. Earlier monthly history is unavailable. See the [counting method and public data](docs/metrics/README.md).
 
 ## Download
 
@@ -188,6 +195,17 @@ git push origin v0.3.0
 ```
 
 An x64 machine can build all architectures. Native x86 and ARM64 runtime testing still requires suitable hardware.
+
+## What's next?
+
+Proposed improvements — these features are **not implemented yet**:
+
+- **Service profiles** to switch between work, personal and development watchlists.
+- **Grouped incident alerts** to reduce repeated notifications when several services share an outage.
+- **One-click update installation** with verified downloads and preserved preferences.
+- **Temporary alert snoozing** and **watchlist import/export**.
+
+See the [roadmap](ROADMAP.md) for priorities and more ideas. Suggest or discuss features in [GitHub Issues](https://github.com/Bouneh/statuslookout/issues).
 
 ## Contributing
 
