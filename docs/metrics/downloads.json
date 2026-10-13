@@ -7,109 +7,109 @@
       "count": 0,
       "runtime": "arm64",
       "name": "StatusLookout-win-arm64.exe",
-      "last_seen": "2026-10-12T05:56:23Z"
+      "last_seen": "2026-10-13T06:46:48Z"
     },
     "631859483": {
       "count": 1,
       "runtime": "x64",
       "name": "StatusLookout-win-x64.exe",
-      "last_seen": "2026-10-12T05:56:23Z"
+      "last_seen": "2026-10-13T06:46:48Z"
     },
     "631859484": {
       "count": 0,
       "runtime": "x86",
       "name": "StatusLookout-win-x86.exe",
-      "last_seen": "2026-10-12T05:56:23Z"
+      "last_seen": "2026-10-13T06:46:48Z"
     },
     "631824360": {
       "count": 0,
       "runtime": "arm64",
       "name": "StatusLookout-win-arm64.exe",
-      "last_seen": "2026-10-12T05:56:23Z"
+      "last_seen": "2026-10-13T06:46:48Z"
     },
     "631824363": {
       "count": 1,
       "runtime": "x64",
       "name": "StatusLookout-win-x64.exe",
-      "last_seen": "2026-10-12T05:56:23Z"
+      "last_seen": "2026-10-13T06:46:48Z"
     },
     "631824367": {
       "count": 0,
       "runtime": "x86",
       "name": "StatusLookout-win-x86.exe",
-      "last_seen": "2026-10-12T05:56:23Z"
+      "last_seen": "2026-10-13T06:46:48Z"
     },
     "631790476": {
       "count": 1,
       "runtime": "arm64",
       "name": "UptimeKite-win-arm64.exe",
-      "last_seen": "2026-10-12T05:56:23Z"
+      "last_seen": "2026-10-13T06:46:48Z"
     },
     "631790483": {
       "count": 0,
       "runtime": "x64",
       "name": "UptimeKite-win-x64.exe",
-      "last_seen": "2026-10-12T05:56:23Z"
+      "last_seen": "2026-10-13T06:46:48Z"
     },
     "631790485": {
       "count": 0,
       "runtime": "x86",
       "name": "UptimeKite-win-x86.exe",
-      "last_seen": "2026-10-12T05:56:23Z"
+      "last_seen": "2026-10-13T06:46:48Z"
     },
     "631922364": {
       "count": 0,
       "runtime": "arm64",
       "name": "StatusLookout-win-arm64.exe",
-      "last_seen": "2026-10-12T05:56:23Z"
+      "last_seen": "2026-10-13T06:46:48Z"
     },
     "631922368": {
       "count": 1,
       "runtime": "x64",
       "name": "StatusLookout-win-x64.exe",
-      "last_seen": "2026-10-12T05:56:23Z"
+      "last_seen": "2026-10-13T06:46:48Z"
     },
     "631922365": {
       "count": 0,
       "runtime": "x86",
       "name": "StatusLookout-win-x86.exe",
-      "last_seen": "2026-10-12T05:56:23Z"
+      "last_seen": "2026-10-13T06:46:48Z"
     },
     "631982835": {
       "count": 0,
       "runtime": "arm64",
       "name": "StatusLookout-win-arm64.exe",
-      "last_seen": "2026-10-12T05:56:23Z"
+      "last_seen": "2026-10-13T06:46:48Z"
     },
     "631982842": {
       "count": 0,
       "runtime": "x64",
       "name": "StatusLookout-win-x64.exe",
-      "last_seen": "2026-10-12T05:56:23Z"
+      "last_seen": "2026-10-13T06:46:48Z"
     },
     "631982846": {
       "count": 0,
       "runtime": "x86",
       "name": "StatusLookout-win-x86.exe",
-      "last_seen": "2026-10-12T05:56:23Z"
+      "last_seen": "2026-10-13T06:46:48Z"
     },
     "631998084": {
       "count": 0,
       "runtime": "arm64",
       "name": "StatusLookout-win-arm64.exe",
-      "last_seen": "2026-10-12T05:56:23Z"
+      "last_seen": "2026-10-13T06:46:48Z"
     },
     "631998093": {
       "count": 1,
       "runtime": "x64",
       "name": "StatusLookout-win-x64.exe",
-      "last_seen": "2026-10-12T05:56:23Z"
+      "last_seen": "2026-10-13T06:46:48Z"
     },
     "631998092": {
       "count": 0,
       "runtime": "x86",
       "name": "StatusLookout-win-x86.exe",
-      "last_seen": "2026-10-12T05:56:23Z"
+      "last_seen": "2026-10-13T06:46:48Z"
     }
   },
   "months": {
@@ -117,11 +117,11 @@
       "x64": 4,
       "x86": 0,
       "arm64": 1,
-      "samples": 6
+      "samples": 7
     }
   },
   "before_tracking": 0,
-  "last_observed_at": "2026-10-12T05:56:23Z",
+  "last_observed_at": "2026-10-13T06:46:48Z",
   "github_total": 5,
   "stable_release_count": 6
 }
