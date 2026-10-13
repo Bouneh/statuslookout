@@ -666,8 +666,8 @@
   },
   {
     "key": "UpdatesExplanation",
-    "en": "Checks the official GitHub releases when you click. Downloads the stable executable for your Windows architecture and verifies its checksum before saving it in Downloads.",
-    "fr": "Consulte les releases GitHub officielles à votre demande. Télécharge l’exécutable stable adapté à votre Windows et vérifie son intégrité avant de l’enregistrer dans Téléchargements."
+    "en": "Checks the official GitHub releases automatically or on request. Offers the stable executable for your Windows architecture and verifies its checksum before saving it in Downloads.",
+    "fr": "Vérifie les releases GitHub officielles automatiquement ou à la demande. Propose l’exécutable stable adapté à votre Windows et vérifie son intégrité avant de l’enregistrer dans Téléchargements."
   },
   {
     "key": "ViewRelease",
@@ -983,5 +983,175 @@
     "key": "MoreServices",
     "en": "and {0} more",
     "fr": "et {0} autres"
+  },
+  {
+    "key": "StartupAbsolute",
+    "en": "Windows startup requires an absolute executable path.",
+    "fr": "Le démarrage Windows nécessite un chemin absolu vers un exécutable."
+  },
+  {
+    "key": "StartupTooLong",
+    "en": "The executable path is too long for Windows startup.",
+    "fr": "Le chemin de l’exécutable est trop long pour le démarrage Windows."
+  },
+  {
+    "key": "StartupPackaged",
+    "en": "Launch the packaged StatusLookout executable before enabling Windows startup.",
+    "fr": "Lance l’exécutable StatusLookout avant d’activer le démarrage Windows."
+  },
+  {
+    "key": "AwsServicesCategory",
+    "en": "AWS services",
+    "fr": "Services AWS"
+  },
+  {
+    "key": "AwsRegionsCategory",
+    "en": "AWS regions",
+    "fr": "Régions AWS"
+  },
+  {
+    "key": "AwsScopeExplanation",
+    "en": "Choose AWS products and regions. Products and regions are combined to narrow the scope. No selection monitors all AWS public events.",
+    "fr": "Choisis les produits et régions AWS. Les produits et régions sont combinés pour restreindre la surveillance. Sans sélection, tous les événements publics AWS sont suivis."
+  },
+  {
+    "key": "ExpandFamilies",
+    "en": "Expand all",
+    "fr": "Tout déplier"
+  },
+  {
+    "key": "CollapseFamilies",
+    "en": "Collapse all",
+    "fr": "Tout replier"
+  },
+  {
+    "key": "FamilySelectionHint",
+    "en": "Select a whole family, or expand it to choose individual services.",
+    "fr": "Coche une famille entière ou déplie-la pour choisir ses services."
+  },
+  {
+    "key": "NoMatchingServices",
+    "en": "No services match your search.",
+    "fr": "Aucun service ne correspond à la recherche."
+  },
+  {
+    "key": "FamilySelectedCount",
+    "en": "{0} of {1} selected",
+    "fr": "{0} sur {1} sélectionnés"
+  },
+  {
+    "key": "FamilySelectionTooltip",
+    "en": "Select or deselect every service in this family, including those hidden by search.",
+    "fr": "Sélectionner ou désélectionner tous les services de cette famille, même ceux masqués par la recherche."
+  },
+  {
+    "key": "OfficialProviderStatus",
+    "en": "Official provider status",
+    "fr": "Statut officiel du fournisseur"
+  },
+  {
+    "key": "ActiveList",
+    "en": "List",
+    "fr": "Liste"
+  },
+  {
+    "key": "NewList",
+    "en": "New list",
+    "fr": "Nouvelle liste"
+  },
+  {
+    "key": "RenameList",
+    "en": "Rename",
+    "fr": "Renommer"
+  },
+  {
+    "key": "DeleteList",
+    "en": "Delete",
+    "fr": "Supprimer"
+  },
+  {
+    "key": "ListHint",
+    "en": "Only the active list is monitored. Alert settings and custom services are shared.",
+    "fr": "Seule la liste active est surveillée. Les réglages d’alerte et les services personnalisés sont partagés."
+  },
+  {
+    "key": "Work",
+    "en": "Work",
+    "fr": "Travail"
+  },
+  {
+    "key": "Personal",
+    "en": "Personal",
+    "fr": "Personnel"
+  },
+  {
+    "key": "ListName",
+    "en": "List name",
+    "fr": "Nom de la liste"
+  },
+  {
+    "key": "SaveList",
+    "en": "Save list",
+    "fr": "Enregistrer la liste"
+  },
+  {
+    "key": "RenameListTitle",
+    "en": "Rename list",
+    "fr": "Renommer la liste"
+  },
+  {
+    "key": "DeleteListTitle",
+    "en": "Delete list",
+    "fr": "Supprimer la liste"
+  },
+  {
+    "key": "DeleteListConfirm",
+    "en": "Delete this list? Its services remain available in the catalog.",
+    "fr": "Supprimer cette liste ? Ses services restent disponibles dans le catalogue."
+  },
+  {
+    "key": "ListNameHint",
+    "en": "Choose the services for this list in the catalog.",
+    "fr": "Choisis les services de cette liste dans le catalogue."
+  },
+  {
+    "key": "InvalidListName",
+    "en": "Choose a list name between 1 and 48 characters.",
+    "fr": "Choisis un nom de liste de 1 à 48 caractères."
+  },
+  {
+    "key": "DuplicateListName",
+    "en": "A list with this name already exists.",
+    "fr": "Une liste porte déjà ce nom."
+  },
+  {
+    "key": "ViewUpdate",
+    "en": "View update",
+    "fr": "Voir la mise à jour"
+  },
+  {
+    "key": "AutomaticUpdates",
+    "en": "Automatically check for updates",
+    "fr": "Vérifier automatiquement les mises à jour"
+  },
+  {
+    "key": "AutomaticUpdatesHint",
+    "en": "Check after launch and every 24 hours. Notify once per new version, then offer a download.",
+    "fr": "Vérification après le lancement puis toutes les 24 heures. Une notification par nouvelle version, suivie d’une proposition de téléchargement."
+  },
+  {
+    "key": "UpdateAvailableMessage",
+    "en": "StatusLookout {0} is available.",
+    "fr": "StatusLookout {0} est disponible."
+  },
+  {
+    "key": "UpdateAvailableTitle",
+    "en": "A StatusLookout update is available",
+    "fr": "Une mise à jour de StatusLookout est disponible"
+  },
+  {
+    "key": "UpdateAvailableBody",
+    "en": "Version {0} is ready to download.",
+    "fr": "La version {0} est prête à être téléchargée."
   }
 ]

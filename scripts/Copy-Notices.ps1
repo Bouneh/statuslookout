@@ -27,3 +27,4 @@ foreach ($notice in $notices) {
     $source=Find-PackageFile $notice.Package $notice.Source
     Copy-Item -LiteralPath $source -Destination (Join-Path $destination $notice.Target) -Force
 }
+Copy-Item -LiteralPath (Join-Path $projectRoot 'docs/LICENSE-html-agility-pack.txt') -Destination (Join-Path $destination 'LICENSE-html-agility-pack.txt') -Force

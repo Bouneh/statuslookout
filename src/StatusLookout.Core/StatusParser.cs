@@ -4,11 +4,17 @@ namespace StatusLookout.Core;
 /// <summary>Parses published status data; HTTP success alone is never treated as healthy.</summary>
 public static class StatusParser
 {
-    public static readonly HashSet<string> Providers = ["statuspage", "instatus", "statusio", "google", "slack"];
+    public static readonly HashSet<string> Providers = ["statuspage", "instatus", "statusio", "google", "slack", "aws", .. AdditionalStatusProviders.Providers];
     public static ServiceSnapshot Parse(ServiceDefinition service, string json, DateTimeOffset? now = null)
     {
+        if (AdditionalStatusProviders.Providers.Contains(service.Provider)) return AdditionalStatusProviders.Parse(service, json, now ?? DateTimeOffset.UtcNow);
         using var document = JsonDocument.Parse(json);
         var root = document.RootElement;
+        if (service.Provider == "aws")
+        {
+            var aws = AwsStatus.Parse(root, service.Components);
+            return new(service.Id, aws.Status, aws.Message, now ?? DateTimeOffset.UtcNow, aws.Identity);
+        }
         var (status, message) = service.Provider switch
         {
             "statuspage" => Statuspage(root, service.Components),

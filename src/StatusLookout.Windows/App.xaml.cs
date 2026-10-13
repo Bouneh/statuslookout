@@ -41,6 +41,9 @@ public partial class App : System.Windows.Application
         MainWindow = new MainWindow(_vm);
         if (demo && e.Args.Contains("--about")) ((MainWindow)MainWindow).ShowAbout();
         if (demo && e.Args.Contains("--settings")) ((MainWindow)MainWindow).ShowPreferences();
+        if (demo && e.Args.Contains("--library")) { ((MainWindow)MainWindow).ShowLibrary(); if(e.Args.Contains("--google")) _vm.Search="Google"; }
+        if (demo && e.Args.Contains("--compact")) {MainWindow.Width=940;MainWindow.Height=670;}
+        if (demo && e.Args.Contains("--collapsed")) _vm.ExpandFamilies(false);
         if (features is not null)
         {
             MainWindow.Loaded += async (_, _) =>
@@ -64,6 +67,7 @@ public partial class App : System.Windows.Application
                 (request, token) => Dispatcher.InvokeAsync(() => HandleStreamDeck(request), DispatcherPriority.Normal, token).Task);
             _desktop = new(ShowDashboard, Shutdown, () => _ = _vm.RefreshAsync(), _vm.TogglePause, _vm.ReportError);
             _vm.Updated += () => _desktop.Update(_vm);
+            _vm.UpdateAvailable+=(update)=>_desktop.ShowUpdate(update,()=>{ShowDashboard();if(MainWindow is MainWindow window)window.ShowAbout();},_vm.NotificationSound);
             _desktop.Update(_vm);
             ToastNotificationManagerCompat.OnActivated += args =>
             {
@@ -71,6 +75,8 @@ public partial class App : System.Windows.Application
                 {
                     ShowDashboard();
                     var values = ToastArguments.Parse(args.Argument);
+                    if(values.TryGetValue("page",out var page)&&page=="updates"&&MainWindow is MainWindow updateWindow)updateWindow.ShowAbout();
+                    if(values.TryGetValue("action",out var action)&&action=="download-update") _=DownloadFromNotificationAsync();
                     if (values.TryGetValue("service", out var id))
                     {
                         var service = _vm.AllServices.FirstOrDefault(s => s.Id == id);
@@ -152,6 +158,10 @@ public partial class App : System.Windows.Application
         await Dispatcher.InvokeAsync(() => { }, DispatcherPriority.ContextIdle);
         ((System.Windows.Controls.MenuItem)menu.Items[0]).RaiseEvent(new RoutedEventArgs(System.Windows.Controls.MenuItem.ClickEvent));
         var menuVerified = service.IsSnoozed; menu.IsOpen = false;
+        var openaiItem=vm.AllServices.Single(s=>s.Id=="extra.OpenAI");target.Tag=openaiItem;menu.IsOpen=true;
+        await Dispatcher.InvokeAsync(()=>{},DispatcherPriority.ContextIdle);
+        var openaiComponentsEnabled=((System.Windows.Controls.MenuItem)menu.Items[4]).IsEnabled&&openaiItem.SupportsComponents;
+        menu.IsOpen=false;if(!openaiComponentsEnabled)throw new InvalidOperationException("OpenAI component picker is disabled.");
         vm.Snooze(service, 30); var thirty = service.IsSnoozed && service.SnoozedUntil > DateTimeOffset.UtcNow.AddMinutes(29);
         vm.Language = "fr"; var frenchSnooze = service.SnoozeLabel.StartsWith("Alertes suspendues");
         vm.Snooze(service, 60); var hour = service.SnoozedUntil > DateTimeOffset.UtcNow.AddMinutes(59);
@@ -165,6 +175,58 @@ public partial class App : System.Windows.Application
         var google = vm.AllServices.Single(s => s.Id == "extra.GoogleCloud");
         var products = await vm.GetComponentsAsync(google, CancellationToken.None);
         var googlePicker = products.Count > 200;
+        vm.Search="Google";var googleFamily=vm.LibraryFamilies.Single(g=>g.Name=="Google");
+        var hierarchy=googleFamily.HasChildren&&googleFamily.IsExpanded&&googleFamily.VisibleMembers.Count>200;
+        ((MainWindow)MainWindow).ShowLibrary();await Dispatcher.InvokeAsync(()=>{},DispatcherPriority.ContextIdle);MainWindow.UpdateLayout();
+        IEnumerable<DependencyObject> Descendants(DependencyObject root)
+        {
+            for(var i=0;i<VisualTreeHelper.GetChildrenCount(root);i++) {var child=VisualTreeHelper.GetChild(root,i);yield return child;foreach(var nested in Descendants(child))yield return nested;}
+        }
+        var groupCheckbox=Descendants(MainWindow).OfType<System.Windows.Controls.CheckBox>().Single(box=>ReferenceEquals(box.DataContext,googleFamily));
+        var libraryList=Descendants(MainWindow).OfType<System.Windows.Controls.ListBox>().Single(list=>list.Name=="LibraryList");
+        var libraryScroll=Descendants(libraryList).OfType<System.Windows.Controls.ScrollViewer>().First();
+        libraryScroll.LineDown();await Dispatcher.InvokeAsync(()=>{},DispatcherPriority.ContextIdle);MainWindow.UpdateLayout();
+        var pixelScroll=libraryScroll.ScrollableHeight>4000&&libraryScroll.VerticalOffset>0&&libraryScroll.VerticalOffset<libraryScroll.ViewportHeight;
+        async Task<bool> RevealChild(ServiceItem child)
+        {
+            var label=Descendants(libraryList).OfType<System.Windows.Controls.TextBlock>().First(t=>ReferenceEquals(t.DataContext,child)&&t.Text==child.Name);
+            label.BringIntoView();await Dispatcher.InvokeAsync(()=>{},DispatcherPriority.ContextIdle);MainWindow.UpdateLayout();
+            var position=label.TransformToAncestor(libraryScroll).Transform(new Point(0,label.ActualHeight/2));
+            return position.Y>=0&&position.Y<libraryScroll.ActualHeight&&googleFamily.IsExpanded;
+        }
+        var middleVisible=await RevealChild(googleFamily.VisibleMembers[googleFamily.VisibleMembers.Count/2]);
+        var lastVisible=await RevealChild(googleFamily.VisibleMembers[^1]);
+        libraryScroll.ScrollToTop();await Dispatcher.InvokeAsync(()=>{},DispatcherPriority.ContextIdle);MainWindow.UpdateLayout();
+        if(!pixelScroll||!middleVisible||!lastVisible)throw new InvalidOperationException($"Library scrolling failed: pixels={pixelScroll}, middle={middleVisible}, last={lastVisible}.");
+        groupCheckbox.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Primitives.ButtonBase.ClickEvent));
+        var selectAll=googleFamily.IsSelected==true&&googleFamily.Members.All(s=>s.IsWatched);
+        googleFamily.Members[0].IsWatched=false;var partial=googleFamily.IsSelected is null;
+        var selectedCount=googleFamily.Members.Count(s=>s.IsWatched);var familyExport=vm.ExportPreferences();vm.ImportPreferences(familyExport);
+        googleFamily=vm.LibraryFamilies.Single(g=>g.Name=="Google");var familyPersisted=googleFamily.Members.Count(s=>s.IsWatched)==selectedCount;
+        vm.ExpandFamilies(false);var collapsed=!googleFamily.IsExpanded;vm.ExpandFamilies(true);var expanded=googleFamily.IsExpanded;
+        vm.SetFamilyWatched(googleFamily,false);var clearAll=googleFamily.IsSelected==false&&googleFamily.Members.All(s=>!s.IsWatched);
+        vm.Search="No matching service 64f112";var noMatches=vm.IsLibraryEmpty;vm.Search="";
+        if(!hierarchy||!selectAll||!partial||!familyPersisted||!collapsed||!expanded||!clearAll||!noMatches)throw new InvalidOperationException("Library hierarchy verification failed.");
+        var workSelection=vm.Watchlist.Select(s=>s.Id).ToHashSet();vm.ActiveListId="personal";
+        var personalEmpty=vm.WatchedCount==0&&vm.Lists.Count==2;
+        vm.AllServices.Single(s=>s.Id=="statuspage.Discord").IsWatched=true;
+        vm.CreateList("Studio");var customId=vm.ActiveListId;var customEmpty=vm.WatchedCount==0;
+        vm.AllServices.Single(s=>s.Id=="statuspage.GitHub").IsWatched=true;vm.RenameList("Streaming");
+        var customName=vm.Lists.Single(l=>l.Id==customId).Name=="Streaming";
+        vm.ImportPreferences(vm.ExportPreferences());var listsPersisted=vm.ActiveListId==customId&&vm.Watchlist.Select(s=>s.Id).SequenceEqual(["statuspage.GitHub"]);
+        vm.ActiveListId="work";var workPreserved=workSelection.SetEquals(vm.Watchlist.Select(s=>s.Id));vm.ActiveListId="personal";
+        var personalPreserved=vm.Watchlist.Select(s=>s.Id).SequenceEqual(["statuspage.Discord"]);
+        vm.Language="fr";var translatedLists=vm.Lists.Single(l=>l.Id=="work").Name=="Travail"&&vm.Lists.Single(l=>l.Id=="personal").Name=="Personnel";
+        vm.ActiveListId=customId;vm.DeleteList();var listDeleted=vm.ActiveListId=="work"&&vm.Lists.Count==2;
+        if(!personalEmpty||!customEmpty||!customName||!listsPersisted||!workPreserved||!personalPreserved||!translatedLists||!listDeleted)throw new InvalidOperationException("Monitoring list verification failed.");
+        using var updateHandler=new FeatureUpdateHandler();using var updateVm=new MainViewModel((_,_,_)=>{},true,new HttpClient(updateHandler));
+        var updateNotifications=0;updateVm.UpdateAvailable+=_=>updateNotifications++;
+        await updateVm.CheckForUpdatesAsync(true);var updateOffered=updateVm.HasAvailableUpdate&&updateVm.CanDownloadUpdate&&updateNotifications==1;
+        await updateVm.CheckForUpdatesAsync(true);var noRepeatedUpdateAlert=updateNotifications==1;
+        updateVm.AutomaticUpdates=false;updateHandler.VersionMajor++;await updateVm.CheckForUpdatesAsync(true);var updateOptOut=updateNotifications==1;
+        updateVm.AutomaticUpdates=true;await updateVm.CheckForUpdatesAsync(true);var nextVersionAlert=updateNotifications==2;
+        updateHandler.Fail=true;await updateVm.CheckForUpdatesAsync(true);var updateFailure=updateNotifications==2&&updateVm.UpdateStatus.StartsWith(L.T("Update failed: ").TrimEnd());
+        if(!updateOffered||!noRepeatedUpdateAlert||!updateOptOut||!nextVersionAlert||!updateFailure)throw new InvalidOperationException("Automatic update verification failed.");
         bool? mailjetLogo = null; int? statuspageComponents = null;
         if (network)
         {
@@ -180,13 +242,25 @@ public partial class App : System.Windows.Application
         if (!menuVerified || !thirty || !hour || !resumed || !frenchSnooze || !systemTheme || !scoped || !imported || !defaultRestored || !googlePicker
             || network && (mailjetLogo != true || statuspageComponents <= 0)) throw new InvalidOperationException("Native feature verification failed.");
         return new { ServiceMenu = menuVerified, Snooze30 = thirty, Snooze60 = hour, SnoozeResume = resumed, FrenchSnooze = frenchSnooze, SystemTheme = systemTheme,
-            ComponentScope = scoped, PreferenceImport = imported, DefaultRestored = defaultRestored, GoogleProducts = products.Count, MailjetLogo = mailjetLogo, StatuspageComponents = statuspageComponents };
+            ComponentScope = scoped, OpenAiComponentsEnabled=openaiComponentsEnabled, PreferenceImport = imported, DefaultRestored = defaultRestored, GoogleProducts = products.Count, LibraryHierarchy=hierarchy, LibraryPixelScroll=pixelScroll, LibraryMiddleChildVisible=middleVisible, LibraryLastChildVisible=lastVisible, FamilySelectAll=selectAll, FamilyPartialSelection=partial, FamilyPreferences=familyPersisted, FamilyCollapse=collapsed, FamilyExpand=expanded, FamilyClearAll=clearAll, LibraryEmptySearch=noMatches, MonitoringLists=listsPersisted&&workPreserved&&personalPreserved&&translatedLists&&listDeleted, AutomaticUpdateOffer=updateOffered, AutomaticUpdateNoRepeat=noRepeatedUpdateAlert, AutomaticUpdateOptOut=updateOptOut, AutomaticUpdateNextVersion=nextVersionAlert, AutomaticUpdateFailure=updateFailure, MailjetLogo = mailjetLogo, StatuspageComponents = statuspageComponents };
     }
     public void TestNotification() => _desktop?.Test(_vm?.NotificationSound ?? true);
+    private async Task DownloadFromNotificationAsync()
+    {
+        if(_vm is null)return;
+        if(MainWindow is MainWindow window)window.ShowAbout();
+        if(!_vm.CanDownloadUpdate)await _vm.CheckForUpdatesAsync();
+        await _vm.DownloadUpdateAsync();
+    }
     private StatusLookout.Core.BridgeSnapshot HandleStreamDeck(StatusLookout.Core.BridgeRequest request)
     {
         var vm = _vm!;
         if (request.Command == "openDashboard") ShowDashboard();
+        else if (request.Command == "watch")
+        {
+            var service = vm.AllServices.FirstOrDefault(s => s.Id == request.ServiceId) ?? throw new InvalidDataException("Unknown catalog service.");
+            service.IsWatched = true;
+        }
         else if (request.Command == "refresh") _ = vm.RefreshAsync();
         else if (request.Command is "openService" or "snooze")
         {

@@ -2,6 +2,7 @@
  Title="{DynamicResource Ui000}" Width="1180" Height="820" MinWidth="940" MinHeight="670" WindowStartupLocation="CenterScreen" Background="{DynamicResource Palette0}" Foreground="{DynamicResource Palette1}" FontFamily="Segoe UI" WindowStyle="None" ResizeMode="CanResize" Closing="OnClosing">
  <WindowChrome.WindowChrome><WindowChrome CaptionHeight="42" ResizeBorderThickness="6" CornerRadius="0" GlassFrameThickness="0"/></WindowChrome.WindowChrome>
  <Window.Resources>
+
   <ContextMenu x:Key="ServiceMenu" x:Shared="False" DataContext="{Binding PlacementTarget.Tag, RelativeSource={RelativeSource Self}}">
    <MenuItem Header="{DynamicResource Snooze30}" Tag="30" Click="SnoozeClick"/>
    <MenuItem Header="{DynamicResource Snooze60}" Tag="60" Click="SnoozeClick"/>
@@ -36,7 +37,7 @@
    <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="CheckBox"><StackPanel Orientation="Horizontal">
     <Border x:Name="Box" Width="16" Height="16" CornerRadius="4" BorderBrush="{DynamicResource Palette12}" BorderThickness="1" Background="{DynamicResource Palette13}" VerticalAlignment="Center"><TextBlock x:Name="Mark" Text="✓" Foreground="{DynamicResource Palette14}" FontSize="12" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed"/></Border>
     <ContentPresenter Margin="9,0,0,0" VerticalAlignment="Center"/>
-   </StackPanel><ControlTemplate.Triggers><Trigger Property="IsChecked" Value="True"><Setter TargetName="Box" Property="Background" Value="{DynamicResource Palette15}"/><Setter TargetName="Box" Property="BorderBrush" Value="{DynamicResource Palette16}"/><Setter TargetName="Mark" Property="Visibility" Value="Visible"/></Trigger><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="Box" Property="BorderBrush" Value="{DynamicResource Palette17}"/></Trigger><Trigger Property="IsEnabled" Value="False"><Setter Property="Opacity" Value=".5"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter>
+   </StackPanel><ControlTemplate.Triggers><Trigger Property="IsChecked" Value="True"><Setter TargetName="Box" Property="Background" Value="{DynamicResource Palette15}"/><Setter TargetName="Box" Property="BorderBrush" Value="{DynamicResource Palette16}"/><Setter TargetName="Mark" Property="Visibility" Value="Visible"/></Trigger><Trigger Property="IsChecked" Value="{x:Null}"><Setter TargetName="Mark" Property="Text" Value="−"/><Setter TargetName="Mark" Property="Visibility" Value="Visible"/><Setter TargetName="Box" Property="Background" Value="{DynamicResource Palette15}"/></Trigger><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="Box" Property="BorderBrush" Value="{DynamicResource Palette17}"/></Trigger><Trigger Property="IsEnabled" Value="False"><Setter Property="Opacity" Value=".5"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter>
   </Style>
   <Style TargetType="ListBox"><Setter Property="Foreground" Value="{DynamicResource Palette1}"/></Style>
   <Style TargetType="Thumb"><Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Thumb"><Border Background="{DynamicResource Palette18}" CornerRadius="5" Margin="2"/></ControlTemplate></Setter.Value></Setter></Style>
@@ -45,6 +46,16 @@
   <Style TargetType="ComboBox"><Setter Property="Foreground" Value="{DynamicResource Palette21}"/><Setter Property="Padding" Value="10,8"/><Setter Property="FontSize" Value="13"/></Style>
   <Style TargetType="ListBoxItem"><Setter Property="HorizontalContentAlignment" Value="Stretch"/><Setter Property="Padding" Value="0"/><Setter Property="Margin" Value="0,0,0,10"/><Setter Property="Template"><Setter.Value><ControlTemplate TargetType="ListBoxItem"><ContentPresenter/></ControlTemplate></Setter.Value></Setter></Style>
   <Style x:Key="Panel" TargetType="Border"><Setter Property="Background" Value="{DynamicResource Palette22}"/><Setter Property="BorderBrush" Value="{DynamicResource Palette23}"/><Setter Property="BorderThickness" Value="1"/><Setter Property="CornerRadius" Value="12"/><Setter Property="Padding" Value="20"/></Style>
+  <DataTemplate x:Key="LibraryServiceTemplate">
+        <Border Style="{StaticResource Panel}" Padding="14,11">
+         <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="32"/><ColumnDefinition Width="42"/><ColumnDefinition Width="*"/><ColumnDefinition Width="160"/></Grid.ColumnDefinitions>
+          <CheckBox IsChecked="{Binding IsWatched}" AutomationProperties.Name="{Binding Name}" VerticalAlignment="Center"/>
+          <Border Grid.Column="1" Background="#F7F9FC" Width="30" Height="30" CornerRadius="7" HorizontalAlignment="Left" VerticalAlignment="Center"><Grid Margin="5"><Image Source="{Binding Logo}" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality"/><TextBlock Text="{Binding Initials}" Foreground="#263952" FontSize="10" HorizontalAlignment="Center" VerticalAlignment="Center"><TextBlock.Style><Style TargetType="TextBlock"><Style.Triggers><DataTrigger Binding="{Binding HasLogo}" Value="True"><Setter Property="Visibility" Value="Collapsed"/></DataTrigger></Style.Triggers></Style></TextBlock.Style></TextBlock></Grid></Border>
+          <StackPanel Grid.Column="2"><TextBlock Text="{Binding Name}" FontWeight="SemiBold" FontSize="13"/><TextBlock Text="{Binding ProviderLabel}" Foreground="{DynamicResource Palette41}" FontSize="10" Margin="0,5,0,0"/></StackPanel>
+          <StackPanel Grid.Column="3" HorizontalAlignment="Right"><TextBlock Text="{Binding Category}" Foreground="{DynamicResource Palette2}" FontSize="11" HorizontalAlignment="Right"/><Button Content="{DynamicResource ServiceOptions}" Tag="{Binding}" Click="ServiceOptionsClick" ContextMenu="{StaticResource ServiceMenu}" Padding="8,4" Background="Transparent" BorderBrush="Transparent" Foreground="{DynamicResource Palette42}" FontSize="10"/></StackPanel>
+         </Grid>
+        </Border>
+       </DataTemplate>
  </Window.Resources>
  <Border BorderThickness="1" BorderBrush="{DynamicResource Palette24}">
  <Grid>
@@ -87,12 +98,17 @@
    <Grid Grid.Column="1" Margin="28,24,28,20">
     <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
     <Grid Margin="0,0,0,22"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+     <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
      <StackPanel><TextBlock x:Name="PageTitle" Text="{DynamicResource Ui014}" FontSize="29" FontWeight="SemiBold"/><TextBlock Text="{Binding SyncLabel}" Foreground="{DynamicResource Palette2}" FontSize="12" Margin="0,7,0,0"/></StackPanel>
      <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center"><Button Content="{Binding PauseLabel}" Click="PauseClick" Margin="0,0,8,0"/><Button Content="{Binding RefreshLabel}" Click="RefreshClick" Foreground="#FFFFFF" Background="{DynamicResource Palette15}" BorderBrush="{DynamicResource Palette31}"/></StackPanel>
+     <WrapPanel Grid.Row="1" Grid.ColumnSpan="2" Margin="0,15,0,0" ToolTip="{DynamicResource ListHint}"><TextBlock Text="{DynamicResource ActiveList}" VerticalAlignment="Center" Margin="0,0,10,0"/><ComboBox ItemsSource="{Binding Lists}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding ActiveListId,Mode=TwoWay}" Width="185" Margin="0,0,10,0" AutomationProperties.Name="{DynamicResource ActiveList}"/><Button Content="{DynamicResource NewList}" Click="NewListClick" Padding="10,7" Margin="0,0,8,0"/><Button Content="{DynamicResource RenameList}" Click="RenameListClick" IsEnabled="{Binding CanEditList}" Padding="10,7" Margin="0,0,8,0"/><Button Content="{DynamicResource DeleteList}" Click="DeleteListClick" IsEnabled="{Binding CanEditList}" Padding="10,7"/></WrapPanel>
     </Grid>
-    <Border Grid.Row="1" Background="{DynamicResource Palette32}" BorderBrush="{DynamicResource Palette33}" BorderThickness="1" CornerRadius="9" Padding="12" Margin="0,0,0,14" Visibility="{Binding HasError, Converter={StaticResource BoolVisibility}}">
+    <StackPanel Grid.Row="1">
+    <Border Background="{DynamicResource Palette8}" CornerRadius="9" Padding="12" Margin="0,0,0,14" Visibility="{Binding HasAvailableUpdate,Converter={StaticResource BoolVisibility}}"><DockPanel><Button Content="{DynamicResource ViewUpdate}" Click="ViewUpdateClick" DockPanel.Dock="Right" Padding="10,6" Margin="12,0,0,0"/><TextBlock Text="{Binding AvailableUpdateMessage}" FontWeight="SemiBold" VerticalAlignment="Center"/></DockPanel></Border>
+    <Border Background="{DynamicResource Palette32}" BorderBrush="{DynamicResource Palette33}" BorderThickness="1" CornerRadius="9" Padding="12" Margin="0,0,0,14" Visibility="{Binding HasError, Converter={StaticResource BoolVisibility}}">
      <DockPanel><Button Content="×" DockPanel.Dock="Right" Padding="8,2" Click="DismissClick"/><TextBlock Text="{Binding ErrorMessage}" Foreground="{DynamicResource Palette34}" FontSize="12" VerticalAlignment="Center" Margin="0,0,10,0"/></DockPanel>
     </Border>
+    </StackPanel>
     <Grid Grid.Row="2">
      <Grid x:Name="WatchPage"><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
       <Border Style="{StaticResource Panel}" Background="{DynamicResource Palette35}" Padding="22" Margin="0,0,0,16">
@@ -145,18 +161,27 @@
        <ComboBox Grid.Column="1" ItemsSource="{Binding Categories}" SelectedItem="{Binding Category}" Margin="0,0,10,0" AutomationProperties.Name="{DynamicResource Ui026}"/>
        <Button Grid.Column="2" Content="{DynamicResource Ui027}" Click="CustomClick"/>
       </Grid>
-      <ListBox Grid.Row="2" ItemsSource="{Binding LibraryView}" Background="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Recycling">
-       <ListBox.ItemTemplate><DataTemplate>
-        <Border Style="{StaticResource Panel}" Padding="14,11">
-         <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="32"/><ColumnDefinition Width="42"/><ColumnDefinition Width="*"/><ColumnDefinition Width="160"/></Grid.ColumnDefinitions>
-          <CheckBox IsChecked="{Binding IsWatched}" AutomationProperties.Name="{Binding Name}" VerticalAlignment="Center"/>
-          <Border Grid.Column="1" Background="#F7F9FC" Width="30" Height="30" CornerRadius="7" HorizontalAlignment="Left" VerticalAlignment="Center"><Grid Margin="5"><Image Source="{Binding Logo}" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality"/><TextBlock Text="{Binding Initials}" Foreground="#263952" FontSize="10" HorizontalAlignment="Center" VerticalAlignment="Center"><TextBlock.Style><Style TargetType="TextBlock"><Style.Triggers><DataTrigger Binding="{Binding HasLogo}" Value="True"><Setter Property="Visibility" Value="Collapsed"/></DataTrigger></Style.Triggers></Style></TextBlock.Style></TextBlock></Grid></Border>
-          <StackPanel Grid.Column="2"><TextBlock Text="{Binding Name}" FontWeight="SemiBold" FontSize="13"/><TextBlock Text="{Binding ProviderLabel}" Foreground="{DynamicResource Palette41}" FontSize="10" Margin="0,5,0,0"/></StackPanel>
-          <StackPanel Grid.Column="3" HorizontalAlignment="Right"><TextBlock Text="{Binding Category}" Foreground="{DynamicResource Palette2}" FontSize="11" HorizontalAlignment="Right"/><Button Content="{DynamicResource ServiceOptions}" Tag="{Binding}" Click="ServiceOptionsClick" ContextMenu="{StaticResource ServiceMenu}" Padding="8,4" Background="Transparent" BorderBrush="Transparent" Foreground="{DynamicResource Palette42}" FontSize="10"/></StackPanel>
-         </Grid>
-        </Border>
-       </DataTemplate></ListBox.ItemTemplate>
-      </ListBox>
+      <Grid Grid.Row="2"><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+       <DockPanel Margin="0,0,0,10"><StackPanel DockPanel.Dock="Right" Orientation="Horizontal"><Button Content="{DynamicResource ExpandFamilies}" Click="ExpandFamiliesClick" Padding="9,5" Margin="0,0,7,0"/><Button Content="{DynamicResource CollapseFamilies}" Click="CollapseFamiliesClick" Padding="9,5"/></StackPanel><TextBlock Text="{DynamicResource FamilySelectionHint}" FontSize="11" Foreground="{DynamicResource Palette2}" VerticalAlignment="Center" Margin="0,0,12,0"/></DockPanel>
+       <TextBlock Grid.Row="1" Text="{DynamicResource NoMatchingServices}" Visibility="{Binding IsLibraryEmpty,Converter={StaticResource BoolVisibility}}" Margin="14"/>
+       <ListBox x:Name="LibraryList" Grid.Row="1" ItemsSource="{Binding LibraryFamilies}" Background="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Recycling" VirtualizingPanel.ScrollUnit="Pixel">
+        <ListBox.ItemTemplate><DataTemplate><Grid>
+         <ContentControl Content="{Binding SingleService}" ContentTemplate="{StaticResource LibraryServiceTemplate}"><ContentControl.Style><Style TargetType="ContentControl"><Style.Triggers><DataTrigger Binding="{Binding HasChildren}" Value="True"><Setter Property="Visibility" Value="Collapsed"/></DataTrigger></Style.Triggers></Style></ContentControl.Style></ContentControl>
+         <Border Style="{StaticResource Panel}" Padding="14,8" Visibility="{Binding HasChildren,Converter={StaticResource BoolVisibility}}">
+          <Expander IsExpanded="{Binding IsExpanded,Mode=TwoWay}" HorizontalContentAlignment="Stretch" Foreground="{DynamicResource Palette1}">
+           <Expander.Template><ControlTemplate TargetType="Expander"><Grid><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions><Grid><Grid.ColumnDefinitions><ColumnDefinition Width="24"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions><ToggleButton IsChecked="{Binding IsExpanded,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}" Background="Transparent" BorderThickness="0" Cursor="Hand" AutomationProperties.Name="{Binding Name}"><ToggleButton.Template><ControlTemplate TargetType="ToggleButton"><TextBlock x:Name="Arrow" Text="›" FontSize="23" Foreground="{DynamicResource Palette2}" VerticalAlignment="Center"/><ControlTemplate.Triggers><Trigger Property="IsChecked" Value="True"><Setter TargetName="Arrow" Property="Text" Value="⌄"/></Trigger></ControlTemplate.Triggers></ControlTemplate></ToggleButton.Template></ToggleButton><ContentPresenter Grid.Column="1" ContentSource="Header"/></Grid><ContentPresenter x:Name="Body" Grid.Row="1" Visibility="Collapsed"/></Grid><ControlTemplate.Triggers><Trigger Property="IsExpanded" Value="True"><Setter TargetName="Body" Property="Visibility" Value="Visible"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Expander.Template>
+           <Expander.Header><Grid><Grid.ColumnDefinitions><ColumnDefinition Width="32"/><ColumnDefinition Width="42"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+            <CheckBox IsChecked="{Binding IsSelected,Mode=OneWay}" Click="SelectFamilyClick" ToolTip="{Binding SelectionHint}" AutomationProperties.Name="{Binding Name}"/>
+            <Border Grid.Column="1" Background="#F7F9FC" Width="30" Height="30" CornerRadius="7" HorizontalAlignment="Left" VerticalAlignment="Center"><Image Source="{Binding Logo}" Margin="5" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality"/></Border>
+            <TextBlock Grid.Column="2" Text="{Binding Name}" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="3" Text="{Binding Summary}" Foreground="{DynamicResource Palette2}" FontSize="11" VerticalAlignment="Center" Margin="12,0"/>
+           </Grid></Expander.Header>
+           <ItemsControl ItemsSource="{Binding VisibleMembers}" ItemTemplate="{StaticResource LibraryServiceTemplate}" Margin="28,10,0,2"/>
+          </Expander>
+         </Border>
+        </Grid></DataTemplate></ListBox.ItemTemplate>
+       </ListBox>
+      </Grid>
      </Grid>
 
      <Grid x:Name="ActivityPage" Visibility="Collapsed"><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
@@ -226,6 +251,7 @@
       <Border Style="{StaticResource Panel}" Margin="0,0,0,16"><StackPanel>
        <TextBlock Text="{DynamicResource CheckUpdates}" FontSize="20" FontWeight="SemiBold"/>
        <TextBlock Text="{DynamicResource UpdatesExplanation}" Foreground="{DynamicResource Palette2}" FontSize="12" Margin="0,12,0,16" LineHeight="20"/>
+       <CheckBox Content="{DynamicResource AutomaticUpdates}" IsChecked="{Binding AutomaticUpdates}"/><TextBlock Text="{DynamicResource AutomaticUpdatesHint}" Foreground="{DynamicResource Palette2}" FontSize="11" Margin="0,0,0,14"/>
        <TextBlock Text="{Binding UpdateStatus}" FontSize="14" FontWeight="SemiBold"/>
        <TextBlock Text="{Binding LastUpdateCheck}" Foreground="{DynamicResource Palette2}" FontSize="11" Margin="0,8,0,16"/>
        <ProgressBar Height="6" Minimum="0" Maximum="100" Value="{Binding DownloadProgress, Mode=OneWay}" Margin="0,0,0,16" Visibility="{Binding IsDownloading, Converter={StaticResource BoolVisibility}}"/>

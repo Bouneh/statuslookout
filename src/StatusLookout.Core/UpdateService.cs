@@ -7,7 +7,7 @@ namespace StatusLookout.Core;
 public sealed record AvailableUpdate(Version Version, string Tag, string ReleaseUrl, string AssetName,
     string DownloadUrl, string Sha256, long Size);
 
-/// <summary>Manual updates from this project's stable GitHub releases only.</summary>
+/// <summary>Release discovery and requested downloads from this project's stable GitHub releases only.</summary>
 public sealed class UpdateService(HttpClient http)
 {
     public const string LatestEndpoint = "https://api.github.com/repos/Bouneh/statuslookout/releases/latest";

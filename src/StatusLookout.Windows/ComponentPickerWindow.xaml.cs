@@ -20,6 +20,7 @@ public partial class ComponentPickerWindow : Window
     public ComponentPickerWindow(MainViewModel vm, ServiceItem service)
     {
         _vm = vm; _service = service; InitializeComponent(); ServiceTitle.Text = service.Name;
+        if (service.Definition.Provider == "aws") ScopeExplanation.SetResourceReference(System.Windows.Controls.TextBlock.TextProperty, "AwsScopeExplanation");
         Closed += (_, _) => _cancel.Cancel(); Loaded += async (_, _) => await LoadAsync();
     }
     private async Task LoadAsync()

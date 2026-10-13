@@ -19,6 +19,7 @@ public sealed partial class MainViewModel
         var overall = WatchedCount == 0 || UnknownCount > 0 && IssueCount == 0 ? ServiceStatus.Unknown
             : IssueCount > 0 ? Watchlist.Max(s => s.Status) : ServiceStatus.Operational;
         return new(1, InstalledVersion.ToString(3), Language, IsDemo, IsPaused, IsRefreshing, overall,
-            Watchlist.Select(s => new BridgeService(s.Id, s.Name, s.Status, s.Message, s.Definition.StatusUrl, s.IsMuted, s.SnoozedUntil, Logo(s))).ToArray());
+            Watchlist.Select(s => new BridgeService(s.Id, s.Name, s.Status, s.Message, s.Definition.StatusUrl, s.IsMuted, s.SnoozedUntil, Logo(s))).ToArray(),
+            AllServices.Select(s => new BridgeCatalogEntry(s.Id, s.Name, s.Category, s.IsWatched, s.DefaultDefinition.Family ?? s.Name)).ToArray());
     }
 }

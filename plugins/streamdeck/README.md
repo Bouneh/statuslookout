@@ -14,12 +14,12 @@ The first release was tested with Stream Deck software 7.4.2 and an original Str
 ## Install
 
 1. Update and launch the [StatusLookout desktop app](https://github.com/Bouneh/statuslookout/releases/latest).
-2. Download **StatusLookout-streamdeck-0.1.1.streamDeckPlugin** from that release.
+2. Download **StatusLookout-streamdeck-0.2.0.streamDeckPlugin** from that release.
 3. Double-click the package and accept installation in Stream Deck.
 4. Find **StatusLookout** in the action list, then drag an action to a free key.
-5. For service actions, choose a monitored service in the key's settings.
+5. For service actions, search and choose a service in the key's settings.
 
-The service list comes from your desktop watchlist, including custom services and their logos. Add services in StatusLookout before selecting them here.
+The service list includes the complete desktop catalog and custom services, with a search field. Selecting a service enables its monitoring in StatusLookout. Already monitored entries are marked with a check. With an older desktop app that does not expose its catalog, the plugin falls back to the watchlist.
 
 ## Actions
 
@@ -44,7 +44,7 @@ The plugin reads a shared snapshot every two seconds. Provider polling still bel
 
 Communication uses a named pipe scoped to the current Windows account, with Windows `CurrentUserOnly` access checks. No web server, firewall port, pairing token or administrator permissions are required. Closing StatusLookout makes the keys show **Offline**; they reconnect automatically when it starts again.
 
-The pipe supports only snapshot, refresh, dashboard, status-page and snooze commands. URLs come from validated, monitored services; callers cannot supply arbitrary programs or status URLs.
+The pipe supports only snapshot, refresh, dashboard, status-page, watch and snooze commands. URLs come from validated, monitored services; callers cannot supply arbitrary programs or status URLs.
 
 ## Develop
 
@@ -68,3 +68,5 @@ The CLI `restart` command requires Stream Deck developer mode. For a normal inst
 For a hardware check, add Overall status and Service status to free keys, verify a custom service logo, press Overview to open the app, and test Refresh and Snooze. Test snooze twice so it is ended afterwards. Automated tests cover disconnected states, missing services, languages, snoozing, SVG escaping, UTF-8 framing, protocol compatibility and bounded local commands.
 
 The plugin uses the [official Elgato SDK](https://docs.elgato.com/streamdeck/sdk/introduction/getting-started/). Distributed under MIT; see the packaged third-party notices.
+
+The service picker groups related products in collapsible provider families, including Google, AWS, Apple and Adobe. Search expands matching families. Each service or snooze key monitors one chosen service; select a family’s aggregate entry for its overall status. To enable a whole family at once, use the family checkbox in the desktop service library.

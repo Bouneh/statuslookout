@@ -19,17 +19,19 @@
 
 ## A quiet lookout for the services you depend on
 
-StatusLookout keeps your selected services in the Windows system tray and alerts you when their published status changes. Choose from **461 services and products**, including GitHub, Cloudflare, Discord, OpenAI, Notion, Slack, Google Cloud and Firebase.
+StatusLookout keeps your selected services in the Windows system tray and alerts you when their published status changes. Choose from **1,092 services and products**, including AWS, GitHub, Cloudflare, Discord, OpenAI, Notion, Slack, Google Cloud and Firebase.
 
-- **Bundled service logos** for all 461 catalog entries, with platform logos shared by related products.
-- **About & updates**: author links, version checking and verified downloads from GitHub releases.
+- **Bundled service logos** for all 1,092 catalog entries, with platform logos shared by related products.
+- **Monitoring lists**: Work and Personal by default, plus your own named lists. Switch the active list from any page.
+- **Automatic update checks**: a notification and download offer for each new stable release, with an opt-out in About.
 - **English by default, French available**, with an instant language selector.
 - **Light, dark and Windows system themes**, applied immediately and remembered across restarts.
 - **Outage, degradation and recovery alerts**, with separate preferences for each.
 - **Native Windows notifications**, with a system tray balloon fallback.
+- **Collapsible provider families**: select all Google, AWS, Apple or Adobe services, or expand the family and choose individual products. Search reveals matching children; partial selections are shown clearly.
 - **Searchable service library** and custom Statuspage-compatible or Instatus endpoints.
 - **Related incident grouping**, per-service 30-minute / 1-hour alert snoozing, muting and notification sound controls.
-- **Component picker** for Statuspage, Instatus and Google products, with saved per-service selections.
+- **Component picker** for Statuspage, Instatus, AWS and Google products, with saved per-service selections.
 - **Preference import/export** to move watchlists and custom services between PCs.
 - **Windows sign-in startup**, minimized launch and background monitoring when the window is closed.
 - **Local alert history**, retained across restarts, with duplicate suppression.
@@ -74,7 +76,7 @@ Compare the result with the matching `SHA256SUMS-win-x64.txt` file.
 
 [StatusLookout for Stream Deck](plugins/streamdeck/README.md) lives in this repository and is packaged automatically with app releases.
 
-Use **StatusLookout 0.5.0+** and **Stream Deck 7.1+** on the same Windows account. Install `StatusLookout-streamdeck-0.1.1.streamDeckPlugin` from the [latest release](https://github.com/Bouneh/statuslookout/releases/latest), then drag an action from the **StatusLookout** category onto a free key.
+Use **StatusLookout 0.5.0+** and **Stream Deck 7.1+** on the same Windows account. Install `StatusLookout-streamdeck-0.2.0.streamDeckPlugin` from the [latest release](https://github.com/Bouneh/statuslookout/releases/latest), then drag an action from the **StatusLookout** category onto a free key.
 
 | Key | Display / action |
 | --- | --- |
@@ -83,7 +85,17 @@ Use **StatusLookout 0.5.0+** and **Stream Deck 7.1+** on the same Windows accoun
 | Refresh services | Trigger a watchlist check |
 | Snooze service alerts | 30-minute / 1-hour snooze; press again to end it |
 
-Pick from your monitored services, including custom services such as Mailjet. Key settings offer English, French or the desktop app's language. The connection uses a Windows pipe restricted to your account, with no HTTP listener or duplicate provider polling. If the app is closed, keys show **Offline** and reconnect automatically. These are display-key actions; dials and pedals are not supported.
+Search the complete built-in and custom catalog, including AWS and custom services such as Mailjet. Selecting a service on a key enables its monitoring in the desktop app; existing monitored services are marked with a check. Key settings offer English, French or the desktop app's language. The connection uses a Windows pipe restricted to your account, with no HTTP listener or duplicate provider polling. If the app is closed, keys show **Offline** and reconnect automatically. These are display-key actions; dials and pedals are not supported.
+
+## Monitoring lists
+
+Use the **List** selector above the dashboard to switch between **Work** and **Personal**. When upgrading, the existing watchlist becomes Work and Personal starts empty. **New list** creates an empty custom list; select its services in the catalog. Custom lists can be renamed or deleted. Work and Personal remain available.
+
+Only the active list is monitored and used by Stream Deck. Lists have independent service selections; custom service definitions, component scopes and alert settings are shared. All lists and the last active list are saved locally and included in preference export/import.
+
+![Collapsible provider families and monitoring lists](assets/catalog-families-fr.png)
+
+See [CHANGELOG.md](CHANGELOG.md) for the changes in StatusLookout 0.6.0 and Stream Deck 0.2.0.
 
 ## Language and appearance
 
@@ -99,7 +111,9 @@ Quit the old app from its tray menu before running StatusLookout. If you enabled
 
 Open **About** for the installed version, **LAMOUREUX Fabien**’s [GitHub profile](https://github.com/Bouneh), the source repository and the MIT license.
 
-Click **Check for updates** to query this repository’s latest stable GitHub release. If it is newer, **Download** retrieves the executable for your Windows architecture. A progress bar and cancel button are provided. The downloaded file is checked against GitHub’s SHA-256 digest before being saved to your Windows **Downloads** folder with its version in the filename. Failed or cancelled downloads are removed.
+Automatic update checks are enabled by default: the first check runs 30 seconds after launch, then every 24 hours while the app is running. A failed check retries after an hour. A Windows notification is sent once per newer version, with a **Download update** button; a banner also opens the update controls. Disable **Automatically check for updates** in **About** to stop background checks.
+
+Click **Check for updates** to query this repository’s latest stable GitHub release manually. If it is newer, **Download** retrieves the executable for your Windows architecture. A progress bar and cancel button are provided. The downloaded file is checked against GitHub’s SHA-256 digest before being saved to your Windows **Downloads** folder with its version in the filename. Failed or cancelled downloads are removed.
 
 Click **Open download folder**, quit the running app, then replace your old portable executable with the downloaded one. Keep it at the same path to preserve your startup shortcut, or disable and re-enable startup after moving it. Your watchlist and preferences remain in the local data folder. Updates are downloaded on request; the running executable is not silently replaced or launched.
 
@@ -136,10 +150,21 @@ A green signal reflects a provider's aggregate report; individual users or reque
 | Status.io v1 | Catalog entries with a public status ID |
 | Google Status Dashboard JSON | 217 Google Cloud products, 26 Firebase products and aggregate dashboards |
 | Slack Status API | Active Slack incidents |
+| Apple public status feed | Apple and Apple Developer, with product scopes |
+| Adobe status events | Adobe clouds and products |
+| Microsoft status dashboards | Azure regions and Azure DevOps products |
+| Salesforce public instance status | Product and region scopes |
+| Other public APIs | Algolia, Broadcom, Fivetran, PayPal, PlayStation, Railway, Stripe, Upsun, Zendesk, Civo, Codacy, Site24x7, Sorry, StatusCake and StatusHub |
+| Public HTML dashboards | incident.io, Better Stack, Better Uptime, PagerDuty, StatusCast, Statuspal, Beanstalk, Fastly, Okta and Uptime.com |
+| AWS Health public events | Aggregate AWS status, 267 products and 36 regions |
 
-The shipped catalog includes entries supported and checked by these adapters. It is a subset of the wider stts catalog, plus current Google / Firebase products and independently added services. A provider can change or remove its API after a release.
+The shipped catalog covers **all 1,048 entries** of the pinned [stts catalog](https://github.com/inket/stts/blob/876ecac0996c719786477af8e3833cdac05235ba/Resources/services.json), plus additional current products. An entry-by-entry correspondence is stored in [stts-coverage.json](src/StatusLookout.Core/Catalog/stts-coverage.json); raw counts alone are not used to claim parity. Providers can change endpoints or block automated requests. Those checks display **Unavailable** and retain the last confirmed state.
 
-**Custom services:** enter a public HTTPS status page and select its API format. StatusLookout validates the response before adding it. For catalog and custom services, open **Service options → Choose components** to select published APIs, regions or products. Statuspage and Instatus choices come from their public summary API; Google product choices come from the shipped catalog. Select no components to monitor the entire page, or use **Catalog default** to restore the original scope. Providers without a supported component list keep their aggregate status. Changing scope establishes a fresh baseline. Custom Statuspage component IDs can also be entered when adding a service.
+**Custom services:** enter a public HTTPS status page and select its API format. StatusLookout validates the response before adding it. For catalog and custom services, open **Service options → Choose components** to select published APIs, regions or products. Statuspage and Instatus choices come from their public summary API; Google and AWS product / region choices come from the shipped catalog. AWS product and region selections intersect to narrow the scope. Select no components to monitor the entire page, or use **Catalog default** to restore the original scope. Providers without a supported component list keep their aggregate status. Changing scope establishes a fresh baseline. Custom Statuspage component IDs can also be entered when adding a service.
+
+### AWS scope
+
+AWS monitoring uses the public Health dashboard feed without an account or credentials. Public active events are reported as confirmed issues (Degraded), without guessing a severity that this feed does not reliably define. Choose a region, such as Paris, to avoid mixing unrelated regional incidents into your signal. This does not cover account-specific AWS Health events.
 
 ### Notifications and startup
 
@@ -162,7 +187,7 @@ Preferences and the last 300 confirmed status changes are stored in:
 %LOCALAPPDATA%\StatusLookout\state.json
 ```
 
-The app sends HTTPS requests directly to selected status providers. Those providers receive your normal network request metadata, including your IP address. Clicking the update controls additionally contacts api.github.com and GitHub’s release download servers. StatusLookout adds no analytics or tracking.
+The app sends HTTPS requests directly to selected status providers. Those providers receive your normal network request metadata, including your IP address. Automatic update checks, when enabled, and manual update checks additionally contact api.github.com. Requested downloads contact GitHub’s release download servers. StatusLookout adds no analytics or tracking.
 
 **Preferences → Local data** provides JSON **Export preferences / Import preferences**. Import replaces the current watchlist, custom services, component selections, language, theme and alert preferences after validating the file. Export first to keep a backup. Startup registration, history, cached logos and temporary snoozes are not transferred. Import does not change Windows sign-in startup.
 
@@ -214,8 +239,8 @@ dotnet run --project tests/StatusLookout.Tests -- --audit
 [The release workflow](.github/workflows/release.yml) publishes all three architectures on a `v*` tag or a manual workflow run. Tag runs create a GitHub release with executables, checksums and license notices. No external signing credentials are required.
 
 ```powershell
-git tag v0.5.1
-git push origin v0.5.1
+git tag v0.6.0
+git push origin v0.6.0
 ```
 
 An x64 machine can build all architectures. Native x86 and ARM64 runtime testing still requires suitable hardware.

@@ -23,13 +23,16 @@ public sealed partial class MainViewModel : ObservableObject, IDisposable
     public ICollectionView LibraryView { get; }
     public ObservableCollection<string> Categories { get; } = [L.T("All categories")];
     public event Action? Updated;
-    public MainViewModel(Action<IReadOnlyList<ServiceItem>, StatusTransition, bool> notify, bool demo = false)
+    public MainViewModel(Action<IReadOnlyList<ServiceItem>, StatusTransition, bool> notify, bool demo = false, HttpClient? updateHttp = null)
     {
         IsDemo = demo;
+        if(updateHttp is not null)_updateHttp=updateHttp;
         _notify = notify;
         _store = new(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "StatusLookout"));
         _preferences = demo ? new() : _store.Load<Preferences>("preferences.json");
+        var migrateLists=_preferences.MonitoringLists is null;
         _preferences.Normalize();
+        RebuildLists();
         L.Apply(_preferences.Language, _preferences.Theme);
         Categories[0] = _category = L.T("All categories");
         var state = demo ? new MonitorState() : _store.Load<MonitorState>("state.json");
@@ -40,11 +43,17 @@ public sealed partial class MainViewModel : ObservableObject, IDisposable
         foreach (var category in AllServices.Select(s => s.Category).Distinct().Order()) Categories.Add(category);
         LibraryView = CollectionViewSource.GetDefaultView(AllServices);
         LibraryView.Filter = FilterService;
+        RebuildLibrary();
         _monitor = new(_http);
         _timer.Interval = TimeSpan.FromSeconds(_preferences.PollSeconds);
         _timer.Tick += async (_, _) => await RefreshAsync();
         _error = _store.Warning ?? "";
-        _launchAtLogin = !demo && StartupService.IsEnabled;
+        if(migrateLists&&!demo)SavePreferences();
+        if (!demo)
+        {
+            try { StartupService.RepairExistingRegistration(); _launchAtLogin = StartupService.IsEnabled; }
+            catch (Exception ex) { ErrorMessage = L.T("Windows startup could not be updated: ") + L.T(ex.Message); }
+        }
         RebuildWatchlist();
         if (demo) SeedDemo();
         L.Updated += AppearanceUpdated;
@@ -65,6 +74,7 @@ public sealed partial class MainViewModel : ObservableObject, IDisposable
         _started = true;
         if (IsDemo) return;
         _timer.Start();
+        StartAutomaticUpdates();
         await RefreshAsync();
     }
     private bool _isRefreshing;
@@ -91,6 +101,7 @@ public sealed partial class MainViewModel : ObservableObject, IDisposable
         foreach (var name in AllServices.Select(s => s.Category).Distinct().Order()) Categories.Add(name);
         Category = all ? Categories[0] : L.T(category);
         foreach (var item in AllServices) item.RefreshAppearance();
+        foreach (var list in Lists) list.Refresh();
         foreach (var item in Activity) item.RefreshAppearance();
         Changed(null); Updated?.Invoke();
     }
@@ -99,8 +110,8 @@ public sealed partial class MainViewModel : ObservableObject, IDisposable
     public string OverallTitle => WatchedCount == 0 ? L.T("Make room for your services.") : IssueCount > 0 ? L.T("A few signals need your attention.") : UnknownCount > 0 ? L.T("Some signals are still unconfirmed.") : L.T("All clear. Keep doing your thing.");
     public string OverallDescription => WatchedCount == 0 ? L.T("Pick your services from the library to begin.") : IssueCount > 0 ? L.T("Provider reports are listed below. Open a status page for the latest details.") : UnknownCount > 0 ? L.T("An unavailable check is not a confirmed outage. Your last known states are preserved.") : L.T("Your selected providers report normal operation. We'll alert you when that changes.");
     private string _search = "", _category = L.T("All categories");
-    public string Search { get => _search; set { _search = value; Changed(); LibraryView.Refresh(); } }
-    public string Category { get => _category; set { _category = value; Changed(); LibraryView.Refresh(); } }
+    public string Search { get => _search; set { _search = value; Changed(); LibraryView.Refresh(); RefreshLibraryFamilies(); } }
+    public string Category { get => _category; set { _category = value; Changed(); LibraryView.Refresh(); RefreshLibraryFamilies(); } }
     private bool FilterService(object value) => value is ServiceItem service && (Category == L.T("All categories") || service.Category == Category)
         && (string.IsNullOrWhiteSpace(Search) || service.Name.Contains(Search.Trim(), StringComparison.OrdinalIgnoreCase) || service.Category.Contains(Search.Trim(), StringComparison.OrdinalIgnoreCase));
     private string _error = "";
@@ -152,8 +163,10 @@ public sealed partial class MainViewModel : ObservableObject, IDisposable
     }
     private void WatchChanged(ServiceItem service)
     {
+        if (_switchingList) return;
         if (service.IsWatched) _preferences.SelectedServices.Add(service.Id);
         else { _preferences.SelectedServices.Remove(service.Id); _tracker.LastKnown.Remove(service.Id); _tracker.LastIncidents.Remove(service.Id); }
+        if (_batchWatching) return;
         SavePreferences(); SaveState(); RebuildWatchlist();
         if (_started && !IsPaused && service.IsWatched) _ = RefreshAsync();
     }
@@ -182,7 +195,7 @@ public sealed partial class MainViewModel : ObservableObject, IDisposable
             var item = AllServices.Last();
             item.Update(result, null);
             if (!Categories.Contains(L.T("Custom services"))) Categories.Add(L.T("Custom services"));
-            SavePreferences(); RebuildWatchlist(); Changed(nameof(CatalogCount)); LibraryView.Refresh();
+            SavePreferences(); RebuildWatchlist(); Changed(nameof(CatalogCount)); LibraryView.Refresh(); RebuildLibrary();
             if (_started && !IsPaused) _ = RefreshAsync();
             return true;
         }
@@ -212,7 +225,7 @@ public sealed partial class MainViewModel : ObservableObject, IDisposable
         {
             if (IsDemo || _launchAtLogin == value) return;
             try { StartupService.SetEnabled(value); _launchAtLogin = value; Changed(); }
-            catch (Exception ex) { ErrorMessage = L.T("Windows startup could not be updated: ") + ex.Message; Changed(); }
+            catch (Exception ex) { ErrorMessage = L.T("Windows startup could not be updated: ") + L.T(ex.Message); Changed(); }
         }
     }
     public bool StartMinimized { get => _preferences.StartMinimized; set { _preferences.StartMinimized = value; SavePreferences(); Changed(); } }
@@ -252,6 +265,8 @@ public sealed partial class MainViewModel : ObservableObject, IDisposable
     }
     public void Dispose()
     {
+        _automaticUpdateTimer.Stop();
+        foreach (var family in _families) family.Dispose();
         _featureTimer.Stop(); Microsoft.Win32.SystemEvents.UserPreferenceChanged -= SystemPreferenceChanged;
         _downloadCancellation?.Cancel(); _updateHttp.Dispose();
         L.Updated -= AppearanceUpdated;

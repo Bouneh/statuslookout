@@ -14,12 +14,12 @@ public sealed class ServiceItem(ServiceDefinition definition, bool watched, bool
     public ServiceDefinition DefaultDefinition { get; } = definition;
     public ServiceDefinition Definition { get; private set; } = definition;
     public void SetComponents(string[]? components) { Definition = DefaultDefinition with { Components = components }; Changed(nameof(ComponentSummary)); }
-    public bool SupportsComponents => Definition.Provider is "statuspage" or "instatus" or "google";
+    public bool SupportsComponents => Definition.Provider is "statuspage" or "instatus" or "google" or "aws";
     public string ComponentSummary => Definition.Components is { Length: > 0 } c ? L.Format("{0} components selected", c.Length) : L.T("Entire status page");
     public string Id => Definition.Id;
     public string Name => Definition.Name;
     public string Category => L.T(Definition.Category);
-    public string ProviderLabel => Definition.Provider switch { "statuspage" => L.T("Statuspage-compatible API"), "google" => "Google Status Dashboard", "statusio" => "Status.io", "instatus" => "Instatus", _ => "Slack Status API" };
+    public string ProviderLabel => Definition.Provider switch { "statuspage" => L.T("Statuspage-compatible API"), "google" => "Google Status Dashboard", "statusio" => "Status.io", "instatus" => "Instatus", "aws" => "AWS Health Dashboard", "slack" => "Slack Status API", _ => L.T("Official provider status") };
     public string Initials => string.Concat(Name.Split(' ', StringSplitOptions.RemoveEmptyEntries).Take(2).Select(n => n[0])).ToUpperInvariant();
     private ImageSource? _customLogo;
     public ImageSource? Logo => _customLogo ?? ServiceLogos.Get(Definition);

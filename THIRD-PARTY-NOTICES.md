@@ -1,10 +1,10 @@
 # Third-party notices
 
-The built-in service definitions are adapted from [inket/stts](https://github.com/inket/stts/blob/master/Resources/services.json), retrieved on 2026-10-11. Only providers supported by StatusLookout are included. The Windows application, UI, state management and parsers are independently implemented. No macOS UI assets or Swift source are shipped.
+The built-in service definitions are adapted from [inket/stts](https://github.com/inket/stts/blob/master/Resources/services.json), retrieved on 2026-10-12 at commit `876ecac0996c719786477af8e3833cdac05235ba`. All 1048 source entries have a recorded local correspondence in `stts-coverage.json`. The Windows application, UI, state management and parsers are independently implemented. No macOS UI assets or Swift source are shipped.
 
 ## Bundled service favicons
 
-207 brand favicons covering the 461 shipped service entries are copied from [stts/Resources/Favicons](https://github.com/inket/stts/tree/876ecac0996c719786477af8e3833cdac05235ba/Resources/Favicons), pinned to commit `876ecac0996c719786477af8e3833cdac05235ba`. The source and service-to-file mapping are recorded in `src/StatusLookout.Windows/Assets/ServiceLogos/SOURCE.json` and `index.json`. The stts collection is distributed under the MIT license below; brand artwork and trademarks belong to their respective owners. Use here solely identifies monitored services and does not imply endorsement. No brand logo is the StatusLookout application logo.
+268 brand favicons covering the 1092 shipped service entries are copied from [stts/Resources/Favicons](https://github.com/inket/stts/tree/876ecac0996c719786477af8e3833cdac05235ba/Resources/Favicons), pinned to commit `876ecac0996c719786477af8e3833cdac05235ba`. The source and service-to-file mapping are recorded in `src/StatusLookout.Windows/Assets/ServiceLogos/SOURCE.json` and `index.json`. The stts collection is distributed under the MIT license below; brand artwork and trademarks belong to their respective owners. Use here solely identifies monitored services and does not imply endorsement. No brand logo is the StatusLookout application logo.
 
 ## stts service catalog and favicon collection — MIT
 
@@ -50,3 +50,11 @@ Service names remain the property of their respective owners. StatusLookout is n
 ## Stream Deck companion
 
 The plugin uses the MIT-licensed official Elgato SDK (`@elgato/streamdeck`, `@elgato/utils`, `@elgato/schemas`) and the MIT-licensed `ws` library. Exact versions are pinned in `plugins/streamdeck/package-lock.json`. Their original license texts are included inside the `.streamDeckPlugin` package as `THIRD-PARTY-NOTICES.txt`. Source: https://github.com/elgatosf/streamdeck and https://github.com/websockets/ws.
+
+## AWS public catalog
+
+AWS products and regions come from the public AWS Health dashboard asset at https://d3s31nlw3sm5l8.cloudfront.net/services.json, retrieved on 2026-10-12. Events come from https://health.aws.amazon.com/public/currentevents. AWS names and artwork belong to their respective owners.
+
+## Html Agility Pack
+
+Version 1.13.0, MIT licensed. Copyright © ZZZ Projects Inc. Used to read public HTML status dashboards. Source and license: https://github.com/zzzprojects/html-agility-pack/blob/master/LICENSE. The original license is distributed in `LICENSE-html-agility-pack.txt`.

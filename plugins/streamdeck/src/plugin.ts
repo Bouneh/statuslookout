@@ -55,18 +55,23 @@ class LookoutAction extends SingletonAction<Settings> {
   override async onPropertyInspectorDidAppear(ev: PropertyInspectorDidAppearEvent<Settings>) { this.inspector = ev.action; this.inspectorPayload = ''; await bridge.poll(); await this.sendServices(); }
   override onPropertyInspectorDidDisappear() { this.inspector = undefined; this.inspectorPayload = ''; }
   override async onSendToPlugin(ev: SendToPluginEvent<{ event?: string }, Settings>) {
-    const payload = ev.payload as { event?: string };
+    const payload = ev.payload as { event?: string; serviceId?: string };
     if (payload?.event === 'getServices') { this.inspectorPayload = ''; await bridge.poll(); await this.sendServices(); }
     else if (payload?.event === 'openDashboard') {
       try { await bridge.command('openDashboard'); } catch { await this.sendServices(); }
+    }
+    else if (payload?.event === 'watchService' && typeof payload.serviceId === 'string' && ['service','snooze'].includes(this.kind)) {
+      try { if (bridge.snapshot?.catalog) await bridge.command('watch', {serviceId:payload.serviceId}); }
+      catch (error) { streamDeck.logger.warn(error instanceof Error ? error.message : 'The service could not be enabled.'); }
+      await this.sendServices();
     }
   }
   private async sendServices() {
     if (!this.inspector) return;
     const snapshot = bridge.snapshot;
-    const payload = { event: 'services', connected: !!snapshot, kind: this.kind,
+    const payload = { event: 'services', connected: !!snapshot, kind: this.kind, fullCatalog: !!snapshot?.catalog,
       language: snapshot?.language ?? 'en', demo: snapshot?.isDemo ?? false,
-      services: snapshot?.services.map((s: {id: string; name: string}) => ({id: s.id, name: s.name})) ?? [] };
+      services: snapshot?.catalog ?? snapshot?.services.map(s => ({id:s.id,name:s.name,category:'',watched:true})) ?? [] };
     const serialized = JSON.stringify(payload); if (serialized === this.inspectorPayload) return;
     try { await streamDeck.ui.sendToPropertyInspector(payload); this.inspectorPayload = serialized; }
     catch { streamDeck.logger.warn('The property inspector is unavailable.'); }

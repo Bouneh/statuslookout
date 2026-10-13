@@ -1,0 +1,5248 @@
+{
+  "repository": "https://github.com/inket/stts",
+  "commit": "876ecac0996c719786477af8e3833cdac05235ba",
+  "sourceCount": 1048,
+  "catalogCount": 1092,
+  "entries": [
+    {
+      "sourceGroup": "independent",
+      "sourceName": "Algolia",
+      "serviceId": "independent.Algolia"
+    },
+    {
+      "sourceGroup": "independent",
+      "sourceName": "Apple (All)",
+      "serviceId": "independent.AppleAll"
+    },
+    {
+      "sourceGroup": "independent",
+      "sourceName": "Apple Developer (All)",
+      "serviceId": "independent.AppleDeveloperAll"
+    },
+    {
+      "sourceGroup": "independent",
+      "sourceName": "Azure (All Regions)",
+      "serviceId": "independent.AzureAll"
+    },
+    {
+      "sourceGroup": "independent",
+      "sourceName": "Azure DevOps (All)",
+      "serviceId": "independent.AzureDevOpsAll"
+    },
+    {
+      "sourceGroup": "independent",
+      "sourceName": "Beanstalk",
+      "serviceId": "independent.Beanstalk"
+    },
+    {
+      "sourceGroup": "independent",
+      "sourceName": "Broadcom",
+      "serviceId": "independent.Broadcom"
+    },
+    {
+      "sourceGroup": "independent",
+      "sourceName": "Fastly",
+      "serviceId": "independent.Fastly"
+    },
+    {
+      "sourceGroup": "independent",
+      "sourceName": "Firebase (All)",
+      "serviceId": "extra.Firebase"
+    },
+    {
+      "sourceGroup": "independent",
+      "sourceName": "Fivetran",
+      "serviceId": "independent.Fivetran"
+    },
+    {
+      "sourceGroup": "independent",
+      "sourceName": "Google Cloud Platform (All)",
+      "serviceId": "extra.GoogleCloud"
+    },
+    {
+      "sourceGroup": "independent",
+      "sourceName": "jsDelivr",
+      "serviceId": "independent.JSDelivr"
+    },
+    {
+      "sourceGroup": "independent",
+      "sourceName": "Miro (All Regions)",
+      "serviceId": "independent.MiroAll"
+    },
+    {
+      "sourceGroup": "independent",
+      "sourceName": "Okta",
+      "serviceId": "independent.Okta"
+    },
+    {
+      "sourceGroup": "independent",
+      "sourceName": "Oracle NetSuite",
+      "serviceId": "independent.OracleNetSuite"
+    },
+    {
+      "sourceGroup": "independent",
+      "sourceName": "PayPal API",
+      "serviceId": "independent.PayPalAPIProduction"
+    },
+    {
+      "sourceGroup": "independent",
+      "sourceName": "PayPal API (Sandbox)",
+      "serviceId": "independent.PayPalAPISandbox"
+    },
+    {
+      "sourceGroup": "independent",
+      "sourceName": "PayPal Product",
+      "serviceId": "independent.PayPalProductProduction"
+    },
+    {
+      "sourceGroup": "independent",
+      "sourceName": "PayPal Product (Sandbox)",
+      "serviceId": "independent.PayPalProductSandbox"
+    },
+    {
+      "sourceGroup": "independent",
+      "sourceName": "PlayStation Network (America)",
+      "serviceId": "independent.PSNAmerica"
+    },
+    {
+      "sourceGroup": "independent",
+      "sourceName": "PlayStation Network (Asia)",
+      "serviceId": "independent.PSNAsia"
+    },
+    {
+      "sourceGroup": "independent",
+      "sourceName": "PlayStation Network (Europe)",
+      "serviceId": "independent.PSNEurope"
+    },
+    {
+      "sourceGroup": "independent",
+      "sourceName": "Railway",
+      "serviceId": "independent.Railway"
+    },
+    {
+      "sourceGroup": "independent",
+      "sourceName": "Sendbird (All)",
+      "serviceId": "independent.SendbirdAll"
+    },
+    {
+      "sourceGroup": "independent",
+      "sourceName": "Slack",
+      "serviceId": "extra.Slack"
+    },
+    {
+      "sourceGroup": "independent",
+      "sourceName": "Stripe",
+      "serviceId": "independent.Stripe"
+    },
+    {
+      "sourceGroup": "independent",
+      "sourceName": "Upsun",
+      "serviceId": "independent.Upsun"
+    },
+    {
+      "sourceGroup": "independent",
+      "sourceName": "Uptime.com",
+      "serviceId": "independent.UptimeDotCom"
+    },
+    {
+      "sourceGroup": "independent",
+      "sourceName": "Zendesk",
+      "serviceId": "independent.Zendesk"
+    },
+    {
+      "sourceGroup": "betterstack",
+      "sourceName": "Better Stack",
+      "serviceId": "betterstack.BetterStack"
+    },
+    {
+      "sourceGroup": "betterstack",
+      "sourceName": "Keygen",
+      "serviceId": "betterstack.Keygen"
+    },
+    {
+      "sourceGroup": "betterstack",
+      "sourceName": "Runway: App Store Connect",
+      "serviceId": "betterstack.RunwayAppStoreConnect"
+    },
+    {
+      "sourceGroup": "betterstack",
+      "sourceName": "Unraid",
+      "serviceId": "betterstack.Unraid"
+    },
+    {
+      "sourceGroup": "betteruptime",
+      "sourceName": "Plausible Analytics",
+      "serviceId": "betteruptime.PlausibleAnalytics"
+    },
+    {
+      "sourceGroup": "betteruptime",
+      "sourceName": "Runway",
+      "serviceId": "betteruptime.Runway"
+    },
+    {
+      "sourceGroup": "cstate",
+      "sourceName": "Civo",
+      "serviceId": "cstate.Civo"
+    },
+    {
+      "sourceGroup": "incidentio",
+      "sourceName": "Aiven",
+      "serviceId": "incidentio.Aiven"
+    },
+    {
+      "sourceGroup": "incidentio",
+      "sourceName": "Brevo",
+      "serviceId": "incidentio.Brevo"
+    },
+    {
+      "sourceGroup": "incidentio",
+      "sourceName": "Code Climate",
+      "serviceId": "incidentio.CodeClimate"
+    },
+    {
+      "sourceGroup": "incidentio",
+      "sourceName": "HashiCorp",
+      "serviceId": "incidentio.HashiCorp"
+    },
+    {
+      "sourceGroup": "incidentio",
+      "sourceName": "Intercom - AU Hosting",
+      "serviceId": "incidentio.IntercomAUHosting"
+    },
+    {
+      "sourceGroup": "incidentio",
+      "sourceName": "Intercom - EU Hosting",
+      "serviceId": "incidentio.IntercomEUHosting"
+    },
+    {
+      "sourceGroup": "incidentio",
+      "sourceName": "Intercom - US Hosting",
+      "serviceId": "incidentio.IntercomUSHosting"
+    },
+    {
+      "sourceGroup": "incidentio",
+      "sourceName": "Linear",
+      "serviceId": "incidentio.Linear"
+    },
+    {
+      "sourceGroup": "incidentio",
+      "sourceName": "Notion",
+      "serviceId": "incidentio.Notion"
+    },
+    {
+      "sourceGroup": "incidentio",
+      "sourceName": "OneSignal",
+      "serviceId": "incidentio.OneSignal"
+    },
+    {
+      "sourceGroup": "incidentio",
+      "sourceName": "OpenAI",
+      "serviceId": "extra.OpenAI"
+    },
+    {
+      "sourceGroup": "incidentio",
+      "sourceName": "Recurly",
+      "serviceId": "incidentio.Recurly"
+    },
+    {
+      "sourceGroup": "incidentio",
+      "sourceName": "Rollbar",
+      "serviceId": "incidentio.Rollbar"
+    },
+    {
+      "sourceGroup": "incidentio",
+      "sourceName": "Strategic Roadmaps",
+      "serviceId": "incidentio.StrategicRoadmaps"
+    },
+    {
+      "sourceGroup": "incidentio",
+      "sourceName": "Tempo",
+      "serviceId": "incidentio.Tempo"
+    },
+    {
+      "sourceGroup": "incidentio",
+      "sourceName": "Zapier",
+      "serviceId": "incidentio.Zapier"
+    },
+    {
+      "sourceGroup": "instatus",
+      "sourceName": "Bitmovin",
+      "serviceId": "instatus.Bitmovin"
+    },
+    {
+      "sourceGroup": "instatus",
+      "sourceName": "Instatus",
+      "serviceId": "instatus.Instatus"
+    },
+    {
+      "sourceGroup": "instatus",
+      "sourceName": "Primcloud",
+      "serviceId": "instatus.Primcloud"
+    },
+    {
+      "sourceGroup": "instatus",
+      "sourceName": "Sketch",
+      "serviceId": "instatus.Sketch"
+    },
+    {
+      "sourceGroup": "instatus",
+      "sourceName": "Threader",
+      "serviceId": "instatus.Threader"
+    },
+    {
+      "sourceGroup": "instatus",
+      "sourceName": "Whereby",
+      "serviceId": "instatus.Whereby"
+    },
+    {
+      "sourceGroup": "instatus",
+      "sourceName": "mastodon.social",
+      "serviceId": "instatus.mastodonsocial"
+    },
+    {
+      "sourceGroup": "pagerduty",
+      "sourceName": "PagerDuty",
+      "serviceId": "pagerduty.PagerDuty"
+    },
+    {
+      "sourceGroup": "pagerduty",
+      "sourceName": "SignalWire",
+      "serviceId": "pagerduty.SignalWire"
+    },
+    {
+      "sourceGroup": "lamb",
+      "sourceName": "Codacy",
+      "serviceId": "lamb.Codacy"
+    },
+    {
+      "sourceGroup": "miro",
+      "sourceName": "Miro (AU)",
+      "serviceId": "miro.MiroAU"
+    },
+    {
+      "sourceGroup": "miro",
+      "sourceName": "Miro (EU)",
+      "serviceId": "miro.MiroEU"
+    },
+    {
+      "sourceGroup": "miro",
+      "sourceName": "Miro (US)",
+      "serviceId": "miro.MiroUS"
+    },
+    {
+      "sourceGroup": "site24x7",
+      "sourceName": "Canonical",
+      "serviceId": "site24x7.Canonical"
+    },
+    {
+      "sourceGroup": "site24x7",
+      "sourceName": "Site24x7",
+      "serviceId": "site24x7.Site24x7"
+    },
+    {
+      "sourceGroup": "sorry",
+      "sourceName": "Pingdom",
+      "serviceId": "sorry.Pingdom"
+    },
+    {
+      "sourceGroup": "sorry",
+      "sourceName": "Pipedrive",
+      "serviceId": "sorry.Pipedrive"
+    },
+    {
+      "sourceGroup": "sorry",
+      "sourceName": "Postmark",
+      "serviceId": "sorry.Postmark"
+    },
+    {
+      "sourceGroup": "statusiov1",
+      "sourceName": "ClickUp",
+      "serviceId": "statusiov1.ClickUp"
+    },
+    {
+      "sourceGroup": "statusiov1",
+      "sourceName": "CoreWeave",
+      "serviceId": "statusiov1.CoreWeave"
+    },
+    {
+      "sourceGroup": "statusiov1",
+      "sourceName": "Dashlane",
+      "serviceId": "statusiov1.Dashlane"
+    },
+    {
+      "sourceGroup": "statusiov1",
+      "sourceName": "Docker",
+      "serviceId": "statusiov1.Docker"
+    },
+    {
+      "sourceGroup": "statusiov1",
+      "sourceName": "GitLab",
+      "serviceId": "statusiov1.GitLab"
+    },
+    {
+      "sourceGroup": "statusiov1",
+      "sourceName": "Let's Encrypt",
+      "serviceId": "statusiov1.LetsEncrypt"
+    },
+    {
+      "sourceGroup": "statusiov1",
+      "sourceName": "OneLogin (EU)",
+      "serviceId": "statusiov1.OneLoginEU"
+    },
+    {
+      "sourceGroup": "statusiov1",
+      "sourceName": "OneLogin (US)",
+      "serviceId": "statusiov1.OneLoginUS"
+    },
+    {
+      "sourceGroup": "statusiov1",
+      "sourceName": "Roblox",
+      "serviceId": "statusiov1.Roblox"
+    },
+    {
+      "sourceGroup": "statuscake",
+      "sourceName": "MailChimp",
+      "serviceId": "statuscake.MailChimp"
+    },
+    {
+      "sourceGroup": "statuscast",
+      "sourceName": "8x8",
+      "serviceId": "statuscast.8x8"
+    },
+    {
+      "sourceGroup": "statuscast",
+      "sourceName": "Airship (EU)",
+      "serviceId": "statuscast.AirshipEU"
+    },
+    {
+      "sourceGroup": "statuscast",
+      "sourceName": "Airship (US)",
+      "serviceId": "statuscast.AirshipUS"
+    },
+    {
+      "sourceGroup": "statuscast",
+      "sourceName": "Campaign Monitor",
+      "serviceId": "statuscast.CampaignMonitor"
+    },
+    {
+      "sourceGroup": "statuscast",
+      "sourceName": "StatusCast",
+      "serviceId": "statuscast.StatusCast"
+    },
+    {
+      "sourceGroup": "statushub",
+      "sourceName": "WP Engine",
+      "serviceId": "statushub.WPEngine"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "1Password",
+      "serviceId": "statuspage.1Password"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "37signals",
+      "serviceId": "statuspage.37signals"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Acoustic",
+      "serviceId": "statuspage.Acoustic"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Acquia",
+      "serviceId": "statuspage.Acquia"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Airbase",
+      "serviceId": "statuspage.Airbase"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Alert Logic",
+      "serviceId": "statuspage.AlertLogic"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Aptible",
+      "serviceId": "statuspage.Aptible"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Asana",
+      "serviceId": "statuspage.Asana"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Atlassian Developer",
+      "serviceId": "statuspage.AtlassianDeveloper"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Atlassian Guard",
+      "serviceId": "statuspage.AtlassianGuard"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Atlassian Partners",
+      "serviceId": "statuspage.AtlassianPartners"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Atlassian Statuspage",
+      "serviceId": "statuspage.AtlassianStatuspage"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Atlassian Support",
+      "serviceId": "statuspage.AtlassianSupport"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "AuroraSolar",
+      "serviceId": "statuspage.AuroraSolar"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Auth0",
+      "serviceId": "statuspage.Auth0"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Authorize.Net",
+      "serviceId": "statuspage.AuthorizeNet"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Avalara",
+      "serviceId": "statuspage.Avalara"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "BigCommerce",
+      "serviceId": "statuspage.BigCommerce"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Bird",
+      "serviceId": "statuspage.Bird"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Bitbucket",
+      "serviceId": "statuspage.Bitbucket"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Bitrise",
+      "serviceId": "statuspage.Bitrise"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Blend",
+      "serviceId": "statuspage.Blend"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Bolt",
+      "serviceId": "statuspage.Bolt"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Box",
+      "serviceId": "statuspage.Box"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Branch",
+      "serviceId": "statuspage.Branch"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Bugsnag",
+      "serviceId": "statuspage.Bugsnag"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Buildkite",
+      "serviceId": "statuspage.Buildkite"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Bullhorn",
+      "serviceId": "statuspage.Bullhorn"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Chargebee",
+      "serviceId": "statuspage.Chargebee"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Checkly",
+      "serviceId": "statuspage.Checkly"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "CircleCI",
+      "serviceId": "statuspage.CircleCI"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Claude",
+      "serviceId": "statuspage.Claude"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Click",
+      "serviceId": "statuspage.Click"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Cloud66",
+      "serviceId": "statuspage.Cloud66"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "CloudAMQP",
+      "serviceId": "statuspage.CloudAMQP"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Cloudflare",
+      "serviceId": "statuspage.Cloudflare"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Cloudinary",
+      "serviceId": "statuspage.Cloudinary"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "CocoaPods",
+      "serviceId": "statuspage.CocoaPods"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Codecov",
+      "serviceId": "statuspage.Codecov"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "CoderPad",
+      "serviceId": "statuspage.CoderPad"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Coinbase",
+      "serviceId": "statuspage.Coinbase"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Compass",
+      "serviceId": "statuspage.Compass"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Confluence",
+      "serviceId": "statuspage.Confluence"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Confluent Cloud",
+      "serviceId": "statuspage.ConfluentCloud"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Contentful",
+      "serviceId": "statuspage.Contentful"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Coveralls",
+      "serviceId": "statuspage.Coveralls"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Cursor",
+      "serviceId": "statuspage.Cursor"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Customer.io",
+      "serviceId": "statuspage.Customerio"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Cybersource",
+      "serviceId": "statuspage.Cybersource"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Cypress",
+      "serviceId": "statuspage.Cypress"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "DNSimple",
+      "serviceId": "statuspage.DNSimple"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Datadog",
+      "serviceId": "statuspage.Datadog"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Datadog (EU)",
+      "serviceId": "statuspage.DatadogEU"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "DeepSeek",
+      "serviceId": "statuspage.DeepSeek"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Dialpad",
+      "serviceId": "statuspage.Dialpad"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "DigitalOcean",
+      "serviceId": "statuspage.DigitalOcean"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Discord",
+      "serviceId": "statuspage.Discord"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Doppler",
+      "serviceId": "statuspage.Doppler"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Dropbox",
+      "serviceId": "statuspage.Dropbox"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Duo",
+      "serviceId": "statuspage.Duo"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Dwolla",
+      "serviceId": "statuspage.Dwolla"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "EasyPost",
+      "serviceId": "statuspage.EasyPost"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Egnyte",
+      "serviceId": "statuspage.Egnyte"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Elastic Cloud",
+      "serviceId": "statuspage.ElasticCloud"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Emailable",
+      "serviceId": "statuspage.Emailable"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Engine Yard",
+      "serviceId": "statuspage.EngineYard"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Equinix Metal",
+      "serviceId": "statuspage.EquinixMetal"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Figma",
+      "serviceId": "statuspage.Figma"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Files.com",
+      "serviceId": "statuspage.Filescom"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Filestack",
+      "serviceId": "statuspage.Filestack"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Fleek",
+      "serviceId": "statuspage.Fleek"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Fly.io",
+      "serviceId": "statuspage.Flyio"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "FreeAgent",
+      "serviceId": "statuspage.FreeAgent"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Gandi.net",
+      "serviceId": "statuspage.Gandinet"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "GitHub",
+      "serviceId": "statuspage.GitHub"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Harness",
+      "serviceId": "statuspage.Harness"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "HelloSign / HelloFax",
+      "serviceId": "statuspage.HelloSignHelloFax"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "HouseCanary",
+      "serviceId": "statuspage.HouseCanary"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "HubSpot",
+      "serviceId": "statuspage.HubSpot"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Internet Computer",
+      "serviceId": "statuspage.InternetComputer"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "JAMF",
+      "serviceId": "statuspage.JAMF"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Jira Align",
+      "serviceId": "statuspage.JiraAlign"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Jira Product Discovery",
+      "serviceId": "statuspage.JiraProductDiscovery"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Jira Service Management",
+      "serviceId": "statuspage.JiraServiceManagement"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Jira Software",
+      "serviceId": "statuspage.JiraSoftware"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Jira Work Management",
+      "serviceId": "statuspage.JiraWorkManagement"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "JumpCloud",
+      "serviceId": "statuspage.JumpCloud"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "KeenIO",
+      "serviceId": "statuspage.KeenIO"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Keeper Security",
+      "serviceId": "statuspage.KeeperSecurity"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Kentik",
+      "serviceId": "statuspage.Kentik"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Kustomer",
+      "serviceId": "statuspage.Kustomer"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "LastPass",
+      "serviceId": "statuspage.LastPass"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Lattice",
+      "serviceId": "statuspage.Lattice"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "LaunchDarkly",
+      "serviceId": "statuspage.LaunchDarkly"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Lever",
+      "serviceId": "statuspage.Lever"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "LinkedIn API",
+      "serviceId": "statuspage.LinkedInAPI"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Linode",
+      "serviceId": "statuspage.Linode"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Lob",
+      "serviceId": "statuspage.Lob"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Loggly",
+      "serviceId": "statuspage.Loggly"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Loom",
+      "serviceId": "statuspage.Loom"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Mailgun",
+      "serviceId": "statuspage.Mailgun"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Mapbox",
+      "serviceId": "statuspage.Mapbox"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Medium",
+      "serviceId": "statuspage.Medium"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "MeridianLink",
+      "serviceId": "statuspage.MeridianLink"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Mixpanel",
+      "serviceId": "statuspage.Mixpanel"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Mode Analytics",
+      "serviceId": "statuspage.ModeAnalytics"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "MongoDB Cloud",
+      "serviceId": "statuspage.MongoDBCloud"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Mozilla",
+      "serviceId": "statuspage.Mozilla"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Mural",
+      "serviceId": "statuspage.Mural"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Nasdaq Data Link",
+      "serviceId": "statuspage.NasdaqDataLink"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Netlify",
+      "serviceId": "statuspage.Netlify"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "New Relic",
+      "serviceId": "statuspage.NewRelic"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Opsgenie",
+      "serviceId": "statuspage.Opsgenie"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Pantheon",
+      "serviceId": "statuspage.Pantheon"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Papertrail",
+      "serviceId": "statuspage.Papertrail"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Pardot",
+      "serviceId": "statuspage.Pardot"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Pendo",
+      "serviceId": "statuspage.Pendo"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Planning Center",
+      "serviceId": "statuspage.PlanningCenter"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "PlayFab",
+      "serviceId": "statuspage.PlayFab"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Poka",
+      "serviceId": "statuspage.Poka"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Productboard",
+      "serviceId": "statuspage.Productboard"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Proton",
+      "serviceId": "statuspage.Proton"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "PubNub",
+      "serviceId": "statuspage.PubNub"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Pusher",
+      "serviceId": "statuspage.Pusher"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Python",
+      "serviceId": "statuspage.Python"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "QuickBooks",
+      "serviceId": "statuspage.QuickBooks"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "ReadMe",
+      "serviceId": "statuspage.ReadMe"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Recruiterbox",
+      "serviceId": "statuspage.Recruiterbox"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Red Hat",
+      "serviceId": "statuspage.RedHat"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Reddit",
+      "serviceId": "statuspage.Reddit"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "RevenueCat",
+      "serviceId": "statuspage.RevenueCat"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Robin",
+      "serviceId": "statuspage.Robin"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Robinhood",
+      "serviceId": "statuspage.Robinhood"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "RubyGems",
+      "serviceId": "statuspage.RubyGems"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Sauce Labs",
+      "serviceId": "statuspage.SauceLabs"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Scaleway",
+      "serviceId": "statuspage.Scaleway"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "SecurID",
+      "serviceId": "statuspage.SecurID"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Segment",
+      "serviceId": "statuspage.Segment"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Semaphore",
+      "serviceId": "statuspage.Semaphore"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Sentry",
+      "serviceId": "statuspage.Sentry"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Shopify",
+      "serviceId": "statuspage.Shopify"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Shortcut",
+      "serviceId": "statuspage.Shortcut"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Smarty",
+      "serviceId": "statuspage.Smarty"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Snowflake",
+      "serviceId": "statuspage.Snowflake"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Snyk",
+      "serviceId": "statuspage.Snyk"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Squarespace",
+      "serviceId": "statuspage.Squarespace"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Stream",
+      "serviceId": "statuspage.Stream"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "SumoLogic",
+      "serviceId": "statuspage.SumoLogic"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Teleport Cloud",
+      "serviceId": "statuspage.TeleportCloud"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Temporal",
+      "serviceId": "statuspage.Temporal"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "TravisCI",
+      "serviceId": "statuspage.TravisCI"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Trello",
+      "serviceId": "statuspage.Trello"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Twilio",
+      "serviceId": "statuspage.Twilio"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Twitch",
+      "serviceId": "statuspage.Twitch"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Tyk",
+      "serviceId": "statuspage.Tyk"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Typeform",
+      "serviceId": "statuspage.Typeform"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Unsplash",
+      "serviceId": "statuspage.Unsplash"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "VMware Workspace ONE",
+      "serviceId": "statuspage.VMwareWorkspaceONE"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Vercel",
+      "serviceId": "statuspage.Vercel"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "VictorOps",
+      "serviceId": "statuspage.VictorOps"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Vimeo",
+      "serviceId": "statuspage.Vimeo"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Visual Studio App Center",
+      "serviceId": "statuspage.VisualStudioAppCenter"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Wasabi",
+      "serviceId": "statuspage.Wasabi"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "WeTransfer",
+      "serviceId": "statuspage.WeTransfer"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Wiz",
+      "serviceId": "statuspage.Wiz"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Wodby",
+      "serviceId": "statuspage.Wodby"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Workflowy",
+      "serviceId": "statuspage.Workflowy"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Xandr",
+      "serviceId": "statuspage.Xandr"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Zight",
+      "serviceId": "statuspage.Zight"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Zoom",
+      "serviceId": "statuspage.Zoom"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "Zwift",
+      "serviceId": "statuspage.Zwift"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "bunny.net",
+      "serviceId": "statuspage.bunnynet"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "imgix",
+      "serviceId": "statuspage.imgix"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "logz.io",
+      "serviceId": "statuspage.logzio"
+    },
+    {
+      "sourceGroup": "statuspage",
+      "sourceName": "npm",
+      "serviceId": "statuspage.npm"
+    },
+    {
+      "sourceGroup": "statuspal",
+      "sourceName": "Booxi",
+      "serviceId": "statuspal.Booxi"
+    },
+    {
+      "sourceGroup": "statuspal",
+      "sourceName": "Exoscale",
+      "serviceId": "statuspal.Exoscale"
+    },
+    {
+      "sourceGroup": "statuspal",
+      "sourceName": "Unity",
+      "serviceId": "statuspal.Unity"
+    },
+    {
+      "sourceGroup": "sendbird",
+      "sourceName": "Sendbird (Canada)",
+      "serviceId": "sendbird.SendbirdCanada"
+    },
+    {
+      "sourceGroup": "sendbird",
+      "sourceName": "Sendbird (Frankfurt)",
+      "serviceId": "sendbird.SendbirdFrankfurt"
+    },
+    {
+      "sourceGroup": "sendbird",
+      "sourceName": "Sendbird (Mumbai)",
+      "serviceId": "sendbird.SendbirdMumbai"
+    },
+    {
+      "sourceGroup": "sendbird",
+      "sourceName": "Sendbird (North Virginia 2)",
+      "serviceId": "sendbird.SendbirdNorthVirginia2"
+    },
+    {
+      "sourceGroup": "sendbird",
+      "sourceName": "Sendbird (North Virginia)",
+      "serviceId": "sendbird.SendbirdNorthVirginia"
+    },
+    {
+      "sourceGroup": "sendbird",
+      "sourceName": "Sendbird (Oregon)",
+      "serviceId": "sendbird.SendbirdOregon"
+    },
+    {
+      "sourceGroup": "sendbird",
+      "sourceName": "Sendbird (Seoul)",
+      "serviceId": "sendbird.SendbirdSeoul"
+    },
+    {
+      "sourceGroup": "sendbird",
+      "sourceName": "Sendbird (Singapore 2)",
+      "serviceId": "sendbird.SendbirdSingapore2"
+    },
+    {
+      "sourceGroup": "sendbird",
+      "sourceName": "Sendbird (Singapore)",
+      "serviceId": "sendbird.SendbirdOregon"
+    },
+    {
+      "sourceGroup": "sendbird",
+      "sourceName": "Sendbird (Sydney)",
+      "serviceId": "sendbird.SendbirdSydney"
+    },
+    {
+      "sourceGroup": "sendbird",
+      "sourceName": "Sendbird (Tokyo)",
+      "serviceId": "sendbird.SendbirdTokyo"
+    },
+    {
+      "sourceGroup": "azure",
+      "sourceName": "Azure Americas",
+      "serviceId": "azure.AzureAmericas"
+    },
+    {
+      "sourceGroup": "azure",
+      "sourceName": "Azure Asia Pacific",
+      "serviceId": "azure.AzureAsiaPacific"
+    },
+    {
+      "sourceGroup": "azure",
+      "sourceName": "Azure China",
+      "serviceId": "azure.AzureChina"
+    },
+    {
+      "sourceGroup": "azure",
+      "sourceName": "Azure Europe",
+      "serviceId": "azure.AzureEurope"
+    },
+    {
+      "sourceGroup": "azure",
+      "sourceName": "Azure Government",
+      "serviceId": "azure.AzureGovernment"
+    },
+    {
+      "sourceGroup": "azure",
+      "sourceName": "Azure Jio",
+      "serviceId": "azure.AzureJio"
+    },
+    {
+      "sourceGroup": "azure",
+      "sourceName": "Azure Middle East and Africa",
+      "serviceId": "azure.AzureMiddleEastandAfrica"
+    },
+    {
+      "sourceGroup": "azuredevops",
+      "sourceName": "Azure DevOps Artifacts",
+      "serviceId": "azuredevops.AzureDevOpsArtifacts"
+    },
+    {
+      "sourceGroup": "azuredevops",
+      "sourceName": "Azure DevOps Boards",
+      "serviceId": "azuredevops.AzureDevOpsBoards"
+    },
+    {
+      "sourceGroup": "azuredevops",
+      "sourceName": "Azure DevOps Core Services",
+      "serviceId": "azuredevops.AzureDevOpsCoreServices"
+    },
+    {
+      "sourceGroup": "azuredevops",
+      "sourceName": "Azure DevOps Other Services",
+      "serviceId": "azuredevops.AzureDevOpsOtherServices"
+    },
+    {
+      "sourceGroup": "azuredevops",
+      "sourceName": "Azure DevOps Pipelines",
+      "serviceId": "azuredevops.AzureDevOpsPipelines"
+    },
+    {
+      "sourceGroup": "azuredevops",
+      "sourceName": "Azure DevOps Repos",
+      "serviceId": "azuredevops.AzureDevOpsRepos"
+    },
+    {
+      "sourceGroup": "azuredevops",
+      "sourceName": "Azure DevOps Test Plans",
+      "serviceId": "azuredevops.AzureDevOpsTestPlans"
+    },
+    {
+      "sourceGroup": "firebase",
+      "sourceName": "Firebase A/B Testing (Beta)",
+      "serviceId": "firebase.o3Bog72rXiAwUuLT8itC"
+    },
+    {
+      "sourceGroup": "firebase",
+      "sourceName": "Firebase AI Logic",
+      "serviceId": "firebase.1n2MW8z3PStnraLEjqCK"
+    },
+    {
+      "sourceGroup": "firebase",
+      "sourceName": "Firebase App Check",
+      "serviceId": "firebase.g1ZKEDYGMHZUkuwd7XPo"
+    },
+    {
+      "sourceGroup": "firebase",
+      "sourceName": "Firebase App Distribution",
+      "serviceId": "firebase.jJL4tksewGpGpbQpuuYb"
+    },
+    {
+      "sourceGroup": "firebase",
+      "sourceName": "Firebase App Hosting",
+      "serviceId": "firebase.HTttUMxtwssvuuRP2k4k"
+    },
+    {
+      "sourceGroup": "firebase",
+      "sourceName": "Firebase App Indexing",
+      "serviceId": "firebase.kaJ4AaXA2yDckJGdzRX9"
+    },
+    {
+      "sourceGroup": "firebase",
+      "sourceName": "Firebase Authentication",
+      "serviceId": "firebase.ty5dcfcAmf92kaN1vKuj"
+    },
+    {
+      "sourceGroup": "firebase",
+      "sourceName": "Firebase Cloud Messaging",
+      "serviceId": "firebase.K2T198LhzrR5kLU8hmkk"
+    },
+    {
+      "sourceGroup": "firebase",
+      "sourceName": "Firebase Cloud Storage",
+      "serviceId": "firebase.eZ4rC7zbJthSG1NHpM1i"
+    },
+    {
+      "sourceGroup": "firebase",
+      "sourceName": "Firebase Console",
+      "serviceId": "firebase.CJVACy9PRrpzURiAMV7p"
+    },
+    {
+      "sourceGroup": "firebase",
+      "sourceName": "Firebase Crashlytics",
+      "serviceId": "firebase.BevPfAqaWeJzx9e2SWic"
+    },
+    {
+      "sourceGroup": "firebase",
+      "sourceName": "Firebase Dynamic Links",
+      "serviceId": "firebase.Stcm7HK5EapnWqVr2zms"
+    },
+    {
+      "sourceGroup": "firebase",
+      "sourceName": "Firebase Extensions",
+      "serviceId": "firebase.fxZ4LYaAY2XAWqzFJMF6"
+    },
+    {
+      "sourceGroup": "firebase",
+      "sourceName": "Firebase Gemini in Firebase",
+      "serviceId": "firebase.RMsU76RA8d6R9LqeuN4Z"
+    },
+    {
+      "sourceGroup": "firebase",
+      "sourceName": "Firebase Genkit",
+      "serviceId": "firebase.uFDHKaGxC3JpnSBadUcH"
+    },
+    {
+      "sourceGroup": "firebase",
+      "sourceName": "Firebase Hosting",
+      "serviceId": "firebase.hhAxKbKdeaqncSsxMwEx"
+    },
+    {
+      "sourceGroup": "firebase",
+      "sourceName": "Firebase In-App Messaging (Beta)",
+      "serviceId": "firebase.ejBuWV6TjrCGtDCdFA2i"
+    },
+    {
+      "sourceGroup": "firebase",
+      "sourceName": "Firebase Machine Learning (Beta)",
+      "serviceId": "firebase.gvjocQQZmWRZZEscTdN4"
+    },
+    {
+      "sourceGroup": "firebase",
+      "sourceName": "Firebase Performance Monitoring",
+      "serviceId": "firebase.GusG3dNfNtJmQhdLLcR8"
+    },
+    {
+      "sourceGroup": "firebase",
+      "sourceName": "Firebase Phone Number Verification",
+      "serviceId": "firebase.e7yX4RY1XPrfZnuTnFpN"
+    },
+    {
+      "sourceGroup": "firebase",
+      "sourceName": "Firebase Realtime Database",
+      "serviceId": "firebase.6yDUaxmrjdHvC8tnGHRQ"
+    },
+    {
+      "sourceGroup": "firebase",
+      "sourceName": "Firebase Remote Config",
+      "serviceId": "firebase.5AgCVXiY8zJMBbruVrm8"
+    },
+    {
+      "sourceGroup": "firebase",
+      "sourceName": "Firebase SQL Connect",
+      "serviceId": "firebase.Ns5YfhwzxazdcYco21M4"
+    },
+    {
+      "sourceGroup": "firebase",
+      "sourceName": "Firebase Studio (Preview)",
+      "serviceId": "firebase.dYrh1yuAzmqNwy3hTVeA"
+    },
+    {
+      "sourceGroup": "firebase",
+      "sourceName": "Firebase Test Lab",
+      "serviceId": "firebase.XAmF3juu1qZ8jNAVhv29"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Datorama (All Regions)",
+      "serviceId": "salesforce.DatoramaAllRegions"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Datorama (EMEA)",
+      "serviceId": "salesforce.DatoramaEMEA"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Datorama (NA)",
+      "serviceId": "salesforce.DatoramaNA"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Heroku (All Regions)",
+      "serviceId": "salesforce.HerokuAllRegions"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Heroku (APAC)",
+      "serviceId": "salesforce.HerokuAPAC"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Heroku (EMEA)",
+      "serviceId": "salesforce.HerokuEMEA"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Heroku (NA)",
+      "serviceId": "salesforce.HerokuNA"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "MC Account Engagement (All Regions)",
+      "serviceId": "salesforce.MCAccountEngagementAllRegions"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "MC Account Engagement (NA)",
+      "serviceId": "salesforce.MCAccountEngagementNA"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "MC Personalization (All Regions)",
+      "serviceId": "salesforce.MCPersonalizationAllRegions"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "MC Personalization (APAC)",
+      "serviceId": "salesforce.MCPersonalizationAPAC"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "MC Personalization (EMEA)",
+      "serviceId": "salesforce.MCPersonalizationEMEA"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "MC Personalization (NA)",
+      "serviceId": "salesforce.MCPersonalizationNA"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Mulesoft (All Regions)",
+      "serviceId": "salesforce.MulesoftAllRegions"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Mulesoft (APAC)",
+      "serviceId": "salesforce.MulesoftAPAC"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Mulesoft (EMEA)",
+      "serviceId": "salesforce.MulesoftEMEA"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Mulesoft (NA)",
+      "serviceId": "salesforce.MulesoftNA"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Point of Sale (All Regions)",
+      "serviceId": "salesforce.PointofSaleAllRegions"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Point of Sale (APAC)",
+      "serviceId": "salesforce.PointofSaleAPAC"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Point of Sale (EMEA)",
+      "serviceId": "salesforce.PointofSaleEMEA"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Point of Sale (NA)",
+      "serviceId": "salesforce.PointofSaleNA"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Salesforce B2C Commerce Cloud (All Regions)",
+      "serviceId": "salesforce.SalesforceB2CCommerceCloudAllRegions"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Salesforce B2C Commerce Cloud (APAC)",
+      "serviceId": "salesforce.SalesforceB2CCommerceCloudAPAC"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Salesforce B2C Commerce Cloud (EMEA)",
+      "serviceId": "salesforce.SalesforceB2CCommerceCloudEMEA"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Salesforce B2C Commerce Cloud (NA)",
+      "serviceId": "salesforce.SalesforceB2CCommerceCloudNA"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Salesforce Experience Cloud (All Regions)",
+      "serviceId": "salesforce.SalesforceExperienceCloudAllRegions"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Salesforce Experience Cloud (APAC)",
+      "serviceId": "salesforce.SalesforceExperienceCloudAPAC"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Salesforce Experience Cloud (EMEA)",
+      "serviceId": "salesforce.SalesforceExperienceCloudEMEA"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Salesforce Experience Cloud (NA)",
+      "serviceId": "salesforce.SalesforceExperienceCloudNA"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Salesforce Marketing Cloud (All Regions)",
+      "serviceId": "salesforce.SalesforceMarketingCloudAllRegions"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Salesforce Marketing Cloud (APAC)",
+      "serviceId": "salesforce.SalesforceMarketingCloudAPAC"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Salesforce Marketing Cloud (EMEA)",
+      "serviceId": "salesforce.SalesforceMarketingCloudEMEA"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Salesforce Marketing Cloud (NA)",
+      "serviceId": "salesforce.SalesforceMarketingCloudNA"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Salesforce Services (All Regions)",
+      "serviceId": "salesforce.SalesforceServicesAllRegions"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Salesforce Services (APAC)",
+      "serviceId": "salesforce.SalesforceServicesAPAC"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Salesforce Services (EMEA)",
+      "serviceId": "salesforce.SalesforceServicesEMEA"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Salesforce Services (NA)",
+      "serviceId": "salesforce.SalesforceServicesNA"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Spiff (All Regions)",
+      "serviceId": "salesforce.SpiffAllRegions"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Spiff (EMEA)",
+      "serviceId": "salesforce.SpiffEMEA"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Spiff (NA)",
+      "serviceId": "salesforce.SpiffNA"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Tableau (All Regions)",
+      "serviceId": "salesforce.TableauAllRegions"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Tableau (APAC)",
+      "serviceId": "salesforce.TableauAPAC"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Tableau (EMEA)",
+      "serviceId": "salesforce.TableauEMEA"
+    },
+    {
+      "sourceGroup": "salesforce",
+      "sourceName": "Tableau (NA)",
+      "serviceId": "salesforce.TableauNA"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Account Management",
+      "serviceId": "adobe.AdobeAccountManagement"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Acrobat",
+      "serviceId": "adobe.AdobeAcrobat"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Acrobat Services",
+      "serviceId": "adobe.AdobeAcrobatServices"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Acrobat Sign",
+      "serviceId": "adobe.AdobeAcrobatSign"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Administrative Consoles",
+      "serviceId": "adobe.AdobeAdministrativeConsoles"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Advertising",
+      "serviceId": "adobe.AdobeAdvertising"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Aero",
+      "serviceId": "adobe.AdobeAero"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe AI Assistant",
+      "serviceId": "adobe.AdobeAIAssistant"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Analytics",
+      "serviceId": "adobe.AdobeAnalytics"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Audience Manager",
+      "serviceId": "adobe.AdobeAudienceManager"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Brand Concierge",
+      "serviceId": "adobe.AdobeBrandConcierge"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Brand Visibility",
+      "serviceId": "adobe.AdobeBrandVisibility"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Bridge",
+      "serviceId": "adobe.AdobeBridge"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Campaign",
+      "serviceId": "adobe.AdobeCampaign"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Capture",
+      "serviceId": "adobe.AdobeCapture"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe CC Community",
+      "serviceId": "adobe.AdobeCCCommunity"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Color",
+      "serviceId": "adobe.AdobeColor"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Commerce",
+      "serviceId": "adobe.AdobeCommerce"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Commerce Partner API",
+      "serviceId": "adobe.AdobeCommercePartnerAPI"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Connect",
+      "serviceId": "adobe.AdobeConnect"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Content Authenticity",
+      "serviceId": "adobe.AdobeContentAuthenticity"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Creative Cloud (All)",
+      "serviceId": "adobe.AdobeCreativeCloudAll"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Creative Cloud Applications",
+      "serviceId": "adobe.AdobeCreativeCloudApplications"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Creative Cloud Libraries",
+      "serviceId": "adobe.AdobeCreativeCloudLibraries"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Creative Cloud Notifications",
+      "serviceId": "adobe.AdobeCreativeCloudNotifications"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Creative Cloud Sharing and Commenting",
+      "serviceId": "adobe.AdobeCreativeCloudSharingandCommenting"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Creative Cloud Storage",
+      "serviceId": "adobe.AdobeCreativeCloudStorage"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Creative Cloud Sync",
+      "serviceId": "adobe.AdobeCreativeCloudSync"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Creative Cloud Website",
+      "serviceId": "adobe.AdobeCreativeCloudWebsite"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Cross-Cloud Capabilities",
+      "serviceId": "adobe.AdobeCrossCloudCapabilities"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Customer Journey Analytics",
+      "serviceId": "adobe.AdobeCustomerJourneyAnalytics"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Customer Support",
+      "serviceId": "adobe.AdobeCustomerSupport"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe CX Enterprise Home",
+      "serviceId": "adobe.AdobeCXEnterpriseHome"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Data Foundation",
+      "serviceId": "adobe.AdobeDataFoundation"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Data Science Workspace",
+      "serviceId": "adobe.AdobeDataScienceWorkspace"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Developer Platform",
+      "serviceId": "adobe.AdobeDeveloperPlatform"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Digital Video & Audio",
+      "serviceId": "adobe.AdobeDigitalVideoAudio"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Dimension",
+      "serviceId": "adobe.AdobeDimension"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Document Cloud (All)",
+      "serviceId": "adobe.AdobeDocumentCloudAll"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Experience Cloud (All)",
+      "serviceId": "adobe.AdobeExperienceCloudAll"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Experience League",
+      "serviceId": "adobe.AdobeExperienceLeague"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Experience Manager",
+      "serviceId": "adobe.AdobeExperienceManager"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Experience Manager as a Cloud Service",
+      "serviceId": "adobe.AdobeExperienceManagerasaCloudService"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Experience Platform (All)",
+      "serviceId": "adobe.AdobeExperiencePlatformAll"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Express",
+      "serviceId": "adobe.AdobeExpress"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Firefly",
+      "serviceId": "adobe.AdobeFirefly"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Fonts",
+      "serviceId": "adobe.AdobeFonts"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Fresco",
+      "serviceId": "adobe.AdobeFresco"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe GenStudio for Performance Marketing",
+      "serviceId": "adobe.AdobeGenStudioforPerformanceMarketing"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Illustrator",
+      "serviceId": "adobe.AdobeIllustrator"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Image Service",
+      "serviceId": "adobe.AdobeImageService"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe InDesign",
+      "serviceId": "adobe.AdobeInDesign"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe InDesign API",
+      "serviceId": "adobe.AdobeInDesignAPI"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Intelligent Services",
+      "serviceId": "adobe.AdobeIntelligentServices"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Invite Accept",
+      "serviceId": "adobe.AdobeInviteAccept"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Journey Optimizer",
+      "serviceId": "adobe.AdobeJourneyOptimizer"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Journey Optimizer B2B",
+      "serviceId": "adobe.AdobeJourneyOptimizerB2B"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Knowledge Base in Adobe Acrobat",
+      "serviceId": "adobe.AdobeKnowledgeBaseinAdobeAcrobat"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Learning Manager",
+      "serviceId": "adobe.AdobeLearningManager"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Lightroom",
+      "serviceId": "adobe.AdobeLightroom"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Live",
+      "serviceId": "adobe.AdobeLive"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Marketo Engage",
+      "serviceId": "adobe.AdobeMarketoEngage"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Mixamo",
+      "serviceId": "adobe.AdobeMixamo"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Photoshop",
+      "serviceId": "adobe.AdobePhotoshop"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Platform Core Services",
+      "serviceId": "adobe.AdobePlatformCoreServices"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Premiere Pro",
+      "serviceId": "adobe.AdobePremierePro"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Premiere Rush",
+      "serviceId": "adobe.AdobePremiereRush"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Primetime",
+      "serviceId": "adobe.AdobePrimetime"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Query Service",
+      "serviceId": "adobe.AdobeQueryService"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Real-Time CDP",
+      "serviceId": "adobe.AdobeRealTimeCDP"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Reseller Console",
+      "serviceId": "adobe.AdobeResellerConsole"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Services (All)",
+      "serviceId": "adobe.AdobeServicesAll"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Sign In",
+      "serviceId": "adobe.AdobeSignIn"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Sites Optimizer",
+      "serviceId": "adobe.AdobeSitesOptimizer"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Status Service Probe",
+      "serviceId": "adobe.AdobeStatusServiceProbe"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Substance",
+      "serviceId": "adobe.AdobeSubstance"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Support",
+      "serviceId": "adobe.AdobeSupport"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Target",
+      "serviceId": "adobe.AdobeTarget"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe Workfront",
+      "serviceId": "adobe.AdobeWorkfront"
+    },
+    {
+      "sourceGroup": "adobe",
+      "sourceName": "Adobe XD",
+      "serviceId": "adobe.AdobeXD"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Account",
+      "serviceId": "apple.AppleAccount"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Account Card",
+      "serviceId": "apple.AppleAccountCard"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple App Store",
+      "serviceId": "apple.AppleAppStore"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Arcade",
+      "serviceId": "apple.AppleArcade"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Audiobooks",
+      "serviceId": "apple.AppleAudiobooks"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Books",
+      "serviceId": "apple.AppleBooks"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Business",
+      "serviceId": "apple.AppleBusiness"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Card",
+      "serviceId": "apple.AppleCard"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Cash",
+      "serviceId": "apple.AppleCash"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Creator Studio Content Hub",
+      "serviceId": "apple.AppleCreatorStudioContentHub"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Dictation",
+      "serviceId": "apple.AppleDictation"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple FaceTime",
+      "serviceId": "apple.AppleFaceTime"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Find My",
+      "serviceId": "apple.AppleFindMy"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Fitness+",
+      "serviceId": "apple.AppleFitness"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Game Center",
+      "serviceId": "apple.AppleGameCenter"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Global Service Exchange",
+      "serviceId": "apple.AppleGlobalServiceExchange"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Health sharing with provider",
+      "serviceId": "apple.AppleHealthsharingwithprovider"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple HomeKit",
+      "serviceId": "apple.AppleHomeKit"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple HomeKit Secure Video",
+      "serviceId": "apple.AppleHomeKitSecureVideo"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple iCloud Account & Sign In",
+      "serviceId": "apple.AppleiCloudAccountSignIn"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple iCloud Backup",
+      "serviceId": "apple.AppleiCloudBackup"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple iCloud Bookmarks & Tabs",
+      "serviceId": "apple.AppleiCloudBookmarksTabs"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple iCloud Calendar",
+      "serviceId": "apple.AppleiCloudCalendar"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple iCloud Contacts",
+      "serviceId": "apple.AppleiCloudContacts"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple iCloud Drive",
+      "serviceId": "apple.AppleiCloudDrive"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple iCloud Keychain",
+      "serviceId": "apple.AppleiCloudKeychain"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple iCloud Mail",
+      "serviceId": "apple.AppleiCloudMail"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple iCloud Notes",
+      "serviceId": "apple.AppleiCloudNotes"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple iCloud Private Relay",
+      "serviceId": "apple.AppleiCloudPrivateRelay"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple iCloud Reminders",
+      "serviceId": "apple.AppleiCloudReminders"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple iCloud Storage Upgrades",
+      "serviceId": "apple.AppleiCloudStorageUpgrades"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple iCloud Web Apps (iCloud.com)",
+      "serviceId": "apple.AppleiCloudWebAppsiCloudcom"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Identity - Drivers License or ID",
+      "serviceId": "apple.AppleIdentityDriversLicenseorID"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple iMessage",
+      "serviceId": "apple.AppleiMessage"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Invites",
+      "serviceId": "apple.AppleInvites"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple iOS Device Activation",
+      "serviceId": "apple.AppleiOSDeviceActivation"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple iTunes Match",
+      "serviceId": "apple.AppleiTunesMatch"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple iTunes Store",
+      "serviceId": "apple.AppleiTunesStore"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple iWork Collaboration",
+      "serviceId": "apple.AppleiWorkCollaboration"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple iWork for iCloud",
+      "serviceId": "apple.AppleiWorkforiCloud"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Mac App Store",
+      "serviceId": "apple.AppleMacAppStore"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple macOS Software Update",
+      "serviceId": "apple.ApplemacOSSoftwareUpdate"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Mail Drop",
+      "serviceId": "apple.AppleMailDrop"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Maps Display",
+      "serviceId": "apple.AppleMapsDisplay"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Maps Routing & Navigation",
+      "serviceId": "apple.AppleMapsRoutingNavigation"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Maps Search",
+      "serviceId": "apple.AppleMapsSearch"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Maps Traffic",
+      "serviceId": "apple.AppleMapsTraffic"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Messages for Business",
+      "serviceId": "apple.AppleMessagesforBusiness"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Music",
+      "serviceId": "apple.AppleMusic"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Music Classical",
+      "serviceId": "apple.AppleMusicClassical"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Music radio",
+      "serviceId": "apple.AppleMusicradio"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Music Subscriptions",
+      "serviceId": "apple.AppleMusicSubscriptions"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple News",
+      "serviceId": "apple.AppleNews"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Online Store",
+      "serviceId": "apple.AppleOnlineStore"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Pay",
+      "serviceId": "apple.ApplePay"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Photos",
+      "serviceId": "apple.ApplePhotos"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Podcasts",
+      "serviceId": "apple.ApplePodcasts"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Private Cloud Compute",
+      "serviceId": "apple.ApplePrivateCloudCompute"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Radio",
+      "serviceId": "apple.AppleRadio"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple School Manager",
+      "serviceId": "apple.AppleSchoolManager"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Schooltime",
+      "serviceId": "apple.AppleSchooltime"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Schoolwork",
+      "serviceId": "apple.AppleSchoolwork"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Screen Time",
+      "serviceId": "apple.AppleScreenTime"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Sign in with Apple",
+      "serviceId": "apple.AppleSigninwithApple"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Siri",
+      "serviceId": "apple.AppleSiri"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Sports",
+      "serviceId": "apple.AppleSports"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Spotlight suggestions",
+      "serviceId": "apple.AppleSpotlightsuggestions"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Stocks",
+      "serviceId": "apple.AppleStocks"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Subscription Purchase",
+      "serviceId": "apple.AppleSubscriptionPurchase"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple TV",
+      "serviceId": "apple.AppleTV"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple TV Channels",
+      "serviceId": "apple.AppleTVChannels"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple TV Provider",
+      "serviceId": "apple.AppleTVProvider"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple visionOS App Store",
+      "serviceId": "apple.ApplevisionOSAppStore"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Volume Purchase Program",
+      "serviceId": "apple.AppleVolumePurchaseProgram"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Walkie-Talkie",
+      "serviceId": "apple.AppleWalkieTalkie"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Wallet",
+      "serviceId": "apple.AppleWallet"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "Apple Weather",
+      "serviceId": "apple.AppleWeather"
+    },
+    {
+      "sourceGroup": "apple",
+      "sourceName": "AppleCare on Device",
+      "serviceId": "apple.AppleCareonDevice"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple Account (Developer)",
+      "serviceId": "appledeveloper.AppleAccountDeveloper"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple APNS",
+      "serviceId": "appledeveloper.AppleAPNS"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple APNS Sandbox",
+      "serviceId": "appledeveloper.AppleAPNSSandbox"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple App Attest",
+      "serviceId": "appledeveloper.AppleAppAttest"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple App Store - Advanced Commerce API",
+      "serviceId": "appledeveloper.AppleAppStoreAdvancedCommerceAPI"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple App Store - In-App Purchases",
+      "serviceId": "appledeveloper.AppleAppStoreInAppPurchases"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple App Store - Receipt Verification",
+      "serviceId": "appledeveloper.AppleAppStoreReceiptVerification"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple App Store - Sandbox",
+      "serviceId": "appledeveloper.AppleAppStoreSandbox"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple App Store - Server APIs",
+      "serviceId": "appledeveloper.AppleAppStoreServerAPIs"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple App Store - Server Notifications",
+      "serviceId": "appledeveloper.AppleAppStoreServerNotifications"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple App Store Automatic App Updates",
+      "serviceId": "appledeveloper.AppleAppStoreAutomaticAppUpdates"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple App Store Connect",
+      "serviceId": "appledeveloper.AppleAppStoreConnect"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple App Store Connect - Analytics",
+      "serviceId": "appledeveloper.AppleAppStoreConnectAnalytics"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple App Store Connect - App Processing ",
+      "serviceId": "appledeveloper.AppleAppStoreConnectAppProcessing"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple App Store Connect - App Upload",
+      "serviceId": "appledeveloper.AppleAppStoreConnectAppUpload"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple App Store Connect - Sales and Trends",
+      "serviceId": "appledeveloper.AppleAppStoreConnectSalesandTrends"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple App Store Connect - TestFlight",
+      "serviceId": "appledeveloper.AppleAppStoreConnectTestFlight"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple App Store Connect API",
+      "serviceId": "appledeveloper.AppleAppStoreConnectAPI"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple Certificates, Identifiers & Profiles",
+      "serviceId": "appledeveloper.AppleCertificatesIdentifiersProfiles"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple CloudKit Console",
+      "serviceId": "appledeveloper.AppleCloudKitConsole"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple CloudKit Database",
+      "serviceId": "appledeveloper.AppleCloudKitDatabase"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple Code-level Support",
+      "serviceId": "appledeveloper.AppleCodelevelSupport"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple Contact Us",
+      "serviceId": "appledeveloper.AppleContactUs"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple Developer Documentation",
+      "serviceId": "appledeveloper.AppleDeveloperDocumentation"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple Developer Forums",
+      "serviceId": "appledeveloper.AppleDeveloperForums"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple Developer ID Notary Service",
+      "serviceId": "appledeveloper.AppleDeveloperIDNotaryService"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple Device Check",
+      "serviceId": "appledeveloper.AppleDeviceCheck"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple Device Enrollment Program",
+      "serviceId": "appledeveloper.AppleDeviceEnrollmentProgram"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple Feedback Assistant",
+      "serviceId": "appledeveloper.AppleFeedbackAssistant"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple MapKit JS Dashboard",
+      "serviceId": "appledeveloper.AppleMapKitJSDashboard"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple Maps API",
+      "serviceId": "appledeveloper.AppleMapsAPI"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple MFi Portal",
+      "serviceId": "appledeveloper.AppleMFiPortal"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple Music API",
+      "serviceId": "appledeveloper.AppleMusicAPI"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple Music Connect",
+      "serviceId": "appledeveloper.AppleMusicConnect"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple Music for Artists",
+      "serviceId": "appledeveloper.AppleMusicforArtists"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple News API",
+      "serviceId": "appledeveloper.AppleNewsAPI"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple News Publisher",
+      "serviceId": "appledeveloper.AppleNewsPublisher"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple NFC & SE Platform",
+      "serviceId": "appledeveloper.AppleNFCSEPlatform"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple Pay Developer | Apple Pay Demo",
+      "serviceId": "appledeveloper.ApplePayDeveloperApplePayDemo"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple Pay Production Instance",
+      "serviceId": "appledeveloper.ApplePayProductionInstance"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple Pay Sandbox Instance",
+      "serviceId": "appledeveloper.ApplePaySandboxInstance"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple Podcasts Connect",
+      "serviceId": "appledeveloper.ApplePodcastsConnect"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple Program Enrollment and Renewals",
+      "serviceId": "appledeveloper.AppleProgramEnrollmentandRenewals"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple Provisioning Profile Service",
+      "serviceId": "appledeveloper.AppleProvisioningProfileService"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple SKAdNetwork",
+      "serviceId": "appledeveloper.AppleSKAdNetwork"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple Software Downloads",
+      "serviceId": "appledeveloper.AppleSoftwareDownloads"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple Tap to Pay on iPhone",
+      "serviceId": "appledeveloper.AppleTaptoPayoniPhone"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple Videos",
+      "serviceId": "appledeveloper.AppleVideos"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple WeatherKit",
+      "serviceId": "appledeveloper.AppleWeatherKit"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple Xcode Automatic Configuration",
+      "serviceId": "appledeveloper.AppleXcodeAutomaticConfiguration"
+    },
+    {
+      "sourceGroup": "appledeveloper",
+      "sourceName": "Apple Xcode Cloud",
+      "serviceId": "appledeveloper.AppleXcodeCloud"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Access Approval",
+      "serviceId": "googlecloudplatform.duAxoF9U3MBmoAihC67y"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Access Context Manager",
+      "serviceId": "googlecloudplatform.qar4NvXDickuQgSVbW3G"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Access Transparency",
+      "serviceId": "googlecloudplatform.nwct66cGriSwT84M4txQ"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Agent Assist",
+      "serviceId": "googlecloudplatform.eUntUKqUrHdbBLNcVVXq"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Agent Gateway",
+      "serviceId": "googlecloudplatform.YnURkwq775FEfCuFsviG"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Agent Platform Batch Inference",
+      "serviceId": "googlecloudplatform.yVW8aiPWipjd3j67XzDL"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Agent Platform Feature Store",
+      "serviceId": "googlecloudplatform.qnhcw8D1c8iMEwP8TzkA"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Agent Platform Managed Training",
+      "serviceId": "googlecloudplatform.baQeYW2fsPA2vvLCqN93"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Agent Platform ML Metadata",
+      "serviceId": "googlecloudplatform.sWNXmWFmBKpXg2xeTNkH"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Agent Platform Online Inference",
+      "serviceId": "googlecloudplatform.sdXM79fz1FS6ekNpu37K"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Agent Platform Pipelines",
+      "serviceId": "googlecloudplatform.jgyDXnasZm6pwoCR1uif"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Agent Platform Tensor Board",
+      "serviceId": "googlecloudplatform.9TtWTtvEUYnPidW2z4aM"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Agent Platform Workbench Instances",
+      "serviceId": "googlecloudplatform.GewfNoG6JvJ1kjnL9jb8"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Agent Search on Agent Platform",
+      "serviceId": "googlecloudplatform.vNncXxtSVvqyhvSkQ6PJ"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google AI Commerce Search",
+      "serviceId": "googlecloudplatform.RBJadi3nW3S2otn65RRG"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google AlloyDB for PostgreSQL",
+      "serviceId": "googlecloudplatform.fPovtKbaWN9UTepMm3kJ"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Anthos Service Mesh",
+      "serviceId": "googlecloudplatform.D6ayar99EiNLHhwcn77V"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google API Gateway",
+      "serviceId": "googlecloudplatform.VzyLPL7CtWQqJ9WeKAjp"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Apigee",
+      "serviceId": "googlecloudplatform.9Y13BNFy4fJydvjdsN3X"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Apigee Edge Private Cloud",
+      "serviceId": "googlecloudplatform.XqsbVFxr6HnQX8epsxB6"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Apigee Edge Public Cloud",
+      "serviceId": "googlecloudplatform.SumcdgBT6GQBzp1vmdXu"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Apigee Hybrid",
+      "serviceId": "googlecloudplatform.6gaft97Gv5hGQAJg6D3J"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google App Engine",
+      "serviceId": "googlecloudplatform.kchyUtnkMHJWaAva8aYc"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Application Integration",
+      "serviceId": "googlecloudplatform.ktmqnquav5joiJK6Qy2u"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Artifact Analysis",
+      "serviceId": "googlecloudplatform.Mjx4zXWSyzoMZYe93m7T"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Artifact Registry",
+      "serviceId": "googlecloudplatform.QbBuuiRdsLpMr9WmGwm5"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Assured Workloads",
+      "serviceId": "googlecloudplatform.iM3fwc8QYSrS4LfUAKc8"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Audit Manager",
+      "serviceId": "googlecloudplatform.ROMbb0fOlgEcbJUnv7l1"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Backup and DR",
+      "serviceId": "googlecloudplatform.2wwSnezzV5o8a8JouBch"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Backup for GKE",
+      "serviceId": "googlecloudplatform.ZftjNV15whrLRaFCDGuM"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Bare Metal Solution",
+      "serviceId": "googlecloudplatform.5gQF7Qk9XfQ32pStX6Hb"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Batch",
+      "serviceId": "googlecloudplatform.8XjnU88URVtZrAL8KRvA"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google BeyondCorp Enterprise",
+      "serviceId": "googlecloudplatform.zd7XntK5LAvk7k3yKVfS"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google BigQuery",
+      "serviceId": "googlecloudplatform.9CcrhHUcFevXPSVaSxkf"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google BigQuery Data Transfer Service",
+      "serviceId": "googlecloudplatform.UdjkJSWTHMj2b11ftW6E"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Binary Authorization",
+      "serviceId": "googlecloudplatform.emAG7m3iQGzeFsbm1i5n"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Certificate Authority Service",
+      "serviceId": "googlecloudplatform.PvdE3tt1VdxKXzSyd8WF"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Certificate Manager",
+      "serviceId": "googlecloudplatform.XCamxjiTSj6nQh48wkjZ"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Android App",
+      "serviceId": "googlecloudplatform.FEmU4vocrrV3j9EFxdMY"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Armor",
+      "serviceId": "googlecloudplatform.Kakg69gTC3xFyeJCY2va"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Asset Inventory",
+      "serviceId": "googlecloudplatform.r1uH3MduHyHHH4P6z18G"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Bigtable",
+      "serviceId": "googlecloudplatform.LfZSuE3xdQU46YMFV5fy"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Billing",
+      "serviceId": "googlecloudplatform.oLCqDYkE9NFWQVgctQTL"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Build",
+      "serviceId": "googlecloudplatform.fw8GzBdZdqy4THau7e1y"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud CDN",
+      "serviceId": "googlecloudplatform.ckSRJf2vQwQy188ULGy3"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Composer",
+      "serviceId": "googlecloudplatform.GoogleCloudComposer"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Console",
+      "serviceId": "googlecloudplatform.Wdsr1n5vyDvCt78qEifm"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Data Fusion",
+      "serviceId": "googlecloudplatform.rLKDHeeaBiXTeutF1air"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Data Loss Prevention",
+      "serviceId": "googlecloudplatform.xeLtpZYNSw1WSYhkuxHL"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Dataflow",
+      "serviceId": "googlecloudplatform.T9bFoXPqG8w8g1YbWTKY"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Dataproc",
+      "serviceId": "googlecloudplatform.yjXrEg3Yvy26BauMwr69"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Datastore",
+      "serviceId": "googlecloudplatform.MaS3dKoqp1oqkea4qB9U"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Deploy",
+      "serviceId": "googlecloudplatform.6z5SnvJrJMJQSdJmUQjH"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud DNS",
+      "serviceId": "googlecloudplatform.TUZUsWSJUVJGW97Jq2sH"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Domains",
+      "serviceId": "googlecloudplatform.ni83vQdB693cohxna3mw"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Endpoints",
+      "serviceId": "googlecloudplatform.xfbaRzmPSf836WvAy35z"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud External Key Manager",
+      "serviceId": "googlecloudplatform.GXALzYBgpi3XpsLLxLgu"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Filestore",
+      "serviceId": "googlecloudplatform.jog4nyYkquiLeSK5s26q"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Firestore",
+      "serviceId": "googlecloudplatform.CETSkT92V21G6A1x28me"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Functions",
+      "serviceId": "googlecloudplatform.oW4vJ7VNqyxTWNzSHopX"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Healthcare",
+      "serviceId": "googlecloudplatform.zgodfdJcHiKkGxQYixiZ"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud HSM",
+      "serviceId": "googlecloudplatform.R3HPPUbVeFrApLaqQB4B"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Identity-Aware Proxy",
+      "serviceId": "googlecloudplatform.tgA7cGBbPQWAbzVdyixN"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud IDS",
+      "serviceId": "googlecloudplatform.mMmi5UKZCkVUzFgpTyCw"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud iOS App",
+      "serviceId": "googlecloudplatform.T9fgdTavyR7XkaDKmPSF"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Key Management Service",
+      "serviceId": "googlecloudplatform.67cSySTL7dwJZo9JWUGU"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Load Balancing",
+      "serviceId": "googlecloudplatform.ix7u9beT8ivBdjApTif3"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Logging",
+      "serviceId": "googlecloudplatform.PuCJ6W2ovoDhLcyvZ1xa"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Marketplace",
+      "serviceId": "googlecloudplatform.M34rUHuRgyHXMfbUCSq9"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Memorystore",
+      "serviceId": "googlecloudplatform.LGPLu3M5pcUAKU1z6eP3"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Migration Center",
+      "serviceId": "googlecloudplatform.dyoHkC2KYU7JxcRYz5ST"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Monitoring",
+      "serviceId": "googlecloudplatform.3zaaDb7antc73BM1UAVT"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud NAT",
+      "serviceId": "googlecloudplatform.hCNpnTQHkUCCGxJy35Yq"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Natural Language API",
+      "serviceId": "googlecloudplatform.99nYJQyC6XLw3vTrQaXo"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud NetApp Volumes",
+      "serviceId": "googlecloudplatform.vtzMUyQ4z9CbA1x6z85s"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Network Insights",
+      "serviceId": "googlecloudplatform.1Md5kNLx570MyBNGCHbK"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Profiler",
+      "serviceId": "googlecloudplatform.FVKK12GiEsGTnM6SyoUc"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Pub/Sub",
+      "serviceId": "googlecloudplatform.dFjdLh2v6zuES6t9ADCB"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Run",
+      "serviceId": "googlecloudplatform.9D7d2iNBQWN24zc1VamE"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Scheduler",
+      "serviceId": "googlecloudplatform.Y9fKAQ6BVTQUYomrNN9A"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Security Command Center",
+      "serviceId": "googlecloudplatform.csyyfUYy88hkeqbv23Mc"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Shell",
+      "serviceId": "googlecloudplatform.wF3PG44o1RzTnUW5dycy"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Source Repositories",
+      "serviceId": "googlecloudplatform.B2EfFwmTPqzAqHmnpHvm"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Spanner",
+      "serviceId": "googlecloudplatform.EcNGGUgBtBLrtm4mWvqC"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud SQL",
+      "serviceId": "googlecloudplatform.hV87iK5DcEXKgWU2kDri"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Storage",
+      "serviceId": "googlecloudplatform.UwaYoXQ5bHYHG6EdiPB8"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Storage for Firebase",
+      "serviceId": "googlecloudplatform.aY6Fbgy6TV4YWoutjhfe"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Support",
+      "serviceId": "googlecloudplatform.bGThzF7oEGP5jcuDdMuk"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Talent Solution - Job Search",
+      "serviceId": "googlecloudplatform.VXydUfMqEtvZxXJFm56a"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Tasks",
+      "serviceId": "googlecloudplatform.tMWyzhyKK4rAzAf7x62h"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Trace",
+      "serviceId": "googlecloudplatform.TJB9GjVKN1MB4DTQ2Uhz"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Translation",
+      "serviceId": "googlecloudplatform.gCLTpLXcWqCKtcyUyHCF"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Vision",
+      "serviceId": "googlecloudplatform.pDkm4vkHrT54mm7iSVHm"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Workflows",
+      "serviceId": "googlecloudplatform.C4P62W9Xc2zZ1Sk52bbw"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Cloud Workstations",
+      "serviceId": "googlecloudplatform.5UUXCiH1vfFHXmbDixrB"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Colab Enterprise",
+      "serviceId": "googlecloudplatform.7Nbc1kZUvPLiihodettN"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Compute Engine",
+      "serviceId": "googlecloudplatform.L3ggmi3Jy4xJmgodFA9K"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Contact Center AI Platform",
+      "serviceId": "googlecloudplatform.eSAGSSEKoxh8tTJucdYg"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Contact Center Insights",
+      "serviceId": "googlecloudplatform.WYJx5eWkh8ZrCSQUcP4i"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Customer Experience Agent Studio",
+      "serviceId": "googlecloudplatform.NzlvAZEU5D7gveMcRvfr"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Data Catalog",
+      "serviceId": "googlecloudplatform.TFedVRYgKGRGMSJrUpup"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Database Center",
+      "serviceId": "googlecloudplatform.33gHeZvYSKc7T8Vp6WpD"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Database Migration Service",
+      "serviceId": "googlecloudplatform.vY4CRgRFNbqUXWWyYGFS"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Dataform",
+      "serviceId": "googlecloudplatform.JSShQKADMU3uXYNbCRCh"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Dataplex",
+      "serviceId": "googlecloudplatform.Xx5qm9U2ovrN11z2Gd9Q"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Dataproc Metastore",
+      "serviceId": "googlecloudplatform.PXZh68NPz9auRyo4tVfy"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Datastream",
+      "serviceId": "googlecloudplatform.ibJgP4CNKnFojHHw8L3s"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Developer Connect",
+      "serviceId": "googlecloudplatform.cYbVAopLISo8XYv4w42R"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Dialogflow CX",
+      "serviceId": "googlecloudplatform.BnCicQdHSdxaCv8Ya6Vm"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Dialogflow ES",
+      "serviceId": "googlecloudplatform.sQqrYvhjMT5crPHKWJFY"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Distributed Cloud Edge",
+      "serviceId": "googlecloudplatform.JKyM3LJTqgETjRCvSK6w"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Document AI",
+      "serviceId": "googlecloudplatform.GWuqLi6DKb1DkzyRtRuD"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Eventarc",
+      "serviceId": "googlecloudplatform.YaFawoMaXnqgY4keUBnW"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Gemini Code Assist",
+      "serviceId": "googlecloudplatform.deUeOEPYanfJ9w8cpyBJ"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Gemini Enterprise",
+      "serviceId": "googlecloudplatform.cxUh24jPxEXgyRlaVhuk"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Gemini on Agent Platform",
+      "serviceId": "googlecloudplatform.Z0FZJAMvEB4j3NbCJs6B"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google GKE fleet management",
+      "serviceId": "googlecloudplatform.4osgZCUJuuh3whY4B8tt"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Hybrid Connectivity",
+      "serviceId": "googlecloudplatform.5x6CGnZvSHQZ26KtxpK1"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Identity and Access Management",
+      "serviceId": "googlecloudplatform.adnGEDEt9zWzs8uF1oKA"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Identity Platform",
+      "serviceId": "googlecloudplatform.LE1X2BHYANNsHtG1NM1M"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Imagen on Agent Platform",
+      "serviceId": "googlecloudplatform.zeBmbgdSyHGTvPAiXwVS"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Infrastructure Manager",
+      "serviceId": "googlecloudplatform.UtpWzLYarncQdqkTNtbM"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Integration Connectors",
+      "serviceId": "googlecloudplatform.dqd7x95MSoscq1rYzY7q"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Key Access Justifications",
+      "serviceId": "googlecloudplatform.LMvx2rrpTLUMwjmgPSiM"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Kubernetes Engine",
+      "serviceId": "googlecloudplatform.LCSbT57h59oR4W98NHuz"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Looker (Google Cloud core)",
+      "serviceId": "googlecloudplatform.QEyA1YSaAS3rJS6O8wHp"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Looker Studio",
+      "serviceId": "googlecloudplatform.kEYNqRYFXXHxP9QeFJ1d"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Managed Lustre",
+      "serviceId": "googlecloudplatform.6NIyMyXGmDuhgEOGEy2z"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Managed Service for Apache Kafka",
+      "serviceId": "googlecloudplatform.QMZ3IpyG3Ooxotv7JOKV"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Managed Service for Microsoft Active Directory (AD)",
+      "serviceId": "googlecloudplatform.m2BYeday5NQNxnEnY56V"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Media CDN",
+      "serviceId": "googlecloudplatform.FK8WX6iZ3FuQL6qUwski"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Memorystore for Memcached",
+      "serviceId": "googlecloudplatform.paC6vmsvnjCHsBkp4Wva"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Memorystore for Redis",
+      "serviceId": "googlecloudplatform.3yFciKa9NQH7pmbnUYUs"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Memorystore for Redis Cluster",
+      "serviceId": "googlecloudplatform.pAQRwuhqRn7Y1E2we8ds"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Memorystore for Valkey",
+      "serviceId": "googlecloudplatform.QUDi3IaNvixryrShGpGw"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Migrate to Virtual Machines",
+      "serviceId": "googlecloudplatform.EwEFrihT41NLB9mhyWhz"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Model Armor",
+      "serviceId": "googlecloudplatform.hpVHo7CE4koq9UQLV3W0"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Model Monitoring on Agent Platform",
+      "serviceId": "googlecloudplatform.t8Vzas4iWLRcCyNYcvpN"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Model Registry on Agent Platform",
+      "serviceId": "googlecloudplatform.U213XEHGhALownYuxpFM"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Network Connectivity Center",
+      "serviceId": "googlecloudplatform.kFBKMAzrhno1We6f7Ydk"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Network Intelligence Center",
+      "serviceId": "googlecloudplatform.BNe4FZaRboHmVivzH6Ku"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Network Security Integration",
+      "serviceId": "googlecloudplatform.FpUicRdE086qJXi9QOP9"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Parallelstore",
+      "serviceId": "googlecloudplatform.yhPW7Moi4HFxKGVrtB62"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Partner Cross-Cloud Interconnect",
+      "serviceId": "googlecloudplatform.kSEBrVLOJUyYyh23wyNq"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Persistent Disk",
+      "serviceId": "googlecloudplatform.SzESm2Ux129pjDGKWD68"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Personalized Service Health",
+      "serviceId": "googlecloudplatform.jY8GKegoC5RUVERU7vUG"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Private Service Connect",
+      "serviceId": "googlecloudplatform.fbzQRKqPfxZ2DUScMGV2"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Provisioned Throughput",
+      "serviceId": "googlecloudplatform.5ca2HM3qzeRulGMXksCD"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Pub/Sub Lite",
+      "serviceId": "googlecloudplatform.5DWkcStmv4dFHRHLaRXb"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google reCAPTCHA Enterprise",
+      "serviceId": "googlecloudplatform.BubghYKyn8WLY5wnSjZL"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Recommendation AI",
+      "serviceId": "googlecloudplatform.jWSoZzR1kkyiDi9C5GMM"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Recommender",
+      "serviceId": "googlecloudplatform.KszDabrY6XLwow9r8PgZ"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Resource Manager API",
+      "serviceId": "googlecloudplatform.MRJK8bmwYLMv6Dtg16kU"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Secret Manager",
+      "serviceId": "googlecloudplatform.kzGfErQK3HzkFhptoeHH"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Secure Source Manager",
+      "serviceId": "googlecloudplatform.T5svkXRa1x7leFpth22S"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Secure Web Proxy",
+      "serviceId": "googlecloudplatform.OEGfhk8cZmli5SCAjAk0"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Service Directory",
+      "serviceId": "googlecloudplatform.vmq8TsEZwitKYM6V9BaM"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Service Extensions",
+      "serviceId": "googlecloudplatform.VeQD7Ve6gojUD760zt2O"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Spectrum Access System",
+      "serviceId": "googlecloudplatform.mvbUB33MdKYrS5tawfzM"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Speech-to-Text",
+      "serviceId": "googlecloudplatform.5f5oET9B3whnSFHfwy4d"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Storage Transfer Service",
+      "serviceId": "googlecloudplatform.reC3xJSY6Gzc8n9eYmmj"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Text-to-Speech",
+      "serviceId": "googlecloudplatform.2Xt4Wt8rVvbz3UPsHBvx"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Traffic Director",
+      "serviceId": "googlecloudplatform.NroZwL2UMMionesUGP87"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Transcoder API",
+      "serviceId": "googlecloudplatform.x57hrDXgs8kP2XNBZX34"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Unified Maintenance",
+      "serviceId": "googlecloudplatform.2Bc8HTdrcCZrcsTePfQl"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Veo on Agent Platform",
+      "serviceId": "googlecloudplatform.p5rCvyraXdeC6HFE8XJJ"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Vertex AI AutoML Image",
+      "serviceId": "googlecloudplatform.1UYAL6urhdrrr6emD8ce"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Vertex AI AutoML Tabular",
+      "serviceId": "googlecloudplatform.5CfpoAfoMxWT4zGzX4yW"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Vertex AI Matching Engine",
+      "serviceId": "googlecloudplatform.2iFHW5WNBkTWjX5k3jnZ"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Video Intelligence API",
+      "serviceId": "googlecloudplatform.uvfRdNTRepWCCQ7j6TnH"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Virtual Private Cloud (VPC)",
+      "serviceId": "googlecloudplatform.BSGtCUnz6ZmyajsjgTKv"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google VMWare engine",
+      "serviceId": "googlecloudplatform.9H6gWUHvb2ZubeoxzQ1Y"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google VPC Service Controls",
+      "serviceId": "googlecloudplatform.KM8etHz5u9QRoC7fRVT4"
+    },
+    {
+      "sourceGroup": "googlecloudplatform",
+      "sourceName": "Google Web Risk",
+      "serviceId": "googlecloudplatform.QRxWwYe2wfbZ9zAjW2ww"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (Bahrain)",
+      "serviceId": "aws.region.me-south-1"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (Calgary)",
+      "serviceId": "aws.region.ca-west-1"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (Canada-Central)",
+      "serviceId": "aws.region.ca-central-1"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (Cape Town)",
+      "serviceId": "aws.region.af-south-1"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (Frankfurt)",
+      "serviceId": "aws.region.eu-central-1"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (Hong Kong)",
+      "serviceId": "aws.region.ap-east-1"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (Hyderabad)",
+      "serviceId": "aws.region.ap-south-2"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (Ireland)",
+      "serviceId": "aws.region.eu-west-1"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (Jakarta)",
+      "serviceId": "aws.region.ap-southeast-3"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (London)",
+      "serviceId": "aws.region.eu-west-2"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (Malaysia)",
+      "serviceId": "aws.region.ap-southeast-5"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (Melbourne)",
+      "serviceId": "aws.region.ap-southeast-4"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (Mexico-Central)",
+      "serviceId": "aws.region.mx-central-1"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (Milan)",
+      "serviceId": "aws.region.eu-south-1"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (Mumbai)",
+      "serviceId": "aws.region.ap-south-1"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (N. California)",
+      "serviceId": "aws.region.us-west-1"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (N. Virginia)",
+      "serviceId": "aws.region.us-east-1"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (New Zealand)",
+      "serviceId": "aws.region.ap-southeast-6"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (Ohio)",
+      "serviceId": "aws.region.us-east-2"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (Oregon)",
+      "serviceId": "aws.region.us-west-2"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (Osaka)",
+      "serviceId": "aws.region.ap-northeast-3"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (Paris)",
+      "serviceId": "aws.region.eu-west-3"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (Sao Paulo)",
+      "serviceId": "aws.region.sa-east-1"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (Seoul)",
+      "serviceId": "aws.region.ap-northeast-2"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (Singapore)",
+      "serviceId": "aws.region.ap-southeast-1"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (Spain)",
+      "serviceId": "aws.region.eu-south-2"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (Stockholm)",
+      "serviceId": "aws.region.eu-north-1"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (Sydney)",
+      "serviceId": "aws.region.ap-southeast-2"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (Taipei)",
+      "serviceId": "aws.region.ap-east-2"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (Tel Aviv)",
+      "serviceId": "aws.region.il-central-1"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (Thailand)",
+      "serviceId": "aws.region.ap-southeast-7"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (Tokyo)",
+      "serviceId": "aws.region.ap-northeast-1"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (UAE)",
+      "serviceId": "aws.region.me-central-1"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (US-East)",
+      "serviceId": "aws.region.us-gov-east-1"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (US-West)",
+      "serviceId": "aws.region.us-gov-west-1"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS (Zurich)",
+      "serviceId": "aws.region.eu-central-2"
+    },
+    {
+      "sourceGroup": "awsregions",
+      "sourceName": "AWS Regions (All)",
+      "serviceId": "extra.AWS"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon API Gateway",
+      "serviceId": "aws.product.8ccce5a261d1792f"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon AppFlow",
+      "serviceId": "aws.product.e837a829c13ac7ca"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Athena",
+      "serviceId": "aws.product.f567dbcdba5c378d"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Augmented AI",
+      "serviceId": "aws.product.e57d23be6aa2afa6"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Aurora DSQL Service",
+      "serviceId": "aws.product.4fbe944ade49b27f"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Bedrock",
+      "serviceId": "aws.product.eab537d8b5f4df93"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Braket",
+      "serviceId": "aws.product.1bc3ce39e49e38ce"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Chime",
+      "serviceId": "aws.product.b466a849a63349e5"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Cloud Directory",
+      "serviceId": "aws.product.01fab639a4a304dc"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon CloudFront",
+      "serviceId": "aws.product.46912f227865dc9d"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon CloudSearch",
+      "serviceId": "aws.product.c2dba50ad8b00095"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon CloudWatch",
+      "serviceId": "aws.product.0033f16a9859f63e"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon CloudWatch Application Insights",
+      "serviceId": "aws.product.a24506d41b6ff9e1"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon CloudWatch Evidently",
+      "serviceId": "aws.product.6af8ac4a22a721e0"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon CloudWatch Internet Monitor",
+      "serviceId": "aws.product.cd0f85358e0ef403"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon CloudWatch RUM",
+      "serviceId": "aws.product.75b9c89ed27ae8c7"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon CloudWatch Synthetics",
+      "serviceId": "aws.product.63172af0f9b23b9f"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon CodeCatalyst",
+      "serviceId": "aws.product.e65bb57be61bdb25"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon CodeGuru Profiler",
+      "serviceId": "aws.product.de45a9eee9f1c1c4"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon CodeGuru Reviewer",
+      "serviceId": "aws.product.b887e6d708f636c4"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Cognito",
+      "serviceId": "aws.product.f30ed7c8e6d52d68"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Comprehend",
+      "serviceId": "aws.product.236c7f8b3c4fd121"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Comprehend Medical",
+      "serviceId": "aws.product.ac0ca884b6d295a1"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Connect",
+      "serviceId": "aws.product.e9bc11385c6bd542"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Connect Health",
+      "serviceId": "aws.product.0c7e0d9b8aa949b8"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Data Firehose",
+      "serviceId": "aws.product.159d7a8237c512cf"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Data Lifecycle Manager",
+      "serviceId": "aws.product.63139002b84ccd7f"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon DataZone",
+      "serviceId": "aws.product.ac0e0f4df1d8469a"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Detective",
+      "serviceId": "aws.product.e14d52da4eec2f2d"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon DevOps Guru",
+      "serviceId": "aws.product.fb9b4fa93f2d5923"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon DocumentDB",
+      "serviceId": "aws.product.b1a999c7223d2b7a"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon DynamoDB",
+      "serviceId": "aws.product.52477a55c2a984ca"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon EC2 Instance Connect",
+      "serviceId": "aws.product.a13d8ea76937bd73"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Elastic Compute Cloud",
+      "serviceId": "aws.product.4128dfa3fe804253"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Elastic Container Registry",
+      "serviceId": "aws.product.b333a7a6cfe7a894"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Elastic Container Registry Public",
+      "serviceId": "aws.product.c2e939713b67c45d"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Elastic Container Service",
+      "serviceId": "aws.product.4e91390661c100d3"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Elastic File System",
+      "serviceId": "aws.product.7159fe0dc64d6a90"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Elastic Kubernetes Service",
+      "serviceId": "aws.product.4048fe437501112c"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Elastic Load Balancing",
+      "serviceId": "aws.product.fb5a7ede1957ce2b"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Elastic MapReduce",
+      "serviceId": "aws.product.7ad57abbb744260d"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon ElastiCache",
+      "serviceId": "aws.product.713be2f7199dd4c8"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon EMR Serverless",
+      "serviceId": "aws.product.71a08b2f64e40756"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon EventBridge",
+      "serviceId": "aws.product.a29a863cb8d9367f"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon EventBridge Scheduler",
+      "serviceId": "aws.product.36aece9dbfbd4ffd"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon FinSpace",
+      "serviceId": "aws.product.aaa97761c68445ab"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Forecast",
+      "serviceId": "aws.product.84ee69c213b79e9a"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Fraud Detector",
+      "serviceId": "aws.product.f60f8600cfbf2a10"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon FreeRTOS",
+      "serviceId": "aws.product.61ec2e369ee68ecd"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon FSx",
+      "serviceId": "aws.product.59837c5dc8d90e7c"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon GameLift Servers",
+      "serviceId": "aws.product.d7049fb4665b02f7"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon GameLift Streams",
+      "serviceId": "aws.product.c808835c89373f64"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Glacier",
+      "serviceId": "aws.product.a9a1a753a28ac942"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon GuardDuty",
+      "serviceId": "aws.product.e6ee359e2dd0dd92"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Inspector",
+      "serviceId": "aws.product.ed507d301886a58b"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Interactive Video Service",
+      "serviceId": "aws.product.f91434ce2abd7adb"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Kendra",
+      "serviceId": "aws.product.354611151e1487f0"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Kendra Intelligent Ranking",
+      "serviceId": "aws.product.a38b9ef16fd984c5"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Keyspaces",
+      "serviceId": "aws.product.91b371511df5b93b"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Kinesis Data Streams",
+      "serviceId": "aws.product.2f74c5a4e18855e0"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Kinesis Video Streams",
+      "serviceId": "aws.product.70731af1d9911d84"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Lex",
+      "serviceId": "aws.product.ae6d0e66a70364bd"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Lightsail",
+      "serviceId": "aws.product.aaa86e7701a01fc4"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Location Service",
+      "serviceId": "aws.product.9311e5d9c5f20c81"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Lookout for Equipment",
+      "serviceId": "aws.product.762ae04bf518b63c"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Machine Learning",
+      "serviceId": "aws.product.44225b99286e156d"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Macie",
+      "serviceId": "aws.product.cf13bf45a9b86043"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Managed Blockchain",
+      "serviceId": "aws.product.a10a39e062f5ccf4"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Managed Grafana",
+      "serviceId": "aws.product.b8e66f735f12254c"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Managed Service for Apache Flink",
+      "serviceId": "aws.product.c263b0f9052a740b"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Managed Service for Prometheus",
+      "serviceId": "aws.product.478825d7f7855fe7"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Managed Streaming for Apache Kafka",
+      "serviceId": "aws.product.89c4ca065b3b3247"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Managed Workflows for Apache Airflow",
+      "serviceId": "aws.product.62ffd889e1d0cb53"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon MemoryDB for Redis",
+      "serviceId": "aws.product.dc563b05a63d3164"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Monitron",
+      "serviceId": "aws.product.e2fbdeeb32acf519"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon MQ",
+      "serviceId": "aws.product.e72e25197ef67ebb"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Neptune",
+      "serviceId": "aws.product.670507cc6938ba12"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon One Enterprise",
+      "serviceId": "aws.product.68d4627282e00213"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon OpenSearch Service",
+      "serviceId": "aws.product.1d48877df9b6321a"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Personalize",
+      "serviceId": "aws.product.39e2c1f96e699e86"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Pinpoint",
+      "serviceId": "aws.product.9c56f83cc351b0ea"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Polly",
+      "serviceId": "aws.product.c59837ad488f9af7"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Q Apps",
+      "serviceId": "aws.product.b05b94cb94a7ce30"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Q Business",
+      "serviceId": "aws.product.d472e3116a1fa21a"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Quick Suite",
+      "serviceId": "aws.product.89fd8bf14a886523"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Redshift",
+      "serviceId": "aws.product.15013dc10bc5b293"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Rekognition",
+      "serviceId": "aws.product.33c520520bd40930"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Relational Database Service",
+      "serviceId": "aws.product.ab7c1bb6503e76cb"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Route 53",
+      "serviceId": "aws.product.7624fedfee9bdab1"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Route 53 Application Recovery Controller",
+      "serviceId": "aws.product.82ecbfd25140924c"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Route 53 Domain Registration",
+      "serviceId": "aws.product.d3d58ac53084c55f"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Route 53 Global Resolver",
+      "serviceId": "aws.product.74bde650c2624d26"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Route 53 Private DNS",
+      "serviceId": "aws.product.9847081b790ce09c"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Route 53 Resolver",
+      "serviceId": "aws.product.3c07ca64fdd9fb9a"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon S3 Replication Time Control",
+      "serviceId": "aws.product.9fb125bccc151b50"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon SageMaker",
+      "serviceId": "aws.product.c36016f367ee192c"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Security Lake",
+      "serviceId": "aws.product.4c28360fc9e86c81"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Simple Email Service",
+      "serviceId": "aws.product.be8ca54bc89a76b3"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Simple Notification Service",
+      "serviceId": "aws.product.67b8c6f58d0d85a2"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Simple Queue Service",
+      "serviceId": "aws.product.c05641e136df044f"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Simple Storage Service",
+      "serviceId": "aws.product.d937f12ce1bd2ec0"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Simple Workflow Service",
+      "serviceId": "aws.product.438052f1f618d3e7"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon SimpleDB",
+      "serviceId": "aws.product.af57d6370f38a04d"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Textract",
+      "serviceId": "aws.product.417f78bd8ebfe7eb"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Timestream",
+      "serviceId": "aws.product.41a4dc3bd03e40da"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Transcribe",
+      "serviceId": "aws.product.fb2878d499c9a1ec"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Translate",
+      "serviceId": "aws.product.59139fc1f4d7cb78"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Verified Permissions",
+      "serviceId": "aws.product.ff6935b8cc83faea"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon Virtual Private Cloud",
+      "serviceId": "aws.product.64fd7d942c174008"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon VPC IP Address Manager",
+      "serviceId": "aws.product.d8e21ab910da6044"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon VPC Lattice",
+      "serviceId": "aws.product.e09bfa5227253930"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon WorkMail",
+      "serviceId": "aws.product.41797823650466a6"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon WorkSpaces",
+      "serviceId": "aws.product.773d621192da0093"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon WorkSpaces Applications",
+      "serviceId": "aws.product.9a9f266c460275ec"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon WorkSpaces Secure Browser",
+      "serviceId": "aws.product.e70d2270fd808621"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "Amazon WorkSpaces Thin Client",
+      "serviceId": "aws.product.a0ac8233c50d69ba"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS (All)",
+      "serviceId": "extra.AWS"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Account Management",
+      "serviceId": "aws.product.c557f9cbb7c1a98a"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Activate Console",
+      "serviceId": "aws.product.a0e43e6e93d755a7"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Agent Registry",
+      "serviceId": "aws.product.0a8892ac6d17cb80"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Amplify",
+      "serviceId": "aws.product.278fd52d1c5e571b"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Amplify Admin",
+      "serviceId": "aws.product.5af7bfb7bf3c76c7"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS App Mesh",
+      "serviceId": "aws.product.694c2e49f7aae48a"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS App Runner",
+      "serviceId": "aws.product.51f8ab8591e758d9"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS App Studio",
+      "serviceId": "aws.product.f02c33b38c081f2c"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS AppConfig",
+      "serviceId": "aws.product.cbc027809dddaa14"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS AppFabric",
+      "serviceId": "aws.product.b28856f8dfc29205"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Application Discovery Service",
+      "serviceId": "aws.product.a4fa84747e7db08c"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Application Migration Service",
+      "serviceId": "aws.product.2734b546be27836e"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS AppSync",
+      "serviceId": "aws.product.fe993ddd5ebd2961"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Audit Manager",
+      "serviceId": "aws.product.21bd3116d8e39fdb"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Auto Scaling",
+      "serviceId": "aws.product.9f6f0efce9650157"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS B2B Data Interchange",
+      "serviceId": "aws.product.5cdba39bd3d307f1"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Backup",
+      "serviceId": "aws.product.bfecad8c1bced695"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Batch",
+      "serviceId": "aws.product.35be5fed983c1a24"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Bedrock AgentCore",
+      "serviceId": "aws.product.8179e1690ed49ee1"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Billing Console",
+      "serviceId": "aws.product.c036a69c0d5e4e69"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Certificate Manager",
+      "serviceId": "aws.product.978bd4deea6e9c84"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Chatbot",
+      "serviceId": "aws.product.65370190ca3c0ca5"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Clean Rooms",
+      "serviceId": "aws.product.eca8c821f2d39b1b"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Client VPN",
+      "serviceId": "aws.product.48265a90d7bec7f0"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Cloud Map",
+      "serviceId": "aws.product.5cbf3acba688ca01"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Cloud WAN",
+      "serviceId": "aws.product.11e1ddb787b3aee2"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Cloud9",
+      "serviceId": "aws.product.10732c019b43e9a3"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS CloudFormation",
+      "serviceId": "aws.product.4d5250c5bf28a8ea"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS CloudHSM",
+      "serviceId": "aws.product.fec2a9b1f9c23867"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS CloudShell",
+      "serviceId": "aws.product.f145f30e28779a6e"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS CloudTrail",
+      "serviceId": "aws.product.07da0fe19eae186e"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS CodeArtifact",
+      "serviceId": "aws.product.dbf516b2e047eafb"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS CodeBuild",
+      "serviceId": "aws.product.b2f5f5d95720e33c"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS CodeCommit",
+      "serviceId": "aws.product.f2188bcc9436b651"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS CodeDeploy",
+      "serviceId": "aws.product.1cdd797f03a5d192"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS CodePipeline",
+      "serviceId": "aws.product.5a8734c04b965d21"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Compute Optimizer",
+      "serviceId": "aws.product.0f4462f489b651a9"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Config",
+      "serviceId": "aws.product.8e80da728fe40172"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Console Mobile App",
+      "serviceId": "aws.product.9d2d399e51b6358b"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Control Catalog",
+      "serviceId": "aws.product.31d80b8f41778b7a"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Control Tower",
+      "serviceId": "aws.product.56b01b0a8793d383"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Data Exchange",
+      "serviceId": "aws.product.e19bc6e7b44c1d30"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Data Pipeline",
+      "serviceId": "aws.product.e7da5f52a83a724f"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Database Migration Service",
+      "serviceId": "aws.product.3f3d9a454bbd378e"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS DataSync",
+      "serviceId": "aws.product.df05392d8087ac78"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Deadline Cloud",
+      "serviceId": "aws.product.58f99042a3406db3"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS DeepRacer",
+      "serviceId": "aws.product.285ec19c5058c574"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Device Farm",
+      "serviceId": "aws.product.e37923d28d53fd6b"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS DevOps Agent",
+      "serviceId": "aws.product.811b9ef4223e6df3"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Direct Connect",
+      "serviceId": "aws.product.922542dded17c710"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Directory Service",
+      "serviceId": "aws.product.6e2012525c6dfc1a"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS EC2 Image Builder",
+      "serviceId": "aws.product.2fa5dd816366f3cc"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS EC2 Serial Console",
+      "serviceId": "aws.product.09a0323f54704d16"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Elastic Beanstalk",
+      "serviceId": "aws.product.b3fd00f8c5849ff7"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Elastic Disaster Recovery",
+      "serviceId": "aws.product.580d4f4fa1712af6"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Elastic VMWare Service",
+      "serviceId": "aws.product.31505335f02d0fb8"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Elemental",
+      "serviceId": "aws.product.88b9270fe41f5357"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS End User Messaging",
+      "serviceId": "aws.product.a984765f7911f519"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Entity Resolution",
+      "serviceId": "aws.product.4544984c0f88428d"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Fargate",
+      "serviceId": "aws.product.73922cfa20af5694"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Fault Injection Service",
+      "serviceId": "aws.product.1703d28adf3aabf0"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Firewall Manager",
+      "serviceId": "aws.product.826bb08a25c8fbb0"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Global Accelerator",
+      "serviceId": "aws.product.55743ceb2795f791"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Glue",
+      "serviceId": "aws.product.5995fa53aedc5278"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Glue DataBrew",
+      "serviceId": "aws.product.b4adc7c5b6d1e40e"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Ground Station",
+      "serviceId": "aws.product.95cdb67b262ecfd2"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Health",
+      "serviceId": "aws.product.ddd2070bd307af7a"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS HealthImaging",
+      "serviceId": "aws.product.ade02a57d31d97e0"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS HealthLake",
+      "serviceId": "aws.product.849fb1b1a5796cf3"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS HealthOmics",
+      "serviceId": "aws.product.bb5d9e96370c6987"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS IAM Identity Center",
+      "serviceId": "aws.product.645e6ef3ac59d877"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Identity and Access Management",
+      "serviceId": "aws.product.8a3dbe79800c23dd"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Identity and Access Management Roles Anywhere",
+      "serviceId": "aws.product.59937e845d6a19f6"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Import/Export",
+      "serviceId": "aws.product.62b37a127bc9778f"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Infrastructure Performance",
+      "serviceId": "aws.product.18c0150bc64f3f79"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Internet Connectivity",
+      "serviceId": "aws.product.3411908aa3df7ff1"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS IoT Core",
+      "serviceId": "aws.product.3ea33db74641985f"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS IoT Device Defender",
+      "serviceId": "aws.product.7ef950953647bc67"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS IoT Device Management",
+      "serviceId": "aws.product.c13abfd6e165b683"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS IoT FleetWise",
+      "serviceId": "aws.product.9178ab4324130718"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS IoT Greengrass",
+      "serviceId": "aws.product.b547dd73da79eb89"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS IoT SiteWise",
+      "serviceId": "aws.product.4535e3b5cd6b0783"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS IoT TwinMaker",
+      "serviceId": "aws.product.6ff85bfb1e060028"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Key Management Service",
+      "serviceId": "aws.product.489de1d0e6d001ae"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Kiro",
+      "serviceId": "aws.product.b2a0ae261c1f0bbd"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Lake Formation",
+      "serviceId": "aws.product.f6823a6fde529ff8"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Lambda",
+      "serviceId": "aws.product.37e22690b304316b"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Launch Wizard",
+      "serviceId": "aws.product.9cf8a72244361b39"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS License Manager",
+      "serviceId": "aws.product.d27d52e519583b0a"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Mainframe Modernization",
+      "serviceId": "aws.product.cc4d6d4751758a23"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Management Console",
+      "serviceId": "aws.product.793312f1f190abdb"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Marketplace",
+      "serviceId": "aws.product.57b746b17393d257"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS MCP Server",
+      "serviceId": "aws.product.652d678301977e5d"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Migration Hub",
+      "serviceId": "aws.product.6d149bf9c2181103"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Migration Hub Journeys",
+      "serviceId": "aws.product.26fddd00816ff773"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Migration Hub Orchestrator",
+      "serviceId": "aws.product.9976762ebd879844"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Migration Hub Strategy Recommendations",
+      "serviceId": "aws.product.4a869bf5b95b378b"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Multiple services",
+      "serviceId": "aws.product.dc9047e26d84c294"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS NAT Gateway",
+      "serviceId": "aws.product.86859c3b49c9b46e"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Network Access Analyzer",
+      "serviceId": "aws.product.5c2114cb1736bb97"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Network Firewall",
+      "serviceId": "aws.product.ff5d46e6f88157c0"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Organizations",
+      "serviceId": "aws.product.a4983fb83a96163e"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Outposts",
+      "serviceId": "aws.product.131ff4fb18cfd842"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Parallel Computing Service",
+      "serviceId": "aws.product.7014d8713bfa1b9a"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Partner Central",
+      "serviceId": "aws.product.d5018714d7405fbf"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Payment Cryptography",
+      "serviceId": "aws.product.8468ec28e0c241d3"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Price List Service",
+      "serviceId": "aws.product.6a1ee664b9f602fc"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Private CA Connector for Active Directory",
+      "serviceId": "aws.product.7fd5f72c2cf5fa31"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Private CA Connector for SCEP",
+      "serviceId": "aws.product.a0b6637598c57c99"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Private Certificate Authority",
+      "serviceId": "aws.product.895730863c3d5ff2"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Proton",
+      "serviceId": "aws.product.88248a072bacbfe1"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS re:Post Private",
+      "serviceId": "aws.product.88a1e7048a8cbbd8"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Reachability Analyzer",
+      "serviceId": "aws.product.e77a02e171b5e299"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Resilience Hub",
+      "serviceId": "aws.product.c3f218d4e2221c3e"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Resource Access Manager",
+      "serviceId": "aws.product.c57c48d9f19d1775"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Resource Explorer",
+      "serviceId": "aws.product.ff7ff0aecc672133"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Resource Groups",
+      "serviceId": "aws.product.e206d91cfd1d7732"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Resource Groups Tagging API",
+      "serviceId": "aws.product.3df98588e3cf7f2b"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS RTB Fabric",
+      "serviceId": "aws.product.0406fa2af16ab205"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS SageMaker Unified Studio",
+      "serviceId": "aws.product.221bffaaf5089629"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Secrets Manager",
+      "serviceId": "aws.product.b408912d14ae552b"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Security Agent",
+      "serviceId": "aws.product.411d5b7437928608"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Security Hub",
+      "serviceId": "aws.product.4d0ccad5f1129443"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Security Incident Response",
+      "serviceId": "aws.product.e5a1cab9f53ae3dc"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Security Token Service",
+      "serviceId": "aws.product.b46fd81bddbd6bb3"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Serverless Application Repository",
+      "serviceId": "aws.product.c3ee57ea0642b5c3"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Service Catalog",
+      "serviceId": "aws.product.03ea7b4a1c9d2a98"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Service Quotas",
+      "serviceId": "aws.product.ed0bba90892ea438"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Sign Up",
+      "serviceId": "aws.product.a7de1986a80a8393"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Sign-In",
+      "serviceId": "aws.product.6a495d43380ecc01"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS SimSpace Weaver",
+      "serviceId": "awsservices.AWSSimSpaceWeaver"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Site-to-Site VPN",
+      "serviceId": "aws.product.dad8bd4774581ecd"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Step Functions",
+      "serviceId": "aws.product.86536231f05a63d9"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Storage Gateway",
+      "serviceId": "aws.product.1461c1951a987550"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Support API",
+      "serviceId": "aws.product.c903e98f3a4407f4"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Support Center",
+      "serviceId": "aws.product.3ff1b23a7fade788"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Sustainability",
+      "serviceId": "aws.product.0552b99dde10f121"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Systems Manager",
+      "serviceId": "aws.product.d8a7f7ae97ac92fb"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Systems Manager for SAP",
+      "serviceId": "aws.product.e9e8bdcc12dc0a4b"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Telco Network Builder",
+      "serviceId": "awsservices.AWSTelcoNetworkBuilder"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Traffic Mirroring",
+      "serviceId": "aws.product.41a23bc6cc19b491"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Transfer Family",
+      "serviceId": "aws.product.da725f24235e56ca"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Transform",
+      "serviceId": "aws.product.6d68e27c6726aaf4"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Transit Gateway",
+      "serviceId": "aws.product.4aedfeb80b93ac48"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Trusted Advisor",
+      "serviceId": "aws.product.9bd98d65cf7beabd"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS User Notifications",
+      "serviceId": "aws.product.fa7ee06605fa6d98"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Verified Access",
+      "serviceId": "aws.product.b92f45aa142f09e5"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS VM Import/Export",
+      "serviceId": "aws.product.6ea0a8db0b47afd0"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS VPCE PrivateLink",
+      "serviceId": "aws.product.b1e17f52a052dea1"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS WAF",
+      "serviceId": "aws.product.c473fdd76516f9b5"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Well-Architected Tool",
+      "serviceId": "aws.product.6499e65884cabcba"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS Wickr",
+      "serviceId": "aws.product.56240f34ac0435ea"
+    },
+    {
+      "sourceGroup": "awsservices",
+      "sourceName": "AWS X-Ray",
+      "serviceId": "aws.product.08208e6091f3db33"
+    }
+  ]
+}

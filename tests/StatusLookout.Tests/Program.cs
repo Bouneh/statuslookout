@@ -10,6 +10,17 @@ void Throws(Action action) { try { action(); } catch (Exception ex) when (ex is 
 void Check(string name, Action action) { try { action(); passed++; Console.WriteLine("PASS " + name); } catch (Exception ex) { failed++; Console.WriteLine("FAIL " + name + ": " + ex.Message); } }
 async Task CheckAsync(string name, Func<Task> action) { try { await action(); passed++; Console.WriteLine("PASS " + name); } catch (Exception ex) { failed++; Console.WriteLine("FAIL " + name + ": " + ex.Message); } }
 var definition = new ServiceDefinition("test", "Test", "Developer services", "statuspage", "https://example.com", "https://example.com/api/v2/summary.json");
+if (!args.Contains("--audit") && !args.Contains("--retry-audit") && !args.Contains("--aws-audit") && !args.Contains("--update-audit")) AdditionalProviderChecks.Run(Check);
+if(args.Length==0)ListChecks.Run(Check);
+if(args.Length==0)await OpenAiComponentChecks.Run(Check,CheckAsync);
+if(args.Contains("--openai-audit"))
+{
+    using var client=new HttpClient();var monitor=new StatusMonitor(client);var openai=ServiceCatalog.Load().Single(s=>s.Id=="extra.OpenAI");
+    var choices=await monitor.GetComponentsAsync(openai);var responses=choices.Single(c=>c.Name=="Responses");var codex=choices.Single(c=>c.Name=="Codex Web");
+    var results=await monitor.CheckAsync([openai with {Id="responses",Components=[responses.Id]},openai with {Id="codex",Components=[codex.Id]}]);
+    foreach(var result in results)Console.WriteLine(result.ServiceId+" | "+result.Status+" | "+result.Message);
+    if(results.Any(r=>r.Status==ServiceStatus.Unknown))return 1;Console.WriteLine($"OpenAI: {choices.Count} components; Responses and Codex scoped checks readable.");return 0;
+}
 var healthy = """{"status":{"indicator":"none","description":"All clear"},"components":[{"id":"api","name":"API","status":"operational"}],"incidents":[]}""";
 var outage = """{"status":{"indicator":"major","description":"Major outage"},"components":[{"id":"api","name":"API","status":"major_outage"}],"incidents":[{"name":"API unavailable","status":"investigating","components":[{"id":"api"}]},{"name":"Old incident","status":"resolved"}]}""";
 
@@ -37,6 +48,16 @@ if (args.Contains("--audit"))
     Console.WriteLine($"Catalog audit: {results.Count(s => s.Status != ServiceStatus.Unknown)}/{results.Count} readable.");
     return 0;
 }
+if(args.Contains("--retry-audit"))
+{
+    var path=Path.Combine(Environment.CurrentDirectory,".verification","catalog-audit.json");
+    var previous=JsonSerializer.Deserialize<List<ServiceSnapshot>>(File.ReadAllText(path),JsonStore.Options)!;
+    var unknown=previous.Where(s=>s.Status==ServiceStatus.Unknown).Select(s=>s.ServiceId).ToHashSet();
+    using var client=new HttpClient();var retry=await new StatusMonitor(client).CheckAsync(ServiceCatalog.Load().Where(s=>unknown.Contains(s.Id)));
+    var merged=previous.Where(s=>!unknown.Contains(s.ServiceId)).Concat(retry).ToArray();File.WriteAllText(path,JsonSerializer.Serialize(merged,JsonStore.Options));
+    foreach(var s in retry.Where(s=>s.Status==ServiceStatus.Unknown))Console.WriteLine(s.ServiceId+" | "+s.Message);
+    Console.WriteLine($"Catalog audit: {merged.Count(s=>s.Status!=ServiceStatus.Unknown)}/{merged.Length} readable.");return 0;
+}
 Check("Catalog has unique IDs and valid HTTPS endpoints", () =>
 {
     var services = ServiceCatalog.Load();
@@ -45,6 +66,16 @@ Check("Catalog has unique IDs and valid HTTPS endpoints", () =>
     Equal(services.Count, services.Select(s => s.Id).Distinct().Count());
     foreach (var id in new Preferences().SelectedServices) True(services.Any(s => s.Id == id));
 });
+if (args.Contains("--aws-audit"))
+{
+    using var client = new HttpClient();
+    var definitions = ServiceCatalog.Load().Where(s => s.Provider == "aws").ToArray();
+    var snapshots = await new StatusMonitor(client).CheckAsync(definitions);
+    var selected = definitions.Where(s => s.Id == "extra.AWS" || s.Id == "aws.region.eu-west-3" || s.Name.Contains("(EC2)") || s.Name.Contains("(S3)")).ToDictionary(s => s.Id);
+    foreach (var snapshot in snapshots.Where(s => selected.ContainsKey(s.ServiceId))) Console.WriteLine(selected[snapshot.ServiceId].Name + " | " + snapshot.Status + " | " + snapshot.Message);
+    Console.WriteLine($"AWS public feed: {snapshots.Count(s => s.Status != ServiceStatus.Unknown)}/{snapshots.Count} readable.");
+    return snapshots.Any(s => s.Status == ServiceStatus.Unknown) ? 1 : 0;
+}
 Check("Appearance defaults to English and dark", () =>
 {
     var preferences = new Preferences(); Equal("en", preferences.Language); Equal("dark", preferences.Theme);
@@ -284,6 +315,35 @@ try
 }
 finally { foreach (var path in Directory.EnumerateFiles(downloadDirectory)) File.Delete(path); Directory.Delete(downloadDirectory); }
 FeatureChecks.Run(Check);
+AwsChecks.Run(Check);
+Check("Startup commands quote paths and launch in background", () =>
+{
+    var executable = Path.Combine(Path.GetTempPath(), "Folder with spaces", "StatusLookout.exe");
+    Equal($"\"{executable}\" --background", StartupCommand.Create(executable));
+});
+Check("Startup registration follows a new portable executable", () =>
+{
+    var old = Path.Combine(Path.GetTempPath(), "StatusLookout-win-x64.exe");
+    var current = Path.Combine(Path.GetTempPath(), "StatusLookout-0.5.1-win-x64.exe");
+    True(StartupCommand.NeedsRepair(StartupCommand.Create(old), current));
+    True(!StartupCommand.NeedsRepair(StartupCommand.Create(current), current));
+});
+Check("Disabled startup is not silently enabled by a path repair", () =>
+{
+    var executable = Path.Combine(Path.GetTempPath(), "StatusLookout.exe");
+    True(!StartupCommand.NeedsRepair(null, executable)); True(!StartupCommand.NeedsRepair("", executable));
+});
+Check("Startup path casing does not cause repeated repairs", () =>
+{
+    var executable = Path.Combine(Path.GetTempPath(), "StatusLookout.exe");
+    True(StartupCommand.Matches(StartupCommand.Create(executable).ToUpperInvariant(), executable));
+});
+Check("Invalid and oversized Windows startup commands are rejected", () =>
+{
+    Throws(() => StartupCommand.Create("relative.exe"));
+    Throws(() => StartupCommand.Create(Path.Combine(Path.GetTempPath(), "bad\"name.exe")));
+    Throws(() => StartupCommand.Create(Path.Combine(Path.GetTempPath(), new string('a', 270) + ".exe")));
+});
 await BridgeChecks.RunAsync(CheckAsync);
 Console.WriteLine($"\n{passed} passed, {failed} failed");
 return failed == 0 ? 0 : 1;

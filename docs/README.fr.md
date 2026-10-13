@@ -36,7 +36,7 @@ Le fichier `.exe` est autonome, avec .NET inclus. Il fonctionne sur Windows 10 2
 
 Les titres des alertes et le menu de la zone de notification suivent la langue sélectionnée. Les descriptions d’incident restent dans la langue publiée par les fournisseurs.
 
-Le catalogue contient **461 services et produits**. Tu peux ajouter une page de statut personnalisée compatible Statuspage ou Instatus.
+Le catalogue contient **1092 services et produits**. Tu peux ajouter une page de statut personnalisée compatible Statuspage ou Instatus.
 
 Les vérifications ont lieu toutes les 60 secondes par défaut. L'intervalle peut varier de 30 à 900 secondes. Une erreur réseau produit un état **Indisponible**, sans être confondue avec une panne confirmée.
 
@@ -54,7 +54,7 @@ Ouvre le dossier du téléchargement, quitte l’application puis remplace l’a
 
 ![À propos et mises à jour](../assets/about-fr-light.png)
 
-Les **461 entrées** du catalogue affichent désormais un logo intégré. Les produits Google Cloud et Firebase ainsi que les régions Sendbird partagent le logo de leur plateforme. Les logos intégrés ne nécessitent pas de requête réseau supplémentaire. Les icônes des services personnalisés sont recherchées sur leur page de statut et le serveur qui héberge l’icône.
+Les **1092 entrées** du catalogue affichent désormais un logo intégré. Les produits Google Cloud et Firebase ainsi que les régions Sendbird partagent le logo de leur plateforme. Les logos intégrés ne nécessitent pas de requête réseau supplémentaire. Les icônes des services personnalisés sont recherchées sur leur page de statut et le serveur qui héberge l’icône.
 
 ## Alertes et composants
 
@@ -70,14 +70,14 @@ Les services personnalisés récupèrent maintenant l’icône publiée par leur
 
 Le plugin est inclus dans le [même dépôt](../plugins/streamdeck/README.md) et les [versions GitHub](https://github.com/Bouneh/statuslookout/releases/latest). Il nécessite **StatusLookout 0.5.0+** lancé sur le PC et **Stream Deck 7.1+** sous le même compte Windows.
 
-Installe `StatusLookout-streamdeck-0.1.1.streamDeckPlugin`, puis ajoute une action de la catégorie **StatusLookout** sur une touche libre :
+Installe `StatusLookout-streamdeck-0.2.0.streamDeckPlugin`, puis ajoute une action de la catégorie **StatusLookout** sur une touche libre :
 
 - **Statut d’un service** : logo, nom et couleur ; un appui ouvre sa page de statut.
 - **État global** : compteurs des services suivis, touchés et indisponibles ; un appui ouvre l’application.
 - **Actualiser les services** : lance une vérification.
 - **Suspendre les alertes d’un service** : 30 minutes ou 1 heure ; un nouvel appui termine la suspension.
 
-Les services personnalisés et leurs logos, dont Mailjet, sont disponibles. Les réglages des touches proposent l’anglais, le français et la langue de StatusLookout. La liaison locale est réservée au compte Windows courant, sans serveur HTTP. Application fermée, les touches affichent **Déconnecté**, puis se reconnectent automatiquement. Les touches avec écran sont prises en charge ; les molettes et pédales ne le sont pas.
+Le catalogue complet et les services personnalisés, dont Mailjet, sont disponibles avec une recherche. Choisir un service sur une touche active sa surveillance. AWS comprend une vue globale, 267 produits et 36 régions ; les filtres de produit et de région peuvent être combinés. Seuls les événements publics AWS sont suivis, sans compte ni identifiants, et les incidents actifs sont affichés comme dégradés sans déduire une gravité non définie par ce flux. Les réglages des touches proposent l’anglais, le français et la langue de StatusLookout. La liaison locale est réservée au compte Windows courant, sans serveur HTTP. Application fermée, les touches affichent **Déconnecté**, puis se reconnectent automatiquement. Les touches avec écran sont prises en charge ; les molettes et pédales ne le sont pas.
 
 ## Développement
 
@@ -90,3 +90,19 @@ dotnet run --project tests/StatusLookout.Tests -c Release
 ```
 
 GitHub Actions construit et publie les exécutables x64, x86 et ARM64 lors d'un tag `v*`. Le code est sous licence MIT. Voir le [README complet](../README.md) et les [instructions de contribution](../CONTRIBUTING.md).
+
+## Catalogue et familles de services
+
+Le catalogue contient **1092 services** et couvre les **1048 entrées** du catalogue stts épinglé à `876ecac0996c719786477af8e3833cdac05235ba`. La correspondance est enregistrée dans `src/StatusLookout.Core/Catalog/stts-coverage.json`.
+
+Google, AWS, Apple, Adobe, Azure et Salesforce sont regroupés en familles repliables. Coche la famille pour sélectionner tous ses services, ou déplie-la pour choisir certains produits. Une case partielle signale une sélection incomplète. La sélection du groupe inclut ses services masqués par la recherche. Les boutons **Tout déplier / Tout replier** permettent de parcourir le catalogue. Les choix sont sauvegardés et exportables. Le sélecteur Stream Deck propose aussi des familles repliables.
+
+Certains fournisseurs peuvent bloquer les requêtes ou retirer une ancienne API. Ces services restent dans le catalogue mais apparaissent **Indisponibles**, sans inventer un état opérationnel ou une panne.
+
+## Listes de surveillance
+
+Le sélecteur **Liste** propose **Travail** et **Personnel**. Tes services actuels sont conservés dans Travail ; Personnel commence vide. **Nouvelle liste** crée une liste personnalisée vide à remplir depuis le catalogue. Les listes personnalisées peuvent être renommées ou supprimées. Seule la liste active est surveillée et utilisée par Stream Deck. Les services personnalisés, filtres de composants et réglages d’alerte sont partagés. Toutes les listes et la dernière liste active sont sauvegardées et incluses dans l’import/export.
+
+## Vérification automatique des mises à jour
+
+Activée par défaut, elle vérifie GitHub 30 secondes après le lancement puis toutes les 24 heures pendant que l’application tourne. En cas d’échec, elle réessaie après une heure. Une notification est envoyée une seule fois par nouvelle version, avec un bouton **Télécharger la mise à jour**. Un bandeau ouvre aussi les contrôles de téléchargement. L’option se désactive dans **À propos**. Le téléchargement est lancé sur demande et son SHA-256 est vérifié ; le remplacement de l’exécutable reste manuel.

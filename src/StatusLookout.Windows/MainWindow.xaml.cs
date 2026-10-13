@@ -24,6 +24,13 @@ public partial class MainWindow : Window
     }
     public void ShowAbout() => NavigateClick(Navigation.Children.OfType<ToggleButton>().Single(b => (string)b.Tag == "About"), new RoutedEventArgs());
     private void ProfileClick(object sender, RoutedEventArgs e) => TryOpen("https://github.com/Bouneh");
+    private void NewListClick(object sender,RoutedEventArgs e)=>new MonitoringListWindow(_vm,false){Owner=this}.ShowDialog();
+    private void RenameListClick(object sender,RoutedEventArgs e)=>new MonitoringListWindow(_vm,true){Owner=this}.ShowDialog();
+    private void DeleteListClick(object sender,RoutedEventArgs e)
+    {
+        if(_vm.CanEditList&&MessageBox.Show(this,L.T("Delete this list? Its services remain available in the catalog."),L.T("Delete list"),MessageBoxButton.YesNo,MessageBoxImage.Question)==MessageBoxResult.Yes)_vm.DeleteList();
+    }
+    private void ViewUpdateClick(object sender,RoutedEventArgs e)=>ShowAbout();
     private void LicenseClick(object sender, RoutedEventArgs e) => TryOpen("https://github.com/Bouneh/statuslookout/blob/main/LICENSE");
     private void ReleaseClick(object sender, RoutedEventArgs e) => TryOpen(_vm.LatestReleaseUrl);
     private async void CheckUpdatesClick(object sender, RoutedEventArgs e) => await _vm.CheckForUpdatesAsync();
@@ -35,6 +42,10 @@ public partial class MainWindow : Window
         catch (Exception ex) { _vm.ReportError(ex.Message); }
     }
     public void ShowPreferences() => NavigateClick(Navigation.Children.OfType<ToggleButton>().Single(b => (string)b.Tag == "Settings"), new RoutedEventArgs());
+    public void ShowLibrary() => NavigateClick(Navigation.Children.OfType<ToggleButton>().Single(b => (string)b.Tag == "Library"), new RoutedEventArgs());
+    private void SelectFamilyClick(object sender,RoutedEventArgs e) {if(sender is CheckBox {DataContext:ServiceFamily group})_vm.SetFamilyWatched(group,group.IsSelected!=true);}
+    private void ExpandFamiliesClick(object sender,RoutedEventArgs e)=>_vm.ExpandFamilies(true);
+    private void CollapseFamiliesClick(object sender,RoutedEventArgs e)=>_vm.ExpandFamilies(false);
     private void OnClosing(object? sender, CancelEventArgs e) { e.Cancel = true; Hide(); }
     private void HideClick(object sender, RoutedEventArgs e) => Hide();
     private void MinimizeClick(object sender, RoutedEventArgs e) => WindowState = WindowState.Minimized;

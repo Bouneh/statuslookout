@@ -1,6 +1,7 @@
 using System.Reflection;
 using System.Runtime.InteropServices;
 using StatusLookout.Core;
+using System.Windows.Threading;
 
 namespace StatusLookout.Windows;
 
@@ -12,6 +13,29 @@ public sealed partial class MainViewModel
     private string _updateState = "idle", _updateError = "", _downloadedPath = "";
     private double _downloadProgress;
     private DateTimeOffset? _updateCheckedAt;
+    private readonly DispatcherTimer _automaticUpdateTimer=new(){Interval=TimeSpan.FromMinutes(1)};
+    private DateTimeOffset _nextAutomaticUpdateCheck=DateTimeOffset.UtcNow.AddSeconds(30);
+    public event Action<AvailableUpdate>? UpdateAvailable;
+    public bool AutomaticUpdates {get=>_preferences.AutomaticUpdates;set{_preferences.AutomaticUpdates=value;SavePreferences();Changed();if(value)_nextAutomaticUpdateCheck=DateTimeOffset.UtcNow;}}
+    public bool HasAvailableUpdate=>_latestUpdate is not null&&_updateState!="downloaded";
+    public string AvailableUpdateMessage=>_latestUpdate is null?"":L.Format("StatusLookout {0} is available.",_latestUpdate.Version.ToString(3));
+    private void StartAutomaticUpdates()
+    {
+        if(IsDemo)return;
+        _automaticUpdateTimer.Tick+=async (_,_)=>await CheckAutomaticUpdatesAsync();
+        _automaticUpdateTimer.Start();_ = InitialAutomaticUpdateCheckAsync();
+    }
+    private async Task InitialAutomaticUpdateCheckAsync()
+    {
+        try{await Task.Delay(TimeSpan.FromSeconds(30),_lifetime.Token);await CheckAutomaticUpdatesAsync();}catch(OperationCanceledException){}
+    }
+    private async Task CheckAutomaticUpdatesAsync()
+    {
+        if(IsDemo||!AutomaticUpdates||DateTimeOffset.UtcNow<_nextAutomaticUpdateCheck||!CanCheckUpdates||_updateState=="downloaded")return;
+        _nextAutomaticUpdateCheck=DateTimeOffset.UtcNow.AddHours(24);
+        await CheckForUpdatesAsync(true);
+        if(_updateState=="error")_nextAutomaticUpdateCheck=DateTimeOffset.UtcNow.AddHours(1);
+    }
     public static Version InstalledVersion => Assembly.GetExecutingAssembly().GetName().Version!;
     public string CurrentVersion => InstalledVersion.ToString(3);
     public string AppVersionLabel => "v" + CurrentVersion + " · OPEN SOURCE";
@@ -42,10 +66,10 @@ public sealed partial class MainViewModel
         _ => throw new NotSupportedException("Unsupported Windows architecture.")
     };
     private void UpdateChanged() => Changed(null);
-    public async Task CheckForUpdatesAsync()
+    public async Task CheckForUpdatesAsync(bool automatic=false)
     {
         if (!CanCheckUpdates) return;
-        _updateState = "checking"; _latestUpdate = null; _downloadedPath = ""; UpdateChanged();
+        _updateState = "checking"; _downloadedPath = ""; UpdateChanged();
         using var timeout = CancellationTokenSource.CreateLinkedTokenSource(_lifetime.Token);
         timeout.CancelAfter(TimeSpan.FromSeconds(30));
         try
@@ -53,6 +77,11 @@ public sealed partial class MainViewModel
             _latestUpdate = await new UpdateService(_updateHttp).CheckAsync(InstalledVersion, WindowsRuntime, timeout.Token);
             _updateCheckedAt = DateTimeOffset.Now;
             _updateState = _latestUpdate is null ? "current" : "available";
+            if(_latestUpdate is { } update&&AutomaticUpdatePolicy.ShouldNotify(update.Version,InstalledVersion,_preferences.LastNotifiedUpdateVersion))
+            {
+                if(automatic&&AutomaticUpdates) UpdateAvailable?.Invoke(update);
+                if(!automatic||AutomaticUpdates){_preferences.LastNotifiedUpdateVersion=update.Version.ToString(3);SavePreferences();}
+            }
         }
         catch (OperationCanceledException) { _updateError = "The request was cancelled or timed out."; _updateState = "error"; }
         catch (Exception ex) when (ex is HttpRequestException or IOException or System.Text.Json.JsonException or ArgumentException or InvalidOperationException or NotSupportedException)

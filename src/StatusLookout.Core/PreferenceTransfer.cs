@@ -8,6 +8,7 @@ public static class PreferenceTransfer
     {
         var copy = JsonSerializer.Deserialize<Preferences>(JsonSerializer.Serialize(preferences, JsonStore.Options), JsonStore.Options)!;
         copy.SnoozedUntil.Clear(); // Temporary pauses belong to this monitoring session, not another PC.
+        copy.LastNotifiedUpdateVersion = null;
         return JsonSerializer.Serialize(new Document("StatusLookout", 1, copy), JsonStore.Options);
     }
     public static Preferences Import(string json, IEnumerable<ServiceDefinition> catalog)
@@ -28,6 +29,11 @@ public static class PreferenceTransfer
         if (preferences.CustomServices.Select(s => s.Id).Distinct().Count() != preferences.CustomServices.Count)
             throw new InvalidDataException("Duplicate custom services.");
         var ids = catalog.Concat(preferences.CustomServices).Select(s => s.Id).ToHashSet();
+        if(preferences.MonitoringLists is { } lists)
+        {
+            foreach(var list in lists) {if(list is null)throw new InvalidDataException("Invalid monitoring list.");list.Validate();if(list.Services.Any(id=>!ids.Contains(id)))throw new InvalidDataException("Unknown service in monitoring list.");}
+            if(lists.Select(list=>list.Id).Distinct().Count()!=lists.Count||!lists.Any(list=>list.Id==preferences.ActiveListId))throw new InvalidDataException("Invalid active monitoring list.");
+        }
         if (preferences.SelectedServices.Concat(preferences.MutedServices).Concat(preferences.ComponentSelections.Keys).Any(id => !ids.Contains(id))
             || preferences.ComponentSelections.Values.Any(v => v is null || v.Any(string.IsNullOrWhiteSpace)))
             throw new InvalidDataException("Unknown service or invalid component selection.");
