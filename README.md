@@ -95,7 +95,7 @@ Only the active list is monitored and used by Stream Deck. Lists have independen
 
 ![Collapsible provider families and monitoring lists](assets/catalog-families-fr.png)
 
-See [CHANGELOG.md](CHANGELOG.md) for the changes in StatusLookout 0.6.0 and Stream Deck 0.2.0.
+See [CHANGELOG.md](CHANGELOG.md) for the changes in StatusLookout and its Stream Deck companion.
 
 ## Language and appearance
 
@@ -168,6 +168,12 @@ AWS monitoring uses the public Health dashboard feed without an account or crede
 
 ### Notifications and startup
 
+**Preferences → Notifications → Customize notification sounds** lets you choose independent sounds for outages, degradation, recovery, maintenance and updates. Options include the Windows sound, Silent, four original presets and your own WAV files. **Listen** previews a choice. Presets and imported sounds use the app's volume slider; Windows default uses Windows volume.
+
+Custom files must be standard 16-bit PCM WAV, up to 10 seconds and 2 MB. They are copied into `%LOCALAPPDATA%\StatusLookout\Sounds`, so moving the original does not break playback. They stay on that PC: preference exports preserve preset choices and volume, but reset custom sounds to Windows default. Import the WAV again on another PC. Custom audio suppresses the native toast sound to prevent double playback; the app suppresses its audio when Windows reports a quiet/full-screen state or disables its toast notifications. Preview is an explicit listening action.
+
+![Notification sound choices and WAV import](assets/notification-sounds-fr.png)
+
 Notification preferences are independent for outages, degraded service, recovery and maintenance. Muting a service silences its alerts while retaining its monitoring and history.
 
 **Group related incident notifications** is enabled by default. Within each refresh, services on the same API with the same published incident IDs and alert kind share a single notification. Different incidents and unidentified incidents stay separate; individual activity entries are retained. Recovery uses the last known incident identity.
@@ -239,8 +245,8 @@ dotnet run --project tests/StatusLookout.Tests -- --audit
 [The release workflow](.github/workflows/release.yml) publishes all three architectures on a `v*` tag or a manual workflow run. Tag runs create a GitHub release with executables, checksums and license notices. No external signing credentials are required.
 
 ```powershell
-git tag v0.6.0
-git push origin v0.6.0
+git tag v0.7.0
+git push origin v0.7.0
 ```
 
 An x64 machine can build all architectures. Native x86 and ARM64 runtime testing still requires suitable hardware.

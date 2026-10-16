@@ -15,11 +15,13 @@ public sealed class DesktopIntegration : IDisposable
     private Drawing.Icon? _statusIcon;
     private bool _toastsReady;
     private Action? _balloonAction;
+    private readonly NotificationAudio _audio;
     public bool ToastRegistrationReady => _toastsReady;
     public string LastDelivery { get; private set; } = "not attempted";
     public DesktopIntegration(Action show, Action quit, Action refresh, Action togglePause, Action<string> report)
     {
         _show = show; _report = report;
+        _audio=new(report);
         var menu = new Forms.ContextMenuStrip();
         menu.Items.Add(L.T("Open StatusLookout"), null, (_, _) => show());
         menu.Items.Add(L.T("Refresh services"), null, (_, _) => refresh());
@@ -32,7 +34,7 @@ public sealed class DesktopIntegration : IDisposable
         try { _ = ToastNotificationManagerCompat.CreateToastNotifier(); _toastsReady = true; }
         catch { _toastsReady = false; }
     }
-    public void Show(IReadOnlyList<ServiceItem> services, StatusTransition change, bool sound)
+    public void Show(IReadOnlyList<ServiceItem> services, StatusTransition change, bool sound,NotificationSoundSelection? selection=null)
     {
         var service = services[0];
         var title = service.Name + " · " + L.Alert(change.Kind);
@@ -40,36 +42,50 @@ public sealed class DesktopIntegration : IDisposable
         var names = string.Join(", ", services.Take(3).Select(s => s.Name.Length > 40 ? s.Name[..37] + "…" : s.Name));
         if (services.Count > 3) names += " · " + L.Format("and {0} more", services.Count - 3);
         var message = services.Count > 1 ? names + "\n" + change.Message : change.Message;
-        Send(title, message, services.Count == 1 ? service.Id : "", sound);
+        Send(title, message, services.Count == 1 ? service.Id : "", sound,selection);
     }
-    public void Test(bool sound) => Send(L.T("StatusLookout is listening"), L.T("Outage, degradation and recovery alerts will appear here."), "", sound);
-    public void ShowUpdate(AvailableUpdate update,Action showUpdates,bool sound)
+    public void Test(bool sound,NotificationSoundSelection? selection=null) => Send(L.T("StatusLookout is listening"), L.T("Outage, degradation and recovery alerts will appear here."), "", sound,selection);
+    public void PreviewSound(NotificationSoundSelection selection)=>_audio.Play(selection,true);
+    public void StopSound()=>_audio.Stop();
+    public void ShowUpdate(AvailableUpdate update,Action showUpdates,bool sound,NotificationSoundSelection? selection=null)
     {
         var title=L.T("A StatusLookout update is available");var message=L.Format("Version {0} is ready to download.",update.Version.ToString(3));
+        selection??=new("system",0.7);
         try
         {
             if(!_toastsReady)throw new InvalidOperationException();
             var builder=new ToastContentBuilder().AddArgument("page","updates").AddText(title).AddText(message)
                 .AddButton(new ToastButton().SetContent(L.T("Download update")).AddArgument("action","download-update"));
-            if(!sound)builder.AddAudio(new ToastAudio{Silent=true});builder.Show();
+            _audio.ConfigureToast(builder,sound,selection);builder.Show();
         }
-        catch {try{_balloonAction=showUpdates;_tray.ShowBalloonTip(8000,title,message,Forms.ToolTipIcon.Info);}catch(Exception ex){_report(L.T("Windows could not display a notification: ")+ex.Message);}}
+        catch {Fallback(title,message,showUpdates,sound,selection);}
+        if(sound)_audio.Play(selection);
     }
-    private void Send(string title, string message, string serviceId, bool sound)
+    private void Send(string title, string message, string serviceId, bool sound,NotificationSoundSelection? selection=null)
     {
+        selection??=new("system",0.7);
         try
         {
             if (!_toastsReady) throw new InvalidOperationException("Windows toast registration is unavailable.");
             var builder = new ToastContentBuilder().AddArgument("service", serviceId).AddText(title).AddText(message.Length > 240 ? message[..237] + "…" : message);
-            if (!sound) builder.AddAudio(new ToastAudio { Silent = true });
+            _audio.ConfigureToast(builder,sound,selection);
             builder.Show();
             LastDelivery = "toast API accepted";
         }
         catch
         {
-            try { _balloonAction=_show;_tray.ShowBalloonTip(8000, title, message, Forms.ToolTipIcon.Info); LastDelivery = "tray balloon fallback"; }
-            catch (Exception ex) { _report(L.T("Windows could not display a notification: ") + ex.Message); }
+            Fallback(title,message,_show,sound,selection);
         }
+        if(sound)_audio.Play(selection);
+    }
+    private void Fallback(string title,string message,Action activate,bool sound,NotificationSoundSelection selection)
+    {
+        try
+        {
+            if(sound&&_audio.Resolve(selection).Key=="system"){_balloonAction=activate;_tray.ShowBalloonTip(8000,title,message,Forms.ToolTipIcon.Info);LastDelivery="tray balloon fallback";}
+            else {NotificationPopup.Display(title,message,activate);LastDelivery="quiet popup fallback";}
+        }
+        catch(Exception ex){_report(L.T("Windows could not display a notification: ")+ex.Message);}
     }
     public void Update(MainViewModel vm)
     {
@@ -102,5 +118,5 @@ public sealed class DesktopIntegration : IDisposable
             Process.Start(new ProcessStartInfo(uri.AbsoluteUri) { UseShellExecute = true });
     }
     [DllImport("user32.dll")] private static extern bool DestroyIcon(IntPtr handle);
-    public void Dispose() { _tray.Visible = false; _tray.Dispose(); _statusIcon?.Dispose(); }
+    public void Dispose() { _audio.Dispose();_tray.Visible = false; _tray.Dispose(); _statusIcon?.Dispose(); }
 }

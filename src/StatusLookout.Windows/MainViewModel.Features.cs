@@ -50,6 +50,7 @@ public sealed partial class MainViewModel
         var imported = PreferenceTransfer.Import(json, ServiceCatalog.Load());
         if (!IsDemo) _store.Save("preferences.json", imported); // Save successfully before replacing the running settings.
         _preferences = imported; _tracker.LastKnown.Clear(); _tracker.LastIncidents.Clear();
+        InitializeSounds();
         RebuildLists();
         AllServices.Clear();
         foreach (var service in ServiceCatalog.Load().Concat(imported.CustomServices).OrderBy(s => s.Name)) AddItem(service);

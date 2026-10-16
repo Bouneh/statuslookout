@@ -231,8 +231,8 @@
   },
   {
     "key": "Ui046",
-    "en": "Play the Windows notification sound",
-    "fr": "Jouer le son des notifications Windows"
+    "en": "Enable notification sounds",
+    "fr": "Activer les sons des notifications"
   },
   {
     "key": "Ui047",
@@ -1153,5 +1153,105 @@
     "key": "UpdateAvailableBody",
     "en": "Version {0} is ready to download.",
     "fr": "La version {0} est prête à être téléchargée."
+  },
+  {
+    "key": "SoundSettings",
+    "en": "Customize notification sounds",
+    "fr": "Personnaliser les sons des notifications"
+  },
+  {
+    "key": "SoundSettingsHint",
+    "en": "Choose a sound for each alert type, or import a WAV file (up to 10 seconds, 2 MB).",
+    "fr": "Choisis un son par type d’alerte ou importe un fichier WAV (10 secondes et 2 Mo maximum)."
+  },
+  {
+    "key": "PreviewSound",
+    "en": "Listen",
+    "fr": "Écouter"
+  },
+  {
+    "key": "ImportSound",
+    "en": "Import WAV",
+    "fr": "Importer WAV"
+  },
+  {
+    "key": "SoundVolume",
+    "en": "Sound volume",
+    "fr": "Volume sonore"
+  },
+  {
+    "key": "SoundVolumeHint",
+    "en": "Volume applies to presets and imported sounds. Windows default follows Windows volume. Custom files stay on this PC and are not included in preference exports.",
+    "fr": "Le volume concerne les sons intégrés et importés. Le son Windows suit le volume de Windows. Les fichiers personnalisés restent sur ce PC et ne sont pas inclus dans les exports de préférences."
+  },
+  {
+    "key": "DefaultSound",
+    "en": "Windows default",
+    "fr": "Son Windows"
+  },
+  {
+    "key": "SilentSound",
+    "en": "Silent",
+    "fr": "Silencieux"
+  },
+  {
+    "key": "ChimeSound",
+    "en": "Chime",
+    "fr": "Carillon"
+  },
+  {
+    "key": "PulseSound",
+    "en": "Pulse",
+    "fr": "Impulsion"
+  },
+  {
+    "key": "RisingSound",
+    "en": "Rising notes",
+    "fr": "Notes ascendantes"
+  },
+  {
+    "key": "BellSound",
+    "en": "Soft bell",
+    "fr": "Cloche douce"
+  },
+  {
+    "key": "CustomSound",
+    "en": "Custom sound",
+    "fr": "Son personnalisé"
+  },
+  {
+    "key": "UpdatesSound",
+    "en": "Updates",
+    "fr": "Mises à jour"
+  },
+  {
+    "key": "MissingSound",
+    "en": "Sound file missing. Import it again.",
+    "fr": "Fichier sonore introuvable. Importe-le à nouveau."
+  },
+  {
+    "key": "InvalidSound",
+    "en": "Choose a WAV sound up to 10 seconds and 2 MB.",
+    "fr": "Choisis un son WAV de 10 secondes et 2 Mo maximum."
+  },
+  {
+    "key": "InvalidWave",
+    "en": "The WAV file is incomplete or invalid.",
+    "fr": "Le fichier WAV est incomplet ou invalide."
+  },
+  {
+    "key": "PcmWave",
+    "en": "Use a standard 16-bit PCM WAV sound.",
+    "fr": "Utilise un fichier WAV PCM standard de 16 bits."
+  },
+  {
+    "key": "ImportSoundTitle",
+    "en": "Import a notification sound",
+    "fr": "Importer un son de notification"
+  },
+  {
+    "key": "PlaybackError",
+    "en": "The sound could not be played. Try another WAV file.",
+    "fr": "Impossible de lire ce son. Essaie un autre fichier WAV."
   }
 ]

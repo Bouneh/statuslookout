@@ -12,6 +12,7 @@ async Task CheckAsync(string name, Func<Task> action) { try { await action(); pa
 var definition = new ServiceDefinition("test", "Test", "Developer services", "statuspage", "https://example.com", "https://example.com/api/v2/summary.json");
 if (!args.Contains("--audit") && !args.Contains("--retry-audit") && !args.Contains("--aws-audit") && !args.Contains("--update-audit")) AdditionalProviderChecks.Run(Check);
 if(args.Length==0)ListChecks.Run(Check);
+if(args.Length==0)SoundChecks.Run(Check);
 if(args.Length==0)await OpenAiComponentChecks.Run(Check,CheckAsync);
 if(args.Contains("--openai-audit"))
 {

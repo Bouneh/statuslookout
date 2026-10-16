@@ -32,6 +32,7 @@ public sealed partial class MainViewModel : ObservableObject, IDisposable
         _preferences = demo ? new() : _store.Load<Preferences>("preferences.json");
         var migrateLists=_preferences.MonitoringLists is null;
         _preferences.Normalize();
+        InitializeSounds();
         RebuildLists();
         L.Apply(_preferences.Language, _preferences.Theme);
         Categories[0] = _category = L.T("All categories");
@@ -102,6 +103,7 @@ public sealed partial class MainViewModel : ObservableObject, IDisposable
         Category = all ? Categories[0] : L.T(category);
         foreach (var item in AllServices) item.RefreshAppearance();
         foreach (var list in Lists) list.Refresh();
+        foreach(var choice in SoundChoices)choice.Refresh();foreach(var item in SoundEvents)item.Refresh();
         foreach (var item in Activity) item.RefreshAppearance();
         Changed(null); Updated?.Invoke();
     }
@@ -233,7 +235,8 @@ public sealed partial class MainViewModel : ObservableObject, IDisposable
     public bool NotifyDegraded { get => _preferences.NotifyDegraded; set { _preferences.NotifyDegraded = value; SavePreferences(); Changed(); } }
     public bool NotifyRecovery { get => _preferences.NotifyRecovery; set { _preferences.NotifyRecovery = value; SavePreferences(); Changed(); } }
     public bool NotifyMaintenance { get => _preferences.NotifyMaintenance; set { _preferences.NotifyMaintenance = value; SavePreferences(); Changed(); } }
-    public bool NotificationSound { get => _preferences.NotificationSound; set { _preferences.NotificationSound = value; SavePreferences(); Changed(); } }
+    public event Action? SoundsMuted;
+    public bool NotificationSound { get => _preferences.NotificationSound; set { _preferences.NotificationSound = value; SavePreferences(); Changed();if(!value)SoundsMuted?.Invoke(); } }
     public bool AlertOnFirstProblem { get => _preferences.AlertOnFirstProblem; set { _preferences.AlertOnFirstProblem = value; SavePreferences(); Changed(); } }
     public int PollSeconds
     {
@@ -265,6 +268,7 @@ public sealed partial class MainViewModel : ObservableObject, IDisposable
     }
     public void Dispose()
     {
+        if(IsDemo&&Directory.Exists(_demoSoundFolder)){try{Directory.Delete(_demoSoundFolder,true);}catch(IOException){}catch(UnauthorizedAccessException){}}
         _automaticUpdateTimer.Stop();
         foreach (var family in _families) family.Dispose();
         _featureTimer.Stop(); Microsoft.Win32.SystemEvents.UserPreferenceChanged -= SystemPreferenceChanged;

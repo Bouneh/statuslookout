@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.7.0 — 2026-10-16
+
+- Independent notification sounds for outages, degraded performance, recovery, maintenance and updates.
+- Four original notification presets, the Windows default and a silent option.
+- Per-event WAV import, preview buttons and volume for presets/custom sounds.
+- Imported PCM WAV files are validated, limited to 10 seconds/2 MB, and copied into local app data.
+- Sound choices persist locally; exports preserve presets and volume but reset local custom files to the Windows sound.
+- Custom sounds silence Windows toast audio to prevent double playback; a quiet popup replaces tray balloon fallback for custom or muted alerts.
+
 ## 0.6.0 — 2026-10-13
 
 ### Added

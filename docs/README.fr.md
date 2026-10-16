@@ -1,5 +1,11 @@
 # StatusLookout
 
+### Sons des notifications
+
+Dans **Préférences → Notifications → Personnaliser les sons des notifications**, choisis un son distinct pour les pannes, les dégradations, les retours à la normale, les maintenances et les mises à jour. Tu peux utiliser le son Windows, le silence, quatre sons intégrés ou un fichier WAV. **Écouter** permet de tester ton choix. Le volume de l’application concerne les sons intégrés et importés ; le son Windows suit le volume de Windows.
+
+Les fichiers importés doivent être des WAV PCM standard de 16 bits, de 10 secondes et 2 Mo maximum. Ils sont copiés dans `%LOCALAPPDATA%\StatusLookout\Sounds`. Les fichiers personnalisés ne sont pas inclus dans les exports de préférences : réimporte-les sur un autre PC. Les alertes restent silencieuses quand le son général est désactivé ; le son natif des notifications est coupé lors de la lecture d’un son personnalisé pour éviter un doublon.
+
 **Tes services. Un signal clair.**
 
 StatusLookout est une application Windows native qui surveille les pages de statut de services cloud depuis la zone de notification.

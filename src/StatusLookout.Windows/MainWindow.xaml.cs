@@ -59,6 +59,19 @@ public partial class MainWindow : Window
     private void TryOpen(string url) { try { DesktopIntegration.OpenStatus(url); } catch (Exception ex) { _vm.ReportError(L.T("The status page could not be opened: ") + ex.Message); } }
     private void ClearHistoryClick(object sender, RoutedEventArgs e) => _vm.ClearActivity();
     private void TestNotificationClick(object sender, RoutedEventArgs e) => ((App)System.Windows.Application.Current).TestNotification();
+    private void PreviewSoundClick(object sender,RoutedEventArgs e){if(sender is Button{Tag:SoundEventItem item})((App)System.Windows.Application.Current).PreviewSound(item.Key);}
+    private async void ImportSoundClick(object sender,RoutedEventArgs e)
+    {
+        if(sender is not Button{Tag:SoundEventItem item})return;
+        var dialog=new Microsoft.Win32.OpenFileDialog{Filter="WAV (*.wav)|*.wav",CheckFileExists=true,Multiselect=false,Title=L.T("Import a notification sound")};
+        if(dialog.ShowDialog(this)!=true)return;
+        try{await _vm.ImportSoundAsync(item,dialog.FileName);}catch(Exception ex)when(ex is IOException or UnauthorizedAccessException or InvalidDataException or OperationCanceledException){_vm.ReportError(L.T(ex.Message));}
+    }
+    public void ShowSounds()
+    {
+        ShowPreferences();SoundSettingsExpander.IsExpanded=true;
+        Dispatcher.BeginInvoke(new Action(()=>{UpdateLayout();SoundSettingsExpander.BringIntoView(new Rect(0,0,SoundSettingsExpander.ActualWidth,Math.Min(150,SoundSettingsExpander.ActualHeight)));}),System.Windows.Threading.DispatcherPriority.Loaded);
+    }
     private void DataFolderClick(object sender, RoutedEventArgs e)
     {
         try

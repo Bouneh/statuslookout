@@ -9,6 +9,8 @@ public static class PreferenceTransfer
         var copy = JsonSerializer.Deserialize<Preferences>(JsonSerializer.Serialize(preferences, JsonStore.Options), JsonStore.Options)!;
         copy.SnoozedUntil.Clear(); // Temporary pauses belong to this monitoring session, not another PC.
         copy.LastNotifiedUpdateVersion = null;
+        copy.CustomSoundNames.Clear();
+        foreach(var key in copy.NotificationSoundsByEvent.Keys.ToArray())if(NotificationSounds.IsCustom(copy.NotificationSoundsByEvent[key]))copy.NotificationSoundsByEvent[key]="system";
         return JsonSerializer.Serialize(new Document("StatusLookout", 1, copy), JsonStore.Options);
     }
     public static Preferences Import(string json, IEnumerable<ServiceDefinition> catalog)

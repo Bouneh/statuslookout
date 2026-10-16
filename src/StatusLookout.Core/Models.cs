@@ -51,6 +51,7 @@ public sealed partial class Preferences
         ComponentSelections = ComponentSelections.Where(p => p.Value is not null).ToDictionary(p => p.Key, p => p.Value.Where(v => !string.IsNullOrWhiteSpace(v)).Distinct().ToArray());
         CustomServices = CustomServices.Where(s => { try { s.Validate(); return true; } catch { return false; } }).DistinctBy(s => s.Id).ToList();
         NormalizeWatchlists();
+        NormalizeNotificationSounds();
     }
     public bool ShouldNotify(StatusTransition change) => !MutedServices.Contains(change.ServiceId)
         && (!SnoozedUntil.TryGetValue(change.ServiceId, out var until) || until <= DateTimeOffset.UtcNow) && change.Kind switch

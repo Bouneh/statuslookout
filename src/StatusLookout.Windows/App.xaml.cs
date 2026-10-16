@@ -36,11 +36,12 @@ public partial class App : System.Windows.Application
             _activation = new(false, EventResetMode.AutoReset, @"Local\StatusLookout.Activate");
             _waitHandle = ThreadPool.RegisterWaitForSingleObject(_activation, (_, _) => Dispatcher.BeginInvoke(ShowDashboard), null, Timeout.Infinite, false);
         }
-        _vm = new((service, change, sound) => _desktop?.Show(service, change, sound), demo);
+        _vm = new((service, change, sound) => _desktop?.Show(service, change, sound,_vm?.SoundFor(change.Kind.ToString())), demo);
         if (demo) { if (e.Args.Contains("--french")) _vm.Language = "fr"; if (e.Args.Contains("--light")) _vm.Theme = "light"; }
         MainWindow = new MainWindow(_vm);
         if (demo && e.Args.Contains("--about")) ((MainWindow)MainWindow).ShowAbout();
         if (demo && e.Args.Contains("--settings")) ((MainWindow)MainWindow).ShowPreferences();
+        if(demo&&e.Args.Contains("--sounds")){MainWindow.Loaded+=(_,_)=>((MainWindow)MainWindow).ShowSounds();}
         if (demo && e.Args.Contains("--library")) { ((MainWindow)MainWindow).ShowLibrary(); if(e.Args.Contains("--google")) _vm.Search="Google"; }
         if (demo && e.Args.Contains("--compact")) {MainWindow.Width=940;MainWindow.Height=670;}
         if (demo && e.Args.Contains("--collapsed")) _vm.ExpandFamilies(false);
@@ -67,7 +68,8 @@ public partial class App : System.Windows.Application
                 (request, token) => Dispatcher.InvokeAsync(() => HandleStreamDeck(request), DispatcherPriority.Normal, token).Task);
             _desktop = new(ShowDashboard, Shutdown, () => _ = _vm.RefreshAsync(), _vm.TogglePause, _vm.ReportError);
             _vm.Updated += () => _desktop.Update(_vm);
-            _vm.UpdateAvailable+=(update)=>_desktop.ShowUpdate(update,()=>{ShowDashboard();if(MainWindow is MainWindow window)window.ShowAbout();},_vm.NotificationSound);
+            _vm.SoundsMuted+=()=>_desktop.StopSound();
+            _vm.UpdateAvailable+=(update)=>_desktop.ShowUpdate(update,()=>{ShowDashboard();if(MainWindow is MainWindow window)window.ShowAbout();},_vm.NotificationSound,_vm.SoundFor("Update"));
             _desktop.Update(_vm);
             ToastNotificationManagerCompat.OnActivated += args =>
             {
@@ -152,6 +154,7 @@ public partial class App : System.Windows.Application
     private async Task<object> VerifyFeaturesAsync(bool network)
     {
         var vm = _vm!; var service = vm.Watchlist.First();
+        var soundFeatures=await FeatureSoundChecks.RunAsync(vm,(MainWindow)MainWindow!);
         var menu = (System.Windows.Controls.ContextMenu)MainWindow.Resources["ServiceMenu"];
         var target = new System.Windows.Controls.Button { Tag = service, ContextMenu = menu };
         menu.PlacementTarget = target; menu.IsOpen = true;
@@ -241,10 +244,11 @@ public partial class App : System.Windows.Application
         }
         if (!menuVerified || !thirty || !hour || !resumed || !frenchSnooze || !systemTheme || !scoped || !imported || !defaultRestored || !googlePicker
             || network && (mailjetLogo != true || statuspageComponents <= 0)) throw new InvalidOperationException("Native feature verification failed.");
-        return new { ServiceMenu = menuVerified, Snooze30 = thirty, Snooze60 = hour, SnoozeResume = resumed, FrenchSnooze = frenchSnooze, SystemTheme = systemTheme,
+        return new { SoundFeatures=soundFeatures, ServiceMenu = menuVerified, Snooze30 = thirty, Snooze60 = hour, SnoozeResume = resumed, FrenchSnooze = frenchSnooze, SystemTheme = systemTheme,
             ComponentScope = scoped, OpenAiComponentsEnabled=openaiComponentsEnabled, PreferenceImport = imported, DefaultRestored = defaultRestored, GoogleProducts = products.Count, LibraryHierarchy=hierarchy, LibraryPixelScroll=pixelScroll, LibraryMiddleChildVisible=middleVisible, LibraryLastChildVisible=lastVisible, FamilySelectAll=selectAll, FamilyPartialSelection=partial, FamilyPreferences=familyPersisted, FamilyCollapse=collapsed, FamilyExpand=expanded, FamilyClearAll=clearAll, LibraryEmptySearch=noMatches, MonitoringLists=listsPersisted&&workPreserved&&personalPreserved&&translatedLists&&listDeleted, AutomaticUpdateOffer=updateOffered, AutomaticUpdateNoRepeat=noRepeatedUpdateAlert, AutomaticUpdateOptOut=updateOptOut, AutomaticUpdateNextVersion=nextVersionAlert, AutomaticUpdateFailure=updateFailure, MailjetLogo = mailjetLogo, StatuspageComponents = statuspageComponents };
     }
-    public void TestNotification() => _desktop?.Test(_vm?.NotificationSound ?? true);
+    public void TestNotification() => _desktop?.Test(_vm?.NotificationSound ?? true,_vm?.SoundFor("Outage"));
+    public void PreviewSound(string key){if(_vm is not null&&_vm.NotificationSound)_desktop?.PreviewSound(_vm.SoundFor(key));}
     private async Task DownloadFromNotificationAsync()
     {
         if(_vm is null)return;

@@ -21,6 +21,7 @@
     <Resource Include="Assets/ServiceLogos/*.png" />
     <EmbeddedResource Include="Assets/ServiceLogos/index.json" />
     <EmbeddedResource Include="Translations.json" />
+    <EmbeddedResource Include="Assets/Sounds/*.wav" />
     <EmbeddedResource Include="Palettes.json" />
   </ItemGroup>
 </Project>
