@@ -15,6 +15,13 @@ def release(count=3, identifier=1, created='2026-10-10T00:00:00Z', name='StatusL
             'assets': [{'id': identifier, 'name': name, 'download_count': count, 'created_at': created}]}
 
 class DownloadStatisticsTests(unittest.TestCase):
+    def test_installers_and_portables_count_by_architecture(self):
+        rows = [release(3, 1), release(5, 2, name='StatusLookout-Setup-win-x64.exe'), release(2, 3, name='StatusLookout-Setup-win-arm64.exe')]
+        state = stats.observe(None, rows, NOW, REPO)
+        self.assertEqual(state['github_total'], 10)
+        self.assertEqual(state['months']['2026-10']['x64'], 8)
+        self.assertEqual(state['months']['2026-10']['arm64'], 2)
+
     def test_new_asset_current_month_has_known_monthly_downloads(self):
         state = stats.observe(None, [release()], NOW, REPO)
         self.assertEqual(state['months']['2026-10']['x64'], 3)

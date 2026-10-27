@@ -14,7 +14,7 @@ import urllib.request
 ROOT = Path(__file__).resolve().parents[1]
 RUNTIMES = ('x64', 'x86', 'arm64')
 COLORS = {'x64': '#82AEFF', 'x86': '#51DCC1', 'arm64': '#B6A1FF'}
-EXECUTABLE = re.compile(r'^(?:StatusLookout|UptimeKite)-win-(x64|x86|arm64)\.exe$')
+EXECUTABLE = re.compile(r'^(?:StatusLookout|UptimeKite)-(?:Setup-)?win-(x64|x86|arm64)\.exe$')
 
 def fetch_releases(repository: str) -> list[dict]:
     if not re.fullmatch(r'[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+', repository):

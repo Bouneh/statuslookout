@@ -62,3 +62,7 @@ Version 1.13.0, MIT licensed. Copyright © ZZZ Projects Inc. Used to read public
 ## Additional public status sources and brand artwork
 
 Retrieved on 2026-10-27: OVHcloud, Hetzner, Supabase, Render, Mistral AI, Groq, Hugging Face, Resend, Tailscale and Streamlabs. Public status endpoints and the official website/favicon URLs are recorded in `scripts/Sync-Extended-Catalog.py`. The Render favicon is served by its official status page CDN; Streamlabs uses its official CDN. Favicons are stored locally as PNG and shared across related entries. Names and logos belong to their respective owners and are used for identification; no affiliation or endorsement is implied.
+
+## Inno Setup
+
+Windows installers are built with Inno Setup 6.7.3, copyright Jordan Russell and Martijn Laan. Official source and license: https://github.com/jrsoftware/issrc/blob/is-6_7_3/license.txt. The build bootstrap is pinned to the official release and verified using SHA-256 in `scripts/Get-InnoSetup.ps1`. The installer engine is distributed under its original license; product data and brand assets retain their existing licenses.

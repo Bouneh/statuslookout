@@ -28,11 +28,11 @@ Choisis ton architecture dans la [dernière version](https://github.com/Bouneh/s
 - **ARM64** : PC Windows ARM / Snapdragon.
 - **x86** : Windows 32 bits.
 
-Le fichier `.exe` est autonome, avec .NET inclus. Il fonctionne sur Windows 10 22H2 et Windows 11, sans droits administrateur. Les versions ne sont pas encore signées numériquement.
+Télécharge **StatusLookout-Setup-win-x64.exe**, **StatusLookout-Setup-win-arm64.exe** ou **StatusLookout-Setup-win-x86.exe**. L’installateur inclut .NET. Il fonctionne sur Windows 10 22H2 et Windows 11, sans droits administrateur. Les versions ne sont pas encore signées numériquement.
 
 ## Utilisation
 
-1. Place le fichier dans un dossier permanent et lance-le.
+1. Quitte l’ancienne application depuis sa zone de notification, puis lance l’installateur. Il installe StatusLookout dans `%LOCALAPPDATA%\Programs\StatusLookout`, ajoute un raccourci au menu Démarrer et propose le raccourci Bureau ainsi que le lancement avec Windows. Les versions portables restent disponibles dans la release.
 2. L’anglais est la langue par défaut. Ouvre **Preferences → Appearance & language**, puis sélectionne **Français**. Le changement est immédiat et mémorisé.
 3. Dans **Préférences → Apparence et langue**, choisis le thème **Clair** ou **Sombre**.
 4. Ouvre le **Catalogue de services**, recherche et coche les services à surveiller.
@@ -54,9 +54,13 @@ Les alertes dépendent des informations publiées par les fournisseurs et des r�
 
 La page **À propos** affiche la version installée, **LAMOUREUX Fabien**, son [profil GitHub](https://github.com/Bouneh), le dépôt et la licence MIT.
 
-Clique sur **Vérifier les mises à jour**. Si une version stable plus récente existe, un bouton permet de télécharger l’exécutable adapté au PC. La progression est affichée et tu peux annuler. Son empreinte SHA-256 est vérifiée avant l’enregistrement dans **Téléchargements** ; les fichiers incomplets sont supprimés.
+Clique sur **Vérifier les mises à jour**, puis sur **Télécharger** pour récupérer l’installateur adapté au PC. Le téléchargement peut être annulé et son empreinte SHA-256 est vérifiée.
 
-Ouvre le dossier du téléchargement, quitte l’application puis remplace l’ancien exécutable. Conserve le même chemin pour le démarrage automatique, ou désactive et réactive cette option après déplacement. Les préférences et l’historique restent conservés. Le téléchargement ne remplace pas automatiquement l’application ouverte.
+Le bouton **Installer la mise à jour** demande confirmation, vérifie à nouveau le fichier, ouvre l’installateur et ferme l’application. L’installation existante est mise à jour et toutes les listes, préférences, sons et l’historique sont conservés. Aucun remplacement silencieux n’est effectué.
+
+Pour migrer une première fois depuis une version antérieure à 0.8.0, télécharge l’installateur depuis GitHub : ces anciennes versions ne connaissent que les exécutables portables.
+
+Pour désinstaller, quitte l’application puis utilise **Paramètres Windows → Applications → Applications installées → StatusLookout → Désinstaller**. Les données restent dans `%LOCALAPPDATA%\StatusLookout` pour une éventuelle réinstallation.
 
 ![À propos et mises à jour](../assets/about-fr-light.png)
 

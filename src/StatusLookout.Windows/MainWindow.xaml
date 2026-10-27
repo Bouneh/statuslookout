@@ -275,6 +275,7 @@
         <Button Content="{Binding DownloadUpdateLabel}" Click="DownloadUpdateClick" Visibility="{Binding CanDownloadUpdate, Converter={StaticResource BoolVisibility}}" Margin="0,0,10,8" Background="{DynamicResource Palette15}" Foreground="White"/>
         <Button Content="{DynamicResource CancelDownload}" Click="CancelDownloadClick" Visibility="{Binding IsDownloading, Converter={StaticResource BoolVisibility}}" Margin="0,0,10,8"/>
         <Button Content="{DynamicResource OpenDownload}" Click="OpenDownloadClick" Visibility="{Binding HasDownloadedFile, Converter={StaticResource BoolVisibility}}" Margin="0,0,10,8"/>
+        <Button Content="{DynamicResource InstallUpdate}" Click="InstallUpdateClick" Visibility="{Binding CanInstallUpdate, Converter={StaticResource BoolVisibility}}" Margin="0,0,10,8" Background="{DynamicResource Palette15}" Foreground="White"/>
         <Button Content="{DynamicResource ViewRelease}" Click="ReleaseClick" Margin="0,0,0,8" Background="Transparent" BorderBrush="Transparent"/>
        </WrapPanel>
       </StackPanel></Border>

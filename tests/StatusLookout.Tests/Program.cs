@@ -27,6 +27,7 @@ var outage = """{"status":{"indicator":"major","description":"Major outage"},"co
 
 if (args.Contains("--extended-audit")) return await ExtendedServiceChecks.AuditAsync(Path.GetFullPath(".verification/extended-services-audit.json"));
 if (args.Length == 0) await ExtendedServiceChecks.Run(Check, CheckAsync);
+if (args.Length == 0) await InstallerUpdateChecks.Run(Check, CheckAsync);
 
 if (args.Contains("--update-audit"))
 {

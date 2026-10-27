@@ -4,7 +4,7 @@ The README chart is generated from GitHub's public release asset counters by [Up
 
 ## What is counted
 
-- Stable release `.exe` files for x64, x86 and ARM64.
+- Stable release `.exe` files for x64, x86 and ARM64, including both installers (`StatusLookout-Setup-win-*.exe`) and portable executables.
 - The original UptimeKite executable names remain included after the project rename.
 - License files, checksums, source archives, drafts and prereleases are excluded.
 - Downloads are events, **not unique users or installations**. They can include automated checks.

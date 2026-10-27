@@ -37,7 +37,7 @@ StatusLookout keeps your selected services in the Windows system tray and alerts
 - **Windows sign-in startup**, minimized launch and background monitoring when the window is closed.
 - **Local alert history**, retained across restarts, with duplicate suppression.
 - **Clear unavailable states** for connection failures, timeouts and unreadable provider data.
-- **Portable executables** for x64, x86 and ARM64, with the .NET runtime included.
+- **Windows installers** for x64, x86 and ARM64: per-user installation, shortcuts, optional sign-in startup and Windows uninstall support. Portable executables remain available. The .NET runtime is included.
 - **No account or telemetry.** No central monitoring server.
 - **Stream Deck companion plugin**: live service logos and status, overview, refresh and alert snooze keys.
 
@@ -51,27 +51,30 @@ Updated automatically every day and after Windows releases. Counts cover stable 
 
 Download from the [latest GitHub release](https://github.com/Bouneh/statuslookout/releases/latest).
 
-| Your computer | Executable |
+| Your computer | Recommended installer |
 | --- | --- |
-| Most Intel / AMD Windows PCs | [StatusLookout-win-x64.exe](https://github.com/Bouneh/statuslookout/releases/latest/download/StatusLookout-win-x64.exe) |
-| Windows on ARM, including Snapdragon PCs | [StatusLookout-win-arm64.exe](https://github.com/Bouneh/statuslookout/releases/latest/download/StatusLookout-win-arm64.exe) |
-| 32-bit Windows | [StatusLookout-win-x86.exe](https://github.com/Bouneh/statuslookout/releases/latest/download/StatusLookout-win-x86.exe) |
+| Most Intel / AMD Windows PCs | [StatusLookout-Setup-win-x64.exe](https://github.com/Bouneh/statuslookout/releases/latest/download/StatusLookout-Setup-win-x64.exe) |
+| Windows on ARM, including Snapdragon PCs | [StatusLookout-Setup-win-arm64.exe](https://github.com/Bouneh/statuslookout/releases/latest/download/StatusLookout-Setup-win-arm64.exe) |
+| 32-bit Windows | [StatusLookout-Setup-win-x86.exe](https://github.com/Bouneh/statuslookout/releases/latest/download/StatusLookout-Setup-win-x86.exe) |
 
 **Windows 10 22H2 or Windows 11.** An internet connection is required to check providers. No administrator access or separate .NET installation is needed. Builds are currently unsigned; Windows can show an unknown-publisher warning.
 
-1. Save the executable in a permanent folder.
-2. Run it and open **Service library** to choose your services.
-3. Open **Preferences → Send test alert** to verify Windows notification delivery.
-4. Enable **Launch at Windows sign-in** if you want automatic monitoring.
-5. Close the dashboard to keep it in the tray. Use the tray menu to quit.
+1. Quit an older StatusLookout instance from its system tray menu.
+2. Run the installer. Choose English or French, and select optional desktop and Windows sign-in shortcuts.
+3. By default, the app is installed in `%LOCALAPPDATA%\Programs\StatusLookout`, with a Start menu shortcut. Launch it to choose your services.
+4. Close the dashboard to keep monitoring from the tray. Use the tray menu to quit.
 
-Release downloads include SHA-256 checksums. To verify an executable:
+Existing lists, preferences, custom services, sounds and history stay in `%LOCALAPPDATA%\StatusLookout`. Installing over a previous version keeps them. The installer respects the current startup setting, including changes made in the app.
+
+**Portable downloads** are also included in each release as `StatusLookout-win-x64.exe`, `StatusLookout-win-x86.exe` and `StatusLookout-win-arm64.exe`. Keep those in a permanent folder if you prefer to run without installation.
+
+Release downloads include SHA-256 checksums. To verify an installer:
 
 ```powershell
-Get-FileHash .\StatusLookout-win-x64.exe -Algorithm SHA256
+Get-FileHash .\StatusLookout-Setup-win-x64.exe -Algorithm SHA256
 ```
 
-Compare the result with the matching `SHA256SUMS-win-x64.txt` file.
+Compare the result with `SHA256SUMS-Setup-win-x64.txt`.
 
 ## Stream Deck
 
@@ -114,9 +117,11 @@ Open **About** for the installed version, **LAMOUREUX Fabien**’s [GitHub profi
 
 Automatic update checks are enabled by default: the first check runs 30 seconds after launch, then every 24 hours while the app is running. A failed check retries after an hour. A Windows notification is sent once per newer version, with a **Download update** button; a banner also opens the update controls. Disable **Automatically check for updates** in **About** to stop background checks.
 
-Click **Check for updates** to query this repository’s latest stable GitHub release manually. If it is newer, **Download** retrieves the executable for your Windows architecture. A progress bar and cancel button are provided. The downloaded file is checked against GitHub’s SHA-256 digest before being saved to your Windows **Downloads** folder with its version in the filename. Failed or cancelled downloads are removed.
+Click **Check for updates** to query this repository’s latest stable release. **Download** retrieves the installer for your Windows architecture, with a progress bar and cancellation. Its SHA-256 digest is verified before saving it in **Downloads** with its version in the filename.
 
-Click **Open download folder**, quit the running app, then replace your old portable executable with the downloaded one. Keep it at the same path to preserve your startup shortcut, or disable and re-enable startup after moving it. Your watchlist and preferences remain in the local data folder. Updates are downloaded on request; the running executable is not silently replaced or launched.
+Choose **Install update** when ready. After confirmation, StatusLookout verifies the installer again, opens the installation wizard and exits. The wizard updates the existing installation and offers to relaunch the app. Preferences and history are preserved. Nothing is installed silently.
+
+Older releases without installers still offer their portable executable. For the first migration from a version older than 0.8.0, download the installer from the release page and run it once; those older apps only know about portable assets.
 
 ![About and updates in French](assets/about-fr-light.png)
 
@@ -198,7 +203,7 @@ The app sends HTTPS requests directly to selected status providers. Those provid
 
 **Preferences → Local data** provides JSON **Export preferences / Import preferences**. Import replaces the current watchlist, custom services, component selections, language, theme and alert preferences after validating the file. Export first to keep a backup. Startup registration, history, cached logos and temporary snoozes are not transferred. Import does not change Windows sign-in startup.
 
-To remove the app, disable startup, quit from the tray and delete the executable. You can also delete the data folder to remove preferences and history.
+To uninstall, quit from the tray, then open **Windows Settings → Apps → Installed apps → StatusLookout → Uninstall**. Shortcuts, installed files and the matching startup registration are removed. Preferences and history are retained in the data folder; delete that folder separately only if you want to erase them. For portable copies, disable startup and delete the executable.
 
 ## Build from source
 
@@ -243,12 +248,14 @@ dotnet run --project tests/StatusLookout.Tests -- --audit
 
 [CI](.github/workflows/ci.yml) builds the app and runs offline tests on pushes and pull requests.
 
-[The release workflow](.github/workflows/release.yml) publishes all three architectures on a `v*` tag or a manual workflow run. Tag runs create a GitHub release with executables, checksums and license notices. No external signing credentials are required.
+[The release workflow](.github/workflows/release.yml) publishes all three architectures on a `v*` tag or a manual workflow run. Tag runs create a GitHub release with installers, portable executables, checksums and license notices. Inno Setup 6.7.3 is downloaded from its official release and verified against a pinned SHA-256 digest. The x64 job tests install, upgrade, startup opt-out, the installed application, uninstall and retained preferences on a clean runner. No external signing credentials are required.
 
 ```powershell
-git tag v0.7.1
-git push origin v0.7.1
+git tag v0.8.0
+git push origin v0.8.0
 ```
+
+To build an installer after publishing, run `./scripts/Build-Installer.ps1 -Runtime win-x64 -Version 0.8.0`. Its compiler is provisioned automatically; Python is not needed.
 
 An x64 machine can build all architectures. Native x86 and ARM64 runtime testing still requires suitable hardware.
 

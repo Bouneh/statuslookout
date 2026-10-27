@@ -33,16 +33,26 @@ jobs:
       - name: Publish portable executable and checksum
         shell: pwsh
         run: |
-          $version = '0.7.1'
+          $version = '0.8.0'
           if ($env:GITHUB_REF_TYPE -eq 'tag') { $version = $env:GITHUB_REF_NAME.TrimStart('v') }
           ./scripts/Publish.ps1 -Runtimes '${{ matrix.runtime }}' -Version $version
+          ./scripts/Build-Installer.ps1 -Runtime '${{ matrix.runtime }}' -Version $version
+      - name: Verify installer lifecycle on a clean runner
+        if: matrix.runtime == 'win-x64'
+        shell: pwsh
+        run: |
+          $version = '0.8.0'
+          if ($env:GITHUB_REF_TYPE -eq 'tag') { $version = $env:GITHUB_REF_NAME.TrimStart('v') }
+          ./scripts/Test-Installer.ps1 -Installer artifacts/StatusLookout-Setup-win-x64.exe -Version $version
       - uses: actions/upload-artifact@v7
         with:
           name: StatusLookout-${{ matrix.runtime }}
           if-no-files-found: error
           path: |
             artifacts/StatusLookout-${{ matrix.runtime }}.exe
+            artifacts/StatusLookout-Setup-${{ matrix.runtime }}.exe
             artifacts/SHA256SUMS-${{ matrix.runtime }}.txt
+            artifacts/SHA256SUMS-Setup-${{ matrix.runtime }}.txt
             artifacts/LICENSE*
             artifacts/THIRD-PARTY-NOTICES*
   streamdeck:
@@ -94,6 +104,12 @@ jobs:
           if ($LASTEXITCODE -eq 0) {
             gh release upload $env:GITHUB_REF_NAME @assets --clobber
           } else {
-            gh release create $env:GITHUB_REF_NAME @assets --verify-tag --generate-notes --title "StatusLookout $env:GITHUB_REF_NAME"
+            $version = $env:GITHUB_REF_NAME.TrimStart('v')
+            $pattern = '(?ms)^## ' + [regex]::Escape($version) + '[^\r\n]*\r?\n(.*?)(?=^## |\z)'
+            $section = [regex]::Match((Get-Content CHANGELOG.md -Raw), $pattern)
+            if (-not $section.Success) { throw 'Release changelog section is missing.' }
+            $notes = Join-Path $env:RUNNER_TEMP 'StatusLookout-release-notes.md'
+            $section.Groups[1].Value.Trim() | Set-Content -LiteralPath $notes -Encoding utf8
+            gh release create $env:GITHUB_REF_NAME @assets --verify-tag --notes-file $notes --title "StatusLookout $env:GITHUB_REF_NAME"
           }
           if ($LASTEXITCODE -ne 0) { throw 'Release publication failed' }

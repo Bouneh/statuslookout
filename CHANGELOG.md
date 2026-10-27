@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.8.0 — 2026-10-27
+
+- Official Inno Setup installers for x64, x86 and ARM64, built automatically by GitHub Actions alongside portable executables.
+- Per-user installation without administrator access, Start menu shortcut, optional desktop shortcut, English/French setup and Windows uninstall registration.
+- Installers preserve preferences, custom services, sounds and history, and respect the current Windows startup opt-out during upgrades.
+- Updates prefer the correct installer, verify its SHA-256 at download and again before execution, then offer an explicit installation button. Legacy portable releases remain supported.
+- Installer lifecycle smoke tests on a clean Windows runner cover installation, shortcuts, startup, upgrade, the native app, uninstall and retained data.
+- Download statistics include installer assets as well as portable executables.
+
 ## 0.7.1 — 2026-10-27
 
 - Add OVHcloud (six domains), Hetzner, Supabase, Render, Mistral AI, Groq, Hugging Face, Resend, Tailscale and Streamlabs: 1,107 catalog entries, all with bundled logos.

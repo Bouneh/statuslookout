@@ -42,3 +42,10 @@ jobs:
         run: dotnet run --project src/StatusLookout.Windows -c Release --no-build -- --preview "$env:RUNNER_TEMP/StatusLookout-about.png" --about --french --light
       - name: Verify native feature integration
         run: dotnet run --project src/StatusLookout.Windows -c Release --no-build -- --feature-test "$env:RUNNER_TEMP/StatusLookout-features.json"
+      - name: Verify Windows installer lifecycle
+        shell: pwsh
+        run: |
+          $version = ([xml](Get-Content Directory.Build.props -Raw)).Project.PropertyGroup.Version
+          ./scripts/Publish.ps1 -Runtimes win-x64 -Version $version
+          ./scripts/Build-Installer.ps1 -Runtime win-x64 -Version $version
+          ./scripts/Test-Installer.ps1 -Installer artifacts/StatusLookout-Setup-win-x64.exe -Version $version

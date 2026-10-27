@@ -666,8 +666,8 @@
   },
   {
     "key": "UpdatesExplanation",
-    "en": "Checks the official GitHub releases automatically or on request. Offers the stable executable for your Windows architecture and verifies its checksum before saving it in Downloads.",
-    "fr": "Vérifie les releases GitHub officielles automatiquement ou à la demande. Propose l’exécutable stable adapté à votre Windows et vérifie son intégrité avant de l’enregistrer dans Téléchargements."
+    "en": "Checks official GitHub releases automatically or on request. Downloads the installer for your Windows architecture, verifies its checksum, then lets you start installation. Your preferences are preserved.",
+    "fr": "Vérifie les releases GitHub officielles automatiquement ou à la demande. Télécharge l’installateur adapté à votre Windows, vérifie son intégrité puis propose de lancer l’installation. Vos préférences sont conservées."
   },
   {
     "key": "ViewRelease",
@@ -1253,5 +1253,25 @@
     "key": "PlaybackError",
     "en": "The sound could not be played. Try another WAV file.",
     "fr": "Impossible de lire ce son. Essaie un autre fichier WAV."
+  },
+  {
+    "key": "InstallUpdate",
+    "en": "Install update",
+    "fr": "Installer la mise à jour"
+  },
+  {
+    "key": "InstallerReady",
+    "en": "Installer verified. Choose Install update to continue. Your preferences will be kept.",
+    "fr": "Installateur vérifié. Choisis Installer la mise à jour pour continuer. Tes préférences seront conservées."
+  },
+  {
+    "key": "InstallerOpening",
+    "en": "Verifying and opening the installer…",
+    "fr": "Vérification et ouverture de l’installateur…"
+  },
+  {
+    "key": "InstallerConfirmation",
+    "en": "Close StatusLookout and open the installer? Your preferences will be kept.",
+    "fr": "Fermer StatusLookout et ouvrir l’installateur ? Tes préférences seront conservées."
   }
 ]

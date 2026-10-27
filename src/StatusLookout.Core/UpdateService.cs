@@ -5,7 +5,10 @@ using System.Text.RegularExpressions;
 namespace StatusLookout.Core;
 
 public sealed record AvailableUpdate(Version Version, string Tag, string ReleaseUrl, string AssetName,
-    string DownloadUrl, string Sha256, long Size);
+    string DownloadUrl, string Sha256, long Size)
+{
+    public bool IsInstaller => AssetName.StartsWith("StatusLookout-Setup-", StringComparison.Ordinal);
+}
 
 /// <summary>Release discovery and requested downloads from this project's stable GitHub releases only.</summary>
 public sealed class UpdateService(HttpClient http)
@@ -47,8 +50,14 @@ public sealed class UpdateService(HttpClient http)
         if (!Regex.IsMatch(tag, @"^v\d+\.\d+\.\d+$") || !Version.TryParse(tag[1..], out var version))
             throw new InvalidDataException("The release version is invalid.");
         if (Normalize(version) <= Normalize(installed)) return null;
-        var name = "StatusLookout-" + runtime + ".exe";
-        var asset = root.GetProperty("assets").EnumerateArray().SingleOrDefault(a => a.GetProperty("name").GetString() == name);
+        var assets = root.GetProperty("assets").EnumerateArray().ToArray();
+        var name = "StatusLookout-Setup-" + runtime + ".exe";
+        var asset = assets.SingleOrDefault(a => a.GetProperty("name").GetString() == name);
+        if (asset.ValueKind == JsonValueKind.Undefined)
+        {
+            name = "StatusLookout-" + runtime + ".exe";
+            asset = assets.SingleOrDefault(a => a.GetProperty("name").GetString() == name);
+        }
         if (asset.ValueKind == JsonValueKind.Undefined) throw new InvalidDataException("This release has no executable for your Windows architecture.");
         var url = asset.GetProperty("browser_download_url").GetString() ?? "";
         var releaseUrl = "https://github.com/Bouneh/statuslookout/releases/tag/" + tag;
@@ -62,12 +71,7 @@ public sealed class UpdateService(HttpClient http)
     }
     public async Task DownloadAsync(AvailableUpdate update, string destination, IProgress<double>? progress = null, CancellationToken token = default)
     {
-        // Revalidate public record fields before using them as a download source.
-        var expectedUrl = "https://github.com/Bouneh/statuslookout/releases/download/" + update.Tag + "/" + update.AssetName;
-        if (!Regex.IsMatch(update.Tag, @"^v\d+\.\d+\.\d+$")
-            || !Regex.IsMatch(update.AssetName, @"^StatusLookout-win-(x64|x86|arm64)\.exe$")
-            || update.DownloadUrl != expectedUrl || !Regex.IsMatch(update.Sha256, "^[a-fA-F0-9]{64}$")
-            || update.Size <= 0 || update.Size > MaxExecutableBytes) throw new InvalidDataException("Invalid update metadata.");
+        ValidateDownload(update);
         var fullPath = Path.GetFullPath(destination);
         Directory.CreateDirectory(Path.GetDirectoryName(fullPath)!);
         var partial = fullPath + "." + Guid.NewGuid().ToString("N") + ".partial";
@@ -101,5 +105,24 @@ public sealed class UpdateService(HttpClient http)
             File.Move(partial, fullPath, overwrite: true);
         }
         finally { if (File.Exists(partial)) File.Delete(partial); }
+    }
+    private static void ValidateDownload(AvailableUpdate update)
+    {
+        // Public records can be constructed by callers. Validate again before downloading or launching.
+        var expectedUrl = "https://github.com/Bouneh/statuslookout/releases/download/" + update.Tag + "/" + update.AssetName;
+        if (!Regex.IsMatch(update.Tag, @"^v\d+\.\d+\.\d+$")
+            || !Regex.IsMatch(update.AssetName, @"^StatusLookout-(Setup-)?win-(x64|x86|arm64)\.exe$")
+            || update.DownloadUrl != expectedUrl || !Regex.IsMatch(update.Sha256, "^[a-fA-F0-9]{64}$")
+            || update.Size <= 0 || update.Size > MaxExecutableBytes) throw new InvalidDataException("Invalid update metadata.");
+    }
+    public static async Task VerifyInstallerAsync(AvailableUpdate update, string path, CancellationToken token = default)
+    {
+        ValidateDownload(update);
+        if (!update.IsInstaller) throw new InvalidDataException("This update is a portable executable, not an installer.");
+        await using var input = new FileStream(Path.GetFullPath(path), FileMode.Open, FileAccess.Read, FileShare.Read, 81920, useAsync: true);
+        if (input.Length != update.Size) throw new InvalidDataException("The installer size no longer matches the release.");
+        var hash = await SHA256.HashDataAsync(input, token);
+        if (!CryptographicOperations.FixedTimeEquals(hash, Convert.FromHexString(update.Sha256)))
+            throw new InvalidDataException("The installer checksum no longer matches the release. Download it again.");
     }
 }

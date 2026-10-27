@@ -36,6 +36,12 @@ public partial class MainWindow : Window
     private async void CheckUpdatesClick(object sender, RoutedEventArgs e) => await _vm.CheckForUpdatesAsync();
     private async void DownloadUpdateClick(object sender, RoutedEventArgs e) => await _vm.DownloadUpdateAsync();
     private void CancelDownloadClick(object sender, RoutedEventArgs e) => _vm.CancelUpdateDownload();
+    private async void InstallUpdateClick(object sender, RoutedEventArgs e)
+    {
+        if (!_vm.CanInstallUpdate) return;
+        if (MessageBox.Show(this, L.T("Close StatusLookout and open the installer? Your preferences will be kept."), L.T("Install update"), MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes) return;
+        if (await _vm.LaunchUpdateInstallerAsync()) Application.Current.Shutdown();
+    }
     private void OpenDownloadClick(object sender, RoutedEventArgs e)
     {
         try { if (_vm.HasDownloadedFile) Process.Start(new ProcessStartInfo(Path.GetDirectoryName(_vm.DownloadedPath)!) { UseShellExecute = true }); }
