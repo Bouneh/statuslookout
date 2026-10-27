@@ -90,6 +90,8 @@ Filename: "{app}\StatusLookout.exe"; Description: "{cm:LaunchApp}"; Flags: nowai
 [Code]
 const
   RunKey = 'Software\Microsoft\Windows\CurrentVersion\Run';
+var
+  StartupPreferenceApplied: Boolean;
 
 function HasTaskOverride: Boolean;
 var
@@ -105,12 +107,15 @@ begin
   end;
 end;
 
-procedure InitializeWizard;
+procedure ApplyStartupPreference;
 var
   Command: String;
 begin
+  if StartupPreferenceApplied then exit;
+  StartupPreferenceApplied := True;
   { The app can change startup after installation. Its current setting takes precedence
-    over a stale task selection saved by an older installer. Silent overrides still work. }
+    over a stale task selection saved by an older installer. Apply after Inno restores
+    previous tasks, not in InitializeWizard. Explicit silent overrides still work. }
   if not HasTaskOverride then
   begin
     if RegQueryStringValue(HKCU, RunKey, 'StatusLookout', Command) and (Command <> '') then
@@ -118,6 +123,20 @@ begin
     else
       WizardSelectTasks('!startup');
   end;
+end;
+
+procedure CurPageChanged(CurPageID: Integer);
+begin
+  if CurPageID = wpSelectTasks then ApplyStartupPreference;
+end;
+
+function PrepareToInstall(var NeedsRestart: Boolean): String;
+begin
+  { Silent setup may skip the tasks page. Reconcile its saved choices just before
+    installation, while interactive changes made on that page are left intact. }
+  if WizardSilent then StartupPreferenceApplied := False;
+  ApplyStartupPreference;
+  Result := '';
 end;
 
 procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
