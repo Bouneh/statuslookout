@@ -19,9 +19,10 @@
 
 ## A quiet lookout for the services you depend on
 
-StatusLookout keeps your selected services in the Windows system tray and alerts you when their published status changes. Choose from **1,092 services and products**, including AWS, GitHub, Cloudflare, Discord, OpenAI, Notion, Slack, Google Cloud and Firebase.
+StatusLookout keeps your selected services in the Windows system tray and alerts you when their published status changes. Choose from **1,107 services and products**, including AWS, GitHub, Cloudflare, Discord, OpenAI, Notion, Slack, Google Cloud and Firebase.
 
-- **Bundled service logos** for all 1,092 catalog entries, with platform logos shared by related products.
+- **Additional providers**: OVHcloud (six domains), Hetzner, Supabase, Render, Mistral AI, Groq, Hugging Face, Resend, Tailscale and Streamlabs. Related OVHcloud domains are grouped; component filters are available where exposed.
+- **Bundled service logos** for all 1,107 catalog entries, with platform logos shared by related products.
 - **Monitoring lists**: Work and Personal by default, plus your own named lists. Switch the active list from any page.
 - **Automatic update checks**: a notification and download offer for each new stable release, with an opt-out in About.
 - **English by default, French available**, with an instant language selector.
@@ -31,7 +32,7 @@ StatusLookout keeps your selected services in the Windows system tray and alerts
 - **Collapsible provider families**: select all Google, AWS, Apple or Adobe services, or expand the family and choose individual products. Search reveals matching children; partial selections are shown clearly.
 - **Searchable service library** and custom Statuspage-compatible or Instatus endpoints.
 - **Related incident grouping**, per-service 30-minute / 1-hour alert snoozing, muting and notification sound controls.
-- **Component picker** for Statuspage, Instatus, AWS and Google products, with saved per-service selections.
+- **Component picker** for Statuspage, Instatus, AWS, Google, Hetzner, Hugging Face and Streamlabs products, with saved per-service selections.
 - **Preference import/export** to move watchlists and custom services between PCs.
 - **Windows sign-in startup**, minimized launch and background monitoring when the window is closed.
 - **Local alert history**, retained across restarts, with duplicate suppression.
@@ -245,8 +246,8 @@ dotnet run --project tests/StatusLookout.Tests -- --audit
 [The release workflow](.github/workflows/release.yml) publishes all three architectures on a `v*` tag or a manual workflow run. Tag runs create a GitHub release with executables, checksums and license notices. No external signing credentials are required.
 
 ```powershell
-git tag v0.7.0
-git push origin v0.7.0
+git tag v0.7.1
+git push origin v0.7.1
 ```
 
 An x64 machine can build all architectures. Native x86 and ARM64 runtime testing still requires suitable hardware.

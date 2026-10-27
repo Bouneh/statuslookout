@@ -42,7 +42,7 @@ Le fichier `.exe` est autonome, avec .NET inclus. Il fonctionne sur Windows 10 2
 
 Les titres des alertes et le menu de la zone de notification suivent la langue sélectionnée. Les descriptions d’incident restent dans la langue publiée par les fournisseurs.
 
-Le catalogue contient **1092 services et produits**. Tu peux ajouter une page de statut personnalisée compatible Statuspage ou Instatus.
+Le catalogue contient **1107 services et produits**, dont OVHcloud (six domaines regroupés), Hetzner, Supabase, Render, Mistral AI, Groq, Hugging Face, Resend, Tailscale et Streamlabs. Tu peux ajouter une page de statut personnalisée compatible Statuspage ou Instatus.
 
 Les vérifications ont lieu toutes les 60 secondes par défaut. L'intervalle peut varier de 30 à 900 secondes. Une erreur réseau produit un état **Indisponible**, sans être confondue avec une panne confirmée.
 
@@ -60,13 +60,13 @@ Ouvre le dossier du téléchargement, quitte l’application puis remplace l’a
 
 ![À propos et mises à jour](../assets/about-fr-light.png)
 
-Les **1092 entrées** du catalogue affichent désormais un logo intégré. Les produits Google Cloud et Firebase ainsi que les régions Sendbird partagent le logo de leur plateforme. Les logos intégrés ne nécessitent pas de requête réseau supplémentaire. Les icônes des services personnalisés sont recherchées sur leur page de statut et le serveur qui héberge l’icône.
+Les **1107 entrées** du catalogue affichent désormais un logo intégré. Les produits Google Cloud et Firebase ainsi que les régions Sendbird partagent le logo de leur plateforme. Les logos intégrés ne nécessitent pas de requête réseau supplémentaire. Les icônes des services personnalisés sont recherchées sur leur page de statut et le serveur qui héberge l’icône.
 
 ## Alertes et composants
 
 - **Regrouper les alertes du même incident**, activé par défaut dans les préférences : une seule notification par vérification pour les services du même fournisseur qui partagent les mêmes identifiants d’incident et le même type d’alerte. L’historique reste individuel.
 - **Options du service → Suspendre les alertes** : 30 minutes ou 1 heure. La surveillance et l’historique continuent, même après redémarrage. Les alertes suspendues ne sont pas rejouées ensuite ; la coupure permanente reste indépendante.
-- **Options du service → Choisir les composants** : API, régions ou produits exposés par Statuspage / Instatus, ou produits Google du catalogue. Sans sélection, toute la page est surveillée ; **Choix par défaut** restaure le périmètre initial.
+- **Options du service → Choisir les composants** : API, régions ou produits exposés par Statuspage / Instatus, produits Google du catalogue, systèmes Hetzner, ressources Hugging Face ou composants Streamlabs. Sans sélection, toute la page est surveillée ; **Choix par défaut** restaure le périmètre initial.
 - **Préférences → Apparence et langue → Suivre le thème Windows** : le thème suit automatiquement celui des applications Windows, y compris pendant l’utilisation.
 - **Préférences → Données locales → Exporter / Importer les préférences** : transfère la liste et les services personnalisés, les composants et les réglages. L’import remplace les préférences actuelles : exporte d’abord pour conserver une sauvegarde. Le démarrage Windows, l’historique, les logos et les suspensions temporaires ne sont pas transférés.
 
@@ -99,7 +99,7 @@ GitHub Actions construit et publie les exécutables x64, x86 et ARM64 lors d'un 
 
 ## Catalogue et familles de services
 
-Le catalogue contient **1092 services** et couvre les **1048 entrées** du catalogue stts épinglé à `876ecac0996c719786477af8e3833cdac05235ba`. La correspondance est enregistrée dans `src/StatusLookout.Core/Catalog/stts-coverage.json`.
+Le catalogue contient **1107 services** et couvre les **1048 entrées** du catalogue stts épinglé à `876ecac0996c719786477af8e3833cdac05235ba`. La correspondance est enregistrée dans `src/StatusLookout.Core/Catalog/stts-coverage.json`.
 
 Google, AWS, Apple, Adobe, Azure et Salesforce sont regroupés en familles repliables. Coche la famille pour sélectionner tous ses services, ou déplie-la pour choisir certains produits. Une case partielle signale une sélection incomplète. La sélection du groupe inclut ses services masqués par la recherche. Les boutons **Tout déplier / Tout replier** permettent de parcourir le catalogue. Les choix sont sauvegardés et exportables. Le sélecteur Stream Deck propose aussi des familles repliables.
 

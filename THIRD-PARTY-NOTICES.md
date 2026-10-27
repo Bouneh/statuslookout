@@ -58,3 +58,7 @@ AWS products and regions come from the public AWS Health dashboard asset at http
 ## Html Agility Pack
 
 Version 1.13.0, MIT licensed. Copyright © ZZZ Projects Inc. Used to read public HTML status dashboards. Source and license: https://github.com/zzzprojects/html-agility-pack/blob/master/LICENSE. The original license is distributed in `LICENSE-html-agility-pack.txt`.
+
+## Additional public status sources and brand artwork
+
+Retrieved on 2026-10-27: OVHcloud, Hetzner, Supabase, Render, Mistral AI, Groq, Hugging Face, Resend, Tailscale and Streamlabs. Public status endpoints and the official website/favicon URLs are recorded in `scripts/Sync-Extended-Catalog.py`. The Render favicon is served by its official status page CDN; Streamlabs uses its official CDN. Favicons are stored locally as PNG and shared across related entries. Names and logos belong to their respective owners and are used for identification; no affiliation or endorsement is implied.

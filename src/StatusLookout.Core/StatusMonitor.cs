@@ -15,9 +15,9 @@ public sealed class StatusMonitor(HttpClient http)
             return ServiceCatalog.Load().Where(s => s.ApiUrl == service.ApiUrl && s.Components is { Length: > 0 })
                 .SelectMany(s => s.Components!.Select(id => new ProviderComponent(id, s.Name)))
                 .DistinctBy(c => c.Id).OrderBy(c => c.Name).ToArray();
-        if (service.Provider is not ("statuspage" or "instatus")) return [];
+        if (service.Provider is not ("statuspage" or "instatus" or "hetzner" or "betterstack-json" or "streamlabs")) return [];
         using var timeout = CancellationTokenSource.CreateLinkedTokenSource(token); timeout.CancelAfter(TimeSpan.FromSeconds(20));
-        using var response = await http.GetAsync(OpenAiComponents.Applies(service)?OpenAiComponents.ComponentsUrl:service.ApiUrl, HttpCompletionOption.ResponseHeadersRead, timeout.Token);
+        using var response = await http.GetAsync(StatuspageComponentFeed.Applies(service)?StatuspageComponentFeed.Url(service):service.ApiUrl, HttpCompletionOption.ResponseHeadersRead, timeout.Token);
         response.EnsureSuccessStatusCode();
         if (response.Content.Headers.ContentLength > 16 * 1024 * 1024) throw new InvalidDataException("Status response is too large.");
         await using var source = await response.Content.ReadAsStreamAsync(timeout.Token);
@@ -27,7 +27,8 @@ public sealed class StatusMonitor(HttpClient http)
             if (data.Length + read > 16 * 1024 * 1024) throw new InvalidDataException("Status response is too large.");
             data.Write(buffer, 0, read);
         }
-        return ComponentCatalog.Parse(service.Provider, StatusPayload.Decode(data.ToArray()));
+        var body = StatusPayload.Decode(data.ToArray());
+        return ExtendedServiceProviders.Providers.Contains(service.Provider) ? ExtendedServiceProviders.GetComponents(service.Provider, body) : ComponentCatalog.Parse(service.Provider, body);
     }
     public async Task<IReadOnlyList<ServiceSnapshot>> CheckAsync(IEnumerable<ServiceDefinition> definitions, CancellationToken cancellationToken = default)
     {
@@ -75,9 +76,9 @@ public sealed class StatusMonitor(HttpClient http)
                             buffer.Write(bytes, 0, read);
                         }
                         var body = StatusPayload.Decode(buffer.ToArray());
-                        if(OpenAiComponents.Applies(group.First())&&group.Any(s=>s.Components is {Length:>0}))
+                        if(StatuspageComponentFeed.Applies(group.First())&&group.Any(s=>s.Components is {Length:>0}))
                         {
-                            using var componentResponse=await http.GetAsync(OpenAiComponents.ComponentsUrl,HttpCompletionOption.ResponseHeadersRead,timeout.Token);
+                            using var componentResponse=await http.GetAsync(StatuspageComponentFeed.Url(group.First()),HttpCompletionOption.ResponseHeadersRead,timeout.Token);
                             componentResponse.EnsureSuccessStatusCode();
                             body=OpenAiComponents.Merge(body,await ReadBodyAsync(componentResponse,timeout.Token));
                         }

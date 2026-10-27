@@ -154,6 +154,9 @@ public partial class App : System.Windows.Application
     private async Task<object> VerifyFeaturesAsync(bool network)
     {
         var vm = _vm!; var service = vm.Watchlist.First();
+        var extendedServices = vm.AllServices.Where(s => s.Id.StartsWith("extended.")).ToArray();
+        var extendedCatalog = extendedServices.Length == 15 && extendedServices.All(s => s.SupportsComponents && s.Logo is not null);
+        if (!extendedCatalog) throw new InvalidOperationException("Extended provider catalog, component menus or bundled logos are incomplete.");
         var soundFeatures=await FeatureSoundChecks.RunAsync(vm,(MainWindow)MainWindow!);
         var menu = (System.Windows.Controls.ContextMenu)MainWindow.Resources["ServiceMenu"];
         var target = new System.Windows.Controls.Button { Tag = service, ContextMenu = menu };

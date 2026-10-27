@@ -14,7 +14,7 @@ public sealed class ServiceItem(ServiceDefinition definition, bool watched, bool
     public ServiceDefinition DefaultDefinition { get; } = definition;
     public ServiceDefinition Definition { get; private set; } = definition;
     public void SetComponents(string[]? components) { Definition = DefaultDefinition with { Components = components }; Changed(nameof(ComponentSummary)); }
-    public bool SupportsComponents => Definition.Provider is "statuspage" or "instatus" or "google" or "aws";
+    public bool SupportsComponents => Definition.Provider is "statuspage" or "instatus" or "google" or "aws" or "hetzner" or "betterstack-json" or "streamlabs";
     public string ComponentSummary => Definition.Components is { Length: > 0 } c ? L.Format("{0} components selected", c.Length) : L.T("Entire status page");
     public string Id => Definition.Id;
     public string Name => Definition.Name;

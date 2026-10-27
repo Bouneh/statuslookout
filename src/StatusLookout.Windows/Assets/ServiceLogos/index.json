@@ -1090,5 +1090,20 @@
   "appledeveloper.AppleXcodeCloud": "appledeveloper.png",
   "googlecloudplatform.GoogleCloudComposer": "googlecloudplatform.png",
   "awsservices.AWSSimSpaceWeaver": "awsservices.png",
-  "awsservices.AWSTelcoNetworkBuilder": "awsservices.png"
+  "awsservices.AWSTelcoNetworkBuilder": "awsservices.png",
+  "extended.OVHcloud.PublicCloud": "extended-ovhcloud.png",
+  "extended.OVHcloud.BareMetal": "extended-ovhcloud.png",
+  "extended.OVHcloud.PrivateCloud": "extended-ovhcloud.png",
+  "extended.OVHcloud.WebCloud": "extended-ovhcloud.png",
+  "extended.OVHcloud.Network": "extended-ovhcloud.png",
+  "extended.OVHcloud.Support": "extended-ovhcloud.png",
+  "extended.Hetzner": "extended-hetzner.png",
+  "extended.Supabase": "extended-supabase.png",
+  "extended.Render": "extended-render.png",
+  "extended.Mistral": "extended-mistralai.png",
+  "extended.Groq": "extended-groq.png",
+  "extended.HuggingFace": "extended-huggingface.png",
+  "extended.Resend": "extended-resend.png",
+  "extended.Tailscale": "extended-tailscale.png",
+  "extended.Streamlabs": "extended-streamlabs.png"
 }

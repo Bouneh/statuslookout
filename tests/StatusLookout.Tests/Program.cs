@@ -25,6 +25,9 @@ if(args.Contains("--openai-audit"))
 var healthy = """{"status":{"indicator":"none","description":"All clear"},"components":[{"id":"api","name":"API","status":"operational"}],"incidents":[]}""";
 var outage = """{"status":{"indicator":"major","description":"Major outage"},"components":[{"id":"api","name":"API","status":"major_outage"}],"incidents":[{"name":"API unavailable","status":"investigating","components":[{"id":"api"}]},{"name":"Old incident","status":"resolved"}]}""";
 
+if (args.Contains("--extended-audit")) return await ExtendedServiceChecks.AuditAsync(Path.GetFullPath(".verification/extended-services-audit.json"));
+if (args.Length == 0) await ExtendedServiceChecks.Run(Check, CheckAsync);
+
 if (args.Contains("--update-audit"))
 {
     using var client = new HttpClient { Timeout = TimeSpan.FromMinutes(5) };

@@ -17554,5 +17554,140 @@
       "service:tnb-us-west-2"
     ],
     "family": "AWS"
+  },
+  {
+    "id": "extended.OVHcloud.PublicCloud",
+    "name": "OVHcloud · Public Cloud",
+    "category": "Developer services",
+    "provider": "statuspage",
+    "statusUrl": "https://public-cloud.status-ovhcloud.com/",
+    "apiUrl": "https://public-cloud.status-ovhcloud.com/api/v2/summary.json",
+    "family": "OVHcloud"
+  },
+  {
+    "id": "extended.OVHcloud.BareMetal",
+    "name": "OVHcloud · Bare Metal Cloud",
+    "category": "Developer services",
+    "provider": "statuspage",
+    "statusUrl": "https://bare-metal-servers.status-ovhcloud.com/",
+    "apiUrl": "https://bare-metal-servers.status-ovhcloud.com/api/v2/summary.json",
+    "family": "OVHcloud"
+  },
+  {
+    "id": "extended.OVHcloud.PrivateCloud",
+    "name": "OVHcloud · Hosted Private Cloud",
+    "category": "Developer services",
+    "provider": "statuspage",
+    "statusUrl": "https://hosted-private-cloud.status-ovhcloud.com/",
+    "apiUrl": "https://hosted-private-cloud.status-ovhcloud.com/api/v2/summary.json",
+    "family": "OVHcloud"
+  },
+  {
+    "id": "extended.OVHcloud.WebCloud",
+    "name": "OVHcloud · Web Cloud",
+    "category": "Developer services",
+    "provider": "statuspage",
+    "statusUrl": "https://web-cloud.status-ovhcloud.com/",
+    "apiUrl": "https://web-cloud.status-ovhcloud.com/api/v2/summary.json",
+    "family": "OVHcloud"
+  },
+  {
+    "id": "extended.OVHcloud.Network",
+    "name": "OVHcloud · Network & Infrastructure",
+    "category": "Developer services",
+    "provider": "statuspage",
+    "statusUrl": "https://network.status-ovhcloud.com/",
+    "apiUrl": "https://network.status-ovhcloud.com/api/v2/summary.json",
+    "family": "OVHcloud"
+  },
+  {
+    "id": "extended.OVHcloud.Support",
+    "name": "OVHcloud · Customer Service",
+    "category": "Developer services",
+    "provider": "statuspage",
+    "statusUrl": "https://customer-service.status-ovhcloud.com/",
+    "apiUrl": "https://customer-service.status-ovhcloud.com/api/v2/summary.json",
+    "family": "OVHcloud"
+  },
+  {
+    "id": "extended.Hetzner",
+    "name": "Hetzner",
+    "category": "Developer services",
+    "provider": "hetzner",
+    "statusUrl": "https://status.hetzner.com/",
+    "apiUrl": "https://status.hetzner.com/",
+    "family": "Hetzner"
+  },
+  {
+    "id": "extended.Supabase",
+    "name": "Supabase",
+    "category": "Developer services",
+    "provider": "statuspage",
+    "statusUrl": "https://status.supabase.com/",
+    "apiUrl": "https://status.supabase.com/api/v2/summary.json",
+    "family": "Supabase"
+  },
+  {
+    "id": "extended.Render",
+    "name": "Render",
+    "category": "Developer services",
+    "provider": "statuspage",
+    "statusUrl": "https://status.render.com/",
+    "apiUrl": "https://status.render.com/api/v2/summary.json",
+    "family": "Render"
+  },
+  {
+    "id": "extended.Mistral",
+    "name": "Mistral AI",
+    "category": "Developer services",
+    "provider": "statuspage",
+    "statusUrl": "https://status.mistral.ai/",
+    "apiUrl": "https://status.mistral.ai/api/v2/summary.json",
+    "family": "Mistral AI"
+  },
+  {
+    "id": "extended.Groq",
+    "name": "Groq",
+    "category": "Developer services",
+    "provider": "statuspage",
+    "statusUrl": "https://groqstatus.com/",
+    "apiUrl": "https://groqstatus.com/api/v2/summary.json",
+    "family": "Groq"
+  },
+  {
+    "id": "extended.HuggingFace",
+    "name": "Hugging Face",
+    "category": "Developer services",
+    "provider": "betterstack-json",
+    "statusUrl": "https://status.huggingface.co/",
+    "apiUrl": "https://status.huggingface.co/index.json",
+    "family": "Hugging Face"
+  },
+  {
+    "id": "extended.Resend",
+    "name": "Resend",
+    "category": "Developer services",
+    "provider": "statuspage",
+    "statusUrl": "https://resend-status.com/",
+    "apiUrl": "https://resend-status.com/api/v2/summary.json",
+    "family": "Resend"
+  },
+  {
+    "id": "extended.Tailscale",
+    "name": "Tailscale",
+    "category": "Developer services",
+    "provider": "statuspage",
+    "statusUrl": "https://status.tailscale.com/",
+    "apiUrl": "https://status.tailscale.com/api/v2/summary.json",
+    "family": "Tailscale"
+  },
+  {
+    "id": "extended.Streamlabs",
+    "name": "Streamlabs",
+    "category": "Developer services",
+    "provider": "streamlabs",
+    "statusUrl": "https://status.logitech.com/",
+    "apiUrl": "https://status.logitech.com/api/v2/summary.json",
+    "family": "Streamlabs"
   }
 ]

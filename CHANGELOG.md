@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.7.1 — 2026-10-27
+
+- Add OVHcloud (six domains), Hetzner, Supabase, Render, Mistral AI, Groq, Hugging Face, Resend, Tailscale and Streamlabs: 1,107 catalog entries, all with bundled logos.
+- Component selection for Hetzner systems (including child systems), Hugging Face resources and Streamlabs products. Streamlabs excludes unrelated Logitech incidents.
+- Discover and monitor Supabase components using its complete feed rather than its truncated compatibility summary.
+- Reject missing components, malformed feeds and unknown states instead of presenting them as operational.
+
 ## 0.7.0 — 2026-10-16
 
 - Independent notification sounds for outages, degraded performance, recovery, maintenance and updates.
