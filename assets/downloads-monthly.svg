@@ -1,24 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1000" height="430" viewBox="0 0 1000 430" role="img" aria-labelledby="title desc">
 <title id="title">StatusLookout monthly release downloads</title>
-<desc id="desc">Daily snapshots of GitHub stable Windows executable download counters. History starts 2026-10-11. Downloads are not unique users. Missing months have no samples. Last updated 2026-10-30 05:47:03 UTC.</desc>
+<desc id="desc">Daily snapshots of GitHub stable Windows executable download counters. History starts 2026-10-11. Downloads are not unique users. Missing months have no samples. Last updated 2026-10-31 05:38:55 UTC.</desc>
 <defs><linearGradient id="card" x2="1" y2="1"><stop stop-color="#141F33"/><stop offset="1" stop-color="#182840"/></linearGradient></defs>
 <rect x="1" y="1" width="998" height="428" rx="18" fill="#0C1220" stroke="#25334B"/>
 <g font-family="Segoe UI,Arial,sans-serif">
 <circle cx="36" cy="34" r="5" fill="#51DCC1"/>
 <text x="52" y="39" fill="#F1F5FF" font-size="17" font-weight="700">StatusLookout · Monthly downloads</text>
 <text x="28" y="61" fill="#94A4BF" font-size="12">Stable Windows executables · GitHub Releases · No application telemetry</text>
-<text x="972" y="37" text-anchor="end" fill="#94A4BF" font-size="10">2026-10-30 05:47:03 UTC</text>
-<rect x="28" y="82" width="298" height="76" rx="11" fill="url(#card)" stroke="#25334B"/><text x="46" y="105" fill="#94A4BF" font-size="10" font-weight="600">GITHUB TOTAL</text><text x="46" y="140" fill="#82AEFF" font-size="29" font-weight="700">11</text>
-<rect x="351" y="82" width="298" height="76" rx="11" fill="url(#card)" stroke="#25334B"/><text x="369" y="105" fill="#94A4BF" font-size="10" font-weight="600">COUNTED THIS MONTH</text><text x="369" y="140" fill="#51DCC1" font-size="29" font-weight="700">11</text>
+<text x="972" y="37" text-anchor="end" fill="#94A4BF" font-size="10">2026-10-31 05:38:55 UTC</text>
+<rect x="28" y="82" width="298" height="76" rx="11" fill="url(#card)" stroke="#25334B"/><text x="46" y="105" fill="#94A4BF" font-size="10" font-weight="600">GITHUB TOTAL</text><text x="46" y="140" fill="#82AEFF" font-size="29" font-weight="700">14</text>
+<rect x="351" y="82" width="298" height="76" rx="11" fill="url(#card)" stroke="#25334B"/><text x="369" y="105" fill="#94A4BF" font-size="10" font-weight="600">COUNTED THIS MONTH</text><text x="369" y="140" fill="#51DCC1" font-size="29" font-weight="700">14</text>
 <rect x="674" y="82" width="298" height="76" rx="11" fill="url(#card)" stroke="#25334B"/><text x="692" y="105" fill="#94A4BF" font-size="10" font-weight="600">STABLE RELEASES</text><text x="692" y="140" fill="#B6A1FF" font-size="29" font-weight="700">10</text>
 <path d="M65 336.0h887" stroke="#25334B" stroke-dasharray="3 6"/><text x="53" y="340.0" text-anchor="end" fill="#71839F" font-size="10">0</text>
-<path d="M65 288.7h887" stroke="#25334B" stroke-dasharray="3 6"/><text x="53" y="292.7" text-anchor="end" fill="#71839F" font-size="10">5</text>
-<path d="M65 241.3h887" stroke="#25334B" stroke-dasharray="3 6"/><text x="53" y="245.3" text-anchor="end" fill="#71839F" font-size="10">10</text>
-<path d="M65 194.0h887" stroke="#25334B" stroke-dasharray="3 6"/><text x="53" y="198.0" text-anchor="end" fill="#71839F" font-size="10">15</text>
-<g><title>2026-10: 11 counted downloads · x64 10, x86 0, ARM64 1</title>
-<rect x="477.5" y="241.3" width="62.0" height="94.7" rx="2" fill="#82AEFF"/>
-<rect x="477.5" y="231.9" width="62.0" height="9.5" rx="2" fill="#B6A1FF"/>
-<text x="508.5" y="222.9" text-anchor="middle" fill="#F1F5FF" font-size="12" font-weight="700">11</text></g>
+<path d="M65 300.5h887" stroke="#25334B" stroke-dasharray="3 6"/><text x="53" y="304.5" text-anchor="end" fill="#71839F" font-size="10">5</text>
+<path d="M65 265.0h887" stroke="#25334B" stroke-dasharray="3 6"/><text x="53" y="269.0" text-anchor="end" fill="#71839F" font-size="10">10</text>
+<path d="M65 229.5h887" stroke="#25334B" stroke-dasharray="3 6"/><text x="53" y="233.5" text-anchor="end" fill="#71839F" font-size="10">15</text>
+<path d="M65 194.0h887" stroke="#25334B" stroke-dasharray="3 6"/><text x="53" y="198.0" text-anchor="end" fill="#71839F" font-size="10">20</text>
+<g><title>2026-10: 14 counted downloads · x64 11, x86 1, ARM64 2</title>
+<rect x="477.5" y="257.9" width="62.0" height="78.1" rx="2" fill="#82AEFF"/>
+<rect x="477.5" y="250.8" width="62.0" height="7.1" rx="2" fill="#51DCC1"/>
+<rect x="477.5" y="236.6" width="62.0" height="14.2" rx="2" fill="#B6A1FF"/>
+<text x="508.5" y="227.6" text-anchor="middle" fill="#F1F5FF" font-size="12" font-weight="700">14</text></g>
 <text x="508.5" y="361" text-anchor="middle" fill="#A5B3CD" font-size="11">Oct 26</text>
 <rect x="377" y="383" width="9" height="9" rx="2" fill="#82AEFF"/><text x="393" y="392" fill="#A5B3CD" font-size="11">x64</text>
 <rect x="461" y="383" width="9" height="9" rx="2" fill="#51DCC1"/><text x="477" y="392" fill="#A5B3CD" font-size="11">x86</text>
